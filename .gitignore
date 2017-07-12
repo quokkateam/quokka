@@ -129,3 +129,5 @@ api/configs/vars.py
 *.pyc
 
 .vscode/
+
+.sass-cache/
