@@ -33,14 +33,19 @@ Home of the Quokka web app
     ```
     $ cd .. && cd quokka
     ```
+4. Copy the example config vars file to a locally, git-ignored file to manage config vars with for each environment:
 
-4. Install virtualenv if you don't have it:
+    ```
+    $ cp quokka/helpers/configs/example_vars.py quokka/helpers/configs/vars.py
+    ```
+
+5. Install virtualenv if you don't have it:
 
     ```
     $ pip install virtualenv
     ```
 
-5. Create a new virtual environment and install python dependencies:
+6. Create a new virtual environment and install python dependencies:
 
     ```
     $ virtualenv venv
@@ -52,7 +57,7 @@ Home of the Quokka web app
     $ pip install -r requirements.txt -r dev-requirements.txt
     ```
 
-6. Install npm dependencies:
+7. Install npm dependencies:
 
     ```
     $ npm install
