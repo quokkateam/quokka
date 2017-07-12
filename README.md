@@ -85,4 +85,4 @@ Home of the Quokka web app
 
 ## License
 
-    All Rights Reserved, Quokka, LLC
+All Rights Reserved, Quokka, LLC
