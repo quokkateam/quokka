@@ -65,7 +65,7 @@ Home of the Quokka web app
 
 ## Starting the App
 
-1. Start Flask:
+1. Start Flask (not necessary right now):
 
     ```
     $ python app.py
