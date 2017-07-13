@@ -1,0 +1,21 @@
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  color: #fff;
+  z-index: 1; }
+  header .header-nav {
+    padding: 24px 85px; }
+    header .header-nav a {
+      height: 54px;
+      width: auto;
+      display: inline-block; }
+      header .header-nav a img {
+        height: 100%; }
+
+@media (max-width: 991px) {
+  header > .header-nav {
+    padding: 24px 4%; } }
+
+/*# sourceMappingURL=header.css.map */

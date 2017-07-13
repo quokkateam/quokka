@@ -1,0 +1,93 @@
+#welcome {
+  position: relative;
+  padding: 0 4%;
+  padding-top: 175px;
+  width: 100%;
+  height: 626px;
+  color: #fff;
+  background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/marketing/images/landing.jpg');
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  background-size: cover;
+
+  .dimmer {
+    background-color: rgba(0, 0, 0, 0.55);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+  }
+
+  .welcome-content {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    left: 0;
+  }
+}
+
+.welcome-main-text {
+  font-family: Avenir-Next-DemiBold;
+  font-size: 64px;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+
+.welcome-sub-text {
+  font-family: Lato-Light;
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 38px;
+}
+
+.primary-request-btn {
+  font-family: Avenir-Next-Medium;
+  margin: 0 auto;
+  display: block;
+  font-size: 14px;
+  border-radius: 4px;
+  background-color: $primary;
+  padding: 16px 30px;
+  text-transform: uppercase;
+  text-align: center;
+  outline: none;
+  border: none;
+  -webkit-appearance: none;
+
+  &:hover {
+    background-color: $primary-hover;
+  }
+
+  &:active {
+    background-color: $primary;
+  }
+}
+
+@media (max-width: 845px) {
+  .welcome-main-text {
+    font-size: 50px;
+  }
+
+  .welcome-sub-text {
+    font-size: 20px;
+  }
+}
+
+
+@media (max-width: 626px) {
+  #welcome {
+    margin-top: 100px;
+  }
+
+  .welcome-main-text {
+    font-size: 44px;
+    line-height: 1.1;
+  }
+
+  .welcome-sub-text {
+    font-size: 20px;
+  }
+}

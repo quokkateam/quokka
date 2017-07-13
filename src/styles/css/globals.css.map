@@ -1,6 +1,6 @@
 {
 "version": 3,
-"mappings": "AAAA,IAAK;EACH,MAAM,EAAE,CAAC;EACT,OAAO,EAAE,CAAC;EACV,WAAW,EAAE,UAAU",
+"mappings": "AAAA,IAAK;EACH,kBAAkB,EAAE,UAAU;EAC9B,eAAe,EAAE,UAAU;EAC3B,UAAU,EAAE,UAAU;;AAGxB,MAAO;EACL,WAAW,EAAE,mBAAmB;;AAGlC,SAAU;EACR,WAAW,EAAE,CAAC;EACd,YAAY,EAAE,CAAC",
 "sources": ["../scss/globals.scss"],
 "names": [],
 "file": "globals.css"
