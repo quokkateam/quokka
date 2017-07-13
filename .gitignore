@@ -122,7 +122,7 @@ ENV/
 .idea/
 
 # config vars
-api/configs/vars.py
+quokka/helpers/configs/vars.py
 
 # End of https://www.gitignore.io/api/python
 
