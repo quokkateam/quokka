@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import { Switch, Route } from 'react-router-dom'
 import Home from './components/home/Home'
 import SignUp from './components/auth/SignUp'
@@ -8,8 +8,8 @@ import Habit from './components/habit/Habit'
 import CheckIn from './components/check-in/CheckIn'
 
 class Main extends Component {
-	render() {
-		return (
+  render() {
+    return (
       <div>
         <Switch>
           <Route exact path='/' component={Home}/>
@@ -20,8 +20,8 @@ class Main extends Component {
           <Route path='/check-in' component={CheckIn}/>
         </Switch>
       </div>
-		);
-	}
+    );
+  }
 }
 
 export default Main;
