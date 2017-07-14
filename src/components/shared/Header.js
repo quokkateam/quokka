@@ -11,8 +11,13 @@ class Header extends Component {
             </a>
           </div>
           <div className="header-right">
-            <a href="/signup" className="header-nav-link featured">Sign Up</a>
-            <a href="/blog" className="header-nav-link">Blog</a>
+            <div className="header-dktp">
+              <a href="/signup" className="header-nav-link featured">Sign Up</a>
+              <a href="/blog" className="header-nav-link">Blog</a>
+            </div>
+            <div className="header-mbl" onClick={this.props.onMenuClick}>
+              <i className="fa fa-bars"></i>
+            </div>
           </div>
         </nav>
       </header>

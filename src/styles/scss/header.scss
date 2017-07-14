@@ -50,10 +50,37 @@ header {
       color: $primary;
     }
   }
+
+  .header-mbl {
+    display: none;
+    float: right;
+    margin-top: 15px;
+    cursor: pointer;
+
+    i {
+      color: #fff;
+      display: inline-block;
+      float: right;
+      font-size: 26px;
+    }
+  }
 }
+
 
 @media (max-width: 991px) {
   header > .header-nav {
     padding: 24px 4%;
+  }
+}
+
+@media (max-width: 626px) {
+  header {
+    .header-dktp {
+      display: none;
+    }
+
+    .header-mbl {
+      display: block;
+    }
   }
 }
