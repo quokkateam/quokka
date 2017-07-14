@@ -4,7 +4,6 @@ import Mission from './Mission'
 import About from './About'
 import Contact from './Contact'
 
-
 class Home extends Component {
   render() {
     return (
