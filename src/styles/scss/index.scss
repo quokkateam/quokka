@@ -1,1 +1,16 @@
+// Current Dir
+@import 'colors';
+@import 'fonts';
 @import 'globals';
+@import 'header';
+@import 'footer';
+
+// Home
+@import 'home/home';
+@import 'home/welcome';
+@import 'home/mission';
+@import 'home/about';
+@import 'home/contact';
+
+// Widgets
+@import 'widgets/spinners/horiz-spinner';
