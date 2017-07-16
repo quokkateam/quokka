@@ -1,31 +1,64 @@
 import React, { Component } from 'react';
-import HorizSpinner from '../widgets/spinners/horiz-spinner'
+import HorizSpinner from '../widgets/spinners/HorizSpinner'
 import $ from 'jquery'
+import FormInput from '../shared/FormInput'
 import axios from 'axios';
+
+const status = {
+  STATIC: 0,
+  SERIALIZING: 1,
+  SENDING: 2,
+  COMPLETE: 3
+};
+
+const MOBILE_THRESH = 991;
 
 class Contact extends Component {
 	
   constructor(props) {
     super(props);
+    
+    this.state = {
+      status: status.STATIC,
+      school: null,
+      email: null,
+      onMobile: window.innerWidth < MOBILE_THRESH
+    };
+    
     this.setSectionRef = this.setSectionRef.bind(this);
     this.setSchoolFieldRef = this.setSchoolFieldRef.bind(this);
     this.setEmailFieldRef = this.setEmailFieldRef.bind(this);
-    this.setSubmitMobileContainerRef = this.setSubmitMobileContainerRef.bind(this);
-    this.setDesktopBtnRef = this.setDesktopBtnRef.bind(this);
-    this.setMobileBtnRef = this.setMobileBtnRef.bind(this);
+    this.onSerializing = this.onSerializing.bind(this);
+    this.onComplete = this.onComplete.bind(this);
     this.getTopPosition = this.getTopPosition.bind(this);
-    this.onDesktopSubmit = this.onDesktopSubmit.bind(this);
-    this.onMobileSubmit = this.onMobileSubmit.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-    this.parseFields = this.parseFields.bind(this);
-    this.isValidInfo = this.isValidInfo.bind(this);
+    this.serialize = this.serialize.bind(this);
     this.sendContactInfo = this.sendContactInfo.bind(this);
-    this.onMobileComplete = this.onMobileComplete.bind(this);
-    this.onDesktopComplete = this.onDesktopComplete.bind(this);
-    this.clearContactFields = this.clearContactFields.bind(this);
-    this.removeInvalid = this.removeInvalid.bind(this);
+    this.submitMobileContainerClasses = this.submitMobileContainerClasses.bind(this);
+    this.submitBtnClasses = this.submitBtnClasses.bind(this);
+    this.submitMobileContent = this.submitMobileContent.bind(this);
+    
+    this.listenForWindowResize();
   }
-
+  
+  listenForWindowResize() {
+    $(window).resize(() => {
+      this.setState({ onMobile: window.innerWidth < MOBILE_THRESH })
+    });
+  }
+  
+  componentDidUpdate() {
+    switch (this.state.status) {
+      case status.SERIALIZING:
+        this.onSerializing();
+        break;
+      case status.COMPLETE:
+        this.onComplete();
+        break;
+    }
+    
+    return true;
+  }
+  
   setSectionRef(ref) {
     this.section = ref;
   }
@@ -38,98 +71,77 @@ class Contact extends Component {
     this.emailField = ref;
   }
   
-  setSubmitMobileContainerRef(ref) {
-    this.submitMobileContainer = ref;
+  onSerializing() {
+    if (this.state.school && this.state.email) {
+      this.sendContactInfo();
+    }
   }
   
-  setDesktopBtnRef(ref) {
-    this.desktopBtn = ref;
-  }
-  
-  setMobileBtnRef(ref) {
-    this.mobileBtn = ref;
+  onComplete() {
+    this.schoolField.clearInput();
+    this.emailField.clearInput();
+
+    setTimeout(() => {
+      this.setState({
+        status: status.STATIC,
+        school: '',
+        email: ''
+      });
+    }, 1000);
   }
   
 	getTopPosition() {
     return $(this.section)[0].offsetTop;
 	}
-	
-	onDesktopSubmit() {
-    this.onSubmit(false);
+  
+  serialize() {
+    this.setState({
+      status: status.SERIALIZING,
+      school: this.schoolField.serialize(),
+      email: this.emailField.serialize()
+    });
   }
   
-  onMobileSubmit() {
-    this.onSubmit(true);
-  }
-  
-  onSubmit(isMobile) {
-    var info = this.parseFields();
+  sendContactInfo() {
+    this.setState({ status: status.SENDING });
     
-    if (this.isValidInfo(info, isMobile)) {
-      this.sendContactInfo(info, isMobile);
-    }
-  }
-  
-  parseFields() {
-    return {
-      school: $(this.schoolField).val().trim(),
-      email: $(this.emailField).val().trim()
+    var payload = {
+      school: this.state.school,
+      email: this.state.email
     };
-  }
-  
-  isValidInfo(info, isMobile) {
-    var isValid = true;
-  
-    for (var k in info) {
-      if (!info[k]) {
-        $('.contact-field[name=' + k + ']').addClass(isMobile ? 'invalid-mobile' : 'invalid');
-        isValid = false
-      }
-    }
-  
-    return isValid;
-  }
-  
-  sendContactInfo(info, isMobile) {
-    if (isMobile) {
-      $(this.submitMobileContainer).addClass('loading');
-    }
     
-    isMobile ? this.onMobileComplete() : this.onDesktopComplete();
-    // axios.post('/api/contact', info).then((resp) => {
-    //   isMobile ? this.onMobileComplete() : this.onDesktopComplete();
+    // using setTimeout to simulate network request duration
+    setTimeout(() => {
+      this.setState({ status: status.COMPLETE });
+    }, 300);
+    
+    // axios.post('/api/contact', payload).then(() => {
+    //  this.setState({ status: status.COMPLETE });
     // });
   }
-  
-  onMobileComplete() {
-    var $btn = $(this.mobileBtn);
-    
-    setTimeout(function () {
-      $btn.html('Thanks!').addClass('completed');
-      $(this.submitMobileContainer).removeClass('loading');
-      this.clearContactFields();
-    }.bind(this), 1000);
-  }
-  
-  onDesktopComplete() {
-    var $btn = $(this.desktopBtn);
-    
-    $btn.addClass('completed');
-  
-    setTimeout(function () {
-      $btn.removeClass('completed');
-      this.clearContactFields();
-    }.bind(this), 1200);
-  }
-  
-  clearContactFields() {
-    $(this.schoolField).val('');
-    $(this.emailField).val('');
-  }
 	
-  removeInvalid(e) {
-    $(e.currentTarget).removeClass('invalid invalid-mobile');
-    $(this.mobileBtn).removeClass('completed').html('Submit');
+  submitMobileContainerClasses() {
+    var classes = ['submit-mobile-container'];
+    
+    if (this.state.status == status.SENDING && this.state.onMobile) {
+      classes.push('loading');
+    }
+    
+    return classes.join(' ');
+  }
+  
+  submitBtnClasses(mobile) {
+    var classes = [mobile ? 'submit-mobile' : 'submit-desktop'];
+    
+    if (this.state.status == status.COMPLETE) {
+      classes.push('completed');
+    }
+    
+    return classes.join(' ');
+  }
+  
+  submitMobileContent() {
+    return this.state.status == status.COMPLETE ? 'Thanks!' : 'Submit';
   }
   
 	render() {
@@ -139,15 +151,15 @@ class Contact extends Component {
 					<div className="leading-contact-text">Want Quokka on your campus? Let us know!</div>
 					<div className="row">
 						<div className="col-md-6 col-sm-12 col-xs-12 contact-field-container" role="school">
-							<input type="text" className="contact-field" placeholder="School" name="school" ref={this.setSchoolFieldRef} onKeyPress={this.removeInvalid} />
+              <FormInput required={true} classes={['contact-field']} name="school" placeholder="School" defaultValue={this.state.school} ref={this.setSchoolFieldRef} />
 						</div>
 						<div className="col-md-6 col-sm-12 col-xs-12 contact-field-container" role="email">
-							<input type="text" className="contact-field" placeholder="Email" name="email" ref={this.setEmailFieldRef} onKeyPress={this.removeInvalid} />
-							<button className="submit-desktop" data-action="submit-contact" ref={this.setDesktopBtnRef} onClick={this.onDesktopSubmit}></button>
+              <FormInput required={true} classes={['contact-field']} name="email" placeholder="Email" defaultValue={this.state.email} ref={this.setEmailFieldRef} />
+							<button className={this.submitBtnClasses(false)} onClick={this.serialize}></button>
 						</div>
 					</div>
-					<div className="submit-mobile-container" ref={this.setSubmitMobileContainerRef}>
-						<button className="submit-mobile" data-action="submit-contact" ref={this.setMobileBtnRef} onClick={this.onMobileSubmit}>Submit</button>
+					<div className={this.submitMobileContainerClasses()}>
+						<button className={this.submitBtnClasses(true)} onClick={this.serialize}>{this.submitMobileContent()}</button>
 						<HorizSpinner />
 					</div>
 				</div>
