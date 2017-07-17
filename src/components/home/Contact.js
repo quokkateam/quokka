@@ -103,9 +103,9 @@ class Contact extends Component {
   }
   
   // get y-position of this section on the page for scroll-to purposes
-	getTopPosition() {
+  getTopPosition() {
     return $(this.section)[0].offsetTop;
-	}
+  }
   
   serialize() {
     this.setState({
