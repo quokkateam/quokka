@@ -4,6 +4,7 @@ import $ from 'jquery'
 import FormInput from '../shared/FormInput'
 import axios from 'axios';
 
+// status map for managing state
 const status = {
   STATIC: 0,
   SERIALIZING: 1,
@@ -18,6 +19,7 @@ class Contact extends Component {
   constructor(props) {
     super(props);
     
+    // Set our initial state
     this.state = {
       status: status.STATIC,
       school: null,
@@ -28,6 +30,7 @@ class Contact extends Component {
     this.setSectionRef = this.setSectionRef.bind(this);
     this.setSchoolFieldRef = this.setSchoolFieldRef.bind(this);
     this.setEmailFieldRef = this.setEmailFieldRef.bind(this);
+    this.formValid = this.formValid.bind(this);
     this.onSerializing = this.onSerializing.bind(this);
     this.onComplete = this.onComplete.bind(this);
     this.getTopPosition = this.getTopPosition.bind(this);
@@ -40,6 +43,7 @@ class Contact extends Component {
     this.listenForWindowResize();
   }
   
+  // Update the 'onMobile' state any time the window changes size
   listenForWindowResize() {
     $(window).resize(() => {
       this.setState({ onMobile: window.innerWidth < MOBILE_THRESH })
@@ -47,6 +51,7 @@ class Contact extends Component {
   }
   
   componentDidUpdate() {
+    // Set up handlers for when our component changes state
     switch (this.state.status) {
       case status.SERIALIZING:
         this.onSerializing();
@@ -71,16 +76,23 @@ class Contact extends Component {
     this.emailField = ref;
   }
   
+  formValid() {
+    return !!this.state.school && !!this.state.email;
+  }
+  
   onSerializing() {
-    if (this.state.school && this.state.email) {
+    if (this.formValid()) {
       this.sendContactInfo();
     }
   }
   
   onComplete() {
+    // Empty inputs
     this.schoolField.clearInput();
     this.emailField.clearInput();
 
+    // Reset component back to its default 'STATIC' state, but wait a second
+    // so the user can view the success message of the request.
     setTimeout(() => {
       this.setState({
         status: status.STATIC,
@@ -90,6 +102,7 @@ class Contact extends Component {
     }, 1000);
   }
   
+  // get y-position of this section on the page for scroll-to purposes
 	getTopPosition() {
     return $(this.section)[0].offsetTop;
 	}
@@ -102,6 +115,7 @@ class Contact extends Component {
     });
   }
   
+  // make POST request with school and email
   sendContactInfo() {
     this.setState({ status: status.SENDING });
     
