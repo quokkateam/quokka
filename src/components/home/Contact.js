@@ -158,28 +158,28 @@ class Contact extends Component {
     return this.state.status == status.COMPLETE ? 'Thanks!' : 'Submit';
   }
   
-	render() {
-		return (
-		  <section id="contact" ref={this.setSectionRef}>
-				<div className="container-fluid">
-					<div className="leading-contact-text">Want Quokka on your campus? Let us know!</div>
-					<div className="row">
-						<div className="col-md-6 col-sm-12 col-xs-12 contact-field-container" role="school">
+  render() {
+    return (
+      <section id="contact" ref={this.setSectionRef}>
+        <div className="container-fluid">
+          <div className="leading-contact-text">Want Quokka on your campus? Let us know!</div>
+          <div className="row">
+            <div className="col-md-6 col-sm-12 col-xs-12 contact-field-container" role="school">
               <FormInput required={true} classes={['contact-field']} name="school" placeholder="School" defaultValue={this.state.school} ref={this.setSchoolFieldRef} />
-						</div>
-						<div className="col-md-6 col-sm-12 col-xs-12 contact-field-container" role="email">
+            </div>
+            <div className="col-md-6 col-sm-12 col-xs-12 contact-field-container" role="email">
               <FormInput required={true} classes={['contact-field']} name="email" placeholder="Email" defaultValue={this.state.email} ref={this.setEmailFieldRef} />
-							<button className={this.submitBtnClasses(false)} onClick={this.serialize}></button>
-						</div>
-					</div>
-					<div className={this.submitMobileContainerClasses()}>
-						<button className={this.submitBtnClasses(true)} onClick={this.serialize}>{this.submitMobileContent()}</button>
-						<HorizSpinner />
-					</div>
-				</div>
+              <button className={this.submitBtnClasses(false)} onClick={this.serialize}></button>
+            </div>
+          </div>
+          <div className={this.submitMobileContainerClasses()}>
+            <button className={this.submitBtnClasses(true)} onClick={this.serialize}>{this.submitMobileContent()}</button>
+            <HorizSpinner />
+          </div>
+        </div>
       </section>
-		);
-	}
+    );
+  }
 }
 
 export default Contact;
