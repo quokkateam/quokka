@@ -96,8 +96,8 @@ class Contact extends Component {
     setTimeout(() => {
       this.setState({
         status: status.STATIC,
-        school: '',
-        email: ''
+        school: null,
+        email: null
       });
     }, 1000);
   }
