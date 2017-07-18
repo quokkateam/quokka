@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom'
 import Main from './Main'
 import LandingHeader from './components/shared/headers/LandingHeader'
 import AppHeader from './components/shared/headers/AppHeader'
-import Footer from './components/shared/Footer'
+import Footer from './components/shared/footers/Footer'
 import SideNav from './components/shared/SideNav'
 import $ from 'jquery'
 

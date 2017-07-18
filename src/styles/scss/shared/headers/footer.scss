@@ -1,13 +1,26 @@
 footer {
-  padding: 25px 0;
-  text-align: center;
-
-  .copyright {
-    margin: 0;
-  }
+  padding: 50px;
+  font-family: Lato-Regular;
 }
 
-footer * {
-  color: $secondary;
-  opacity: 0.6;
+.footer-section {
+  min-height: 145px;
+}
+
+.footer-link-title {
+  font-size: 17px;
+  color: $primary;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.footer-links {
+  font-size: 13px;
+
+  a {
+    color: $secondary;
+    opacity: 0.6;
+    display: inline-block;
+    padding: 4px 0;
+  }
 }
