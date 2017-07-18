@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class LandingHeader extends Component {
   render() {
     return (
-      <header>
+      <header id="landingHeader">
         <nav className="header-nav">
           <div className="header-left">
             <a href="/">

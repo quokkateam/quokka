@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { Switch, Route } from 'react-router-dom'
 import Main from './Main'
 import LandingHeader from './components/shared/headers/LandingHeader'
+import AppHeader from './components/shared/headers/AppHeader'
 import Footer from './components/shared/Footer'
 import SideNav from './components/shared/SideNav'
 import $ from 'jquery'
@@ -11,6 +13,32 @@ class App extends Component {
     super(props);
     this.setAppContainerRef = this.setAppContainerRef.bind(this);
     this.onMenuClick = this.onMenuClick.bind(this);
+    
+    // Set up wrapped instances of our route-dependent components so
+    // that their props can also get passed down.
+    this.LandingHeaderWProps = (props) => {
+      return (
+        <LandingHeader onMenuClick={this.onMenuClick} {...props}/>
+      );
+    };
+    
+    this.AppHeaderWProps = (props) => {
+      return (
+        <AppHeader onMenuClick={this.onMenuClick} {...props}/>
+      );
+    };
+    
+    this.LandingSideNav = (props) => {
+      return (
+        <SideNav role="landing" {...props}/>
+      );
+    };
+    
+    this.InAppSideNav = (props) => {
+      return (
+        <SideNav role="in-app" {...props}/>
+      );
+    };
   }
   
   onMenuClick() {
@@ -36,11 +64,17 @@ class App extends Component {
     return (
       <div>
         <div id="appContainer" ref={this.setAppContainerRef}>
-          <LandingHeader onMenuClick={this.onMenuClick} />
+          <Switch>
+            <Route exact path='/' component={this.LandingHeaderWProps}/>
+            <Route path='/check-in' component={this.AppHeaderWProps}/>
+          </Switch>
           <Main />
           <Footer />
         </div>
-        <SideNav />
+        <Switch>
+          <Route exact path='/' component={this.LandingSideNav}/>
+          <Route path='/check-in' component={this.InAppSideNav}/>
+        </Switch>
       </div>
     );
   }
