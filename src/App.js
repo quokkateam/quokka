@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Main from './Main'
-import Header from './components/shared/Header'
+import LandingHeader from './components/shared/headers/LandingHeader'
 import Footer from './components/shared/Footer'
 import SideNav from './components/shared/SideNav'
 import $ from 'jquery'
@@ -36,7 +36,7 @@ class App extends Component {
     return (
       <div>
         <div id="appContainer" ref={this.setAppContainerRef}>
-          <Header onMenuClick={this.onMenuClick} />
+          <LandingHeader onMenuClick={this.onMenuClick} />
           <Main />
           <Footer />
         </div>

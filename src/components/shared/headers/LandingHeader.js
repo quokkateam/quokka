@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
-class Header extends Component {
+class LandingHeader extends Component {
   render() {
     return (
       <header>
@@ -25,4 +25,4 @@ class Header extends Component {
   }
 }
   
-export default Header;
+export default LandingHeader;
