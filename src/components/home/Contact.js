@@ -14,6 +14,8 @@ const status = {
 
 const MOBILE_THRESH = 991;
 
+const SUCCESS_MESSAGE_DURATION = 3000;
+
 class Contact extends Component {
 	
   constructor(props) {
@@ -99,7 +101,7 @@ class Contact extends Component {
         school: null,
         email: null
       });
-    }, 1000);
+    }, SUCCESS_MESSAGE_DURATION);
   }
   
   // get y-position of this section on the page for scroll-to purposes
