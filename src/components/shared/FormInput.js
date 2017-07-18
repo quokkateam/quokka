@@ -1,11 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
+import QComponent from '../abstract/QComponent'
 import $ from 'jquery';
 
-// We should define this somewhere globally, maybe as a property of
-// our own QuokkaComponent Class
-const MOBILE_THRESH = 991;
-
-class FormInput extends Component {
+class FormInput extends QComponent {
   
   constructor(props) {
     super(props);
@@ -36,7 +33,7 @@ class FormInput extends Component {
   }
   
   onMobile() {
-    return window.innerWidth < MOBILE_THRESH;
+    return window.innerWidth < this.MOBILE_THRESH;
   }
 
   // display the input as invalid, usually with a red-border around it.
