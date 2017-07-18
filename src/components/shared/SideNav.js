@@ -5,6 +5,7 @@ class SideNav extends Component {
   constructor(props) {
     super(props);
     
+    // keeping as a "var" for now, as I can see the '/admin' link needing to be dynamically added
     var linksMap = {
       'landing': [
         ['/blog', 'Blog'],
