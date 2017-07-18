@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class FooterLinkSection extends Component {
   
   constructor(props) {
-   super(props);
+    super(props);
     this.createFooterLinks = this.createFooterLinks.bind(this);
     this.getContainerClasses = this.getContainerClasses.bind(this);
   }
