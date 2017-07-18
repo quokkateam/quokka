@@ -13,8 +13,10 @@ const status = {
   COMPLETE: 3
 };
 
+const SUCCESS_MESSAGE_DURATION = 3000;
+
 class Contact extends QComponent {
-	
+
   constructor(props) {
     super(props);
     
@@ -98,7 +100,7 @@ class Contact extends QComponent {
         school: null,
         email: null
       });
-    }, 1000);
+    }, SUCCESS_MESSAGE_DURATION);
   }
   
   // get y-position of this section on the page for scroll-to purposes
