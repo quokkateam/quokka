@@ -13,6 +13,7 @@ class FormInput extends QComponent {
     this.onKeyUp = this.onKeyUp.bind(this);
     this.getClassNames = this.getClassNames.bind(this);
     this.clearInput = this.clearInput.bind(this);
+    this.getInputEl = this.getInputEl.bind(this);
   }
 
   setInputRef(ref) {
@@ -63,10 +64,19 @@ class FormInput extends QComponent {
     $(this.input).val('');
   }
   
+  getInputEl() {
+    var name = this.props.name || '';
+    var placeholder = this.props.placeholder || '';
+    var defaultValue = this.props.defaultValue || '';
+    var classes = this.getClassNames();
+    
+    return !!this.props.useTextarea ?
+      <textarea className={classes} name={name} placeholder={placeholder} onKeyUp={this.onKeyUp} ref={this.setInputRef}>{defaultValue}</textarea> :
+      <input type="text" className={classes} name={name} placeholder={placeholder} defaultValue={defaultValue} onKeyUp={this.onKeyUp} ref={this.setInputRef}/>;
+  }
+  
   render() {
-    return (
-      <input type="text" className={this.getClassNames()} name={this.props.name || ''} placeholder={this.props.placeholder || ''} defaultValue={this.props.defaultValue || ''} onKeyUp={this.onKeyUp} ref={this.setInputRef}/>
-    );
+    return (this.getInputEl());
   }
   
 }
