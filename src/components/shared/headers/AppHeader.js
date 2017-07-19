@@ -10,7 +10,7 @@ class AppHeader extends Component {
   headerLinkClasses(route) {
     var classes = ['header-nav-link'];
     
-    if (this.props.location.pathname == route) {
+    if (this.props.location.pathname === route) {
       classes.push('featured');
     }
     
