@@ -2,9 +2,13 @@
 @import 'colors';
 @import 'fonts';
 @import 'globals';
-@import 'header';
-@import 'footer';
-@import 'side-nav';
+
+// Shared
+@import 'shared/headers/header';
+@import 'shared/headers/landing-header';
+@import 'shared/headers/app-header';
+@import 'shared/footers/footer';
+@import 'shared/side-nav';
 
 // Home
 @import 'home/home';

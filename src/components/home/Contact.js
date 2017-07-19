@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
+import QComponent from '../abstract/QComponent'
 import HorizSpinner from '../widgets/spinners/HorizSpinner'
 import $ from 'jquery'
 import FormInput from '../shared/FormInput'
@@ -12,12 +13,10 @@ const status = {
   COMPLETE: 3
 };
 
-const MOBILE_THRESH = 991;
-
 const SUCCESS_MESSAGE_DURATION = 3000;
 
-class Contact extends Component {
-	
+class Contact extends QComponent {
+
   constructor(props) {
     super(props);
     
@@ -26,7 +25,7 @@ class Contact extends Component {
       status: status.STATIC,
       school: null,
       email: null,
-      onMobile: window.innerWidth < MOBILE_THRESH
+      onMobile: window.innerWidth < this.MOBILE_THRESH
     };
     
     this.setSectionRef = this.setSectionRef.bind(this);
@@ -48,7 +47,7 @@ class Contact extends Component {
   // Update the 'onMobile' state any time the window changes size
   listenForWindowResize() {
     $(window).resize(() => {
-      this.setState({ onMobile: window.innerWidth < MOBILE_THRESH })
+      this.setState({ onMobile: window.innerWidth < this.MOBILE_THRESH })
     });
   }
   

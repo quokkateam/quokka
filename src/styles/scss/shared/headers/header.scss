@@ -39,15 +39,22 @@ header {
 
   .header-nav-link {
     font-family: Avenir-Next-Medium;
-    width: 88px;
-    padding-top: 18px;
+    padding: 18px 20px;
     color: #fff;
     font-size: 14px;
     text-transform: uppercase;
     text-align: center;
 
     &.featured {
-      color: $primary;
+      color: $primary !important;
+    }
+
+    &:hover {
+      opacity: 0.95;
+    }
+
+    &:active {
+      opacity: 1;
     }
   }
 
