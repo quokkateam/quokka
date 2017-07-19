@@ -175,10 +175,10 @@ class Contact extends QComponent {
         <div className="container-fluid">
           <div className="leading-contact-text">Want Quokka on your campus? Let us know!</div>
           <div className="row">
-            <div className="col-md-6 col-sm-12 col-xs-12 contact-field-container-school">
+            <div className="col-md-6 col-sm-12 col-xs-12 contact-field-container">
               <FormInput required={true} classes={['contact-field']} name="school" placeholder="School" defaultValue={this.state.school} ref={this.setSchoolFieldRef} />
             </div>
-            <div className="col-md-6 col-sm-12 col-xs-12 contact-field-container-email">
+            <div className="col-md-6 col-sm-12 col-xs-12 contact-field-container">
               <FormInput required={true} classes={['contact-field']} name="email" placeholder="Email" defaultValue={this.state.email} ref={this.setEmailFieldRef} />
               <button className={this.submitBtnClasses(false)} onClick={this.serialize}></button>
             </div>
