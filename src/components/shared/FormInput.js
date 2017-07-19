@@ -76,7 +76,7 @@ class FormInput extends QComponent {
   }
   
   render() {
-    return (this.getInputEl());
+    return this.getInputEl();
   }
   
 }
