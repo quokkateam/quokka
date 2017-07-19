@@ -30,13 +30,13 @@ class App extends Component {
     
     this.LandingSideNav = (props) => {
       return (
-        <SideNav role="landing" {...props}/>
+        <SideNav appRole="landing" {...props}/>
       );
     };
     
     this.InAppSideNav = (props) => {
       return (
-        <SideNav role="in-app" {...props}/>
+        <SideNav appRole="in-app" {...props}/>
       );
     };
   }
