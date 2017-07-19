@@ -9,8 +9,8 @@ class FooterLinkSection extends Component {
   }
   
   createFooterLinks() {
-    return this.props.links.map((linkInfo) => {
-      return <li key={Math.random()}><a href={linkInfo[0]}>{linkInfo[1]}</a></li>;
+    return this.props.links.map((linkInfo, i) => {
+      return <li key={i}><a href={linkInfo[0]}>{linkInfo[1]}</a></li>;
     });
   }
   
