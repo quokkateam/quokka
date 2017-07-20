@@ -20,17 +20,19 @@ class FormInput extends QComponent {
     this.input = ref;
   }
 
-  // return the input field's value
-  serialize() {
-    var value = $(this.input).val().trim();
+  isValid() {
+    var isValid = true;
 
-    // If this input field is "required" and the value is empty,
-    // display the input as invalid to the user.
-    if (this.props.required && !value) {
+    if (this.props.required && !this.serialize()) {
+      isValid = false;
       this.showInvalid();
     }
 
-    return value;
+    return isValid;
+  }
+  
+  serialize() {
+    return $(this.input).val().trim();
   }
   
   onMobile() {

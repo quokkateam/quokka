@@ -16,13 +16,13 @@ class FormQA extends Component {
   }
   
   getFormAnswerComp() {
-    var freeRespLong = <FormInput useTextarea={true} classes={this.props.answerClasses} placeholder={this.props.placeholder} defaultValue={this.props.answer || {}.text} name={this.props.name} ref={this.setAnswerRef}/>;
+    var freeRespLong = <FormInput required={true} useTextarea={true} classes={this.props.answerClasses} placeholder={this.props.placeholder} defaultValue={this.props.answer || {}.text} name={this.props.name} ref={this.setAnswerRef}/>;
     
     switch (this.props.type) {
       case 'fr-long':
         return freeRespLong;
       case 'fr-short':
-        return <FormInput classes={this.props.answerClasses} placeholder={this.props.placeholder} defaultValue={this.props.answer || {}.text} name={this.props.name} ref={this.setAnswerRef}/>;
+        return <FormInput required={true} classes={this.props.answerClasses} placeholder={this.props.placeholder} defaultValue={this.props.answer || {}.text} name={this.props.name} ref={this.setAnswerRef}/>;
       case 'multi-choice':
         // TODO: add multiple choice answer component
         break;
@@ -37,11 +37,15 @@ class FormQA extends Component {
     return classes.join(' ');
   }
   
+  isValid() {
+    return this.answer.isValid();
+  }
+  
   serialize() {
     return {
       question: this.props.question,
       answer: {
-        id: this.props.answer.id,
+        id: (this.props.answer || {}).id,
         text: this.answer.serialize()
       }
     }

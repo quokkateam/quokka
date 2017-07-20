@@ -38,32 +38,22 @@
   }
 }
 
-.contact-field-container[role=school] {
-  padding-right: 9px;
+.contact-field-container {
 
-  * {
-    float: right;
-  }
-}
+  &:first-child {
+    padding-right: 9px;
 
-.contact-field-container[role=email] {
-  padding-left: 9px;
-
-  * {
-    float: left;
-  }
-}
-
-.submit-desktop,
-.submit-mobile {
-  background-color: $primary;
-
-  &:hover {
-    background-color: $primary-hover;
+    * {
+      float: right;
+    }
   }
 
-  &:active {
-    background-color: $primary;
+  &:last-child {
+    padding-left: 9px;
+
+    * {
+      float: left;
+    }
   }
 }
 
@@ -76,6 +66,7 @@
   border: none;
   margin-left: 18px;
   margin-top: 2px;
+  background-color: $primary;
   background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/marketing/images/arrow-right.png');
   background-repeat: no-repeat;
   background-position: center center;
@@ -89,42 +80,18 @@
     background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/marketing/images/check.png');
     background-color: $tertiary;
   }
+
+  &:hover {
+    background-color: $primary-hover;
+  }
+
+  &:active {
+    background-color: $primary;
+  }
 }
 
 .submit-mobile {
   display: none;
-  width: 100%;
-  background-color: $primary;
-  border-radius: 3px;
-  height: 44px;
-  text-align: center;
-  font-family: Avenir-Next-Medium;
-  outline: none;
-  border: none;
-
-  &.completed {
-    background-color: $tertiary;
-  }
-}
-
-.submit-mobile-container {
-  position: relative;
-
-  .horiz-spinner {
-    display: none;
-    top: 13px;
-    left: calc((100% - 70px)/2);
-  }
-
-  &.loading {
-    .submit-mobile {
-      color: transparent;
-    }
-
-    .horiz-spinner {
-      display: block;
-    }
-  }
 }
 
 @media (max-width: 991px) {
@@ -132,9 +99,9 @@
     padding: 0 4%;
   }
 
-  .contact-field-container[role] {
-    padding-left: 0;
-    padding-right: 0;
+  .contact-field-container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
     margin-bottom: 10px;
   }
 

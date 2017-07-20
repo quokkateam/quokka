@@ -1,6 +1,6 @@
 import React from 'react';
 import QComponent from '../abstract/QComponent'
-import HorizSpinner from '../widgets/spinners/HorizSpinner'
+import LgSpinnerBtn from '../widgets/LgSpinnerBtn'
 import $ from 'jquery'
 import FormInput from '../shared/form/FormInput'
 
@@ -36,7 +36,6 @@ class Contact extends QComponent {
     this.getTopPosition = this.getTopPosition.bind(this);
     this.serialize = this.serialize.bind(this);
     this.sendContactInfo = this.sendContactInfo.bind(this);
-    this.submitMobileContainerClasses = this.submitMobileContainerClasses.bind(this);
     this.submitBtnClasses = this.submitBtnClasses.bind(this);
     this.submitMobileContent = this.submitMobileContent.bind(this);
     
@@ -66,7 +65,7 @@ class Contact extends QComponent {
         // Do nothing.
         break;
       default:
-        console.warn("Unexpected status case");
+        console.warn('Unexpected status case');
         break;
     }
     
@@ -145,24 +144,16 @@ class Contact extends QComponent {
     // });
   }
   
-  submitMobileContainerClasses() {
-    var classes = ['submit-mobile-container'];
-    
-    if (this.state.status === status.SENDING && this.state.onMobile) {
-      classes.push('loading');
-    }
-    
-    return classes.join(' ');
-  }
-  
   submitBtnClasses(mobile) {
     var classes = [mobile ? 'submit-mobile' : 'submit-desktop'];
     
     if (this.state.status === status.COMPLETE) {
-      classes.push('completed');
+      classes.push('complete');
+    } else if (this.state.status == status.SENDING && mobile) {
+      classes.push('loading');
     }
     
-    return classes.join(' ');
+    return mobile ? classes : classes.join(' ');
   }
   
   submitMobileContent() {
@@ -183,9 +174,8 @@ class Contact extends QComponent {
               <button className={this.submitBtnClasses(false)} onClick={this.serialize}></button>
             </div>
           </div>
-          <div className={this.submitMobileContainerClasses()}>
-            <button className={this.submitBtnClasses(true)} onClick={this.serialize}>{this.submitMobileContent()}</button>
-            <HorizSpinner />
+          <div className="submit-mobile-container">
+            <LgSpinnerBtn classes={this.submitBtnClasses(true)} btnText={this.submitMobileContent()} onClick={this.serialize}/>
           </div>
         </div>
       </section>

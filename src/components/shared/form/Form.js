@@ -1,20 +1,51 @@
 import { Component } from 'react';
 
 class Form extends Component {
+  
   constructor(props) {
     super(props);
-    this.formComps = [];
+    
+    this.status = {
+      STATIC: 0,
+      SERIALIZING: 1,
+      SENDING: 2,
+      COMPLETE: 3
+    };
+    
+    this.state = {
+      status: this.status.STATIC,
+      formComps: this.props.formComps
+    };
+    
+    this.formCompRefs = [];
     this.pushFormCompRef = this.pushFormCompRef.bind(this);
     this.serialize = this.serialize.bind(this);
   }
   
   pushFormCompRef(ref) {
-    this.formComps.push(ref);
+    this.formCompRefs.push(ref);
+  }
+  
+  formValid() {
+    var isValid = true;
+    
+    this.formCompRefs.forEach((formComp) => {
+      if (!formComp.isValid()) {
+        isValid = false;
+      }
+    });
+  
+    return isValid;
   }
   
   serialize() {
-    return this.formComps.map((ref) => {
+    var formComps = this.formCompRefs.map((ref) => {
       return ref.serialize();
+    });
+    
+    this.setState({
+      status: this.status.SERIALIZING,
+      formComps: formComps
     });
   }
 }
