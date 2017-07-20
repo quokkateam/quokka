@@ -38,22 +38,11 @@
   }
 }
 
-.contact-field-container {
+.contact-field-container[role=school] {
+  padding-right: 9px;
 
-  &:first-child {
-    padding-right: 9px;
-
-    * {
-      float: right;
-    }
-  }
-
-  &:last-child {
-    padding-left: 9px;
-
-    * {
-      float: left;
-    }
+  * {
+    float: right;
   }
 }
 

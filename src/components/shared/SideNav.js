@@ -19,9 +19,9 @@ class SideNav extends Component {
       ]
     };
     
-    var role = this.props.role || '';
+    var appRole = this.props.appRole || '';
     
-    this.state = { links: linksMap[role || 'landing'] };
+    this.state = { links: linksMap[appRole || 'landing'] };
     
     this.createLinks = this.createLinks.bind(this);
   }
@@ -32,13 +32,13 @@ class SideNav extends Component {
     });
   }
   
-	render() {
-		return (
-			<nav id="sideNav">
+  render() {
+    return (
+      <nav id="sideNav">
         <ul className="side-nav-list">{this.createLinks()}</ul>
       </nav>
-		);
-	}
+    );
+  }
 }
 
 export default SideNav;

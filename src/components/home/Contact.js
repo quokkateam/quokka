@@ -3,7 +3,6 @@ import QComponent from '../abstract/QComponent'
 import HorizSpinner from '../widgets/spinners/HorizSpinner'
 import $ from 'jquery'
 import FormInput from '../shared/form/FormInput'
-import axios from 'axios';
 
 // status map for managing state
 const status = {
@@ -59,6 +58,15 @@ class Contact extends QComponent {
         break;
       case status.COMPLETE:
         this.onComplete();
+        break;
+      case status.SENDING:
+        // Do nothing.
+        break;
+      case status.STATIC:
+        // Do nothing.
+        break;
+      default:
+        console.warn("Unexpected status case");
         break;
     }
     
@@ -120,25 +128,27 @@ class Contact extends QComponent {
   sendContactInfo() {
     this.setState({ status: status.SENDING });
     
-    var payload = {
-      school: this.state.school,
-      email: this.state.email
-    };
+    // TODO uncomment this code when we're actually talking to an API.
+    // var payload = {
+    //   school: this.state.school,
+    //   email: this.state.email
+    // };
     
     // using setTimeout to simulate network request duration
     setTimeout(() => {
       this.setState({ status: status.COMPLETE });
     }, 300);
     
+    // TODO uncomment this code when we're actually talking to an API.
     // axios.post('/api/contact', payload).then(() => {
     //  this.setState({ status: status.COMPLETE });
     // });
   }
-	
+  
   submitMobileContainerClasses() {
     var classes = ['submit-mobile-container'];
     
-    if (this.state.status == status.SENDING && this.state.onMobile) {
+    if (this.state.status === status.SENDING && this.state.onMobile) {
       classes.push('loading');
     }
     
@@ -148,7 +158,7 @@ class Contact extends QComponent {
   submitBtnClasses(mobile) {
     var classes = [mobile ? 'submit-mobile' : 'submit-desktop'];
     
-    if (this.state.status == status.COMPLETE) {
+    if (this.state.status === status.COMPLETE) {
       classes.push('completed');
     }
     
@@ -156,7 +166,7 @@ class Contact extends QComponent {
   }
   
   submitMobileContent() {
-    return this.state.status == status.COMPLETE ? 'Thanks!' : 'Submit';
+    return this.state.status === status.COMPLETE ? 'Thanks!' : 'Submit';
   }
   
   render() {
@@ -165,10 +175,10 @@ class Contact extends QComponent {
         <div className="container-fluid">
           <div className="leading-contact-text">Want Quokka on your campus? Let us know!</div>
           <div className="row">
-            <div className="col-md-6 col-sm-12 col-xs-12 contact-field-container" role="school">
+            <div className="col-md-6 col-sm-12 col-xs-12 contact-field-container">
               <FormInput required={true} classes={['contact-field']} name="school" placeholder="School" defaultValue={this.state.school} ref={this.setSchoolFieldRef} />
             </div>
-            <div className="col-md-6 col-sm-12 col-xs-12 contact-field-container" role="email">
+            <div className="col-md-6 col-sm-12 col-xs-12 contact-field-container">
               <FormInput required={true} classes={['contact-field']} name="email" placeholder="Email" defaultValue={this.state.email} ref={this.setEmailFieldRef} />
               <button className={this.submitBtnClasses(false)} onClick={this.serialize}></button>
             </div>
