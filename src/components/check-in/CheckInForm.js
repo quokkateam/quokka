@@ -11,7 +11,7 @@ class CheckInForm extends Form {
   
   formatQAs() {
     return this.props.formData.map((data) => {
-      return <FormQA key={data.id} type={data.type} question={data.question} defaultValue={data.answer}/>;
+      return <FormQA key={data.id} type={data.type} question={data.question} answer={data.answer} ref={this.pushFormCompRef}/>;
     });
   }
   

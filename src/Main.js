@@ -15,23 +15,32 @@ class Main extends Component {
   }
   
   CheckIn(props) {
-    var formData = [
+    var formData = [  // will most likely be an array of CheckInQuestions with their respectjve CheckInAnswers
       {
         id: 1,
         type: 'fr-long',
-        question: 'How did you feel about this week\'s challenge?',
+        question: {
+          id: 1,
+          text: 'How did you feel about this week\'s challenge?'
+        },
         answer: null
       },
       {
         id: 2,
         type: 'fr-long',
-        question: 'Did you notice anything new about yourself?',
+        question: {
+          id: 2,
+          text: 'Did you notice anything new about yourself?'
+        },
         answer: null
       },
       {
         id: 3,
         type: 'fr-long',
-        question: 'Any other thoughts or feedback on this week or the program?',
+        question: {
+          id: 2,
+          text: 'Any other thoughts or feedback on this week or the program?'
+        },
         answer: null
       }
     ];

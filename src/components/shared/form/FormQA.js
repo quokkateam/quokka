@@ -5,18 +5,24 @@ class FormQA extends Component {
   
   constructor(props) {
     super(props);
+    this.setAnswerRef = this.setAnswerRef.bind(this);
     this.getFormAnswerComp = this.getFormAnswerComp.bind(this);
     this.formQuestionClasses = this.formQuestionClasses.bind(this);
+    this.serialize = this.serialize.bind(this);
+  }
+  
+  setAnswerRef(ref) {
+    this.answer = ref;
   }
   
   getFormAnswerComp() {
-    var freeRespLong = <FormInput useTextarea={true} classes={this.props.answerClasses} placeholder={this.props.placeholder} defaultValue={this.props.defaultValue} name={this.props.name}/>;
+    var freeRespLong = <FormInput useTextarea={true} classes={this.props.answerClasses} placeholder={this.props.placeholder} defaultValue={this.props.answer || {}.text} name={this.props.name} ref={this.setAnswerRef}/>;
     
     switch (this.props.type) {
       case 'fr-long':
         return freeRespLong;
       case 'fr-short':
-        return <FormInput classes={this.props.answerClasses} placeholder={this.props.placeholder} defaultValue={this.props.defaultValue} name={this.props.name}/>;
+        return <FormInput classes={this.props.answerClasses} placeholder={this.props.placeholder} defaultValue={this.props.answer || {}.text} name={this.props.name} ref={this.setAnswerRef}/>;
       case 'multi-choice':
         // TODO: add multiple choice answer component
         break;
@@ -31,10 +37,20 @@ class FormQA extends Component {
     return classes.join(' ');
   }
   
+  serialize() {
+    return {
+      question: this.props.question,
+      answer: {
+        id: this.props.answer.id,
+        text: this.answer.serialize()
+      }
+    }
+  }
+  
 	render() {
 		return (
 			<div className="form-qa">
-        <div className={this.formQuestionClasses()}>{this.props.question}</div>
+        <div className={this.formQuestionClasses()}>{this.props.question.text}</div>
         <div className="form-answer">{this.getFormAnswerComp()}</div>
       </div>
 		);
