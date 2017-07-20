@@ -53,8 +53,6 @@ class CheckInForm extends Form {
       this.setState({ status: this.status.COMPLETE });
     }, 300);
     
-    console.log(this.state.formComps);
-  
     // TODO uncomment this code when we're actually talking to an API.
     // POST or PUT depending on check-in status
     // axios.post('/check-in', this.state.formComps).then(() => {
