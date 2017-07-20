@@ -2,7 +2,7 @@ import React from 'react';
 import QComponent from '../abstract/QComponent'
 import HorizSpinner from '../widgets/spinners/HorizSpinner'
 import $ from 'jquery'
-import FormInput from '../shared/FormInput'
+import FormInput from '../shared/form/FormInput'
 import axios from 'axios';
 
 // status map for managing state
