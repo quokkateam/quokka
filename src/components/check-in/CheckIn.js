@@ -9,17 +9,17 @@ class CheckIn extends Component {
   }
   
   habitLink() {
-    return '/week' + this.props.week.num + '/habit';
+    return '/habit/week' + this.props.week.num;
   }
   
   render() {
     return (
       <div id="checkIn">
         <div className="check-in-week-info">
-          <div className="week-info">Week {this.props.week.num} Check-In: {this.props.week.habit}</div>
+          <div className="week-info">Week {this.props.week.num} Check-In: {this.props.week.habitName}</div>
           <div className="check-in-instruc">
-            Let us know how Week {this.props.week.num} went and answer some quick questions to make yourself eligible for
-            <a href={this.habitLink()}>this week’s prizes!</a>
+            Let us know how this week went and answer some quick questions to make yourself eligible to win
+            <a href={this.habitLink()}> this week’s prizes!</a>
           </div>
         </div>
         <CheckInForm formData={this.props.formData} />

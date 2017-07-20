@@ -21,16 +21,3 @@ ul {
 a, a:hover {
   text-decoration: none;
 }
-
-#appContainer {
-  z-index: 0;
-  transform: translateX(0);
-  -webkit-transition: all 0.3s;
-  -moz-transition: all 0.3s;
-  -o-transition: all 0.3s;
-  transition: all 0.3s;
-
-  &.show-menu {
-    transform: translateX(-60%);
-  }
-}

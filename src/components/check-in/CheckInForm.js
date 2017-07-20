@@ -17,7 +17,7 @@ class CheckInForm extends Form {
   
 	render() {
 		return (
-		  <div>{this.formatQAs()}</div>
+		  <div className="check-in-form">{this.formatQAs()}</div>
     );
 	}
 }

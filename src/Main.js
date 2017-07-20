@@ -11,7 +11,7 @@ class Main extends Component {
   
   constructor(props) {
     super(props);
-    this.CheckIn = this.CheckIn.bind(this)
+    this.CheckIn = this.CheckIn.bind(this);
   }
   
   CheckIn(props) {
@@ -19,32 +19,27 @@ class Main extends Component {
       {
         id: 1,
         type: 'fr-long',
-        question: 'How did this week go?',
-        answer: 'Answer 1'
+        question: 'How did you feel about this week\'s challenge?',
+        answer: null
       },
       {
         id: 2,
         type: 'fr-long',
-        question: 'How did this week go?',
+        question: 'Did you notice anything new about yourself?',
         answer: null
       },
       {
         id: 3,
         type: 'fr-long',
-        question: 'How did this week go?',
-        answer: ''
-      },
-      {
-        id: 4,
-        type: 'fr-long',
-        question: 'How did this week go?',
+        question: 'Any other thoughts or feedback on this week or the program?',
         answer: null
       }
     ];
     
     var week = {
       num: 4,
-      habit: 'exercise'
+      habitName: 'Exercise',
+      habitSlug: 'exercise'
     };
         
     return (

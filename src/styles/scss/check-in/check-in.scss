@@ -1,0 +1,29 @@
+#checkIn {
+  background-color: #fff;
+  padding-top: 84px;
+}
+
+.check-in-week-info {
+  padding: 57px;
+  text-align: center;
+
+  .week-info {
+    font-family: Lato-Thin;
+    font-size: 39px;
+    color: $primary;
+    margin-bottom: 20px;
+  }
+}
+
+.check-in-instruc {
+  font-size: 15px;
+  color: $secondary;
+
+  a {
+    color: $tertiary;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

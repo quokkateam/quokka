@@ -2,13 +2,16 @@
 @import 'colors';
 @import 'fonts';
 @import 'globals';
+@import 'app-container';
 
 // Shared
+@import 'shared/side-nav';
 @import 'shared/headers/header';
 @import 'shared/headers/landing-header';
 @import 'shared/headers/app-header';
 @import 'shared/footers/footer';
-@import 'shared/side-nav';
+@import 'shared/form/form-input';
+@import 'shared/form/form-qa';
 
 // Home
 @import 'home/home';
@@ -16,6 +19,10 @@
 @import 'home/mission';
 @import 'home/about';
 @import 'home/contact';
+
+// Check-In
+@import 'check-in/check-in';
+@import 'check-in/check-in-form';
 
 // Widgets
 @import 'widgets/spinners/horiz-spinner';

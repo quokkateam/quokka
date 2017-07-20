@@ -63,7 +63,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <div id="appContainer" ref={this.setAppContainerRef}>
+        <div id="appContainer" className={document.location.pathname.split('/')[1]} ref={this.setAppContainerRef}>
           <Switch>
             <Route exact path='/' component={this.LandingHeaderWProps}/>
             <Route path='/check-in' component={this.AppHeaderWProps}/>
