@@ -6,7 +6,7 @@ const SuggestionsSection = () => {
       <div className="row">
         <h2 className="challenge-section-title">Suggestions</h2>
         <p className="challenge-section-desc">
-          <b>Need a few ideas or suggestions to help get you started?</b>
+          <div className="challenge-suggestions-getting-started">Need a few ideas or suggestions to help get you started?</div>
           <ul>
             <li>
               Consider eating bigger breakfasts, more protein, greater

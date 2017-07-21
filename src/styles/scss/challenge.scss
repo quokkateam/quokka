@@ -13,10 +13,15 @@
     color: $secondary;
     font-size: 18px;
   }
+
+  .challenge-suggestions-getting-started {
+    font-weight: bold;
+  }
   
   ul {
     list-style-type: circle;
     padding-left: 2em;
+
     li {
       margin-top: 1em;
     }
