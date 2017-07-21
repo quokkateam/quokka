@@ -30,7 +30,6 @@ class Contact extends QComponent {
     this.setSectionRef = this.setSectionRef.bind(this);
     this.setSchoolFieldRef = this.setSchoolFieldRef.bind(this);
     this.setEmailFieldRef = this.setEmailFieldRef.bind(this);
-    this.formValid = this.formValid.bind(this);
     this.onSerializing = this.onSerializing.bind(this);
     this.onComplete = this.onComplete.bind(this);
     this.getTopPosition = this.getTopPosition.bind(this);
@@ -84,12 +83,11 @@ class Contact extends QComponent {
     this.emailField = ref;
   }
   
-  formValid() {
-    return !!this.state.school && !!this.state.email;
-  }
-  
   onSerializing() {
-    if (this.formValid()) {
+    var schoolValid = this.schoolField.isValid();
+    var emailValid = this.emailField.isValid();
+    
+    if (schoolValid && emailValid) {
       this.sendContactInfo();
     }
   }
