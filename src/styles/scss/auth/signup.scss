@@ -1,23 +1,23 @@
 @import '../colors.scss';
 
-#contact {
+#signup {
   background-color: $secondary;
   color: #fff;
-  padding: 70px 0 80px;
+  padding: 60px 0 65px;
 }
 
-#contact > .container-fluid {
+#signup > .container-fluid {
   padding: 0;
 }
 
-.leading-contact-text {
+.leading-signup-text {
   font-size: 20px;
   text-align: center;
   margin-bottom: 42px;
   font-family: Avenir-Next-Thin;
 }
 
-.contact-field {
+.signup-field {
   background-color: #fff;
   border: none;
   outline: none;
@@ -40,29 +40,25 @@
   }
 }
 
-.contact-field-container {
-  
-  &:first-child {
-    padding-right: 9px;
+.signup-field-container[role=email] {
+  padding-right: 9px;
 
-    * {
-      float: right;
-    }
+  * {
+    float: right;
   }
-  
-  &:last-child {
-    padding-left: 9px;
-  
-    * {
-      float: left;
-    }
+}
+
+.signup-field-container[role=password] {
+  padding-left: 9px;
+
+  * {
+    float: left;
   }
 }
 
 .submit-desktop,
 .submit-mobile {
   background-color: $primary;
-
   &:hover {
     background-color: $primary-hover;
   }
@@ -133,17 +129,17 @@
 }
 
 @media (max-width: 991px) {
-  #contact > .container-fluid {
+  #signup > .container-fluid {
     padding: 0 4%;
   }
 
-  .contact-field-container[role] {
+  .signup-field-container[role] {
     padding-left: 0;
     padding-right: 0;
     margin-bottom: 10px;
   }
 
-  .contact-field {
+  .signup-field {
     width: 100%;
   }
 
