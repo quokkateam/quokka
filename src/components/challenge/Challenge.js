@@ -10,6 +10,7 @@ const Banner = () => {
     <section id="banner">
       <div className="dimmer"></div>
       <div className="banner-content">
+        <img className="icon center-block chef-hat" src="https://s3-us-west-1.amazonaws.com/quokkadev/images/healthy_eating_green.png" alt="" />
         <h1 className="banner-main-text">Healthy Eating</h1>
         <p className="banner-sub-text">Week 4 &#x2022; Sept 11 - Sept 17</p>
       </div>
