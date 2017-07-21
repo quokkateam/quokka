@@ -5,7 +5,7 @@ const SuggestionsSection = () => {
     <div className="container-fluid">
       <div className="row">
         <h2 className="challenge-section-title">Suggestions</h2>
-        <p className="challenge-section-desc">
+        <div className="challenge-section-desc">
           <div className="challenge-suggestions-getting-started">Need a few ideas or suggestions to help get you started?</div>
           <ul>
             <li>
@@ -27,7 +27,7 @@ const SuggestionsSection = () => {
                 you're eating.
               </li>
           </ul>
-        </p>
+        </div>
       </div>
     </div>
   )

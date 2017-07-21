@@ -5,15 +5,29 @@ import PrizesSection from './PrizesSection';
 import ChallengeSection  from './ChallengeSection';
 import OverviewSection from './OverviewSection';
 
+const Banner = () => {
+  return (
+    <section id="banner">
+      <div className="dimmer"></div>
+      <div className="banner-content">
+        <h1 className="banner-main-text">Healthy Eating</h1>
+        <p className="banner-sub-text">Week 4 &#x2022; Sept 11 - Sept 17</p>
+      </div>
+    </section>
+  )
+}
 class Challenge extends Component {
   render() {
     return (
-      <div id="challenge">
-        <OverviewSection/>
-        <ChallengeSection/>
-        <PrizesSection/>
-        <SuggestionsSection/>
-        <CheckInSection/>
+      <div>
+        <Banner />
+        <div id="challenge">
+          <OverviewSection/>
+          <ChallengeSection/>
+          <PrizesSection/>
+          <SuggestionsSection/>
+          <CheckInSection/>
+        </div>
       </div>
     );
   }
