@@ -20,14 +20,14 @@ class LgSpinnerBtn extends Component {
     return classes.join(' ');
   }
   
-	render() {
-		return (
-			<div className={this.getClasses()}>
+  render() {
+    return (
+      <div className={this.getClasses()}>
         <button onClick={this.onClick}>{this.props.btnText}</button>
         <HorizSpinner />
       </div>
-		);
-	}
+    );
+  }
 }
 
 export default LgSpinnerBtn;

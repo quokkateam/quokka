@@ -88,8 +88,8 @@ class CheckInForm extends Form {
     return this.state.status === this.status.COMPLETE ? 'Thanks!' : 'Submit';
   }
   
-	render() {
-		return (
+  render() {
+    return (
       <div className="check-in-form">
         <div className="check-in-form-comps">{this.formatQAs()}</div>
         <div className="check-in-form-footer">
@@ -97,7 +97,7 @@ class CheckInForm extends Form {
         </div>
       </div>
     );
-	}
+  }
 }
 
 export default CheckInForm;

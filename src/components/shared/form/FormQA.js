@@ -51,14 +51,14 @@ class FormQA extends Component {
     }
   }
   
-	render() {
-		return (
-			<div className="form-qa">
+  render() {
+    return (
+      <div className="form-qa">
         <div className={this.formQuestionClasses()}>{this.props.question.text}</div>
         <div className="form-answer">{this.getFormAnswerComp()}</div>
       </div>
-		);
-	}
+    );
+  }
 }
 
 export default FormQA;
