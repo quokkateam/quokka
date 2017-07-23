@@ -83,6 +83,20 @@ Home of the Quokka web app
     $ npm start
     ```
 
+## Installing dependencies
+
+### Sass
+
+$ gem install sass
+
+### NPM/Node
+
+<https://github.com/creationix/nvm#installation>
+
+## Recommended editor
+
+[vscode](https://code.visualstudio.com/download)
+
 ## License
 
 All Rights Reserved, Quokka, LLC
