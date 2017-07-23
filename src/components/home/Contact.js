@@ -147,7 +147,7 @@ class Contact extends QComponent {
 
     if (this.state.status === status.COMPLETE) {
       classes.push('complete');
-    } else if (this.state.status == status.SENDING && mobile) {
+    } else if (this.state.status === status.SENDING && mobile) {
       classes.push('loading');
     }
 

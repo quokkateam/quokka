@@ -77,7 +77,7 @@ class CheckInForm extends Form {
 
     if (this.state.status === this.status.SENDING) {
       classes.push('loading');
-    } else if (this.state.status == this.status.COMPLETE) {
+    } else if (this.state.status === this.status.COMPLETE) {
       classes.push('complete');
     }
 
