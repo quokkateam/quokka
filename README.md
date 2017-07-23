@@ -38,10 +38,10 @@ Home of the Quokka web app
     $ ruby -v
     ```
     ```
-    sass -v
+    $ sass -v
     ```
     ```
-    node -v
+    $ node -v
     ```
 
 5. Still within the quokka directory, install npm dependencies:
@@ -74,9 +74,7 @@ Home of the Quokka web app
 
 ### Sass
 
-    ```
     $ gem install sass
-    ```
 
 ### NPM/Node
 
