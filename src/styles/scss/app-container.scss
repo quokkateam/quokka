@@ -1,0 +1,18 @@
+#appContainer {
+  z-index: 0;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+
+  &.show-menu {
+    transform: translateX(-60%);
+  }
+
+  &.check-in {
+    footer {
+      background-color: rgba(0,0,75,0.04);
+      border-top: 1px solid rgba(0,0,75,0.04);
+    }
+  }
+}

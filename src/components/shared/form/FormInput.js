@@ -1,9 +1,9 @@
 import React from 'react';
-import QComponent from '../abstract/QComponent'
+import QComponent from '../../abstract/QComponent'
 import $ from 'jquery';
 
 class FormInput extends QComponent {
-  
+
   constructor(props) {
     super(props);
     this.setInputRef = this.setInputRef.bind(this);
@@ -13,25 +13,28 @@ class FormInput extends QComponent {
     this.onKeyUp = this.onKeyUp.bind(this);
     this.getClassNames = this.getClassNames.bind(this);
     this.clearInput = this.clearInput.bind(this);
+    this.getInputEl = this.getInputEl.bind(this);
   }
 
   setInputRef(ref) {
     this.input = ref;
   }
 
-  // return the input field's value
-  serialize() {
-    var value = $(this.input).val().trim();
+  isValid() {
+    var isValid = true;
 
-    // If this input field is "required" and the value is empty,
-    // display the input as invalid to the user.
-    if (this.props.required && !value) {
+    if (this.props.required && !this.serialize()) {
+      isValid = false;
       this.showInvalid();
     }
 
-    return value;
+    return isValid;
   }
-  
+
+  serialize() {
+    return $(this.input).val().trim();
+  }
+
   onMobile() {
     return window.innerWidth < this.MOBILE_THRESH;
   }
@@ -50,25 +53,34 @@ class FormInput extends QComponent {
       this.props.onKeyUp($(this.input).val().trim());
     }
   }
-  
+
   // accounting for any desired class names that were passed down
   getClassNames() {
     var classes = this.props.classes || [];
     classes.unshift('form-input');  // we want form-input to be 1st
     return classes.join(' ');
   }
-  
+
   // empty the input
   clearInput() {
     $(this.input).val('');
   }
-  
-  render() {
-    return (
-      <input type="text" className={this.getClassNames()} name={this.props.name || ''} placeholder={this.props.placeholder || ''} defaultValue={this.props.defaultValue || ''} onKeyUp={this.onKeyUp} ref={this.setInputRef}/>
-    );
+
+  getInputEl() {
+    var name = this.props.name || '';
+    var placeholder = this.props.placeholder || '';
+    var defaultValue = this.props.defaultValue || '';
+    var classes = this.getClassNames();
+
+    return !!this.props.useTextarea ?
+      <textarea className={classes} name={name} placeholder={placeholder} defaultValue={defaultValue} onKeyUp={this.onKeyUp} ref={this.setInputRef}></textarea> :
+      <input type="text" className={classes} name={name} placeholder={placeholder} defaultValue={defaultValue} onKeyUp={this.onKeyUp} ref={this.setInputRef}/>;
   }
-  
+
+  render() {
+    return this.getInputEl();
+  }
+
 }
 
 export default FormInput;

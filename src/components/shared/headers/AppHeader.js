@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
 
 class AppHeader extends Component {
-  
+
   constructor(props) {
     super(props);
     this.headerLinkClasses = this.headerLinkClasses.bind(this);
   }
-  
+
   headerLinkClasses(route) {
     var classes = ['header-nav-link'];
-    
+
     if (this.props.location.pathname === route) {
       classes.push('featured');
     }
-    
+
     return classes.join(' ');
   }
-  
+
   render() {
     return (
       <header id="appHeader">
@@ -42,5 +42,5 @@ class AppHeader extends Component {
     );
   }
 }
-  
+
 export default AppHeader;

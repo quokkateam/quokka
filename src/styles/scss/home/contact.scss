@@ -16,30 +16,11 @@
 }
 
 .contact-field {
-  background-color: #fff;
-  border: none;
-  outline: none;
-  border-radius: 3px;
   width: 310px;
-  height: 44px;
-  padding-left: 10px;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  color: $default-dark;
-  font-size: 14px;
-  line-height: 14px;
-
-  &.invalid {
-    box-shadow: 0 0 4px 2px $primary;
-  }
-
-  &.invalid-mobile {
-    border: 2px solid $quokka-red;
-  }
 }
 
 .contact-field-container {
-  
+
   &:first-child {
     padding-right: 9px;
 
@@ -47,26 +28,13 @@
       float: right;
     }
   }
-  
+
   &:last-child {
     padding-left: 9px;
-  
+
     * {
       float: left;
     }
-  }
-}
-
-.submit-desktop,
-.submit-mobile {
-  background-color: $primary;
-
-  &:hover {
-    background-color: $primary-hover;
-  }
-
-  &:active {
-    background-color: $primary;
   }
 }
 
@@ -79,6 +47,7 @@
   border: none;
   margin-left: 18px;
   margin-top: 2px;
+  background-color: $primary;
   background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/marketing/images/arrow-right.png');
   background-repeat: no-repeat;
   background-position: center center;
@@ -88,46 +57,22 @@
   -o-transition: all 0.4s;
   transition: all 0.4s;
 
-  &.completed {
+  &.complete {
     background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/marketing/images/check.png');
     background-color: $tertiary;
+  }
+
+  &:hover {
+    background-color: $primary-hover;
+  }
+
+  &:active {
+    background-color: $primary;
   }
 }
 
 .submit-mobile {
   display: none;
-  width: 100%;
-  background-color: $primary;
-  border-radius: 3px;
-  height: 44px;
-  text-align: center;
-  font-family: Avenir-Next-Medium;
-  outline: none;
-  border: none;
-
-  &.completed {
-    background-color: $tertiary;
-  }
-}
-
-.submit-mobile-container {
-  position: relative;
-
-  .horiz-spinner {
-    display: none;
-    top: 13px;
-    left: calc((100% - 70px)/2);
-  }
-
-  &.loading {
-    .submit-mobile {
-      color: transparent;
-    }
-
-    .horiz-spinner {
-      display: block;
-    }
-  }
 }
 
 @media (max-width: 991px) {
@@ -135,9 +80,9 @@
     padding: 0 4%;
   }
 
-  .contact-field-container[role] {
-    padding-left: 0;
-    padding-right: 0;
+  .contact-field-container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
     margin-bottom: 10px;
   }
 
