@@ -3,7 +3,7 @@ import QComponent from '../../abstract/QComponent'
 import $ from 'jquery';
 
 class FormInput extends QComponent {
-  
+
   constructor(props) {
     super(props);
     this.setInputRef = this.setInputRef.bind(this);
@@ -30,11 +30,11 @@ class FormInput extends QComponent {
 
     return isValid;
   }
-  
+
   serialize() {
     return $(this.input).val().trim();
   }
-  
+
   onMobile() {
     return window.innerWidth < this.MOBILE_THRESH;
   }
@@ -53,34 +53,34 @@ class FormInput extends QComponent {
       this.props.onKeyUp($(this.input).val().trim());
     }
   }
-  
+
   // accounting for any desired class names that were passed down
   getClassNames() {
     var classes = this.props.classes || [];
     classes.unshift('form-input');  // we want form-input to be 1st
     return classes.join(' ');
   }
-  
+
   // empty the input
   clearInput() {
     $(this.input).val('');
   }
-  
+
   getInputEl() {
     var name = this.props.name || '';
     var placeholder = this.props.placeholder || '';
     var defaultValue = this.props.defaultValue || '';
     var classes = this.getClassNames();
-    
+
     return !!this.props.useTextarea ?
       <textarea className={classes} name={name} placeholder={placeholder} defaultValue={defaultValue} onKeyUp={this.onKeyUp} ref={this.setInputRef}></textarea> :
       <input type="text" className={classes} name={name} placeholder={placeholder} defaultValue={defaultValue} onKeyUp={this.onKeyUp} ref={this.setInputRef}/>;
   }
-  
+
   render() {
     return this.getInputEl();
   }
-  
+
 }
 
 export default FormInput;

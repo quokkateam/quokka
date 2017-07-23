@@ -24,5 +24,5 @@ class LandingHeader extends Component {
     );
   }
 }
-  
+
 export default LandingHeader;

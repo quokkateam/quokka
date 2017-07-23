@@ -19,9 +19,9 @@ const linkSections = {
 };
 
 class Footer extends Component {
-  
+
   // TODO: Create social media account and use actual links to those rather than placeholder of '/'
-  
+
   render() {
     return (
       <footer>

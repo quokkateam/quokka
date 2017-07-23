@@ -6,21 +6,21 @@ import Contact from './Contact'
 import $ from 'jquery'
 
 class Home extends Component {
-  
+
   constructor(props) {
     super(props);
     this.setContactRef = this.setContactRef.bind(this);
     this.onRequestToJoin = this.onRequestToJoin.bind(this);
   }
-  
+
   setContactRef(ref){
     this.contactSection = ref;
   }
-  
+
   onRequestToJoin() {
     $('html, body').stop().animate({ scrollTop: this.contactSection.getTopPosition() }, 600);
   }
-  
+
   render() {
     return (
       <main>

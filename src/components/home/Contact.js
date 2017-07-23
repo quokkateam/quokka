@@ -18,7 +18,7 @@ class Contact extends QComponent {
 
   constructor(props) {
     super(props);
-    
+
     // Set our initial state
     this.state = {
       status: status.STATIC,
@@ -26,7 +26,7 @@ class Contact extends QComponent {
       email: null,
       onMobile: window.innerWidth < this.MOBILE_THRESH
     };
-    
+
     this.setSectionRef = this.setSectionRef.bind(this);
     this.setSchoolFieldRef = this.setSchoolFieldRef.bind(this);
     this.setEmailFieldRef = this.setEmailFieldRef.bind(this);
@@ -37,17 +37,17 @@ class Contact extends QComponent {
     this.sendContactInfo = this.sendContactInfo.bind(this);
     this.submitBtnClasses = this.submitBtnClasses.bind(this);
     this.submitMobileContent = this.submitMobileContent.bind(this);
-    
+
     this.listenForWindowResize();
   }
-  
+
   // Update the 'onMobile' state any time the window changes size
   listenForWindowResize() {
     $(window).resize(() => {
       this.setState({ onMobile: window.innerWidth < this.MOBILE_THRESH })
     });
   }
-  
+
   componentDidUpdate() {
     // Set up handlers for when our component changes state
     switch (this.state.status) {
@@ -67,31 +67,31 @@ class Contact extends QComponent {
         console.warn('Unexpected status case');
         break;
     }
-    
+
     return true;
   }
-  
+
   setSectionRef(ref) {
     this.section = ref;
   }
-  
+
   setSchoolFieldRef(ref) {
     this.schoolField = ref;
   }
-  
+
   setEmailFieldRef(ref) {
     this.emailField = ref;
   }
-  
+
   onSerializing() {
     var schoolValid = this.schoolField.isValid();
     var emailValid = this.emailField.isValid();
-    
+
     if (schoolValid && emailValid) {
       this.sendContactInfo();
     }
   }
-  
+
   onComplete() {
     // Empty inputs
     this.schoolField.clearInput();
@@ -107,12 +107,12 @@ class Contact extends QComponent {
       });
     }, SUCCESS_MESSAGE_DURATION);
   }
-  
+
   // get y-position of this section on the page for scroll-to purposes
   getTopPosition() {
     return $(this.section)[0].offsetTop;
   }
-  
+
   serialize() {
     this.setState({
       status: status.SERIALIZING,
@@ -120,44 +120,44 @@ class Contact extends QComponent {
       email: this.emailField.serialize()
     });
   }
-  
+
   // make POST request with school and email
   sendContactInfo() {
     this.setState({ status: status.SENDING });
-    
+
     // TODO uncomment this code when we're actually talking to an API.
     // var payload = {
     //   school: this.state.school,
     //   email: this.state.email
     // };
-    
+
     // using setTimeout to simulate network request duration
     setTimeout(() => {
       this.setState({ status: status.COMPLETE });
     }, 300);
-    
+
     // TODO uncomment this code when we're actually talking to an API.
     // axios.post('/api/contact', payload).then(() => {
     //  this.setState({ status: status.COMPLETE });
     // });
   }
-  
+
   submitBtnClasses(mobile) {
     var classes = [mobile ? 'submit-mobile' : 'submit-desktop'];
-    
+
     if (this.state.status === status.COMPLETE) {
       classes.push('complete');
     } else if (this.state.status == status.SENDING && mobile) {
       classes.push('loading');
     }
-    
+
     return mobile ? classes : classes.join(' ');
   }
-  
+
   submitMobileContent() {
     return this.state.status === status.COMPLETE ? 'Thanks!' : 'Submit';
   }
-  
+
   render() {
     return (
       <section id="contact" ref={this.setSectionRef}>

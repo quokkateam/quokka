@@ -2,16 +2,16 @@ import React, { Component } from 'react';
 import CheckInForm from './CheckInForm'
 
 class CheckIn extends Component {
-  
+
   constructor(props) {
     super(props);
     this.habitLink = this.habitLink.bind(this);
   }
-  
+
   habitLink() {
     return '/habit/week' + this.props.week.num;
   }
-  
+
   render() {
     return (
       <div id="checkIn">

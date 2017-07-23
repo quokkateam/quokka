@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import FormInput from './FormInput'
 
 class FormQA extends Component {
-  
+
   constructor(props) {
     super(props);
     this.setAnswerRef = this.setAnswerRef.bind(this);
@@ -10,14 +10,14 @@ class FormQA extends Component {
     this.formQuestionClasses = this.formQuestionClasses.bind(this);
     this.serialize = this.serialize.bind(this);
   }
-  
+
   setAnswerRef(ref) {
     this.answer = ref;
   }
-  
+
   getFormAnswerComp() {
     var freeRespLong = <FormInput required={true} useTextarea={true} classes={this.props.answerClasses} placeholder={this.props.placeholder} defaultValue={this.props.answer || {}.text} name={this.props.name} ref={this.setAnswerRef}/>;
-    
+
     switch (this.props.type) {
       case 'fr-long':
         return freeRespLong;
@@ -30,17 +30,17 @@ class FormQA extends Component {
         return freeRespLong;
     }
   }
-  
+
   formQuestionClasses() {
     var classes = this.props.questionClasses || [];
     classes.unshift('form-question');
     return classes.join(' ');
   }
-  
+
   isValid() {
     return this.answer.isValid();
   }
-  
+
   serialize() {
     return {
       question: this.props.question,
@@ -50,7 +50,7 @@ class FormQA extends Component {
       }
     }
   }
-  
+
   render() {
     return (
       <div className="form-qa">

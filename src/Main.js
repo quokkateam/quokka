@@ -8,12 +8,12 @@ import Habit from './components/habit/Habit'
 import CheckIn from './components/check-in/CheckIn'
 
 class Main extends Component {
-  
+
   constructor(props) {
     super(props);
     this.CheckIn = this.CheckIn.bind(this);
   }
-  
+
   CheckIn(props) {
     var formData = [  // will most likely be an array of CheckInQuestions with their respectjve CheckInAnswers
       {
@@ -44,18 +44,18 @@ class Main extends Component {
         answer: null
       }
     ];
-    
+
     var week = {
       num: 4,
       habitName: 'Exercise',
       habitSlug: 'exercise'
     };
-        
+
     return (
       <CheckIn formData={formData} week={week} {...props}/>
     );
   }
-  
+
   render() {
     return (
       <div>
