@@ -1,0 +1,112 @@
+#banner {
+  position: relative;
+  padding: 0 4%;
+  padding-top: 150px;
+  width: 100%;
+  height: 450px;
+  color: #fff;
+  background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/dining-hall.png');
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  background-size: cover;
+
+  .dimmer {
+    background-color: rgba(0, 0, 0, 0.40);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+  }
+
+  .chef-hat {
+    height: 75px;
+    width: 75px;
+  }
+
+  .banner-content {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    left: 0;
+  }
+
+  .banner-main-text {
+    font-family: Avenir-Next-Medium;
+    color: $primary;
+    font-size: 78px;
+    text-align: center;
+    margin-bottom: 28px;
+  }
+
+  .banner-sub-text {
+    font-family: Lato-Light;
+    font-size: 16px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 38px;
+  }
+}
+
+#challenge {
+  padding: 90px 140px;
+  background: #fff;
+  font-size: 16px;
+  text-align: justify;
+
+  $challengeCardPaddingLeft: 20px;
+
+  .challenge-section-title {
+    color: $primary;
+    font-family: Avenir-Next-Medium;
+  }
+
+  .challenge-card-title {
+    padding: 10px;
+    padding-left: $challengeCardPaddingLeft;
+  }
+
+  .challenge-card {
+    border: 2px;
+    border-color: #EEEEF3;
+    border-radius: 5px;
+    border-style: solid;
+    background-color: #F5F5F8;
+  }
+
+  .challenge-card-title-border {
+    border-top: 2px solid #000;
+    border-color: #EEEEF3;
+    padding-bottom: 10px;
+    padding-left: $challengeCardPaddingLeft;
+    width: 95%;
+  }
+
+  .challenge-card-body {
+    padding: 10px;
+    text-align: justify;
+    padding-left: $challengeCardPaddingLeft;
+  }
+  
+  ul {
+    list-style-type: circle;
+    padding-left: 2em;
+
+    li {
+      margin-top: 1em;
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  #challenge {
+    padding: 90px;
+  }
+}
+
+@media (max-width: 768px) {
+  #challenge {
+    padding: 75px 4%;
+  }
+}
