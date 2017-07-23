@@ -10,42 +10,14 @@ Home of the Quokka web app
     $ git clone https://github.com/quokkateam/quokka && cd quokka
     ```
 
-2. To manage environment variables, create a new `.env` file in the project's root directory with an `ENV` var set to `development`:
 
-    ```
-    $ touch .env && echo 'export ENV="development"' >> .env
-    ```
-
-3. Activate your environment variables:
-
-    ```
-    $ wget https://s3-us-west-1.amazonaws.com/quokkadev/activate.sh
-    ```
-    ```
-    $ sudo mv activate.sh /usr/local/bin/activate.sh
-    ```
-    ```
-    $ echo 'source /usr/local/bin/activate.sh' >> ~/.bashrc
-    ```
-    ```
-    $ source ~/.bashrc
-    ```
-    ```
-    $ cd .. && cd quokka
-    ```
-4. Copy the example config vars file to a locally, git-ignored file to manage config vars with for each environment:
-
-    ```
-    $ cp quokka/helpers/configs/example_vars.py quokka/helpers/configs/vars.py
-    ```
-
-5. Install virtualenv if you don't have it:
+2. Install virtualenv if you don't have it:
 
     ```
     $ pip install virtualenv
     ```
 
-6. Create a new virtual environment and install python dependencies:
+3. Create a new virtual environment and install python dependencies:
 
     ```
     $ virtualenv venv
@@ -57,7 +29,19 @@ Home of the Quokka web app
     $ pip install -r requirements.txt -r dev-requirements.txt
     ```
 
-7. Install npm dependencies:
+4. Check if you have ruby, sass, and node installed. If not, go to the Installing Dependencies section below and install them as necessary.
+
+    ```
+    $ ruby -v
+    ```
+    ```
+    $ sass -v
+    ```
+    ```
+    $ node -v
+    ```
+
+5. Still within the quokka directory, install npm dependencies:
 
     ```
     $ npm install
@@ -65,19 +49,13 @@ Home of the Quokka web app
 
 ## Starting the App
 
-1. Start Flask (not necessary right now):
-
-    ```
-    $ python app.py
-    ```
-
-2. In a new tab, start a watch process for sass:
+1. In a new tab, start a watch process for sass:
 
     ```
     $ npm run sass
     ```
 
-3. In a new tab, start your node server:
+2. In a new tab, start your node server:
 
     ```
     $ npm start
@@ -85,9 +63,13 @@ Home of the Quokka web app
 
 ## Installing dependencies
 
+### Ruby
+
+    $ https://www.ruby-lang.org/en/documentation/installation/
+
 ### Sass
 
-$ gem install sass
+    $ gem install sass
 
 ### NPM/Node
 
