@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import CheckInSection from './CheckInSection';
 import SuggestionsSection  from './SuggestionsSection';
 import PrizesSection from './PrizesSection';
@@ -15,13 +16,14 @@ const Banner = () => {
         <div className="banner-nav-table-container">
           <div className="banner-nav-table-row">
             <div className="banner-nav-button-container-left">
-              <a className="quokka-nav-button nav-left banner-nav-button" href="/challenge" />
+              <Link className="quokka-nav-button nav-left banner-nav-button" to="/challenge" />
               <br />
               previous challenge
             </div>
             <h1 className="banner-main-text">Healthy Eating</h1>
             <div className="banner-nav-button-container-right">
-              <a className="quokka-nav-button nav-right banner-nav-button" href="/challenge" />
+              <Link className="quokka-nav-button nav-right banner-nav-button" to="/challenge">
+              </Link>
               <br />
               next challenge
             </div>
