@@ -16,8 +16,8 @@ class HabitList extends Component {
     super(props);
     var habit1 = {
       name: "Socializing",
-      description: "Social support plays an important role in our behaviors, interactions\
-      and self-image, as well as how we respond to stress.",
+      description: "Social support plays an important role in our behaviors, interactions\n" +
+      "and self-image, as well as how we respond to stress.",
       points:80,
       icon:"glyphicon glyphicon-user",
       start:"Aug 21",
@@ -26,9 +26,9 @@ class HabitList extends Component {
 
     var habit2 = {
       name: "Good Deeds",
-      description: "A positive feedback loop exists between kindeness and happiness - \
-      the more you do to make other people feel better, the more your own happiness\
-      increases!",
+      description: "A positive feedback loop exists between kindeness and happiness - \n" +
+      "the more you do to make other people feel better, the more your own happiness\n" +
+      "increases!",
       points:40,
       icon:"glyphicon glyphicon-user",
       start:"Aug 28",
@@ -37,8 +37,8 @@ class HabitList extends Component {
 
     var habit3 = {
       name: "Sleep",
-      description: "We all underestimate how big of an effect getting a good night's\
-      sleep can have on your overall health and happiness.",
+      description: "We all underestimate how big of an effect getting a good night's\n" +
+      "sleep can have on your overall health and happiness.",
       points:40,
       icon:"glyphicon glyphicon-user",
       start:"Sept 4",
@@ -47,8 +47,8 @@ class HabitList extends Component {
 
     var habit4 = {
       name: "Healthy Eating",
-      description: "Healthy eating has multiple benefits for you. It can help you\
-      stay in shape, increase your energy and boost your immune system.",
+      description: "Healthy eating has multiple benefits for you. It can help you\n" +
+      "stay in shape, increase your energy and boost your immune system.",
       points:60,
       icon:"glyphicon glyphicon-user",
       start:"Sept 11",
