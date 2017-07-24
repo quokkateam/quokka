@@ -31,5 +31,14 @@ describe('across entire suite', function () {
         </MemoryRouter>
         , div);
     });
+
+    it('/habit renders without crashing', () => {
+        const div = document.createElement('div');
+        ReactDOM.render(
+        <MemoryRouter initialEntries={[ '/habit' ]}>
+            <App />
+        </MemoryRouter>
+        , div);
+    });
 })
 

@@ -59,10 +59,10 @@ class HabitList extends Component {
 
   render () {
     return (
-      <tbody>
+      <div>
       {this.habitlist.map(function(habit,i){
         return (
-          <div className="row habit-item">
+          <div key={i} className="row habit-item">
             <div className="col-md-1 icon">
               <span className={habit.icon}></span>
             </div>
@@ -71,19 +71,15 @@ class HabitList extends Component {
               <p>{habit.description}</p>
             </div>
             <div className="col-md-2">
-                <div className="row">
-                  <p className="date">{habit.start} - {habit.end}</p>
-                </div>
-              <tbody>
-                <tr>
-                  <th><p className="icon-right">{habit.points}</p></th>
-                  <th><span className="glyphicon glyphicon-leaf icon-right"></span></th>
-                </tr>
-              </tbody>
+              <div className="row">
+                <p className="date">{habit.start} - {habit.end}</p>
+              </div>
+              <p className="icon-right">{habit.points}</p>
+              <span className="glyphicon glyphicon-leaf icon-right"></span>
             </div>
         </div>);
       })}
-      </tbody>
+      </div>
     );
   }
 }
