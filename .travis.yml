@@ -4,6 +4,7 @@ node_js:
 install:
 - gem install sass
 - mkdir -p src/styles/css
+- npm install -g codecov
 - npm install
 cache:
   directories:
