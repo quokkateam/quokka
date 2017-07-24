@@ -1,0 +1,8 @@
+.check-in-form {
+  margin: 0 80px;
+  padding: 50px 45px;
+  border-top: 1px solid rgba(0, 0, 75, 0.06); }
+  .check-in-form textarea.form-input {
+    min-height: 110px; }
+
+/*# sourceMappingURL=check-in-form.css.map */

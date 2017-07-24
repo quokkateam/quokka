@@ -131,5 +131,3 @@ quokka/helpers/configs/vars.py
 .vscode/
 
 .sass-cache/
-
-src/styles/css/*
