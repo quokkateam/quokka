@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const CheckInSection= () => {
   return (
@@ -9,7 +10,7 @@ const CheckInSection= () => {
             Don't forget to submit your Check-in this week by DATE!
             Check-ins help you earn Quokka points, provide us with feedback,
             and make you eligible for this week's prizes!
-            <a href="/challenge"> Take me to my Week 4 Check-in</a>.
+            <Link to="/challenge"> Take me to my Week 4 Check-in</Link>.
           </p>
         </div>
       </div>
