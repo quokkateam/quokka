@@ -18,7 +18,7 @@ deploy:
   provider: heroku
   api_key:
     secure: EbTt53/gbQo/reVBGY8/18THatPdYwKq+QBS1Z4646+uJFvez7jBZBfVWgxeuHJUWyFUS/BVnwMT2xdMzp02g5pVR/KKc+sOWyEpzDju0Keq+yjON6BDd6JsHEGfZDnFbATz37y2QXQGC112dRkqZH+v3ZXaHLl4ETJbxz8KgsS/99sQCLfgTz4JXfAFc9/WaqLvPXZUhtATIOtdLlcCodACZTmDwCmhxPQduXZYtny1VjYa17rd1o2Nh7OvxLuf39vNMFwRJ5Me8BiCeaICXBUE1HhlZKY4/r45ueDn8wDL1OuPLOQtgabOlqBOWxtqoI7N5hBIx7Oy57xxKHEyFbV2ma1DcY4ArVlnsq6TF5JCl5yzr5wryx02kYu5KoieKTICUyYvPZstrV6VbWKlminNgYDgtWqQgwGxgwYb1q0c1mZtvgS+3mhdMw6/IUbjC50cBxLLDE8KAaKvKcqKm3c6ghh16497PLzz06rm07eHq2GeLZhb5anTUOULDAoZQYPu7fznEGOu6TQISTgda5j+sNsF9gsqo9jODuTLN6LITESjHuCO+12arLwQz7+B7T9E2Uu1Oh6YlFh/VX1BWYoeXGiuZK7Lywwykd9ATqii+R/9Exudx0c6cRHF6Sx54op4A8QFq4p5ZVUfSchp6ScWVpyIEwO4XHLWjfRkvF8=
-  app: quokka
+  app: quokka-prod
   skip_cleanup: true
   on:
     repo: quokkateam/quokka
