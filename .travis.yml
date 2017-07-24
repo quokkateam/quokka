@@ -1,26 +1,26 @@
 sudo: false
-
-language: python
-
-python:
-  - 2.7
-
 node_js:
-  - 4
-  - 6
-
-cache:
-  pip: true
-  directories:
-    - node_modules
-
+- 6
 install:
-  - pip install -r api/requirements.txt -r api/dev-requirements.txt
-
+- gem install sass
+- mkdir -p src/styles/css
+- npm install -g codecov
+- npm install
+cache:
+  directories:
+  - node_modules
 script:
-  - coverage run api/api_test.py
-  - npm test
-  - npm run build
-
+- npm run sass:build
+- npm test -- --coverage
+- ./node_modules/eslint/bin/eslint.js src --max-warnings=0
+- npm run build
 after_success:
-  - codecov
+- codecov
+deploy:
+  provider: heroku
+  api_key:
+    secure: EbTt53/gbQo/reVBGY8/18THatPdYwKq+QBS1Z4646+uJFvez7jBZBfVWgxeuHJUWyFUS/BVnwMT2xdMzp02g5pVR/KKc+sOWyEpzDju0Keq+yjON6BDd6JsHEGfZDnFbATz37y2QXQGC112dRkqZH+v3ZXaHLl4ETJbxz8KgsS/99sQCLfgTz4JXfAFc9/WaqLvPXZUhtATIOtdLlcCodACZTmDwCmhxPQduXZYtny1VjYa17rd1o2Nh7OvxLuf39vNMFwRJ5Me8BiCeaICXBUE1HhlZKY4/r45ueDn8wDL1OuPLOQtgabOlqBOWxtqoI7N5hBIx7Oy57xxKHEyFbV2ma1DcY4ArVlnsq6TF5JCl5yzr5wryx02kYu5KoieKTICUyYvPZstrV6VbWKlminNgYDgtWqQgwGxgwYb1q0c1mZtvgS+3mhdMw6/IUbjC50cBxLLDE8KAaKvKcqKm3c6ghh16497PLzz06rm07eHq2GeLZhb5anTUOULDAoZQYPu7fznEGOu6TQISTgda5j+sNsF9gsqo9jODuTLN6LITESjHuCO+12arLwQz7+B7T9E2Uu1Oh6YlFh/VX1BWYoeXGiuZK7Lywwykd9ATqii+R/9Exudx0c6cRHF6Sx54op4A8QFq4p5ZVUfSchp6ScWVpyIEwO4XHLWjfRkvF8=
+  app: quokka-prod
+  skip_cleanup: true
+  on:
+    repo: quokkateam/quokka
