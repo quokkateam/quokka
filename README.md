@@ -13,26 +13,7 @@ Home of the Quokka web app
     $ git clone https://github.com/quokkateam/quokka && cd quokka
     ```
 
-
-2. Install virtualenv if you don't have it:
-
-    ```
-    $ pip install virtualenv
-    ```
-
-3. Create a new virtual environment and install python dependencies:
-
-    ```
-    $ virtualenv venv
-    ```
-    ```
-    $ source venv/bin/activate
-    ```
-    ```
-    $ pip install -r requirements.txt -r dev-requirements.txt
-    ```
-
-4. Check if you have ruby, sass, and node installed. If not, go to the Installing Dependencies section below and install them as necessary.
+2. Check if you have ruby, sass, and node installed. If not, go to the Installing Dependencies section below and install them as necessary.
 
     ```
     $ ruby -v
@@ -44,7 +25,7 @@ Home of the Quokka web app
     $ node -v
     ```
 
-5. Still within the quokka directory, install npm dependencies:
+3. Still within the quokka directory, install npm dependencies:
 
     ```
     $ npm install
