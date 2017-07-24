@@ -1,0 +1,9 @@
+{
+  "root": "dist/",
+  "routes": {
+    "/favicon.ico": "/favicon.ico",  
+    "/fonts/*": "/fonts/",
+    "/static/*": "/static/",
+    "/**": "index.html"
+  }
+}
