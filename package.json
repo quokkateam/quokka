@@ -16,12 +16,13 @@
     ]
   },
   "devDependencies": {
+    "hjson": "^3.1.0",
     "moxios": "^0.4.0",
     "react-scripts": "1.0.7"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && ./node_modules/hjson/bin/hjson -j static.hjson > static.json",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "sass": "sass --watch src/styles/scss/index.scss:src/styles/css/index.css",

@@ -133,3 +133,5 @@ quokka/helpers/configs/vars.py
 .sass-cache/
 
 src/styles/css/*
+
+static.json
