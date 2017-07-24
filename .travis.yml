@@ -12,6 +12,7 @@ cache:
 script:
 - npm run sass:build
 - npm test -- --coverage
+- ./node_modules/eslint/bin/eslint.js src --max-warnings=0
 - npm run build
 after_success:
 - codecov
