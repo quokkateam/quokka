@@ -1,6 +1,9 @@
 # Quokka
 
-Home of the Quokka web app
+[![Build Status](https://travis-ci.org/quokkateam/quokka.svg?branch=master)](https://travis-ci.org/quokkateam/quokka)
+[![codecov](https://codecov.io/gh/quokkateam/quokka/branch/master/graph/badge.svg)](https://codecov.io/gh/quokkateam/quokka)
+
+Home of the Quokka web app 
 
 ## Getting Started
 
