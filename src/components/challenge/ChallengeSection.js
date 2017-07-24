@@ -5,7 +5,11 @@ const ChallengeSection = () => {
     <div className="container-fluid">
       <div className="row">
         <div className="challenge-card">
-          <h2 className="challenge-section-title challenge-card-title">Challenge</h2>
+          <div className="challenge-same-row">
+            <h2 className="challenge-section-title challenge-card-title">Challenge</h2>
+            <img className="challenge-section-title challenge-card-rewards-image" src="https://s3-us-west-1.amazonaws.com/quokkadev/images/leaf.png" alt="" />
+            <h2 className="challenge-section-title challenge-card-rewards">60</h2>
+          </div>
           <div className="challenge-card-title-border center-block"></div>
           <p className="challenge-card-body">
             Take the first day of this week to check out the Harvard School
