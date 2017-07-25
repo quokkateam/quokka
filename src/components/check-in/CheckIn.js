@@ -9,7 +9,8 @@ class CheckIn extends Component {
   }
 
   habitLink() {
-    return '/habit/week' + this.props.week.num;
+    // Keeping as own method for when we need week number
+    return '/challenge';
   }
 
   render() {
