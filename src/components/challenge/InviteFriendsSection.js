@@ -15,6 +15,7 @@ const status = {
 const SUCCESS_MESSAGE_DURATION = 3000;
 
 class InviteFriendsSection extends QComponent {
+  
   constructor(props) {
     super(props);
 

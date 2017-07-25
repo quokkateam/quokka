@@ -1,35 +1,32 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Prize from './Prize';
 
-const PrizesSection= () => {
-  return (
+class PrizesSection extends Component {
+  
+  constructor(props) {
+    super(props);
+    this.getPrizes = this.getPrizes.bind(this);
+  }
+  
+  getPrizes() {
+    return this.props.prizes.map((data) => {
+      return <li key={data.sponsor.id}><a href={data.sponsor.url}><Prize sponsor={data.props.sponsor} prize={data.props.prize}/></a></li>;
+    });
+  }
+  
+  render() {
+    return (
       <div className="container-fluid">
         <div className="row">
-          <h2 className="challenge-section-title">Prizes</h2>
-
-          <a className="challenge-prizes-link" href="/challenge" >
-            <img className="challenge-prizes-image" src="https://s3-us-west-1.amazonaws.com/quokkadev/images/lululemon.png" alt="" />
-            <br />
-            <span className="challenge-prizes-link-title" >Reversible Yoga Mat</span>
-            <br />
-            <span className="challenge-prizes-link-company" >Lululemon</span>
-          </a>
-          <a className="challenge-prizes-link" href="/challenge" >
-            <img className="challenge-prizes-image" src="https://s3-us-west-1.amazonaws.com/quokkadev/images/lululemon.png" alt="" />
-            <br />
-            <span className="challenge-prizes-link-title" >$20 Gift Card</span>
-            <br />
-            <span className="challenge-prizes-link-company" >Tender Greens</span>
-          </a>
-          <a className="challenge-prizes-link" href="/challenge" >
-            <img className="challenge-prizes-image" src="https://s3-us-west-1.amazonaws.com/quokkadev/images/lululemon.png" alt="" />
-            <br />
-            <span className="challenge-prizes-link-title" >Wind Trainer</span>
-            <br />
-            <span className="challenge-prizes-link-company" >The North Face</span>
-          </a>
+          <div className="challenge-section-title">Prizes</div>
+          <div className="challenge-section-desc">
+            Participants of this week’s challenge will earn <span className="featured">60 Quokka points</span> and be eligible for the following prizes:
+          </div>
+          <ul className="prizes">{this.getPrizes()}</ul>
         </div>
       </div>
-  )
+    );
+  }
 }
 
 export default PrizesSection;
