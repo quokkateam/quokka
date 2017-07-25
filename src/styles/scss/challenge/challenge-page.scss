@@ -1,0 +1,38 @@
+#challenge {
+  background-color: #fff;
+  padding-top: 84px;
+}
+
+#challenge > .container-fluid {
+  padding: 0 15%;
+  margin-top: 50px;
+
+  &:last-child {
+    margin-bottom: 50px;
+  }
+}
+
+.challenge-section-title {
+  color: $primary;
+  font-size: 18px;
+  font-family: Avenir-Next-Medium;
+}
+
+.challenge-section-desc {
+  font-size: 14px;
+  line-height: 25px;
+  color: $secondary;
+  margin-top: 15px;
+
+  &.featured, .featured {
+    font-family: Avenir-Next-DemiBold;
+  }
+
+  a {
+    color: $tertiary;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
