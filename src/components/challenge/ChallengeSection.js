@@ -8,8 +8,8 @@ class ChallengeSection extends Component {
           <div className="challenge-card-header">
             <div className="challenge-section-title">Challenge</div>
             <div className="points">
-              <span className="point-count">{this.props.challenge.points}</span>
               <img src="https://s3-us-west-1.amazonaws.com/quokkadev/images/leaf.png" alt=""/>
+              <span className="point-count">{this.props.challenge.points}</span>
             </div>
           </div>
           <div className="challenge-card-body">{this.props.challenge.text}</div>

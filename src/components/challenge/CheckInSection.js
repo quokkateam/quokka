@@ -8,10 +8,10 @@ class CheckInSection extends Component {
         <div className="row">
           <div className="challenge-section-title">Check-In</div>
           <div className="challenge-section-desc">
-            Don't forget to submit your Check-in this week by DATE!
+            Don't forget to submit your Check-in this week by Sunday, {this.props.endDate}!
             Check-ins help you earn Quokka points, provide us with feedback,
-            and make you eligible for this week's prizes!
-            <Link to="/challenge"> Take me to my Week {this.props.weekNum} Check-In.</Link>
+            and make you eligible for this week's prizes!&nbsp;
+            <Link to="/check-in">Take me to my Week {this.props.weekNum} Check-In.</Link>
           </div>
         </div>
       </div>

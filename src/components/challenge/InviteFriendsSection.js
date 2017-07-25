@@ -122,7 +122,7 @@ class InviteFriendsSection extends QComponent {
   }
 
   submitBtnClasses(mobile) {
-    var classes = [mobile ? 'submit-mobile' : 'quokka-nav-button nav-right invite-friends-submit-desktop'];
+    var classes = [mobile ? 'submit-mobile' : 'quokka-nav-button nav-right submit-desktop'];
 
     if (this.state.status === status.COMPLETE) {
       classes.push('complete');
@@ -139,22 +139,17 @@ class InviteFriendsSection extends QComponent {
 
   render() {
     return (
-      <div className="container-fluid">
-          <div className="challenge-invite-friends">
-            <div className="leading-contact-text">
-              Have friends who still want to join the Challenge? <br />
-              Send them an invite.
-            </div>
-            <div className="row challenge-invite-friends-form">
-                <FormInput required={true} classes={['contact-field']} name="email" placeholder="Email Address" defaultValue={this.state.email} ref={this.setEmailFieldRef} />
-                <button className={this.submitBtnClasses(false)} onClick={this.serialize}></button>
-            </div>
-            <div className="submit-mobile-container">
-              <LgSpinnerBtn classes={this.submitBtnClasses(true)} btnText={this.submitMobileContent()} onClick={this.serialize}/>
-            </div>
-          </div>
+      <div className="container-fluid challenge-invite-friends">
+        <div className="leading-contact-text">Have friends who still want to join the Challenge?<br/>Send them an invite.</div>
+        <div className="row challenge-invite-friends-form">
+          <FormInput required={true} classes={['contact-field']} name="email" placeholder="Email Address" defaultValue={this.state.email} ref={this.setEmailFieldRef} />
+          <button className={this.submitBtnClasses(false)} onClick={this.serialize}></button>
+        </div>
+        <div className="submit-mobile-container">
+          <LgSpinnerBtn classes={this.submitBtnClasses(true)} btnText={this.submitMobileContent()} onClick={this.serialize}/>
+        </div>
       </div>
-    )
+    );
   }
 }
 

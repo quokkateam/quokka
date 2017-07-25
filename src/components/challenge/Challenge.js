@@ -15,7 +15,7 @@ class Challenge extends Component {
     // Simulating server-responded payload
     this.data = {
       habit: 'Exercise',
-      habitIcon: 'https://s3-us-west-1.amazonaws.com/quokkadev/images/healthy_eating_green.png',
+      habitIcon: 'https://s3-us-west-1.amazonaws.com/quokkadev/images/running-green.png',
       weekNum: 4,
       dates: {
         start: 'Sept 17', // TODO: use MM/DD/YYYY and add moment() date formatter library
@@ -82,13 +82,15 @@ class Challenge extends Component {
   
   render() {
     return (
-      <div id="challenge">
-        <BannerSection habit={this.data.habit} weekNum={this.data.weekNum} dates={this.data.dates} adjHabits={this.data.adjHabits} />
-        <OverviewSection overview={this.data.overview} />
-        <ChallengeSection challenge={this.data.challenge} />
-        <PrizesSection prizes={this.data.prizes} />
-        <SuggestionsSection suggestions={this.data.suggestions} />
-        <CheckInSection weekNum={this.data.weekNum} />
+      <div>
+        <div id="challenge">
+          <BannerSection habit={this.data.habit} habitIcon={this.data.habitIcon} weekNum={this.data.weekNum} dates={this.data.dates} adjHabits={this.data.adjHabits} />
+          <OverviewSection overview={this.data.overview} />
+          <ChallengeSection challenge={this.data.challenge} />
+          <PrizesSection prizes={this.data.prizes} />
+          <SuggestionsSection suggestions={this.data.suggestions} />
+          <CheckInSection weekNum={this.data.weekNum} endDate={this.data.dates.end} />
+        </div>
         <InviteFriendsSection />
       </div>
     );

@@ -1,0 +1,55 @@
+#challenge > .challenge-card {
+  background-color: rgba(0,0,75,0.04);
+  padding: 0 18px;
+  margin-left: 15%;
+  margin-right: 15%;
+  border-radius: 3px;
+  border: 1px solid rgba(0,0,75,0.06);
+}
+
+.challenge-card-header,
+.challenge-card-body {
+  float: left;
+  width: 100%;
+}
+
+.challenge-card-header {
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  padding: 18px 0 17px;
+
+  .challenge-section-title,
+  .points {
+    display: inline-block;
+  }
+
+  .challenge-section-title {
+    float: left;
+  }
+
+  .points {
+    float: right;
+    position: relative;
+    top: 7px;
+
+    img {
+      float: right;
+      height: 15px;
+    }
+
+    .point-count {
+      margin-top: -9px;
+      margin-right: 6px;
+      float: right;
+      font-size: 23px;
+      color: $primary;
+      font-family: Lato-Regular;
+    }
+  }
+}
+
+.challenge-card-body {
+  padding: 20px 0;
+  color: black;
+  font-size: 14px;
+  line-height: 25px;
+}

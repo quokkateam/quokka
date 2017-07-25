@@ -1,0 +1,46 @@
+.prizes {
+  margin-top: 19px;
+  margin-bottom: 0;
+  float: left;
+  width: 100%;
+}
+
+.prize {
+  float: left;
+  width: 206px;
+  height: 185px;
+  padding-top: 22px;
+  text-align: center;
+  border: 1px solid rgba(0,0,0,0.09);
+  box-shadow: 0 0 3px rgba(0,0,0,0.13);
+  border-radius: 3px;
+  margin-right: 30px;
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  -ms-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  transition: all 0.4s;
+
+  &:hover {
+    box-shadow: 0 2px 3px rgba(0,0,0,0.3);
+  }
+
+  .sponsor-icon {
+    height: 83px;
+    margin: 0 auto;
+  }
+
+  .prize-text {
+    margin-top: 18px;
+    color: $secondary;
+    font-size: 13px;
+    font-family: Avenir-Next-Medium;
+  }
+
+  .sponsor-name {
+    color: $secondary;
+    margin-top: 7px;
+    font-size: 12px;
+    opacity: 0.7;
+  }
+}

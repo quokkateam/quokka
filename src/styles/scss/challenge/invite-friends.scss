@@ -1,0 +1,15 @@
+.challenge-invite-friends {
+  background-color: $secondary;
+  padding: 48px 0;
+  text-align: center;
+
+  .leading-contact-text {
+    color: #fff;
+    line-height: 1.5;
+  }
+
+  input {
+    position: relative;
+    top: -11px;
+  }
+}

@@ -17,7 +17,7 @@ class SuggestionsSection extends Component {
     return (
       <div className="container-fluid">
         <div className="row">
-          <h2 className="challenge-section-title">Suggestions</h2>
+          <div className="challenge-section-title">Suggestions</div>
           <div className="challenge-section-desc featured">Need a few ideas or suggestions to help get you started?</div>
           <ul className="suggestions-list">{this.getSuggestions()}</ul>
         </div>
