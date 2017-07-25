@@ -68,6 +68,7 @@ class App extends Component {
             <Route exact path='/' component={this.LandingHeaderWProps}/>
             <Route path='/check-in' component={this.AppHeaderWProps}/>
             <Route path='/challenge' component={this.AppHeaderWProps}/>
+            <Route path='/habit' component={this.AppHeaderWProps}/>
           </Switch>
           <Main />
           <Footer />
@@ -76,6 +77,7 @@ class App extends Component {
           <Route exact path='/' component={this.LandingSideNav}/>
           <Route path='/check-in' component={this.InAppSideNav}/>
           <Route path='/challenge' component={this.InAppSideNav}/>
+          <Route path='/habit' component={this.InAppSideNav}/>
         </Switch>
       </div>
     );

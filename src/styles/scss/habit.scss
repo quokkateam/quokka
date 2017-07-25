@@ -1,0 +1,81 @@
+#progress {
+  position: relative;
+  padding: 0 4%;
+  padding-top: 150px;
+  width: 100%;
+  height: 100px;
+  background-color: $header-dark;
+
+  .bar {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+  }
+}
+
+#habit {
+  padding: 10px 20px;
+  background: #fff;
+  font-size: 16px;
+  text-align: justify;
+
+  .habit-section-title {
+    color: $primary;
+    font-family: Avenir-Next-Medium;
+    padding-bottom:10px;
+  }
+
+  .overview-text {
+    padding-bottom:15px;
+  }
+
+  .habit-item-title {
+    font-size:30px;
+  }
+
+  .icon{
+    font-size:45px;
+  }
+
+  .icon-right{
+    font-size:30px;
+    color: $primary
+  }
+
+  .habit-item:hover{
+    color:orange;
+  }
+
+  .date{
+    font-size:12px;
+  }
+
+  #column1 {
+    text-align:left;
+
+    li{
+      padding:15px;
+      font-size:15px;
+    }
+
+    li:hover{
+      background-color:$light-gray
+    }
+  }
+}
+
+
+@media (max-width: 991px) {
+  #habit {
+    padding: 90px;
+  }
+}
+
+@media (max-width: 768px) {
+  #habit {
+    padding: 75px 4%;
+  }
+}
