@@ -37,7 +37,7 @@ class Challenge extends Component {
         {
           sponsor: {
             id: 1,
-            name: 'The North Face / KEEN',
+            name: 'The North Face',
             logo: 'https://s3-us-west-1.amazonaws.com/quokkadev/images/thenorthface.png',
             url: 'https://thenorthface.com'
           },
@@ -55,11 +55,20 @@ class Challenge extends Component {
         {
           sponsor: {
             id: 3,
-            name: 'Stanford Rec',
+            name: 'Stanford Recreation',
             logo: 'https://s3-us-west-1.amazonaws.com/quokkadev/images/stanford-rec.png',
             url: 'http://recreation.stanford.edu/'
           },
           prize: 'Free personal training session'
+        },
+         {
+          sponsor: {
+            id: 4,
+            name: 'Stanford Athletics',
+            logo: 'https://s3-us-west-1.amazonaws.com/quokkadev/images/stanford-rec.png',
+            url: 'http://www.gostanford.com/'
+          },
+          prize: 'Stanford swag'
         }
       ],
       suggestions: [
