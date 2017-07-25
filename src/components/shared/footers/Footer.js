@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import FooterLinkSection from './FooterLinkSection'
+import FooterLinkSection from './FooterLinkSection';
 
 const linkSections = {
   quokka: [

@@ -1,7 +1,7 @@
+import Form from '../shared/form/Form';
+import FormQA from '../shared/form/FormQA';
+import LgSpinnerBtn from '../widgets/LgSpinnerBtn';
 import React from 'react';
-import Form from '../shared/form/Form'
-import FormQA from '../shared/form/FormQA'
-import LgSpinnerBtn from '../widgets/LgSpinnerBtn'
 
 const SUCCESS_MESSAGE_DURATION = 3000;
 
@@ -19,21 +19,21 @@ class CheckInForm extends Form {
   componentDidUpdate() {
     // Set up handlers for when our component changes state
     switch (this.state.status) {
-      case this.status.SERIALIZING:
-        this.onSerializing();
-        break;
-      case this.status.COMPLETE:
-        this.onComplete();
-        break;
-      case this.status.SENDING:
-        // Do nothing.
-        break;
-      case this.status.STATIC:
-        // Do nothing.
-        break;
-      default:
-        console.warn('Unexpected status case');
-        break;
+    case this.status.SERIALIZING:
+      this.onSerializing();
+      break;
+    case this.status.COMPLETE:
+      this.onComplete();
+      break;
+    case this.status.SENDING:
+      // Do nothing.
+      break;
+    case this.status.STATIC:
+      // Do nothing.
+      break;
+    default:
+      console.warn('Unexpected status case');
+      break;
     }
 
     return true;

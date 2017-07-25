@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+
 import BannerSection from './BannerSection';
-import CheckInSection from './CheckInSection';
-import SuggestionsSection  from './SuggestionsSection';
-import PrizesSection from './PrizesSection';
 import ChallengeSection  from './ChallengeSection';
-import OverviewSection from './OverviewSection';
+import CheckInSection from './CheckInSection';
 import InviteFriendsSection from './InviteFriendsSection';
+import OverviewSection from './OverviewSection';
+import PrizesSection from './PrizesSection';
+import SuggestionsSection  from './SuggestionsSection';
 
 class Challenge extends Component {
   

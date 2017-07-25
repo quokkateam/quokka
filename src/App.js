@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom'
-import Main from './Main'
-import LandingHeader from './components/shared/headers/LandingHeader'
-import AppHeader from './components/shared/headers/AppHeader'
-import Footer from './components/shared/footers/Footer'
-import SideNav from './components/shared/SideNav'
-import $ from 'jquery'
+import { Route, Switch } from 'react-router-dom';
+
+import $ from 'jquery';
+import AppHeader from './components/shared/headers/AppHeader';
+import Footer from './components/shared/footers/Footer';
+import LandingHeader from './components/shared/headers/LandingHeader';
+import Main from './Main';
+import SideNav from './components/shared/SideNav';
 
 class App extends Component {
 

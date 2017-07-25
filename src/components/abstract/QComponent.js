@@ -7,4 +7,4 @@ class QComponent extends Component {
   }
 }
 
-export default QComponent
+export default QComponent;

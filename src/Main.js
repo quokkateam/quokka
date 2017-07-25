@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom'
-import Home from './components/home/Home'
-import SignUp from './components/auth/SignUp'
-import SignIn from './components/auth/SignIn'
-import Challenge from './components/challenge/Challenge'
-import Habit from './components/habit/Habit'
-import CheckIn from './components/check-in/CheckIn'
+import { Route, Switch } from 'react-router-dom';
+
+import Challenge from './components/challenge/Challenge';
+import CheckIn from './components/check-in/CheckIn';
+import Habit from './components/habit/Habit';
+import Home from './components/home/Home';
+import SignIn from './components/auth/SignIn';
+import SignUp from './components/auth/SignUp';
 
 class Main extends Component {
 
