@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CheckInForm from './CheckInForm'
+import CheckInForm from './CheckInForm';
 
 class CheckIn extends Component {
 

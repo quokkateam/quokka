@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import HorizSpinner from './spinners/HorizSpinner'
+import HorizSpinner from './spinners/HorizSpinner';
 
 class LgSpinnerBtn extends Component {
 

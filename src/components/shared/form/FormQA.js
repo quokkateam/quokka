@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import FormInput from './FormInput'
+import FormInput from './FormInput';
 
 class FormQA extends Component {
 
@@ -19,15 +19,15 @@ class FormQA extends Component {
     var freeRespLong = <FormInput required={true} useTextarea={true} classes={this.props.answerClasses} placeholder={this.props.placeholder} defaultValue={this.props.answer || {}.text} name={this.props.name} ref={this.setAnswerRef}/>;
 
     switch (this.props.type) {
-      case 'fr-long':
-        return freeRespLong;
-      case 'fr-short':
-        return <FormInput required={true} classes={this.props.answerClasses} placeholder={this.props.placeholder} defaultValue={this.props.answer || {}.text} name={this.props.name} ref={this.setAnswerRef}/>;
-      case 'multi-choice':
-        // TODO: add multiple choice answer component
-        break;
-      default:
-        return freeRespLong;
+    case 'fr-long':
+      return freeRespLong;
+    case 'fr-short':
+      return <FormInput required={true} classes={this.props.answerClasses} placeholder={this.props.placeholder} defaultValue={this.props.answer || {}.text} name={this.props.name} ref={this.setAnswerRef}/>;
+    case 'multi-choice':
+      // TODO: add multiple choice answer component
+      break;
+    default:
+      return freeRespLong;
     }
   }
 
@@ -48,7 +48,7 @@ class FormQA extends Component {
         id: (this.props.answer || {}).id,
         text: this.answer.serialize()
       }
-    }
+    };
   }
 
   render() {

@@ -1,6 +1,6 @@
-import React from 'react';
-import QComponent from '../../abstract/QComponent'
 import $ from 'jquery';
+import QComponent from '../../abstract/QComponent';
+import React from 'react';
 
 class FormInput extends QComponent {
 
@@ -72,7 +72,7 @@ class FormInput extends QComponent {
     var defaultValue = this.props.defaultValue || '';
     var classes = this.getClassNames();
 
-    return !!this.props.useTextarea ?
+    return this.props.useTextarea ?
       <textarea className={classes} name={name} placeholder={placeholder} defaultValue={defaultValue} onKeyUp={this.onKeyUp} ref={this.setInputRef}></textarea> :
       <input type="text" className={classes} name={name} placeholder={placeholder} defaultValue={defaultValue} onKeyUp={this.onKeyUp} ref={this.setInputRef}/>;
   }

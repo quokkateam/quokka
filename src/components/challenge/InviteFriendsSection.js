@@ -1,8 +1,8 @@
+import $ from 'jquery';
+import FormInput from '../shared/form/FormInput';
+import LgSpinnerBtn from '../widgets/LgSpinnerBtn';
+import QComponent from '../abstract/QComponent';
 import React from 'react';
-import FormInput from '../shared/form/FormInput'
-import LgSpinnerBtn from '../widgets/LgSpinnerBtn'
-import QComponent from '../abstract/QComponent'
-import $ from 'jquery'
 
 // status map for managing state
 const status = {
@@ -40,28 +40,28 @@ class InviteFriendsSection extends QComponent {
   // Update the 'onMobile' state any time the window changes size
   listenForWindowResize() {
     $(window).resize(() => {
-      this.setState({ onMobile: window.innerWidth < this.MOBILE_THRESH })
+      this.setState({ onMobile: window.innerWidth < this.MOBILE_THRESH });
     });
   }
 
   componentDidUpdate() {
     // Set up handlers for when our component changes state
     switch (this.state.status) {
-      case status.SERIALIZING:
-        this.onSerializing();
-        break;
-      case status.COMPLETE:
-        this.onComplete();
-        break;
-      case status.SENDING:
-        // Do nothing.
-        break;
-      case status.STATIC:
-        // Do nothing.
-        break;
-      default:
-        console.warn('Unexpected status case');
-        break;
+    case status.SERIALIZING:
+      this.onSerializing();
+      break;
+    case status.COMPLETE:
+      this.onComplete();
+      break;
+    case status.SENDING:
+      // Do nothing.
+      break;
+    case status.STATIC:
+      // Do nothing.
+      break;
+    default:
+      console.warn('Unexpected status case');
+      break;
     }
 
     return true;

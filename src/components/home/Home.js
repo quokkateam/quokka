@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import Welcome from './Welcome'
-import Mission from './Mission'
-import About from './About'
-import Contact from './Contact'
-import $ from 'jquery'
+
+import $ from 'jquery';
+import About from './About';
+import Contact from './Contact';
+import Mission from './Mission';
+import Welcome from './Welcome';
 
 class Home extends Component {
 
