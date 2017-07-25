@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 
 import Challenge from './components/challenge/Challenge';
 import CheckIn from './components/check-in/CheckIn';
@@ -67,6 +67,8 @@ class Main extends Component {
           <Route exact path='/challenge' component={Challenge}/>
           <Route path='/habit' component={Habit}/>
           <Route path='/check-in' component={this.CheckIn}/>
+          {/* XXX This redirect must go last! */}
+          <Redirect to='/' />
         </Switch>
       </div>
     );
