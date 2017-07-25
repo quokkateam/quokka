@@ -10,7 +10,7 @@ class PrizesSection extends Component {
   
   getPrizes() {
     return this.props.prizes.map((data) => {
-      return <li key={data.sponsor.id}><a href={data.sponsor.url}><Prize sponsor={data.props.sponsor} prize={data.props.prize}/></a></li>;
+      return <li key={data.sponsor.id}><a href={data.sponsor.url}><Prize sponsor={data.sponsor} prize={data.prize}/></a></li>;
     });
   }
   

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 class BannerSection extends Component {
   render() {
     return (
-      <section id="banner">
+      <div id="banner">
         <div className="dimmer"></div>
         <div className="adj-week-nav prev-week">
           <Link className="quokka-nav-button nav-left banner-nav-button" to="/challenge" />
@@ -16,13 +16,13 @@ class BannerSection extends Component {
         </div>
         <div className="main-content">
           <img className="habit-icon" src={this.props.habitIcon} alt=""/>
-          <div className="habit-name">{this.props.habitName}</div>
+          <div className="habit-name">{this.props.habit}</div>
           <div className="week-date-info">
             <span className="week-num">Week {this.props.weekNum}</span>&middot;
             <span>{this.props.dates.start}</span>&mdash;<span>{this.props.dates.end}</span>
           </div>
         </div>
-      </section>
+      </div>
     );
   }
 }

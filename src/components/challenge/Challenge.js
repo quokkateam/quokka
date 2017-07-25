@@ -88,7 +88,7 @@ class Challenge extends Component {
         <ChallengeSection challenge={this.data.challenge} />
         <PrizesSection prizes={this.data.prizes} />
         <SuggestionsSection suggestions={this.data.suggestions} />
-        <CheckInSection />
+        <CheckInSection weekNum={this.data.weekNum} />
         <InviteFriendsSection />
       </div>
     );
