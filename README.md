@@ -49,9 +49,7 @@ Home of the Quokka web app
 
 ### Ruby
 
-    ```
-    $ https://www.ruby-lang.org/en/documentation/installation/
-    ```
+<https://www.ruby-lang.org/en/documentation/installation/>
 
 ### Sass
 
