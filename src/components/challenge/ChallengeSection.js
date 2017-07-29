@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import QuokkaMarkdown from '../shared/QuokkaMarkdown';
+
 class ChallengeSection extends Component {
   render() {
     return (
@@ -12,7 +14,7 @@ class ChallengeSection extends Component {
               <span className="point-count">{this.props.challenge.points}</span>
             </div>
           </div>
-          <div className="challenge-card-body">{this.props.challenge.text}</div>
+          <div className="challenge-card-body">{<QuokkaMarkdown source={this.props.challenge.text}/>}</div>
         </div>
       </div>
     );
