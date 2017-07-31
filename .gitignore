@@ -24,3 +24,7 @@
 src/styles/css/*
 
 static.json
+
+.idea/
+
+*.log
