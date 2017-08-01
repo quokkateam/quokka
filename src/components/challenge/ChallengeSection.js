@@ -10,11 +10,11 @@ class ChallengeSection extends Component {
           <div className="challenge-card-header">
             <div className="challenge-section-title">Challenge</div>
             <div className="points">
-              <img src="https://s3-us-west-1.amazonaws.com/quokkadev/images/leaf.png" alt=""/>
+              <img src="https://s3-us-west-1.amazonaws.com/quokkadev/images/leaf.png" alt="" />
               <span className="point-count">{this.props.challenge.points}</span>
             </div>
           </div>
-          <div className="challenge-card-body">{<QuokkaMarkdown source={this.props.challenge.text}/>}</div>
+          <div className="challenge-card-body"><QuokkaMarkdown source={this.props.challenge.text} /></div>
         </div>
       </div>
     );
