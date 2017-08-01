@@ -20,8 +20,8 @@ class Challenge extends Component {
       habitIcon: 'https://s3-us-west-1.amazonaws.com/quokkadev/images/running-green.png',
       weekNum: 4,
       dates: {
-        start: 'Sept 17', // TODO: use MM/DD/YYYY and add moment() date formatter library
-        end: 'Sept 24'
+        start: 'OCT 15', // TODO: use MM/DD/YYYY and add moment() date formatter library
+        end: 'OCT 22'
       },
       overview: [
         {
