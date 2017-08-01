@@ -69,7 +69,7 @@ avoid plateaus in workout performance and also improve adherence.
 Figuring out what activities get you most excited and motivated will be
 key to getting consistent physical activity.`
         }],
-      challenge of the week: {
+      challenge: {
         text: `
 1. Try 3 different types of exercise this week
 2. Walk or bike instead of driving, and take stairs over elevators

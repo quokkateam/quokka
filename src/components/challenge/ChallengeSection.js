@@ -8,7 +8,7 @@ class ChallengeSection extends Component {
       <div className="container-fluid challenge-card">
         <div className="row">
           <div className="challenge-card-header">
-            <div className="challenge-section-title">Challenge</div>
+            <div className="challenge-section-title">Challenge of the Week</div>
             <div className="points">
               <img src="https://s3-us-west-1.amazonaws.com/quokkadev/images/leaf.png" alt="" />
               <span className="point-count">{this.props.challenge.points}</span>
