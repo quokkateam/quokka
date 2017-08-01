@@ -20,8 +20,8 @@ class Challenge extends Component {
       habitIcon: 'https://s3-us-west-1.amazonaws.com/quokkadev/images/running-green.png',
       weekNum: 4,
       dates: {
-        start: 'Sept 17', // TODO: use MM/DD/YYYY and add moment() date formatter library
-        end: 'Sept 24'
+        start: 'OCT 15', // TODO: use MM/DD/YYYY and add moment() date formatter library
+        end: 'OCT 22'
       },
       overview: [
         {
@@ -69,7 +69,7 @@ avoid plateaus in workout performance and also improve adherence.
 Figuring out what activities get you most excited and motivated will be
 key to getting consistent physical activity.`
         }],
-      challenge: {
+      challenge of the week: {
         text: `
 1. Try 3 different types of exercise this week
 2. Walk or bike instead of driving, and take stairs over elevators
