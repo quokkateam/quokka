@@ -122,7 +122,7 @@ key to getting consistent physical activity.`
    F45 Cardio, Cardio Kickboxing, or Barre Sculpt.`,
         `Do yoga in Memorial Church as part of the monthly [Om Under the
    Dome](http://events.stanford.edu/events/704/70439/).`,
-        `Get together a group of friends, [borrow sports equipment from the
+        `Get together a group of friends, [borrow equipment from the
    gym](http://recreation.stanford.edu/membership/equipment/), and try
    sports like squash, racquetball, and badminton.`,
         `Take free belay lessons, rent shoes for $2 from the Outdoor Center,
