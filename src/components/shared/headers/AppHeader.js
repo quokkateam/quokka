@@ -30,8 +30,7 @@ class AppHeader extends Component {
             <div className="header-dktp">
               <a href="/me" className={this.headerLinkClasses('/me')}>Profile</a>
               <a href="/admin" className={this.headerLinkClasses('/admin')}>Admin</a>
-              <a href="/wall" className={this.headerLinkClasses('/wall')}>Wall</a>
-              <a href="/challenge" className={this.headerLinkClasses('/challenge')}>Challenge</a>
+              <a href="/challenges" className={this.headerLinkClasses('/challenges')}>Challenges</a>
             </div>
             <div className="header-mbl" onClick={this.props.onMenuClick}>
               <i className="fa fa-bars"></i>
