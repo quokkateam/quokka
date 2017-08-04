@@ -1,0 +1,26 @@
+.challenge-ov-subtitle {
+  font-size: 15px;
+  font-family: Avenir-Next-Medium;
+  padding: 10px 15px;
+  border: 1px solid rgba(0,0,75,0.09);
+  border-bottom: none;
+  cursor: pointer;
+}
+
+.challenge-ov-content {
+  border: 1px solid rgba(0,0,75,0.06);
+  border-bottom: none;
+  background-color: rgba(0,0,75,0.04);
+  padding: 15px;
+}
+
+.overview-subsection:last-child {
+  .challenge-ov-subtitle {
+    border-bottom: 1px solid rgba(0,0,75,0.09);
+  }
+
+  .challenge-ov-content {
+    border-top: none;
+    border-bottom: 1px solid rgba(0,0,75,0.06);
+  }
+}

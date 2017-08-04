@@ -1,32 +1,24 @@
 import React, { Component } from 'react';
-
-import QuokkaMarkdown from '../shared/QuokkaMarkdown';
+import OverviewSubSection from './OverviewSubSection';
 
 class OverviewSection extends Component {
+  constructor(props) {
+    super(props);
+    this.formatSubSections = this.formatSubSections.bind(this);
+  }
+  
+  formatSubSections() {
+    return this.props.overview.map((data, i) => {
+      return <OverviewSubSection key={i} title={data.title} content={data.content} />;
+    });
+  }
+  
   render() {
     return (
       <div className='container-fluid'>
         <div className='row'>
           <div className='challenge-section-title'>Habit Overview</div>
-          <div className='challenge-section-desc'>
-            <div className='panel-group'>
-              <div className='panel panel-default'>
-                {this.props.overview.map(({ title, content }, index) =>
-                  (<div key={index} >
-                    <div className='panel-heading'>
-                      <h4 className='panel-title'>
-                        {title}
-                      </h4>
-                    </div>
-                    <div className='panel-body'>
-                      <QuokkaMarkdown source={content} />
-                    </div>
-                  </div>
-                  )
-                )}
-              </div>
-            </div>
-          </div>
+          <div className='challenge-section-desc'>{this.formatSubSections()}</div>
         </div>
       </div>
     );
