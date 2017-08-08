@@ -1,0 +1,29 @@
+.sign-up-input {
+  padding-left: 5px;
+  padding-right: 5px;
+  width: calc(33.33% - 36px);
+  float: left;
+
+  .form-input {
+    height: 48px;
+    padding-top: 17px;
+    padding-bottom: 17px;
+  }
+}
+
+.submit-sign-up.lg-spinner-btn {
+  width: 100px;
+  float: left;
+  margin-left: 5px;
+
+  button {
+    height: 48px;
+  }
+}
+
+#signUp {
+  .row {
+    margin: 0 12%;
+    position: relative;
+  }
+}
