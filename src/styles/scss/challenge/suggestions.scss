@@ -3,10 +3,24 @@
     margin-top: 15px;
     margin-bottom: 0;
     list-style: disc;
-    padding-left: 35px;
+    padding-left: 15px;
+    color: $secondary;
+    font-size: 14px;
 
     li {
       margin: 12px 0;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    a {
+      color: $tertiary;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 }

@@ -24,6 +24,7 @@
 
   .challenge-section-title {
     float: left;
+    padding-left: 11px;
   }
 
   .points {
@@ -50,6 +51,14 @@
 .challenge-card-body {
   padding: 20px 0;
   color: black;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 25px;
+
+  ol {
+    padding-left: 26px;
+
+    li {
+      margin: 6px 0;
+    }
+  }
 }
