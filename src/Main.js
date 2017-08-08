@@ -6,7 +6,6 @@ import CheckIn from './components/check-in/CheckIn';
 import Habit from './components/habit/Habit';
 import Home from './components/home/Home';
 import SignIn from './components/auth/SignIn';
-import SignUp from './components/auth/SignUp';
 
 class Main extends Component {
 
@@ -62,7 +61,6 @@ class Main extends Component {
       <div>
         <Switch>
           <Route exact path='/' component={Home}/>
-          <Route exact path='/signup' component={SignUp}/>
           <Route exact path='/signin' component={SignIn}/>
           <Route exact path='/challenge' component={Challenge}/>
           <Route path='/challenges' component={Habit}/>

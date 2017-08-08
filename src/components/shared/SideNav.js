@@ -8,12 +8,11 @@ class SideNav extends Component {
     // keeping as a "var" for now, as I can see the '/admin' link needing to be dynamically added
     var linksMap = {
       'landing': [
-        ['/blog', 'Blog'],
-        ['/signup', 'Sign Up']
+        ['/faq', 'FAQ'],
+        ['/signin', 'Sign In']
       ],
       'in-app': [
-        ['/challenge', 'Challenge'],
-        ['/wall', 'Wall'],
+        ['/challenges', 'Challenges'],
         ['/admin', 'Admin'],
         ['/me', 'Profile']
       ]
