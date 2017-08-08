@@ -65,7 +65,7 @@ class Main extends Component {
           <Route exact path='/signup' component={SignUp}/>
           <Route exact path='/signin' component={SignIn}/>
           <Route exact path='/challenge' component={Challenge}/>
-          <Route path='/habit' component={Habit}/>
+          <Route path='/challenges' component={Habit}/>
           <Route path='/check-in' component={this.CheckIn}/>
           {/* XXX This redirect must go last! */}
           <Redirect to='/' />
