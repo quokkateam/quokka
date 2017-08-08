@@ -95,7 +95,7 @@ class SignUp extends Form {
   }
 
   submitBtnContent() {
-    return this.state.status === this.status.COMPLETE ? 'Thanks!' : 'Join';
+    return this.state.status === this.status.COMPLETE ? 'Thanks!' : 'Sign Up';
   }
   
 	render() {
