@@ -155,9 +155,9 @@ class SignUp extends Form {
     }
   }
   
-	render() {
-		return (
-			<div id="signUp">
+  render() {
+    return (
+      <div id="signUp">
         <div className="container">
           <div className="row">
             <div className="sign-up-input">
@@ -174,8 +174,8 @@ class SignUp extends Form {
           </div>
         </div>
       </div>
-		);
-	}
+    );
+  }
 }
 
 export default SignUp;

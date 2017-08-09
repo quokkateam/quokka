@@ -41,7 +41,7 @@ class Form extends Component {
   
   clear() {
     this.formCompRefs.forEach((formComp) => {
-      formComp.clearInput();
+      formComp.clear();
     });
   }
 

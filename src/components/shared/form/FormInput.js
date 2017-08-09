@@ -12,7 +12,7 @@ class FormInput extends QComponent {
     this.showInvalid = this.showInvalid.bind(this);
     this.onKeyUp = this.onKeyUp.bind(this);
     this.getClassNames = this.getClassNames.bind(this);
-    this.clearInput = this.clearInput.bind(this);
+    this.clear = this.clear.bind(this);
     this.getInputEl = this.getInputEl.bind(this);
   }
 
@@ -62,7 +62,7 @@ class FormInput extends QComponent {
   }
 
   // empty the input
-  clearInput() {
+  clear() {
     $(this.input).val('');
   }
 

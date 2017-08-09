@@ -11,7 +11,7 @@ class FormSelect extends QComponent {
     this.onMobile = this.onMobile.bind(this);
     this.showInvalid = this.showInvalid.bind(this);
     this.getClassNames = this.getClassNames.bind(this);
-    this.clearInput = this.clearInput.bind(this);
+    this.clear = this.clear.bind(this);
     this.selectOptWithVal = this.selectOptWithVal.bind(this);
     this.onChange = this.onChange.bind(this);
   }
@@ -51,7 +51,7 @@ class FormSelect extends QComponent {
     return classes.join(' ');
   }
 
-  clearInput() {
+  clear() {
     $(this.select).val('');
   }
   
