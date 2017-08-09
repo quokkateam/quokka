@@ -26,9 +26,37 @@
   }
 }
 
-#signUp {
-  .row {
-    margin: 0 10%;
-    position: relative;
+#signUp .row {
+  margin: 0 10%;
+  position: relative;
+}
+
+@media (max-width: 1199px) {
+  #signUp {
+    .row {
+      margin: 0 5%;
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  #signUp {
+    .container {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  .sign-up-input, .submit-sign-up.lg-spinner-btn {
+    width: 100%;
+  }
+
+  .sign-up-input {
+    margin-bottom: 10px;
+  }
+
+  .submit-sign-up.lg-spinner-btn {
+    margin-left: 0;
+    padding: 0 5px;
   }
 }

@@ -66,6 +66,12 @@
   }
 }
 
+@media (max-width: 991px) {
+  #welcome {
+    height: 700px;
+  }
+}
+
 @media (max-width: 845px) {
   .welcome-main-text {
     font-size: 50px;
