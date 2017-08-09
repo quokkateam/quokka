@@ -14,38 +14,55 @@ class SignUp extends Form {
     this.schools = [
       {
         value: 'vanderbilt',
-        title: 'Vanderbilt University'
+        title: 'Vanderbilt University',
+        domains: [
+          'vanderbilt',
+          'vu'
+        ]
       },
       {
         value: 'stanford',
-        title: 'Stanford University'
+        title: 'Stanford University',
+        domains: [
+          'stanford'
+        ]
       },
       {
         value: 'emory',
-        title: 'Emory University'
+        title: 'Emory University',
+        domains: [
+          'emory'
+        ]
       }
     ];
     
-    this.setEmailRef = this.setEmailRef.bind(this);
-    this.setNameRef = this.setNameRef.bind(this);
     this.setSchoolRef = this.setSchoolRef.bind(this);
     this.onSerializing = this.onSerializing.bind(this);
     this.onComplete = this.onComplete.bind(this);
     this.submit = this.submit.bind(this);
     this.submitBtnClasses = this.submitBtnClasses.bind(this);
     this.submitBtnContent = this.submitBtnContent.bind(this);
-  }
-  
-  setEmailRef(ref) {
-    this.email = ref;
-  }
-  
-  setNameRef(ref) {
-    this.name = ref;
+    this.onEmailKeyUp = this.onEmailKeyUp.bind(this);
+    this.createDomainRegex = this.createDomainRegex.bind(this);
+    
+    this.createDomainRegex();
   }
   
   setSchoolRef(ref) {
     this.school = ref;
+    this.pushFormCompRef(ref);
+  }
+  
+  createDomainRegex() {
+    this.domain2school = {};
+    
+    this.schools.forEach((school) => {
+      (school.domains || []).forEach((domain) => {
+        this.domain2school[domain] = school.value;
+      });
+    });
+    
+    this.domainRegex = new RegExp('(' + Object.keys(this.domain2school).join('|') + ')', 'i');
   }
 
   componentDidUpdate() {
@@ -120,19 +137,28 @@ class SignUp extends Form {
     return this.state.status === this.status.COMPLETE ? 'Thanks!' : 'Sign Up';
   }
   
+  onEmailKeyUp (val) {
+    var matchedDomain = val.match(this.domainRegex);
+    
+    if (matchedDomain) {
+      var school = this.domain2school[matchedDomain[1].toLowerCase()];
+      this.school.selectOptWithVal(school);
+    }
+  }
+  
 	render() {
 		return (
 			<div id="signUp">
         <div className="container">
           <div className="row">
             <div className="sign-up-input">
-              <FormInput required={true} placeholder='School Email' ref={this.pushFormCompRef}/>
+              <FormInput required={true} placeholder='School Email' ref={this.pushFormCompRef} onKeyUp={this.onEmailKeyUp}/>
             </div>
             <div className="sign-up-input">
               <FormInput required={true} placeholder='Name' ref={this.pushFormCompRef}/>
             </div>
             <div className="sign-up-input">
-              <FormSelect required={true} placeholder='School' options={this.schools} ref={this.pushFormCompRef}/>
+              <FormSelect required={true} placeholder='School' options={this.schools} ref={this.setSchoolRef}/>
             </div>
             <LgSpinnerBtn classes={this.submitBtnClasses()} btnText={this.submitBtnContent()} onClick={this.serialize} />
           </div>

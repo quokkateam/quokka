@@ -12,6 +12,7 @@ class FormSelect extends QComponent {
     this.showInvalid = this.showInvalid.bind(this);
     this.getClassNames = this.getClassNames.bind(this);
     this.clearInput = this.clearInput.bind(this);
+    this.selectOptWithVal = this.selectOptWithVal.bind(this);
   }
 
   setSelectRef(ref) {
@@ -51,6 +52,10 @@ class FormSelect extends QComponent {
 
   clearInput() {
     $(this.select).val('');
+  }
+  
+  selectOptWithVal(val) {
+    $(this.select).val(val);
   }
   
   formatOptions() {
