@@ -1,0 +1,76 @@
+import $ from 'jquery';
+import QComponent from '../../abstract/QComponent';
+import React from 'react';
+
+class FormSelect extends QComponent {
+
+  constructor(props) {
+    super(props);
+    this.setSelectRef = this.setSelectRef.bind(this);
+    this.serialize = this.serialize.bind(this);
+    this.onMobile = this.onMobile.bind(this);
+    this.showInvalid = this.showInvalid.bind(this);
+    this.getClassNames = this.getClassNames.bind(this);
+    this.clearInput = this.clearInput.bind(this);
+  }
+
+  setSelectRef(ref) {
+    this.select = ref;
+  }
+
+  isValid() {
+    var isValid = true;
+
+    if (this.props.required && !this.serialize()) {
+      isValid = false;
+      this.showInvalid();
+    }
+
+    return isValid;
+  }
+
+  serialize() {
+    return $(this.select).find(':selected').val();
+  }
+
+  onMobile() {
+    return window.innerWidth < this.MOBILE_THRESH;
+  }
+
+  // display the input as invalid, usually with a red-border around it.
+  showInvalid() {
+    $(this.select).addClass(this.onMobile() ? 'invalid-mobile' : 'invalid');
+  }
+
+  // accounting for any desired class names that were passed down
+  getClassNames() {
+    var classes = this.props.classes || [];
+    classes.unshift('form-select');  // we want form-select to be 1st
+    return classes.join(' ');
+  }
+
+  clearInput() {
+    $(this.select).val('');
+  }
+  
+  formatOptions() {
+    return (this.props.options || []).map((option, i) => {
+      return <option key={i} value={option.value}>{option.title}</option>;
+    });
+  }
+  
+  render() {
+    return (
+      <div className="form-select-container">
+        <select className={this.getClassNames()} defaultValue={this.props.value || ''} name={this.props.name || ''} ref={this.setSelectRef}>
+          <option value='' disabled>{this.props.placeholder || ''}</option>
+          {this.formatOptions()}
+        </select>
+        <i className="fa fa-caret-down arrow"></i>
+      </div>
+    );
+  }
+
+}
+
+export default FormSelect;

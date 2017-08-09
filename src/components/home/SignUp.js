@@ -1,5 +1,6 @@
 import Form from '../shared/form/Form';
 import FormInput from '../shared/form/FormInput';
+import FormSelect from '../shared/form/FormSelect';
 import LgSpinnerBtn from '../widgets/LgSpinnerBtn';
 import React from 'react';
 
@@ -9,6 +10,22 @@ class SignUp extends Form {
   
   constructor(props) {
     super(props);
+    
+    this.schools = [
+      {
+        value: 'vanderbilt',
+        title: 'Vanderbilt University'
+      },
+      {
+        value: 'stanford',
+        title: 'Stanford University'
+      },
+      {
+        value: 'emory',
+        title: 'Emory University'
+      }
+    ];
+    
     this.setEmailRef = this.setEmailRef.bind(this);
     this.setNameRef = this.setNameRef.bind(this);
     this.setSchoolRef = this.setSchoolRef.bind(this);
@@ -69,8 +86,13 @@ class SignUp extends Form {
     }, 300);
 
     // TODO uncomment this code when we're actually talking to an API.
-    // POST or PUT depending on check-in status
-    // axios.post('/check-in', this.state.formComps).then(() => {
+    
+    var payload = {};
+    ['email', 'name', 'school'].forEach((k, i) => {
+      payload[k] = this.state.formComps[i];
+    });
+    
+    // axios.post('/users', payload).then(() => {
     //  this.setState({ status: status.COMPLETE });
     // });
   }
@@ -110,7 +132,7 @@ class SignUp extends Form {
               <FormInput required={true} placeholder='Name' ref={this.pushFormCompRef}/>
             </div>
             <div className="sign-up-input">
-              <FormInput required={true} placeholder='School' ref={this.pushFormCompRef}/>
+              <FormSelect required={true} placeholder='School' options={this.schools} ref={this.pushFormCompRef}/>
             </div>
             <LgSpinnerBtn classes={this.submitBtnClasses()} btnText={this.submitBtnContent()} onClick={this.serialize} />
           </div>

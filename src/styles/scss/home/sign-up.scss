@@ -4,10 +4,15 @@
   width: calc(33.33% - 36px);
   float: left;
 
-  .form-input {
+  .form-input, .form-select {
     height: 48px;
     padding-top: 17px;
     padding-bottom: 17px;
+    padding-left: 12px;
+  }
+
+  .form-select > .arrow {
+    right: 14px;
   }
 }
 
