@@ -45,6 +45,7 @@ class SignUp extends Form {
       }
     ];
     
+    this.setEmailRef = this.setEmailRef.bind(this);
     this.setSchoolRef = this.setSchoolRef.bind(this);
     this.onSerializing = this.onSerializing.bind(this);
     this.onComplete = this.onComplete.bind(this);
@@ -55,6 +56,11 @@ class SignUp extends Form {
     this.createDomainRegex = this.createDomainRegex.bind(this);
     
     this.createDomainRegex();
+  }
+  
+  setEmailRef(ref) {
+    this.email = ref;
+    this.pushFormCompRef(ref);
   }
   
   setSchoolRef(ref) {
@@ -124,6 +130,8 @@ class SignUp extends Form {
   }
 
   onComplete() {
+    this.props.onSignUp(this.email.serialize());
+    
     setTimeout(() => {
       this.clear();
       this.setState({ status: this.status.STATIC });
@@ -161,7 +169,7 @@ class SignUp extends Form {
         <div className="container">
           <div className="row">
             <div className="sign-up-input">
-              <FormInput required={true} placeholder='School Email' ref={this.pushFormCompRef} onKeyUp={this.onEmailKeyUp}/>
+              <FormInput required={true} placeholder='School Email' ref={this.setEmailRef} onKeyUp={this.onEmailKeyUp}/>
             </div>
             <div className="sign-up-input">
               <FormInput required={true} placeholder='Name' ref={this.pushFormCompRef}/>

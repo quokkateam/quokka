@@ -7,6 +7,7 @@
 // Shared
 @import 'shared/quokka-components';
 @import 'shared/side-nav';
+@import 'shared/banner';
 @import 'shared/headers/header';
 @import 'shared/headers/landing-header';
 @import 'shared/headers/app-header';
@@ -33,7 +34,7 @@
 
 // Challenge
 @import 'challenge/challenge-page';
-@import 'challenge/banner';
+@import 'challenge/challenge-banner';
 @import 'challenge/overview';
 @import 'challenge/challenge-section';
 @import 'challenge/prizes';
