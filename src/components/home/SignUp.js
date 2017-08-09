@@ -11,13 +11,21 @@ class SignUp extends Form {
   constructor(props) {
     super(props);
     
+    // will be accessible from server response as response.schools
+    // will also need to send uuids for schools if not using slugs
     this.schools = [
       {
-        value: 'vanderbilt',
-        title: 'Vanderbilt University',
+        value: 'emory',
+        title: 'Emory University',
         domains: [
-          'vanderbilt',
-          'vu'
+          'emory'
+        ]
+      },
+      {
+        value: 'notre-dame',
+        title: 'University of Notre Dame',
+        domains: [
+          'nd'
         ]
       },
       {
@@ -28,10 +36,11 @@ class SignUp extends Form {
         ]
       },
       {
-        value: 'emory',
-        title: 'Emory University',
+        value: 'vanderbilt',
+        title: 'Vanderbilt University',
         domains: [
-          'emory'
+          'vanderbilt',
+          'vandy'
         ]
       }
     ];
@@ -62,7 +71,7 @@ class SignUp extends Form {
       });
     });
     
-    this.domainRegex = new RegExp('(' + Object.keys(this.domain2school).join('|') + ')', 'i');
+    this.domainRegex = new RegExp('@(' + Object.keys(this.domain2school).join('|') + ')', 'i');
   }
 
   componentDidUpdate() {
