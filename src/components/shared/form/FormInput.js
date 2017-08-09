@@ -50,7 +50,7 @@ class FormInput extends QComponent {
 
     // bubble this up if necessary
     if (this.props.onKeyUp) {
-      this.props.onKeyUp($(this.input).val().trim());
+      this.props.onKeyUp(this.serialize());
     }
   }
 

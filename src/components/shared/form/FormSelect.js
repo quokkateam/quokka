@@ -13,6 +13,7 @@ class FormSelect extends QComponent {
     this.getClassNames = this.getClassNames.bind(this);
     this.clearInput = this.clearInput.bind(this);
     this.selectOptWithVal = this.selectOptWithVal.bind(this);
+    this.onChange = this.onChange.bind(this);
   }
 
   setSelectRef(ref) {
@@ -64,10 +65,19 @@ class FormSelect extends QComponent {
     });
   }
   
+  onChange() {
+    $(this.select).removeClass('invalid invalid-mobile');
+
+    // bubble this up if necessary
+    if (this.props.onChange) {
+      this.props.onChange(this.serialize());
+    }
+  }
+  
   render() {
     return (
       <div className="form-select-container">
-        <select className={this.getClassNames()} defaultValue={this.props.value || ''} name={this.props.name || ''} ref={this.setSelectRef}>
+        <select className={this.getClassNames()} defaultValue={this.props.value || ''} name={this.props.name || ''} onChange={this.onChange} ref={this.setSelectRef}>
           <option value='' disabled>{this.props.placeholder || ''}</option>
           {this.formatOptions()}
         </select>
