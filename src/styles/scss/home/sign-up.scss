@@ -31,6 +31,26 @@
   position: relative;
 }
 
+.school-form-select-container {
+  position: relative;
+
+  .school-not-listed {
+    position: absolute;
+    left: 0;
+    bottom: -34px;
+    font-size: 12px;
+    color: #b4b5ba;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: underline;
+
+    &:hover {
+      color: #c4c5ca;
+    }
+  }
+}
+
 @media (max-width: 1199px) {
   #signUp {
     .row {
@@ -58,5 +78,9 @@
   .submit-sign-up.lg-spinner-btn {
     margin-left: 0;
     padding: 0 5px;
+  }
+
+  .school-form-select-container .school-not-listed {
+    display: none;
   }
 }

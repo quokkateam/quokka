@@ -30,6 +30,7 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  cursor: pointer;
 
   &.invalid {
     box-shadow: 0 0 4px 2px $primary;

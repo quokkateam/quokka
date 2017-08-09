@@ -11,21 +11,21 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.setContactRef = this.setContactRef.bind(this);
-    this.onRequestToJoin = this.onRequestToJoin.bind(this);
+    this.onSubmitSchool = this.onSubmitSchool.bind(this);
   }
 
   setContactRef(ref){
     this.contactSection = ref;
   }
 
-  onRequestToJoin() {
+  onSubmitSchool() {
     $('html, body').stop().animate({ scrollTop: this.contactSection.getTopPosition() }, 600);
   }
 
   render() {
     return (
       <main>
-        <Welcome onRequestToJoin={this.onRequestToJoin} />
+        <Welcome onSubmitSchool={this.onSubmitSchool} />
         <Mission />
         <About />
         <Contact ref={this.setContactRef} />

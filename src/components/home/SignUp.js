@@ -157,8 +157,9 @@ class SignUp extends Form {
             <div className="sign-up-input">
               <FormInput required={true} placeholder='Name' ref={this.pushFormCompRef}/>
             </div>
-            <div className="sign-up-input">
+            <div className="sign-up-input school-form-select-container">
               <FormSelect required={true} placeholder='School' options={this.schools} ref={this.setSchoolRef}/>
+              <div className="school-not-listed" onClick={this.props.onSubmitSchool}>Don't see your school?</div>
             </div>
             <LgSpinnerBtn classes={this.submitBtnClasses()} btnText={this.submitBtnContent()} onClick={this.serialize} />
           </div>
