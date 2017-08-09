@@ -12,7 +12,7 @@ class LandingHeader extends Component {
           </div>
           <div className="header-right">
             <div className="header-dktp">
-              <a href="/signup" className="header-nav-link featured">Sign Up</a>
+              <a href="/signin" className="header-nav-link featured">Sign In</a>
               <a href="/faq" className="header-nav-link">FAQ</a>
             </div>
             <div className="header-mbl" onClick={this.props.onMenuClick}>

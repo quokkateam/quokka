@@ -1,0 +1,86 @@
+.sign-up-input {
+  padding-left: 5px;
+  padding-right: 5px;
+  width: calc(33.33% - 36px);
+  float: left;
+
+  .form-input, .form-select {
+    height: 48px;
+    padding-top: 17px;
+    padding-bottom: 17px;
+    padding-left: 12px;
+  }
+
+  .form-select > .arrow {
+    right: 14px;
+  }
+}
+
+.submit-sign-up.lg-spinner-btn {
+  width: 100px;
+  float: left;
+  margin-left: 5px;
+
+  button {
+    height: 48px;
+  }
+}
+
+#signUp .row {
+  margin: 0 10%;
+  position: relative;
+}
+
+.school-form-select-container {
+  position: relative;
+
+  .school-not-listed {
+    position: absolute;
+    left: calc((100% - 150px) / 2);
+    bottom: -32px;
+    font-size: 12px;
+    color: #bbb;
+    width: 150px;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: underline;
+
+    &:hover {
+      color: #c4c5ca;
+    }
+  }
+}
+
+@media (max-width: 1199px) {
+  #signUp {
+    .row {
+      margin: 0 5%;
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  #signUp {
+    .container {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  .sign-up-input, .submit-sign-up.lg-spinner-btn {
+    width: 100%;
+  }
+
+  .sign-up-input {
+    margin-bottom: 10px;
+  }
+
+  .submit-sign-up.lg-spinner-btn {
+    margin-left: 0;
+    padding: 0 5px;
+  }
+
+  .school-form-select-container .school-not-listed {
+    display: none;
+  }
+}

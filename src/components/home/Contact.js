@@ -94,8 +94,8 @@ class Contact extends QComponent {
 
   onComplete() {
     // Empty inputs
-    this.schoolField.clearInput();
-    this.emailField.clearInput();
+    this.schoolField.clear();
+    this.emailField.clear();
 
     // Reset component back to its default 'STATIC' state, but wait a second
     // so the user can view the success message of the request.

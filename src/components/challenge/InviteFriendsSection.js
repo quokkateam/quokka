@@ -82,7 +82,7 @@ class InviteFriendsSection extends QComponent {
 
   onComplete() {
     // Empty inputs
-    this.emailField.clearInput();
+    this.emailField.clear();
 
     // Reset component back to its default 'STATIC' state, but wait a second
     // so the user can view the success message of the request.

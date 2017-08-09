@@ -19,6 +19,7 @@ class Form extends Component {
 
     this.formCompRefs = [];
     this.pushFormCompRef = this.pushFormCompRef.bind(this);
+    this.clear = this.clear.bind(this);
     this.serialize = this.serialize.bind(this);
   }
 
@@ -36,6 +37,12 @@ class Form extends Component {
     });
 
     return isValid;
+  }
+  
+  clear() {
+    this.formCompRefs.forEach((formComp) => {
+      formComp.clear();
+    });
   }
 
   serialize() {
