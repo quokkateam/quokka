@@ -2,7 +2,7 @@ import $ from 'jquery';
 import React, { Component } from 'react';
 import QuokkaMarkdown from './QuokkaMarkdown';
 
-const TRANSITION_TIME = 300;
+const TRANSITION_TIME = 600;
 
 class Banner extends Component {
   
