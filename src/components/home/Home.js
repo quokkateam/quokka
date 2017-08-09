@@ -30,7 +30,7 @@ class Home extends Component {
 
   onSignUp(email) {
     this.banner.update({
-      message: 'Thanks for joining the Quokka challenge! Check your email at **' + email + '** to verify your account and get the latest updates about the first challenge.',
+      message: 'Thanks for joining the Quokka Challenge! Check your email at **' + email + '** to verify your account and get the latest updates about the first challenge.',
       buttonText: 'Got it'
     });
   }
