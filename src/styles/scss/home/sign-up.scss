@@ -36,11 +36,11 @@
 
   .school-not-listed {
     position: absolute;
-    left: 0;
-    bottom: -34px;
+    left: calc((100% - 150px)/2);
+    bottom: -32px;
     font-size: 12px;
-    color: #b4b5ba;
-    width: 100%;
+    color: #bbb;
+    width: 150px;
     text-align: center;
     cursor: pointer;
     text-decoration: underline;
