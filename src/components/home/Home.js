@@ -6,7 +6,6 @@ import Contact from './Contact';
 import Mission from './Mission';
 import Welcome from './Welcome';
 
-
 class Home extends Component {
 
   constructor(props) {
