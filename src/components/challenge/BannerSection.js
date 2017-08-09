@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 class BannerSection extends Component {
   render() {
     return (
-      <div id="banner">
+      <div id="challengeBanner">
         <div className="dimmer"></div>
         <div className="adj-week-nav prev-week">
           <Link to="/challenge">
