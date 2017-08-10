@@ -10,6 +10,8 @@ class FormInput extends QComponent {
     this.serialize = this.serialize.bind(this);
     this.onMobile = this.onMobile.bind(this);
     this.showInvalid = this.showInvalid.bind(this);
+    this.addInvalidBorder = this.addInvalidBorder.bind(this);
+    this.addInvalidShadow = this.addInvalidShadow.bind(this);
     this.onKeyUp = this.onKeyUp.bind(this);
     this.getClassNames = this.getClassNames.bind(this);
     this.clear = this.clear.bind(this);
@@ -39,14 +41,22 @@ class FormInput extends QComponent {
     return window.innerWidth < this.MOBILE_THRESH;
   }
 
-  // display the input as invalid, usually with a red-border around it.
+  // display the input as invalid
   showInvalid() {
-    $(this.input).addClass(this.onMobile() ? 'invalid-mobile' : 'invalid');
+    this.onMobile() && !this.props.useTextarea ? this.addInvalidBorder() : this.addInvalidShadow();
+  }
+  
+  addInvalidBorder() {
+    $(this.input).addClass('invalid-border');
+  }
+  
+  addInvalidShadow() {
+    $(this.input).addClass('invalid-shadow');
   }
 
   // remove any invalid display of the input field when user begins typing again
   onKeyUp() {
-    $(this.input).removeClass('invalid invalid-mobile');
+    $(this.input).removeClass('invalid-border invalid-shadow');
 
     // bubble this up if necessary
     if (this.props.onKeyUp) {
