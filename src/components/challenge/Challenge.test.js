@@ -7,7 +7,7 @@ describe('<Challenge />', () => {
   it('renders correctly', () => {
     const challenge = renderer.create(
       <MemoryRouter>
-        <Challenge />
+        <Challenge match={{ params: { weekNum: 1} }} />
       </MemoryRouter>
     ).toJSON();
     expect(challenge).toMatchSnapshot();

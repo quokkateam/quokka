@@ -67,16 +67,16 @@ class App extends Component {
         <div id="appContainer" className={document.location.pathname.split('/')[1]} ref={this.setAppContainerRef}>
           <Switch>
             <Route exact path='/' component={this.LandingHeaderWProps}/>
-            <Route path='/check-in' component={this.AppHeaderWProps}/>
-            <Route path='/challenge' component={this.AppHeaderWProps}/>
+            <Route path='/check-in/week:weekNum' component={this.AppHeaderWProps}/>
+            <Route path='/challenge/week:weekNum' component={this.AppHeaderWProps}/>
           </Switch>
           <Main />
           <Footer />
         </div>
         <Switch>
           <Route exact path='/' component={this.LandingSideNav}/>
-          <Route path='/check-in' component={this.InAppSideNav}/>
-          <Route path='/challenge' component={this.InAppSideNav}/>
+          <Route path='/check-in/week:weekNum' component={this.InAppSideNav}/>
+          <Route path='/challenge/week:weekNum' component={this.InAppSideNav}/>
         </Switch>
       </div>
     );

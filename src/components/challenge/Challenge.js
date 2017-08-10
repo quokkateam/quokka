@@ -13,6 +13,9 @@ class Challenge extends Component {
 
   constructor(props) {
     super(props);
+    
+    // use for fetching week info from DB
+    this.weekNum = this.props.match.params.weekNum;
 
     const links = [
       'https://www.cdc.gov/physicalactivity/basics/pa-health/index.htm#StrengthenBonesMuscle',
