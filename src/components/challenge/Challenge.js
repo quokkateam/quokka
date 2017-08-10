@@ -14,6 +14,17 @@ class Challenge extends Component {
   constructor(props) {
     super(props);
 
+    const links = [
+      'https://www.cdc.gov/physicalactivity/basics/pa-health/index.htm#StrengthenBonesMuscle',
+      'http://news.stanford.edu/2017/07/20/self-perceptions-linked-shorter-lifespans/',
+      'http://www.health.gov/paguidelines/',
+      'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3404815/',
+      'https://www.ncbi.nlm.nih.gov/pubmed/25931456',
+      'https://health.clevelandclinic.org/2016/02/head-toe-benefits-cardio-workout-infographic/'
+    ];
+
+    const formatLink = (i) => `[[${i}]](${links[i - 1]})`;
+
     // Simulating server-responded payload
     this.data = {
       habit: 'Exercise',
@@ -28,12 +39,12 @@ class Challenge extends Component {
           title: 'What’s the science say?',
           content: `Regular physical activity is important for increasing energy and focus,
 strengthening bones and muscles, and increasing longevity
-[[1]](https://www.cdc.gov/physicalactivity/basics/pa-health/index.htm#StrengthenBonesMuscle).
+${formatLink(1)}.
 It'll also help you manage stress and anxiety and reduce your risk of
 cardiovascular disease and obesity. Even our perceptions and mindsets on
 how physically active we are can predict health and longevity in the
 domains of stress, diet, and obesity
-[[2]](http://news.stanford.edu/2017/07/20/self-perceptions-linked-shorter-lifespans/).`
+${formatLink(2)}.`
         }, {
           title: 'How much exercise should I get?',
           content: `The Physical Activity Guidelines for Americans recommends 2.5 hours per
@@ -41,7 +52,7 @@ week of moderate-intensity aerobic activity (or 75 minutes of more
 vigorous exercise) for good general health. Depending on how intense the
 aerobic activity, you could take a brisk 30-min walk 5x a week or play a
 high-intensity sport for a shorter period
-[[3]](http://www.health.gov/paguidelines/). Adding in strength
+${formatLink(3)}. Adding in strength
 training twice a week can help with weight loss and increase your
 resting metabolic rate on top of all this!`
         }, {
@@ -51,8 +62,8 @@ Sitting for prolonged periods throughout the day has been linked to
 heart disease and diabetes, and stepping away from the chair or even
 just standing for a few minutes every hour can help reduce these
 negative effects
-[[4]](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3404815/),
-[[5]](https://www.ncbi.nlm.nih.gov/pubmed/25931456). Choosing to walk
+${formatLink(4)},
+${formatLink(5)}. Choosing to walk
 or bike, taking the stairs, and cleaning your room are easy ways to
 incorporate more physical activity in your day.`
         }, {
@@ -61,7 +72,7 @@ incorporate more physical activity in your day.`
 muscles, preventing injury, and improving your metabolism. Cardio
 (aerobic exercise that elevates your heart rate) improves heart health,
 helps with weight loss, and increases your metabolism, too
-[[6]](https://health.clevelandclinic.org/2016/02/head-toe-benefits-cardio-workout-infographic/).`
+${formatLink(6)}.`
         }, {
           title: 'If you’re getting bored, switch it up!',
           content: `Try mixing up your workout—varying your exercise routines will help you
@@ -148,14 +159,7 @@ key to getting consistent physical activity.`
           habit: 'Journaling'
         }
       },
-      links: [
-        'https://www.cdc.gov/physicalactivity/basics/pa-health/index.htm#StrengthenBonesMuscle',
-        'http://news.stanford.edu/2017/07/20/self-perceptions-linked-shorter-lifespans/',
-        'http://www.health.gov/paguidelines/',
-        'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3404815/',
-        'https://www.ncbi.nlm.nih.gov/pubmed/25931456',
-        'https://health.clevelandclinic.org/2016/02/head-toe-benefits-cardio-workout-infographic/'
-      ]
+      links: links
     };
   }
 
