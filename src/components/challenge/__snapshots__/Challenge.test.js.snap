@@ -15,7 +15,7 @@ exports[`<Challenge /> renders correctly 1`] = `
         className="adj-week-nav prev-week"
       >
         <a
-          href="/challenge"
+          href="/challenge/week4"
           onClick={[Function]}
         >
           <div
@@ -32,7 +32,7 @@ exports[`<Challenge /> renders correctly 1`] = `
         className="adj-week-nav next-week"
       >
         <a
-          href="/challenge"
+          href="/challenge/week4"
           onClick={[Function]}
         >
           <div

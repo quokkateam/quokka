@@ -7,13 +7,13 @@ class BannerSection extends Component {
       <div id="challengeBanner">
         <div className="dimmer"></div>
         <div className="adj-week-nav prev-week">
-          <Link to="/challenge">
+          <Link to={'/challenge/week' + this.props.adjHabits.prev.weekNum}>
             <div className="quokka-nav-button nav-left banner-nav-button"></div>
             <span className="adj-challenge-title">{this.props.adjHabits.prev.habit}</span>
           </Link>
         </div>
         <div className="adj-week-nav next-week">
-          <Link to="/challenge">
+          <Link to={'/challenge/week' + this.props.adjHabits.next.weekNum}>
             <div className="quokka-nav-button nav-right banner-nav-button"></div>
             <span className="adj-challenge-title">{this.props.adjHabits.next.habit}</span>
           </Link>

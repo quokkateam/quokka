@@ -154,11 +154,11 @@ key to getting consistent physical activity.`
       ],
       adjHabits: {
         prev: {
-          weekNum: 3,
+          weekNum: 4, // will be 3
           habit: 'Sleep'
         },
         next: {
-          weekNum: 5,
+          weekNum: 4, // will be 5
           habit: 'Journaling'
         }
       },
