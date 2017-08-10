@@ -720,14 +720,21 @@ exports[`<Challenge /> renders correctly 1`] = `
     <div
       className="row challenge-invite-friends-form"
     >
-      <input
-        className="form-input contact-field"
-        defaultValue=""
-        name="email"
-        onKeyUp={[Function]}
-        placeholder="Email Address"
-        type="text"
-      />
+      <div
+        className="email-input"
+      >
+        <div
+          className="invalid-message"
+        />
+        <input
+          className="form-input contact-field"
+          defaultValue=""
+          name="email"
+          onKeyUp={[Function]}
+          placeholder="Email"
+          type="text"
+        />
+      </div>
       <button
         className="quokka-nav-button nav-right submit-desktop"
         onClick={[Function]}
