@@ -41,7 +41,7 @@ class FormSelect extends QComponent {
 
   // display the input as invalid, usually with a red-border around it.
   showInvalid() {
-    $(this.select).addClass(this.onMobile() ? 'invalid-mobile' : 'invalid');
+    $(this.select).addClass(this.onMobile() ? 'invalid-border' : 'invalid-shadow');
   }
 
   // accounting for any desired class names that were passed down
@@ -66,7 +66,7 @@ class FormSelect extends QComponent {
   }
   
   onChange() {
-    $(this.select).removeClass('invalid invalid-mobile');
+    $(this.select).removeClass('invalid-border invalid-shadow');
 
     // bubble this up if necessary
     if (this.props.onChange) {

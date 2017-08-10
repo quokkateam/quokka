@@ -51,6 +51,16 @@
   }
 }
 
+.email-input {
+  .invalid-message {
+    color: $bright-red;
+  }
+
+  .form-input.invalid-border {
+    border-color: $bright-red;
+  }
+}
+
 @media (max-width: 1199px) {
   #signUp {
     .row {

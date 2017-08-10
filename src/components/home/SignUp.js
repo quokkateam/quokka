@@ -1,5 +1,6 @@
 import Form from '../shared/form/Form';
 import FormInput from '../shared/form/FormInput';
+import EmailInput from '../shared/form/EmailInput';
 import FormSelect from '../shared/form/FormSelect';
 import LgSpinnerBtn from '../widgets/LgSpinnerBtn';
 import React from 'react';
@@ -169,7 +170,7 @@ class SignUp extends Form {
         <div className="container">
           <div className="row">
             <div className="sign-up-input">
-              <FormInput required={true} placeholder='School Email' ref={this.setEmailRef} onKeyUp={this.onEmailKeyUp}/>
+              <EmailInput required={true} placeholder='School Email' ref={this.setEmailRef} onKeyUp={this.onEmailKeyUp}/>
             </div>
             <div className="sign-up-input">
               <FormInput required={true} placeholder='Name' ref={this.pushFormCompRef}/>

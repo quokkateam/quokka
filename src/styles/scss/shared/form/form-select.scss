@@ -31,11 +31,11 @@
   appearance: none;
   cursor: pointer;
 
-  &.invalid {
+  &.invalid-shadow {
     box-shadow: 0 0 4px 2px $primary;
   }
 
-  &.invalid-mobile {
+  &.invalid-border {
     border: 2px solid $quokka-red;
   }
 }
