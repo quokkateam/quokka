@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
+import Session from '../../utils/Session';
 
 class SideNav extends Component {
 
   constructor(props) {
     super(props);
+    
+    var landingLinks;
+    
+    if (Session.authed()) {
+      landingLinks = [['/challenges', 'Challenges'], ['/faq', 'FAQ']];
+    } else {
+      landingLinks = [['/faq', 'FAQ'], ['/signin', 'Sign In']];
+    }
 
-    // keeping as a "var" for now, as I can see the '/admin' link needing to be dynamically added
     var linksMap = {
-      'landing': [
-        ['/faq', 'FAQ'],
-        ['/signin', 'Sign In']
-      ],
+      'landing': landingLinks,
       'in-app': [
         ['/challenges', 'Challenges'],
         ['/admin', 'Admin'],
