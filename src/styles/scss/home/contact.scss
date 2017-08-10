@@ -2,6 +2,10 @@
   background-color: $secondary;
   color: #fff;
   padding: 70px 0 80px;
+
+  .email-input {
+    width: 310px;
+  }
 }
 
 #contact > .container-fluid {
@@ -84,6 +88,16 @@
     padding-left: 0 !important;
     padding-right: 0 !important;
     margin-bottom: 10px;
+  }
+
+  #contact .email-input {
+    width: 100%;
+
+    .invalid-message {
+      position: relative;
+      top: -4px;
+      left: 1px;
+    }
   }
 
   .contact-field {
