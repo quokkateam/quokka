@@ -598,7 +598,7 @@ exports[`<Challenge /> renders correctly 1`] = `
           Oct 22
           ! Check-ins help you earn Quokka points, provide us with feedback, and make you eligible for this week's prizes! 
           <a
-            href="/check-in"
+            href="/check-in/week4"
           >
             Take me to my Week 
             4
