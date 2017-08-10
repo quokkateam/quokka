@@ -55,6 +55,7 @@ class SignUp extends Form {
     this.submitBtnContent = this.submitBtnContent.bind(this);
     this.onEmailKeyUp = this.onEmailKeyUp.bind(this);
     this.createDomainRegex = this.createDomainRegex.bind(this);
+    this.onEmailUnavailable = this.onEmailUnavailable.bind(this);
     
     this.createDomainRegex();
   }
@@ -126,8 +127,14 @@ class SignUp extends Form {
     });
     
     // axios.post('/users', payload).then(() => {
+    //  // if email is already taken, call this.onEmailUnavailable();
     //  this.setState({ status: status.COMPLETE });
     // });
+  }
+  
+  onEmailUnavailable() {
+    this.email.showEmailUnavailable();
+    this.setState({ status: this.status.STATIC });
   }
 
   onComplete() {
