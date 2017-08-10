@@ -12,4 +12,13 @@
     position: relative;
     top: -11px;
   }
+
+  .email-input {
+    width: 310px;
+    display: inline-block;
+
+    .invalid-message {
+      top: -35px;
+    }
+  }
 }

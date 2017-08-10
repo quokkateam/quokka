@@ -6,11 +6,11 @@
   color: $default-dark;
   width: 100%;
 
-  &.invalid {
+  &.invalid-shadow {
     box-shadow: 0 0 4px 2px $primary;
   }
 
-  &.invalid-mobile {
+  &.invalid-border {
     border: 2px solid $quokka-red;
   }
 }
@@ -32,7 +32,7 @@ textarea.form-input {
   resize: none;
   font-size: 14.5px;
 
-  &.invalid {
+  &.invalid-shadow {
     box-shadow: 0 0 2px 1px $quokka-red;
   }
 }

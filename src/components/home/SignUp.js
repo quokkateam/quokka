@@ -1,5 +1,6 @@
 import Form from '../shared/form/Form';
 import FormInput from '../shared/form/FormInput';
+import EmailInput from '../shared/form/EmailInput';
 import FormSelect from '../shared/form/FormSelect';
 import LgSpinnerBtn from '../widgets/LgSpinnerBtn';
 import React from 'react';
@@ -54,6 +55,7 @@ class SignUp extends Form {
     this.submitBtnContent = this.submitBtnContent.bind(this);
     this.onEmailKeyUp = this.onEmailKeyUp.bind(this);
     this.createDomainRegex = this.createDomainRegex.bind(this);
+    this.onEmailUnavailable = this.onEmailUnavailable.bind(this);
     
     this.createDomainRegex();
   }
@@ -125,8 +127,14 @@ class SignUp extends Form {
     });
     
     // axios.post('/users', payload).then(() => {
+    //  // if email is already taken, call this.onEmailUnavailable();
     //  this.setState({ status: status.COMPLETE });
     // });
+  }
+  
+  onEmailUnavailable() {
+    this.email.showEmailUnavailable();
+    this.setState({ status: this.status.STATIC });
   }
 
   onComplete() {
@@ -169,7 +177,7 @@ class SignUp extends Form {
         <div className="container">
           <div className="row">
             <div className="sign-up-input">
-              <FormInput required={true} placeholder='School Email' ref={this.setEmailRef} onKeyUp={this.onEmailKeyUp}/>
+              <EmailInput required={true} placeholder='School Email' ref={this.setEmailRef} onKeyUp={this.onEmailKeyUp}/>
             </div>
             <div className="sign-up-input">
               <FormInput required={true} placeholder='Name' ref={this.pushFormCompRef}/>

@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import FormInput from '../shared/form/FormInput';
+import EmailInput from '../shared/form/EmailInput';
 import LgSpinnerBtn from '../widgets/LgSpinnerBtn';
 import QComponent from '../abstract/QComponent';
 import React from 'react';
@@ -142,7 +142,7 @@ class InviteFriendsSection extends QComponent {
       <div className="container-fluid challenge-invite-friends">
         <div className="leading-contact-text">Have friends who still want to join the Challenge?<br/>Send them an invite.</div>
         <div className="row challenge-invite-friends-form">
-          <FormInput required={true} classes={['contact-field']} name="email" placeholder="Email Address" defaultValue={this.state.email} ref={this.setEmailFieldRef} />
+          <EmailInput required={true} classes={['contact-field']} name="email" defaultValue={this.state.email} ref={this.setEmailFieldRef} />
           <button className={this.submitBtnClasses(false)} onClick={this.serialize}></button>
         </div>
         <div className="submit-mobile-container">
