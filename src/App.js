@@ -2,44 +2,40 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import $ from 'jquery';
-import AppHeader from './components/shared/headers/AppHeader';
+import Header from './components/shared/Header';
 import Footer from './components/shared/footers/Footer';
-import LandingHeader from './components/shared/headers/LandingHeader';
 import Main from './Main';
 import SideNav from './components/shared/SideNav';
+import Themes from './utils/Themes';
 
 class App extends Component {
 
   constructor(props) {
     super(props);
     this.setAppContainerRef = this.setAppContainerRef.bind(this);
+    this.header = this.header.bind(this);
+    this.inAppSideNav = this.inAppSideNav.bind(this);
     this.onMenuClick = this.onMenuClick.bind(this);
-
-    // Set up wrapped instances of our route-dependent components so
-    // that their props can also get passed down.
-    this.LandingHeaderWProps = (props) => {
+  }
+  
+  setAppContainerRef(ref) {
+    this.appContainer = ref;
+  }
+  
+  header(inApp, theme, fixed) {
+    return ((props) => {
       return (
-        <LandingHeader onMenuClick={this.onMenuClick} {...props}/>
+        <Header inApp={inApp} theme={theme} fixed={fixed} onMenuClick={this.onMenuClick} {...props}/>
       );
-    };
-
-    this.AppHeaderWProps = (props) => {
+    });
+  }
+  
+  inAppSideNav() {
+    return ((props) => {
       return (
-        <AppHeader onMenuClick={this.onMenuClick} {...props}/>
+        <SideNav inApp={true} {...props}/>
       );
-    };
-
-    this.LandingSideNav = (props) => {
-      return (
-        <SideNav appRole="landing" {...props}/>
-      );
-    };
-
-    this.InAppSideNav = (props) => {
-      return (
-        <SideNav appRole="in-app" {...props}/>
-      );
-    };
+    });
   }
 
   onMenuClick() {
@@ -57,26 +53,22 @@ class App extends Component {
     }
   }
 
-  setAppContainerRef(ref) {
-    this.appContainer = ref;
-  }
-
   render() {
     return (
       <div>
         <div id="appContainer" className={document.location.pathname.split('/')[1]} ref={this.setAppContainerRef}>
           <Switch>
-            <Route exact path='/' component={this.LandingHeaderWProps}/>
-            <Route path='/check-in/week:weekNum' component={this.AppHeaderWProps}/>
-            <Route path='/challenge/week:weekNum' component={this.AppHeaderWProps}/>
+            <Route exact path='/' theme="blahblah" component={this.header(false, Themes.WHITE_ON_TRANS, false)}/>
+            <Route path='/check-in/week:weekNum' component={this.header(true, Themes.COLOR_ON_WHITE, true)}/>
+            <Route path='/challenge/week:weekNum' component={this.header(true, Themes.COLOR_ON_WHITE, true)}/>
           </Switch>
           <Main />
           <Footer />
         </div>
         <Switch>
-          <Route exact path='/' component={this.LandingSideNav}/>
-          <Route path='/check-in/week:weekNum' component={this.InAppSideNav}/>
-          <Route path='/challenge/week:weekNum' component={this.InAppSideNav}/>
+          <Route exact path='/' component={SideNav}/>
+          <Route path='/check-in/week:weekNum' component={this.inAppSideNav()}/>
+          <Route path='/challenge/week:weekNum' component={this.inAppSideNav()}/>
         </Switch>
       </div>
     );

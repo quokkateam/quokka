@@ -23,9 +23,9 @@ class SideNav extends Component {
       ]
     };
 
-    var appRole = this.props.appRole || '';
+    var appRole = this.props.inApp ? 'in-app' : 'landing';
 
-    this.state = { links: linksMap[appRole || 'landing'] };
+    this.state = { links: linksMap[appRole] };
 
     this.createLinks = this.createLinks.bind(this);
   }
