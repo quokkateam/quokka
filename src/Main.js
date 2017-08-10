@@ -8,11 +8,6 @@ import Home from './components/home/Home';
 import SignIn from './components/auth/SignIn';
 
 class Main extends Component {
-
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div>
