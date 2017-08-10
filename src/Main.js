@@ -14,8 +14,8 @@ class Main extends Component {
         <Switch>
           <Route exact path='/' component={Home}/>
           <Route exact path='/signin' component={SignIn}/>
-          <Route exact path='/challenge/week:weekNum' component={Challenge}/>
-          <Route path='/challenges' component={Habit}/>
+          <Route path='/challenge/week:weekNum' component={Challenge}/>
+          <Route exact path='/challenges' component={Habit}/>
           <Route path='/check-in/week:weekNum' component={CheckIn}/>
           {/* XXX This redirect must go last! */}
           <Redirect to='/' />
