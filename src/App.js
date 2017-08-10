@@ -58,7 +58,7 @@ class App extends Component {
       <div>
         <div id="appContainer" className={document.location.pathname.split('/')[1]} ref={this.setAppContainerRef}>
           <Switch>
-            <Route exact path='/' theme="blahblah" component={this.header(false, Themes.WHITE_ON_TRANS, false)}/>
+            <Route exact path='/' component={this.header(false, Themes.WHITE_ON_TRANS, false)}/>
             <Route path='/check-in/week:weekNum' component={this.header(true, Themes.COLOR_ON_WHITE, true)}/>
             <Route path='/challenge/week:weekNum' component={this.header(true, Themes.COLOR_ON_WHITE, true)}/>
           </Switch>
