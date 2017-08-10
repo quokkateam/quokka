@@ -4,6 +4,8 @@ import EmailInput from '../shared/form/EmailInput';
 import FormSelect from '../shared/form/FormSelect';
 import LgSpinnerBtn from '../widgets/LgSpinnerBtn';
 import React from 'react';
+import Session from '../../utils/Session';
+import StatusCodes from '../../utils/StatusCodes'
 
 const SUCCESS_MESSAGE_DURATION = 3000;
 
@@ -56,6 +58,7 @@ class SignUp extends Form {
     this.onEmailKeyUp = this.onEmailKeyUp.bind(this);
     this.createDomainRegex = this.createDomainRegex.bind(this);
     this.onEmailUnavailable = this.onEmailUnavailable.bind(this);
+    this.onSignUpResp = this.onSignUpResp.bind(this);
     
     this.createDomainRegex();
   }
@@ -114,22 +117,37 @@ class SignUp extends Form {
   submit() {
     this.setState({ status: this.status.SENDING });
 
-    // using setTimeout to simulate network request duration
+    // TODO: remove this code when we're actually talking to an API.
     setTimeout(() => {
       this.setState({ status: this.status.COMPLETE });
     }, 300);
 
-    // TODO uncomment this code when we're actually talking to an API.
-    
-    var payload = {};
-    ['email', 'name', 'school'].forEach((k, i) => {
-      payload[k] = this.state.formComps[i];
-    });
-    
-    // axios.post('/users', payload).then(() => {
-    //  // if email is already taken, call this.onEmailUnavailable();
-    //  this.setState({ status: status.COMPLETE });
+    // TODO: uncomment this code when we're actually talking to an API.
+    // var payload = {};
+    // ['email', 'name', 'school'].forEach((k, i) => {
+    //   payload[k] = this.state.formComps[i];
     // });
+    //
+    // axios.post('/users', payload).then((resp) => {
+    //   this.onSignUpResp(resp);
+    // });
+  }
+  
+  onSignUpResp(resp) {
+    switch (resp.status) {
+    case 200:
+      // Create a new session for the user
+      Session.create(resp);
+      this.setState({ status: this.status.COMPLETE });
+      break;
+    case StatusCodes.EMAIL_UNAVAILABLE:
+      // Email is taken. Let the user know this.
+      this.onEmailUnavailable();
+      this.setState({ status: this.status.COMPLETE });
+      break;
+    default:
+      console.warn('Unexpected error during signup.');
+    }
   }
   
   onEmailUnavailable() {
