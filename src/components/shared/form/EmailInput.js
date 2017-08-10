@@ -9,6 +9,7 @@ class EmailInput extends FormInput {
     this.setInvalidMessageRef = this.setInvalidMessageRef.bind(this);
     this.showInvalidEmail = this.showInvalidEmail.bind(this);
     this.showEmailUnavailable = this.showEmailUnavailable.bind(this);
+    this.showInvalidWithMessage = this.showInvalidWithMessage.bind(this);
     this.hasEmailFormat = this.hasEmailFormat.bind(this);
   }
   
@@ -40,12 +41,15 @@ class EmailInput extends FormInput {
   }
   
   showInvalidEmail() {
-    $(this.invalidMessage).html('Please enter a valid email address').show();
-    this.addInvalidBorder();
+    this.showInvalidWithMessage('Please enter a valid email address');
   }
   
   showEmailUnavailable() {
-    $(this.invalidMessage).html('Email is already taken').show();
+    this.showInvalidWithMessage('Email is already taken');
+  }
+  
+  showInvalidWithMessage(msg) {
+    $(this.invalidMessage).html(msg).show();
     this.addInvalidBorder();
   }
   
