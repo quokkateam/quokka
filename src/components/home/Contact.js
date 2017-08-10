@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import EmailInput from '../shared/form/EmailInput';
 import FormInput from '../shared/form/FormInput';
 import LgSpinnerBtn from '../widgets/LgSpinnerBtn';
 import QComponent from '../abstract/QComponent';
@@ -168,7 +169,7 @@ class Contact extends QComponent {
               <FormInput required={true} classes={['contact-field']} name="school" placeholder="School" defaultValue={this.state.school} ref={this.setSchoolFieldRef} />
             </div>
             <div className="col-md-6 col-sm-12 col-xs-12 contact-field-container">
-              <FormInput required={true} classes={['contact-field']} name="email" placeholder="Email" defaultValue={this.state.email} ref={this.setEmailFieldRef} />
+              <EmailInput required={true} classes={['contact-field']} name="email" defaultValue={this.state.email} ref={this.setEmailFieldRef} />
               <button className={this.submitBtnClasses(false)} onClick={this.serialize}></button>
             </div>
           </div>
