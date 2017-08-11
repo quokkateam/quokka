@@ -6,8 +6,7 @@ class WeeklyProgBar extends Component {
   constructor(props) {
     super(props);
     
-    const transitionDur = 1000; // match with weekly-prog-bar.scss at .wpb.front
-    this.weeklyTransIntv = transitionDur / this.props.weeks.length;
+    this.transitionDur = 1000; // match with weekly-prog-bar.scss at .wpb.front
     
     this.setMovingBarRef = this.setMovingBarRef.bind(this);
     this.indexClass = this.indexClass.bind(this);
@@ -44,12 +43,24 @@ class WeeklyProgBar extends Component {
       return <div key={i} className={classes.join(' ')}></div>;
     });
   }
-  
-  easeInOutCubic(t, b, c, d) {
-    return c*((t=t/d-1)*t*t + 1) + b;
-  }
-  
+
   moveToIndex(i) {
+    this.passIntervalAtIndex(0);
+    
+    // currently for 3 movements
+    // TODO: add function or hardcoded map of interval times
+    setTimeout(() => {
+      this.passIntervalAtIndex(1);
+    }, 0.1 * this.transitionDur);
+    
+    setTimeout(() => {
+      this.passIntervalAtIndex(2);
+    }, 0.25 * this.transitionDur);
+    
+    setTimeout(() => {
+      this.passIntervalAtIndex(i);
+    }, 0.99 * this.transitionDur);
+    
     $(this.movingBar).addClass('w' + this.indexClass(i));
   }
   

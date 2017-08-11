@@ -119,10 +119,14 @@
     height: 24px;
     content: '';
     display: block;
-    background-color: $primary;
     border-radius: 50%;
     position: absolute;
     top: -10px;
     right: -12px;
+    background-color: $primary;
+    background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/running-white.png');
+    background-position: 49% 45%;
+    background-repeat: no-repeat;
+    background-size: 57%;
   }
 }
