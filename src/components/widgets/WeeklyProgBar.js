@@ -51,11 +51,11 @@ class WeeklyProgBar extends Component {
     // TODO: add function or hardcoded map of interval times
     setTimeout(() => {
       this.passIntervalAtIndex(1);
-    }, 0.1 * this.transitionDur);
+    }, 0.2 * this.transitionDur);
     
     setTimeout(() => {
       this.passIntervalAtIndex(2);
-    }, 0.25 * this.transitionDur);
+    }, 0.3 * this.transitionDur);
     
     setTimeout(() => {
       this.passIntervalAtIndex(i);
