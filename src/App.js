@@ -62,6 +62,7 @@ class App extends Component {
             <Route exact path='/faq' component={this.header(false, Themes.COLOR_ON_WHITE, true)}/>
             <Route path='/check-in/week:weekNum' component={this.header(true, Themes.COLOR_ON_WHITE, true)}/>
             <Route path='/challenge/week:weekNum' component={this.header(true, Themes.COLOR_ON_WHITE, true)}/>
+            <Route exact path='/challenges' component={this.header(true, Themes.COLOR_ON_WHITE, true)}/>
           </Switch>
           <Main />
           <Footer />
@@ -71,6 +72,7 @@ class App extends Component {
           <Route exact path='/faq' component={SideNav}/>
           <Route path='/check-in/week:weekNum' component={this.inAppSideNav()}/>
           <Route path='/challenge/week:weekNum' component={this.inAppSideNav()}/>
+          <Route exact path='/challenges' component={this.inAppSideNav()}/>
         </Switch>
       </div>
     );

@@ -6,7 +6,7 @@ class About extends Component {
       <section id="about">
         <div className="container-fluid">
           <div className="row">
-            <div className="col-md-4 col-sm-12 col-xs-12 about-category" id="challenges">
+            <div className="col-md-4 col-sm-12 col-xs-12 about-category" id="aboutChallenges">
               <img className="icon" src="https://s3-us-west-1.amazonaws.com/quokkadev/marketing/images/evidence.png" alt=""/>
               <h2 className="about-category-title">Evidence-Based Challenges</h2>
               <p className="about-category-desc">When students sign up for the program, they’re given weekly challenges—each based around one healthy habit—that are backed with scientific research and provide information about campus resources.</p>
