@@ -18,8 +18,16 @@
 
 .faq-items {
   margin: 0 11%;
-  padding: 50px 40px;
-  border-top: 1px solid rgba(0, 0, 75, 0.06)
+  padding: 50px 40px 20px;
+  border-top: 1px solid rgba(0, 0, 75, 0.06);
+
+  a {
+    color: $tertiary;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 .faq-item {
