@@ -10,7 +10,8 @@
     "react-bootstrap": "^0.31.2",
     "react-dom": "^15.6.1",
     "react-markdown": "^2.5.0",
-    "react-router-dom": "^4.1.1"
+    "react-router-dom": "^4.1.1",
+    "react-tooltip": "^3.3.0"
   },
   "jest": {
     "collectCoverageFrom": [

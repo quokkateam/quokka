@@ -5,6 +5,14 @@
   position: relative;
   height: 25px;
   z-index: 0;
+
+  [data-tip] > div {
+    background-color: $tertiary;
+
+    &.show {
+      opacity: 1;
+    }
+  }
 }
 
 .wpb {
@@ -33,6 +41,7 @@
   position: absolute;
   top: 7.5px;
   z-index: 1;
+  cursor: pointer;
 
   &.l0 {
     left: calc(0 - 5px);
@@ -128,5 +137,15 @@
     background-position: 49% 45%;
     background-repeat: no-repeat;
     background-size: 57%;
+    cursor: pointer;
   }
+}
+
+.curr-week-cover {
+  position: absolute;
+  right: -15px;
+  top: -13px;
+  width: 30px;
+  height: 30px;
+  z-index: 5;
 }
