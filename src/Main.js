@@ -6,7 +6,6 @@ import CheckIn from './components/check-in/CheckIn';
 import FAQ from './components/faq/FAQ';
 import Habit from './components/habit/Habit';
 import Home from './components/home/Home';
-import SignIn from './components/auth/SignIn';
 import Session from './utils/Session';
 
 class Main extends Component {
@@ -23,11 +22,6 @@ class Main extends Component {
       {
         path: '/faq',
         comp: FAQ,
-        exact: true
-      },
-      {
-        path: '/signin',
-        comp: SignIn,
         exact: true
       }
     ];

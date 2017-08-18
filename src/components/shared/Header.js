@@ -53,13 +53,9 @@ class Header extends Component {
       } else {
         links = [
           {
-            text: 'Sign In',
-            href: '/signin',
-            featured: true
-          },
-          {
             text: 'FAQ',
-            href: '/faq'
+            href: '/faq',
+            featured: true
           }
         ];
       }
