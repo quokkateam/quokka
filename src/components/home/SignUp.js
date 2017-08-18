@@ -144,6 +144,11 @@ class SignUp extends Form {
       this.onEmailUnavailable();
       this.setState({ status: this.status.COMPLETE });
       break;
+    case StatusCodes.INVALID_EMAIL_DOMAIN:
+      // Domain for provided email doesn't match selected school's domain
+      this.onInvalidEmailDomain(resp.body.correct_domain);
+      this.setState({ status: this.status.COMPLETE });
+      break;
     default:
       console.warn('Unexpected error during signup.');
     }
@@ -151,6 +156,12 @@ class SignUp extends Form {
   
   onEmailUnavailable() {
     this.email.showEmailUnavailable();
+    this.setState({ status: this.status.STATIC });
+  }
+
+  onInvalidEmailDomain(correctDomain) {
+    var message = this.school.serialize() + ' emails must end with @' + correctDomain;
+    this.email.showInvalidWithMessage(message);
     this.setState({ status: this.status.STATIC });
   }
 
