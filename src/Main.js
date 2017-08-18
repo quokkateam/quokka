@@ -7,19 +7,75 @@ import FAQ from './components/faq/FAQ';
 import Habit from './components/habit/Habit';
 import Home from './components/home/Home';
 import SignIn from './components/auth/SignIn';
+import Session from './utils/Session';
 
 class Main extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.baseRoutes = [
+      {
+        path: '/',
+        comp: Home,
+        exact: true
+      },
+      {
+        path: '/faq',
+        comp: FAQ,
+        exact: true
+      },
+      {
+        path: '/signin',
+        comp: SignIn,
+        exact: true
+      }
+    ];
+
+    this.authedRoutes = [
+      {
+        path: '/challenge/week:weekNum',
+        comp: Challenge,
+        exact: false
+      },
+      {
+        path: '/challenges',
+        comp: Habit,
+        exact: true
+      },
+      {
+        path: '/check-in/week:weekNum',
+        comp: CheckIn,
+        exact: false
+      }
+    ];
+
+    this.getRoutes = this.getRoutes.bind(this);
+  }
+
+  getRoutes() {
+    var routes = this.baseRoutes;
+
+    if (Session.authed()) {
+      this.authedRoutes.forEach((route) => {
+        routes.push(route);
+      });
+    }
+
+    return routes.map((route, i) => {
+      if (route.exact) {
+        return <Route key={i} exact path={route.path} component={route.comp} />;
+      } else {
+        return <Route key={i} path={route.path} component={route.comp} />;
+      }
+    });
+  }
+
   render() {
     return (
       <div>
         <Switch>
-          <Route exact path='/' component={Home}/>
-          <Route exact path='/faq' component={FAQ}/>
-          <Route exact path='/signin' component={SignIn}/>
-          <Route path='/challenge/week:weekNum' component={Challenge}/>
-          <Route exact path='/challenges' component={Habit}/>
-          <Route path='/check-in/week:weekNum' component={CheckIn}/>
-          {/* XXX This redirect must go last! */}
+          {this.getRoutes()}
           <Redirect to='/' />
         </Switch>
       </div>
