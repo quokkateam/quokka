@@ -17,7 +17,7 @@ class FAQ extends Component {
         },
         {
           question: 'What\'s the Quokka Challenge?',
-          answer: 'The Quokka Challenge promotes healthy behaviors that have been empirically shown to improve well-being (e.g., exercise, sleep, healthy eating, mindfulness). The 8-week program is coordinated across multiple universities each school year, and students can sign up [here] if their school is part of the current cohort.'
+          answer: 'The Quokka Challenge promotes healthy behaviors that have been empirically shown to improve well-being (e.g., exercise, sleep, healthy eating, mindfulness). The 8-week program is coordinated across multiple universities each school year, and students can sign up if their school is part of the current cohort.'
         },
         {
           question: 'What are the weekly challenges like?',
