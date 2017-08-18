@@ -1,6 +1,5 @@
 const StatusCodes = {
-  EMAIL_UNAVAILABLE: 1200,
-  INVALID_EMAIL_DOMAIN: 1201
+  INVALID_EMAIL_DOMAIN: 1200
 };
 
 export default StatusCodes;

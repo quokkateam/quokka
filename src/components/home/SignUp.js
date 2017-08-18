@@ -57,7 +57,6 @@ class SignUp extends Form {
     this.submitBtnContent = this.submitBtnContent.bind(this);
     this.onEmailKeyUp = this.onEmailKeyUp.bind(this);
     this.createDomainRegex = this.createDomainRegex.bind(this);
-    this.onEmailUnavailable = this.onEmailUnavailable.bind(this);
     this.onInvalidEmailDomain = this.onInvalidEmailDomain.bind(this);
     this.onSignUpResp = this.onSignUpResp.bind(this);
     
@@ -141,11 +140,6 @@ class SignUp extends Form {
       Session.create(resp);
       this.setState({ status: this.status.COMPLETE });
       break;
-    case StatusCodes.EMAIL_UNAVAILABLE:
-      // Email is taken. Let the user know this.
-      this.onEmailUnavailable();
-      this.setState({ status: this.status.COMPLETE });
-      break;
     case StatusCodes.INVALID_EMAIL_DOMAIN:
       // Domain for provided email doesn't match selected school's domain
       this.onInvalidEmailDomain(resp.body.valid_domains);
@@ -156,11 +150,6 @@ class SignUp extends Form {
     }
   }
   
-  onEmailUnavailable() {
-    this.email.showEmailUnavailable();
-    this.setState({ status: this.status.STATIC });
-  }
-
   onInvalidEmailDomain(validDomains) {
     validDomains = validDomains.map((d) => { return '@' + d; });
     var message = this.school.serialize() + ' emails must end with ' + TextHelper.toProperDelimit(validDomains, ' or ');
