@@ -10,7 +10,6 @@ import StatusCodes from '../../utils/StatusCodes'
 const SUCCESS_MESSAGE_DURATION = 3000;
 
 class SignUp extends Form {
-  
   constructor(props) {
     super(props);
     
@@ -198,7 +197,7 @@ class SignUp extends Form {
               <EmailInput required={true} placeholder='School Email' ref={this.setEmailRef} onKeyUp={this.onEmailKeyUp}/>
             </div>
             <div className="sign-up-input">
-              <FormInput required={true} placeholder='Name' ref={this.pushFormCompRef}/>
+              <FormInput required={true} placeholder='Full Name' ref={this.pushFormCompRef}/>
             </div>
             <div className="sign-up-input school-form-select-container">
               <FormSelect required={true} placeholder='School' options={this.schools} ref={this.setSchoolRef}/>
