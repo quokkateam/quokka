@@ -5,7 +5,8 @@ import FormSelect from '../shared/form/FormSelect';
 import LgSpinnerBtn from '../widgets/LgSpinnerBtn';
 import React from 'react';
 import Session from '../../utils/Session';
-import StatusCodes from '../../utils/StatusCodes'
+import StatusCodes from '../../utils/StatusCodes';
+import TextHelper from '../../utils/TextHelper';
 
 const SUCCESS_MESSAGE_DURATION = 3000;
 
@@ -57,6 +58,7 @@ class SignUp extends Form {
     this.onEmailKeyUp = this.onEmailKeyUp.bind(this);
     this.createDomainRegex = this.createDomainRegex.bind(this);
     this.onEmailUnavailable = this.onEmailUnavailable.bind(this);
+    this.onInvalidEmailDomain = this.onInvalidEmailDomain.bind(this);
     this.onSignUpResp = this.onSignUpResp.bind(this);
     
     this.createDomainRegex();
@@ -144,6 +146,11 @@ class SignUp extends Form {
       this.onEmailUnavailable();
       this.setState({ status: this.status.COMPLETE });
       break;
+    case StatusCodes.INVALID_EMAIL_DOMAIN:
+      // Domain for provided email doesn't match selected school's domain
+      this.onInvalidEmailDomain(resp.body.valid_domains);
+      this.setState({ status: this.status.COMPLETE });
+      break;
     default:
       console.warn('Unexpected error during signup.');
     }
@@ -151,6 +158,13 @@ class SignUp extends Form {
   
   onEmailUnavailable() {
     this.email.showEmailUnavailable();
+    this.setState({ status: this.status.STATIC });
+  }
+
+  onInvalidEmailDomain(validDomains) {
+    validDomains = validDomains.map((d) => { return '@' + d; });
+    var message = this.school.serialize() + ' emails must end with ' + TextHelper.toProperDelimit(validDomains, ' or ');
+    this.email.showInvalidWithMessage(message);
     this.setState({ status: this.status.STATIC });
   }
 
