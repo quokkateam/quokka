@@ -20,6 +20,11 @@ class App extends Component {
   
   setAppContainerRef(ref) {
     this.appContainer = ref;
+
+    $(window).resize(() => {
+      $(this.appContainer).removeClass('show-menu');
+      $('#sideNav').removeClass('show-menu');
+    });
   }
   
   header(inApp, theme, fixed) {
