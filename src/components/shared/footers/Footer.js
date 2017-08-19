@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import FooterLinkSection from './FooterLinkSection';
 
 const linkSections = {
@@ -29,6 +30,7 @@ class Footer extends Component {
             <div className="footer-section col-md-3 col-sm-3 col-xs-6">
               <div className="soc-media-copyright">
                 <div className="soc-media">
+                  {/* eslint-disable */}
                   <a href="#">
                     <i className="fa fa-twitter"></i>
                   </a>
@@ -38,6 +40,7 @@ class Footer extends Component {
                   <a href="#">
                     <i className="fa fa-instagram"></i>
                   </a>
+                  {/* eslint-enable */}
                 </div>
                 <div className="copyright">© 2017 Quokka, Inc.</div>
               </div>
