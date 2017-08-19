@@ -9,12 +9,11 @@ const linkSections = {
   ],
   company: [
     ['/', 'About'],
-    ['/blog', 'Blog'],
-    ['/', 'Schools']
+    ['/faq', 'FAQ']
   ],
   legal: [
-    ['/', 'Terms of Service'],
-    ['/', 'Privacy Policy']
+    ['#', 'Terms of Service'],
+    ['#', 'Privacy Policy']
   ]
 };
 
@@ -33,13 +32,13 @@ class Footer extends Component {
             <div className="footer-section col-md-3">
               <div className="soc-media-copyright">
                 <div className="soc-media">
-                  <a href="/">
+                  <a href="#">
                     <i className="fa fa-twitter"></i>
                   </a>
-                  <a href="/">
+                  <a href="#">
                     <i className="fa fa-facebook"></i>
                   </a>
-                  <a href="/">
+                  <a href="#">
                     <i className="fa fa-instagram"></i>
                   </a>
                 </div>
