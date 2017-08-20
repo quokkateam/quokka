@@ -24,7 +24,7 @@
   },
   "proxies": {
     "/api/": {
-      "origin": "https://quokka-api-prod.herokuapp.com/"
+      "origin": "https://quokka-api-prod.herokuapp.com/api/"
     }
   }
 }
