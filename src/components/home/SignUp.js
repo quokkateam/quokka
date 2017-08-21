@@ -36,18 +36,20 @@ class SignUp extends Form {
     this.school = ref;
     this.pushFormCompRef(ref);
 
-    fetch('/api/schools').then((resp) => {
-      this.schools = resp.data.schools || [];
-      this.createDomainRegex();
+    fetch('/api/schools')
+      .then((resp) => resp.json())
+      .then((data) => {
+        this.schools = data.schools || [];
+        this.createDomainRegex();
 
-      var selectOptions = this.schools.map((s) => {
-        return { value: s.slug, title: s.name };
-      }).sort((a, b) => {
-        return ~~(a.title > b.title);
+        var selectOptions = this.schools.map((s) => {
+          return { value: s.slug, title: s.name };
+        }).sort((a, b) => {
+          return ~~(a.title > b.title);
+        });
+
+        this.school.setState({ options: selectOptions });
       });
-
-      this.school.setState({ options: selectOptions });
-    });
   }
   
   createDomainRegex() {
@@ -102,7 +104,7 @@ class SignUp extends Form {
     fetch('/api/users', {
       method: 'POST',
       headers: {
-          'Content-Type': 'application/json'
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(payload)
     }).then((resp) => {
@@ -116,15 +118,17 @@ class SignUp extends Form {
       this.setState({ status: this.status.COMPLETE });
       break;
     case 400:
-      this.onSignUpError(resp);
+      resp.json().then((data) => {
+        this.onSignUpError(data);
+      });
       break;
     default:
       console.warn('Unexpected error during signup.');
     }
   }
 
-  onSignUpError(resp) {
-    switch (resp.data.error) {
+  onSignUpError(data) {
+    switch (data.error) {
     case StatusCodes.INVALID_EMAIL_DOMAIN:
       this.onInvalidEmailDomain();
       break;
