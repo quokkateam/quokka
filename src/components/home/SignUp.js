@@ -101,7 +101,7 @@ class SignUp extends Form {
       payload[k] = this.state.formComps[i];
     });
 
-    fetch('/api/users/', {
+    fetch('/api/users', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
