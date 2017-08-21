@@ -51,7 +51,7 @@ class SignUp extends Form {
         this.school.setState({ options: selectOptions });
       });
   }
-  
+
   createDomainRegex() {
     this.domain2school = {};
     
@@ -114,7 +114,7 @@ class SignUp extends Form {
   
   onSignUpResp(resp) {
     switch (resp.status) {
-    case 200:
+    case 201:
       this.setState({ status: this.status.COMPLETE });
       break;
     case 400:
