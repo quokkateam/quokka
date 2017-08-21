@@ -14,6 +14,8 @@ class FormSelect extends QComponent {
     this.clear = this.clear.bind(this);
     this.selectOptWithVal = this.selectOptWithVal.bind(this);
     this.onChange = this.onChange.bind(this);
+
+    this.state = { options: this.props.options || [] };
   }
 
   setSelectRef(ref) {
@@ -60,7 +62,7 @@ class FormSelect extends QComponent {
   }
   
   formatOptions() {
-    return (this.props.options || []).map((option, i) => {
+    return this.state.options.map((option, i) => {
       return <option key={i} value={option.value}>{option.title}</option>;
     });
   }
