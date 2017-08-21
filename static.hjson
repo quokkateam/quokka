@@ -1,5 +1,6 @@
 {
   "root": "build/",
+  "https_only": true,
   "routes": {
      "/favicon.ico": "/favicon.ico",
      "/fonts/*": "/fonts/",
@@ -23,11 +24,8 @@
   },
   "proxies": {
     "/api/": {
-      "origin": "http://quokka-api-prod.herokuapp.com/api"
-    },
-    "/.well-known/": {
-      "origin": "http://quokka-api-prod.herokuapp.com/.well-known"
-    },
+      "origin": "https://quokka-api-prod.herokuapp.com/api"
+    }
   }
 }
 
