@@ -8,10 +8,6 @@ import StatusCodes from '../../utils/StatusCodes';
 import TextHelper from '../../utils/TextHelper';
 import axios from 'axios';
 
-var ax = axios.create({
-  baseURL: 'https://quokka-prod-api.herokuapp.com/api'
-});
-
 const SUCCESS_MESSAGE_DURATION = 3000;
 
 class SignUp extends Form {
@@ -41,7 +37,7 @@ class SignUp extends Form {
     this.school = ref;
     this.pushFormCompRef(ref);
 
-    ax.get('/schools').then((resp) => {
+    axios.get('/api/schools').then((resp) => {
       this.schools = resp.data.schools || [];
       this.createDomainRegex();
 
@@ -104,7 +100,7 @@ class SignUp extends Form {
       payload[k] = this.state.formComps[i];
     });
 
-    ax.post('/users', payload).then((resp) => {
+    axios.post('/api/users', payload).then((resp) => {
       this.onSignUpResp(resp);
     });
   }
