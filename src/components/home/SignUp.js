@@ -6,7 +6,6 @@ import LgSpinnerBtn from '../widgets/LgSpinnerBtn';
 import React from 'react';
 import StatusCodes from '../../utils/StatusCodes';
 import TextHelper from '../../utils/TextHelper';
-import axios from 'axios';
 
 const SUCCESS_MESSAGE_DURATION = 3000;
 
@@ -37,7 +36,7 @@ class SignUp extends Form {
     this.school = ref;
     this.pushFormCompRef(ref);
 
-    axios.get('/api/schools').then((resp) => {
+    fetch('/api/schools').then((resp) => {
       this.schools = resp.data.schools || [];
       this.createDomainRegex();
 
@@ -100,7 +99,13 @@ class SignUp extends Form {
       payload[k] = this.state.formComps[i];
     });
 
-    axios.post('/api/users', payload).then((resp) => {
+    fetch('/api/users', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    }).then((resp) => {
       this.onSignUpResp(resp);
     });
   }
