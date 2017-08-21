@@ -126,21 +126,20 @@ class Contact extends QComponent {
   sendContactInfo() {
     this.setState({ status: status.SENDING });
 
-    // TODO uncomment this code when we're actually talking to an API.
-    // var payload = {
-    //   school: this.state.school,
-    //   email: this.state.email
-    // };
+    var payload = {
+      school: this.state.school,
+      email: this.state.email
+    };
 
-    // using setTimeout to simulate network request duration
-    setTimeout(() => {
+    fetch('/api/inquire', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    }).then(() => {
       this.setState({ status: status.COMPLETE });
-    }, 300);
-
-    // TODO uncomment this code when we're actually talking to an API.
-    // axios.post('/api/contact', payload).then(() => {
-    //  this.setState({ status: status.COMPLETE });
-    // });
+    });
   }
 
   submitBtnClasses(mobile) {
