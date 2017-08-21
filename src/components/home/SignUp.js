@@ -38,7 +38,7 @@ class SignUp extends Form {
     this.pushFormCompRef(ref);
 
     axios.get('/api/schools').then((resp) => {
-      this.schools = resp.schools || [];
+      this.schools = resp.data.schools || [];
       this.createDomainRegex();
 
       var selectOptions = this.schools.map((s) => {
@@ -119,7 +119,7 @@ class SignUp extends Form {
   }
 
   onSignUpError(resp) {
-    switch (resp.body.error) {
+    switch (resp.data.error) {
     case StatusCodes.INVALID_EMAIL_DOMAIN:
       this.onInvalidEmailDomain();
       break;
