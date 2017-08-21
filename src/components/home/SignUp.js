@@ -9,7 +9,7 @@ import TextHelper from '../../utils/TextHelper';
 import axios from 'axios';
 
 var ax = axios.create({
-  baseURL: 'https://quokka-prod-api.herokuapp.com/api'
+  baseURL: 'https://quokka-api-prod.herokuapp.com/api'
 });
 
 const SUCCESS_MESSAGE_DURATION = 3000;
