@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import Ajax from '../../utils/Ajax';
 import EmailInput from '../shared/form/EmailInput';
 import FormInput from '../shared/form/FormInput';
 import LgSpinnerBtn from '../widgets/LgSpinnerBtn';
@@ -131,13 +132,7 @@ class Contact extends QComponent {
       email: this.state.email
     };
 
-    fetch('/api/inquire', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(payload)
-    }).then(() => {
+    Ajax.post('/api/inquire', payload).then(() => {
       this.setState({ status: status.COMPLETE });
     });
   }
