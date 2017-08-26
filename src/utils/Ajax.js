@@ -1,3 +1,15 @@
+/*
+  Wrapper around whatwg-fetch for making ajax requests
+
+  Usage example (no usage difference between get/post/put/delete):
+
+    Ajax.get('/api/users', { company: 'My Company' })
+      .then((resp) => resp.json()) // unpack json response data
+      .then((data) => {
+        console.log(data);
+      });
+ */
+
 import $ from 'jquery';
 
 var Ajax;
