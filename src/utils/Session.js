@@ -24,8 +24,8 @@ class Sess {
     days = days || 30;
     var date = new Date();
     date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-    var expires = "expires=" + date.toUTCString();
-    document.cookie = name + "=" + value + "; " + expires;
+    var expires = 'expires=' + date.toUTCString();
+    document.cookie = name + '=' + value + '; ' + expires;
   }
 
   getCookie(name) {
