@@ -9,7 +9,7 @@ class GettingStartedSection extends Component {
         <div className="row">
           <div className="challenge-section-title">Need help getting started?</div>
           <ul className="suggestions-list">{
-            this.props.suggestions.map((suggestion, index) =>
+            (this.props.suggestions || []).map((suggestion, index) =>
               <li key={index}>
                 <QuokkaMarkdown source={suggestion} />
               </li>
