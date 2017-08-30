@@ -1,3 +1,4 @@
+import Ajax from '../../utils/Ajax';
 import EmailInput from '../shared/form/EmailInput';
 import Form from '../shared/form/Form';
 import FormInput from '../shared/form/FormInput';
@@ -36,7 +37,7 @@ class SignUp extends Form {
     this.school = ref;
     this.pushFormCompRef(ref);
 
-    fetch('/api/schools')
+    Ajax.get('/api/schools')
       .then((resp) => resp.json())
       .then((data) => {
         this.schools = data.schools || [];
@@ -101,13 +102,7 @@ class SignUp extends Form {
       payload[k] = this.state.formComps[i];
     });
 
-    fetch('/api/users', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(payload)
-    }).then((resp) => {
+    Ajax.post('/api/users', payload).then((resp) => {
       this.onSignUpResp(resp);
     });
   }
