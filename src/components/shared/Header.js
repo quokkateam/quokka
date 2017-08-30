@@ -43,7 +43,8 @@ class Header extends Component {
         links = [
           {
             text: 'FAQ',
-            href: '/faq'
+            href: '/faq',
+            featured: true
           },
           {
             text: 'Challenges',
