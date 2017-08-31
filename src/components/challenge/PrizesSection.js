@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Prize from './Prize';
+import NewPrizeModal from '../modals/NewPrizeModal';
 import Session from  '../../utils/Session';
 
 class PrizesSection extends Component {
@@ -12,8 +13,13 @@ class PrizesSection extends Component {
     this.onNewPrizeClick = this.onNewPrizeClick.bind(this);
     this.onEditPrize = this.onEditPrize.bind(this);
     this.onRemovePrize = this.onRemovePrize.bind(this);
+    this.setNewPrizeModalRef = this.setNewPrizeModalRef.bind(this);
   }
-  
+
+  setNewPrizeModalRef(ref) {
+    this.newPrizeModal = ref;
+  }
+
   getPrizes() {
     var editable = Session.isAdmin();
     var prizes = this.props.prizes || [];
@@ -44,15 +50,18 @@ class PrizesSection extends Component {
   }
 
   onNewPrizeClick() {
-    console.log('Show modal!');
+    this.newPrizeModal.open();
   }
 
   onEditPrize(prize, sponsor) {
-    console.log('edit', prize, sponsor);
+    this.newPrizeModal.updateAndShow({
+      prize: prize,
+      sponsor: sponsor
+    });
   }
 
   onRemovePrize(prize, sponsor) {
-    console.log('remove', prize, sponsor);
+    // removePrizeConfirmModal
   }
   
   render() {
@@ -66,6 +75,7 @@ class PrizesSection extends Component {
           <ul className="prizes">{this.getPrizes()}</ul>
           {this.getNewPrizeBtn()}
         </div>
+        <NewPrizeModal ref={this.setNewPrizeModalRef}/>
       </div>
     );
   }
