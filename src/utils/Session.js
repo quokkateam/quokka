@@ -20,7 +20,11 @@ class Sess {
     return true;
     // return !!this.getCookie(this.header);
   }
-  
+
+  isAdmin() {
+    return true;
+  }
+
   setCookie(name, value, days) {
     days = days || 30;
     var date = new Date();

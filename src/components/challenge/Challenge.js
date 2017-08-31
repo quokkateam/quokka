@@ -18,7 +18,10 @@ class Challenge extends Component {
     // use for fetching week info from DB
     this.weekNum = this.props.match.params.weekNum;
 
+    this.setChallengeSectionRef = this.setChallengeSectionRef.bind(this);
+
     this.state = {
+      fetched: false,
       habit: null,
       adjHabits: null,
       overview: null,
@@ -29,6 +32,16 @@ class Challenge extends Component {
     };
 
     // const formatLink = (i) => `[[${i}]](${links[i - 1]})`;
+  }
+
+  setChallengeSectionRef(ref) {
+    this.challengeSection = ref;
+  }
+
+  componentDidUpdate() {
+    if (this.state.fetched) {
+      this.challengeSection.setState({ challenge: this.state.challenge });
+    }
   }
 
   componentDidMount() {
@@ -172,8 +185,8 @@ class Challenge extends Component {
           ]
         };
 
-
         this.setState({
+          fetched: true,
           habit: data.habit,
           adjHabits: data.adjHabits,
           overview: data.overview,
@@ -191,7 +204,7 @@ class Challenge extends Component {
         <div id="challenge">
           <BannerSection habit={this.state.habit} weekNum={this.weekNum} adjHabits={this.state.adjHabits} />
           <OverviewSection overview={this.state.overview} />
-          <ChallengeSection challenge={this.state.challenge} />
+          <ChallengeSection challenge={this.state.challenge} ref={this.setChallengeSectionRef} />
           <PrizesSection prizes={this.state.prizes} points={(this.state.challenge || {}).points} />
           <GettingStartedSection suggestions={this.state.suggestions} />
           <CheckInSection weekNum={this.weekNum} endDate={((this.state.habit || {}).dates || {}).end} />
