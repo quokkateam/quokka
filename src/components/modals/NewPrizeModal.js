@@ -1,4 +1,5 @@
 import React from 'react';
+
 import QuokkaModal from '../shared/QuokkaModal';
 
 class NewPrizeModal extends QuokkaModal {
@@ -7,7 +8,6 @@ class NewPrizeModal extends QuokkaModal {
     super(props);
 
     this.getBody = this.getBody.bind(this);
-    this.updateAndShow = this.updateAndShow.bind(this);
 
     this.state = {
       showModal: false,
@@ -16,14 +16,11 @@ class NewPrizeModal extends QuokkaModal {
     };
   }
 
-  updateAndShow(obj) {
-    obj.showModal = true;
-    this.setState(obj);
-  }
-
   getBody() {
     return (
-      <div>{this.state.prize}</div>
+      <div id="newPrizeModalBody">
+        <div className="image"></div>
+      </div>
     );
   }
 }

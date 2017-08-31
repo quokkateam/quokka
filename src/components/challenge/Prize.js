@@ -41,7 +41,7 @@ class Prize extends Component {
   onRemove() {
     if (this.props.onRemove) {
       // TODO: pass up uuid of prize when we have it
-      this.props.onRemove(this.props.prize, this.props.sponsor);
+      this.props.onRemove(this.props.prize);
     }
   }
 

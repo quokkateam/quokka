@@ -8,6 +8,7 @@ class QuokkaModal extends Component {
     super(props);
     this.close = this.close.bind(this);
     this.open = this.open.bind(this);
+    this.updateAndShow = this.updateAndShow.bind(this);
   }
 
   close() {
@@ -16,6 +17,11 @@ class QuokkaModal extends Component {
 
   open() {
     this.setState({ showModal: true });
+  }
+
+  updateAndShow(obj) {
+    obj.showModal = true;
+    this.setState(obj);
   }
 
   getHeader() {

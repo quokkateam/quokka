@@ -1,0 +1,52 @@
+.modal-dialog {
+  margin: 120px auto 30px;
+}
+
+.modal-footer {
+  border-top: none;
+  padding-top: 0;
+}
+
+.modal-action-2-btns {
+  width: 100%;
+  padding: 5px 10px;
+
+  .modal-action-btn {
+    float: left;
+    display: inline-block;
+    width: 50%;
+  }
+
+  .modal-action-btn > span {
+    display: block;
+    width: 91%;
+    margin: 0 auto;
+    border-radius: 3px;
+    padding: 12px 3px;
+    color: #fff;
+    background-color: $tertiary;
+    text-align: center;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $tertiary-hover;
+    }
+  }
+
+  .modal-action-btn.cancel > span {
+    background-color: #C4C5CA;
+
+    &:hover {
+      background-color: #D6D8DE;
+    }
+  }
+}
+
+.center-modal-question {
+  text-align: center;
+  font-size: 15px;
+
+  .bold {
+    font-family: Avenir-Next-DemiBold;
+  }
+}
