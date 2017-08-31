@@ -10,11 +10,28 @@ class PrizesSection extends Component {
     this.getPrizes = this.getPrizes.bind(this);
     this.getNewPrizeBtn = this.getNewPrizeBtn.bind(this);
     this.onNewPrizeClick = this.onNewPrizeClick.bind(this);
+    this.onEditPrize = this.onEditPrize.bind(this);
+    this.onRemovePrize = this.onRemovePrize.bind(this);
   }
   
   getPrizes() {
-    return (this.props.prizes || []).map((data) => {
-      return <li key={data.sponsor.id}><a href={data.sponsor.url} target="_blank" rel="noopener noreferrer"><Prize sponsor={data.sponsor} prize={data.prize}/></a></li>;
+    var editable = Session.isAdmin();
+    var prizes = this.props.prizes || [];
+
+    if (editable) {
+      return prizes.map((data) => {
+        return <li key={data.sponsor.id}>
+          <Prize sponsor={data.sponsor} prize={data.prize} editable={true} onEdit={this.onEditPrize} onRemove={this.onRemovePrize}/>
+        </li>;
+      });
+    }
+
+    return prizes.map((data) => {
+      return <li key={data.sponsor.id}>
+        <a href={data.sponsor.url} target="_blank" rel="noopener noreferrer">
+          <Prize sponsor={data.sponsor} prize={data.prize}/>
+        </a>
+      </li>;
     });
   }
 
@@ -27,7 +44,15 @@ class PrizesSection extends Component {
   }
 
   onNewPrizeClick() {
-    alert('Show modal!');
+    console.log('Show modal!');
+  }
+
+  onEditPrize(prize, sponsor) {
+    console.log('edit', prize, sponsor);
+  }
+
+  onRemovePrize(prize, sponsor) {
+    console.log('remove', prize, sponsor);
   }
   
   render() {

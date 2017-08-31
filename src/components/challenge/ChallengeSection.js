@@ -52,6 +52,7 @@ class ChallengeSection extends Component {
     switch (this.state.status) {
     case status.STATIC:
       classes.push('fa-pencil');
+      classes.push('edit');
       break;
     case status.EDITING:
       classes.push('fa-save');
@@ -64,6 +65,7 @@ class ChallengeSection extends Component {
       break;
     default:
       classes.push('fa-pencil');
+      classes.push('edit');
     }
 
     return <i className={classes.join(' ')} onClick={this.onModBtnClick}></i>;

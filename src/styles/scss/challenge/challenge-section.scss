@@ -21,6 +21,11 @@
     color: $primary;
     cursor: pointer;
 
+    &:hover.edit {
+      border: 1px solid $primary-hover;
+      color: $primary-hover;
+    }
+
     &.save {
       color: white;
       border: $tertiary;
