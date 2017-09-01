@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Ajax from '../../utils/Ajax';
+import CreateSponsorModal from '../modals/CreateSponsorModal';
 import NewPrizeModal from '../modals/NewPrizeModal';
 import Prize from './Prize';
 import RemovePrizeModal from '../modals/RemovePrizeModal';
@@ -17,11 +18,15 @@ class PrizesSection extends Component {
     this.onRemovePrize = this.onRemovePrize.bind(this);
     this.setNewPrizeModalRef = this.setNewPrizeModalRef.bind(this);
     this.setRemovePrizeModalRef = this.setRemovePrizeModalRef.bind(this);
+    this.setCreateSponsorModalRef = this.setCreateSponsorModalRef.bind(this);
     this.sponsors = this.sponsors.bind(this);
     this.removePrize = this.removePrize.bind(this);
     this.createPrize = this.createPrize.bind(this);
     this.updatePrize = this.updatePrize.bind(this);
     this.updateListWith = this.updateListWith.bind(this);
+    this.onCreateSponsorClick = this.onCreateSponsorClick.bind(this);
+    this.getCreateSponsorBtn = this.getCreateSponsorBtn.bind(this);
+    this.createSponsor = this.createSponsor.bind(this);
 
     this.state = {
       prizes: this.props.prizes || [],
@@ -42,6 +47,10 @@ class PrizesSection extends Component {
 
   setRemovePrizeModalRef(ref) {
     this.removePrizeModal = ref;
+  }
+
+  setCreateSponsorModalRef(ref) {
+    this.createSponsorModal = ref;
   }
 
   getPrizes() {
@@ -70,6 +79,23 @@ class PrizesSection extends Component {
     }
 
     return <div className="new-prize-btn" onClick={this.onNewPrizeClick}>Add New Prize</div>;
+  }
+
+  getCreateSponsorBtn () {
+    if (!Session.isAdmin()) {
+      return;
+    }
+
+    return <div className="create-sponsor-btn" onClick={this.onCreateSponsorClick}>Create New Sponsor</div>;
+  }
+
+  onCreateSponsorClick() {
+    this.createSponsorModal.updateAndShow({});
+  }
+
+  createSponsor() {
+    // Ajax.post
+    this.createSponsorModal.close();
   }
 
   sponsors() {
@@ -146,9 +172,11 @@ class PrizesSection extends Component {
           </div>
           <ul className="prizes">{this.getPrizes()}</ul>
           {this.getNewPrizeBtn()}
+          {this.getCreateSponsorBtn()}
         </div>
         <NewPrizeModal onCreatePrize={this.createPrize} onUpdatePrize={this.updatePrize} ref={this.setNewPrizeModalRef}/>
         <RemovePrizeModal onRemovePrize={this.removePrize} ref={this.setRemovePrizeModalRef}/>
+        <CreateSponsorModal onCreateSponsor={this.createSponsor} ref={this.setCreateSponsorModalRef} />
       </div>
     );
   }

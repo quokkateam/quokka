@@ -88,7 +88,7 @@ class NewPrizeModal extends QuokkaModal {
   }
 
   getFooter() {
-    return <ModalAction1Btn onClick={this.submitPrize} text={this.state.newPrize ? 'Add New Prize' : 'Update Prize'}/>;
+    return <ModalAction1Btn onClick={this.submitPrize} text={this.state.newPrize ? 'Add Prize' : 'Update Prize'}/>;
   }
 }
 
