@@ -17,7 +17,11 @@ class PrizesSection extends Component {
     this.onRemovePrize = this.onRemovePrize.bind(this);
     this.setNewPrizeModalRef = this.setNewPrizeModalRef.bind(this);
     this.setRemovePrizeModalRef = this.setRemovePrizeModalRef.bind(this);
+    this.sponsors = this.sponsors.bind(this);
     this.removePrize = this.removePrize.bind(this);
+    this.createPrize = this.createPrize.bind(this);
+    this.updatePrize = this.updatePrize.bind(this);
+    this.updateListWith = this.updateListWith.bind(this);
 
     this.state = {
       prizes: this.props.prizes || [],
@@ -68,44 +72,70 @@ class PrizesSection extends Component {
     return <div className="new-prize-btn" onClick={this.onNewPrizeClick}>Add New Prize</div>;
   }
 
+  sponsors() {
+    return this.state.prizes.map((data) => { return data.sponsor; });
+  }
+
   onNewPrizeClick() {
-    this.newPrizeModal.open();
+    this.newPrizeModal.updateAndShow({
+      prize: null,
+      sponsors: this.sponsors(),
+      selectedSponsor: null,
+      newPrize: true
+    });
   }
 
   onEditPrize(prize, sponsor) {
     this.newPrizeModal.updateAndShow({
       prize: prize,
-      sponsor: sponsor
+      sponsors: this.sponsors(),
+      selectedSponsor: sponsor.id,
+      newPrize: false
     });
   }
 
   onRemovePrize(prize) {
     this.removePrizeModal.updateAndShow({
-      prizeText: prize,
-      prizeUid: 'tbd'
+      prize: prize
     });
   }
 
-  removePrize(prizeUid) {
+  removePrize(payload) {
+    this.updateListWith(payload, 'delete');
+  }
+
+  createPrize(payload) {
+    this.updateListWith(payload, 'post');
+  }
+
+  updatePrize(payload) {
+    this.updateListWith(payload, 'put');
+  }
+
+  updateListWith(payload, method) {
     setTimeout(() => {
-      var prizes = this.state.prizes; // will be data.prizes on response
+      var prizes = this.state.prizes;
 
       this.setState({
         prizes: prizes,
         closeModals: true
       });
-    }, 200);
+    }, 300);
 
-    // Ajax.delete('/api/prize', { uid: prizeUid })
+    // var func = Ajax[method];
+    //
+    // func('/api/prize', payload)
     //   .then((resp) => resp.json())
     //   .then((data) => {
-    //     this.setState({
-    //       prizes: data.prizes,
-    //       closeModals: true
-    //     });
+    //     if (data.prizes) {
+    //       this.setState({
+    //         prizes: data.prizes,
+    //         closeModals: true
+    //       });
+    //     }
     //   });
   }
-  
+
   render() {
     return (
       <div className="container-fluid">
@@ -117,7 +147,7 @@ class PrizesSection extends Component {
           <ul className="prizes">{this.getPrizes()}</ul>
           {this.getNewPrizeBtn()}
         </div>
-        <NewPrizeModal ref={this.setNewPrizeModalRef}/>
+        <NewPrizeModal onCreatePrize={this.createPrize} onUpdatePrize={this.updatePrize} ref={this.setNewPrizeModalRef}/>
         <RemovePrizeModal onRemovePrize={this.removePrize} ref={this.setRemovePrizeModalRef}/>
       </div>
     );

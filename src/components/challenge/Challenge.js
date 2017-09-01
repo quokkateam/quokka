@@ -117,7 +117,10 @@ class Challenge extends Component {
                 logo: 'https://s3-us-west-1.amazonaws.com/quokkadev/images/thenorthface.png',
                 url: 'https://thenorthface.com'
               },
-              prize: 'Free pair of shoes'
+              prize: {
+                id: 1,
+                text: 'Free pair of shoes'
+              }
             },
             {
               sponsor: {
@@ -126,7 +129,10 @@ class Challenge extends Component {
                 logo: 'https://s3-us-west-1.amazonaws.com/quokkadev/images/lululemon.png',
                 url: 'https://lululemon.com'
               },
-              prize: 'Yoga mat giveaway'
+              prize: {
+                id: 2,
+                text: 'Yoga mat giveaway'
+              }
             },
             {
               sponsor: {
@@ -135,7 +141,10 @@ class Challenge extends Component {
                 logo: 'https://s3-us-west-1.amazonaws.com/quokkadev/images/stanford-rec.png',
                 url: 'http://recreation.stanford.edu/'
               },
-              prize: 'Free personal training session'
+              prize: {
+                id: 3,
+                text: 'Free personal training session'
+              }
             },
             {
               sponsor: {
@@ -144,7 +153,10 @@ class Challenge extends Component {
                 logo: 'https://s3-us-west-1.amazonaws.com/quokkadev/images/stanford-rec.png',
                 url: 'http://www.gostanford.com/'
               },
-              prize: 'Stanford swag'
+              prize: {
+                id: 4,
+                text: 'Stanford swag'
+              }
             }
           ],
           suggestions: [`Sign up for a [Fitness

@@ -1,0 +1,12 @@
+#newPrizeModalBody {
+  padding: 20px 10px;
+
+  .form-select:not(.invalid),
+  .form-input:not(.invalid) {
+    border: 1px solid rgba(0,0,75,0.1);
+  }
+
+  .form-input {
+    margin-top: 20px;
+  }
+}

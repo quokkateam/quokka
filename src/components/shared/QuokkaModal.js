@@ -9,6 +9,9 @@ class QuokkaModal extends Component {
     this.close = this.close.bind(this);
     this.open = this.open.bind(this);
     this.updateAndShow = this.updateAndShow.bind(this);
+    this.getHeader = this.getHeader.bind(this);
+    this.getBody = this.getBody.bind(this);
+    this.getFooter = this.getFooter.bind(this);
   }
 
   close() {

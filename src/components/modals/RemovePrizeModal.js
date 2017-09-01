@@ -8,19 +8,17 @@ class RemovePrizeModal extends QuokkaModal {
   constructor(props) {
     super(props);
 
-    this.getBody = this.getBody.bind(this);
     this.removePrize = this.removePrize.bind(this);
 
     this.state = {
       showModal: false,
-      prizeUid: this.props.prizeUid,
-      prizeText: this.props.prizeText
+      prize: this.props.prize
     };
   }
 
   removePrize() {
     if (this.props.onRemovePrize) {
-      this.props.onRemovePrize(this.props.prizeUid);
+      this.props.onRemovePrize({ id: this.state.prize.id });
     }
   }
 
@@ -28,7 +26,7 @@ class RemovePrizeModal extends QuokkaModal {
     return (
       <div id="removePrizeModalBody">
         <div className="center-modal-question">
-          Are you sure you want to remove <span className="bold">{this.state.prizeText}</span> as a prize?
+          Are you sure you want to remove <span className="bold">{(this.state.prize || {}).text}</span> as a prize?
         </div>
       </div>
     );
