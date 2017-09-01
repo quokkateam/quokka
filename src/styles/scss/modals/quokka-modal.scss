@@ -5,6 +5,14 @@
 .modal-footer {
   border-top: none;
   padding-top: 0;
+
+  button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    border: none;
+  }
 }
 
 .modal-action-btn {
@@ -12,7 +20,7 @@
   width: 100%;
 }
 
-.modal-action-btn > span {
+.modal-action-btn > button {
   display: block;
   width: 91%;
   margin: 0 auto;
@@ -32,7 +40,7 @@
   width: 100%;
   padding: 0 10px 5px;
 
-  .modal-action-btn > span {
+  .modal-action-btn > button {
     width: 100%;
   }
 }
@@ -47,7 +55,7 @@
   }
 }
 
-.modal-action-btn.cancel > span {
+.modal-action-btn.cancel > button {
   background-color: #C4C5CA;
 
   &:hover {

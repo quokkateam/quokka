@@ -17,7 +17,7 @@ class ModalAction1Btn extends Component {
     return (
       <div className="modal-action-1-btn">
         <div className="modal-action-btn">
-          <span onClick={this.onClick}>{this.props.text || ''}</span>
+          <button onClick={this.onClick}>{this.props.text || ''}</button>
         </div>
       </div>
     );

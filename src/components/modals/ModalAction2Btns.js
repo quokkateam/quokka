@@ -35,10 +35,10 @@ class ModalAction2Btns extends Component {
     return (
       <div className="modal-action-2-btns">
         <div className={this.btnClasses('left')}>
-          <span onClick={this.onLeftClick}>{(this.props.left || {}).text || ''}</span>
+          <button onClick={this.onLeftClick}>{(this.props.left || {}).text || ''}</button>
         </div>
         <div className={this.btnClasses('right')}>
-          <span onClick={this.onRightClick}>{(this.props.right || {}).text || ''}</span>
+          <button onClick={this.onRightClick}>{(this.props.right || {}).text || ''}</button>
         </div>
       </div>
     );
