@@ -10,8 +10,6 @@ const status = {
   SAVING: 2
 };
 
-const SUCCESS_MESSAGE_DURATION = 2000;
-
 class GettingStartedSection extends Component {
 
   constructor(props){
@@ -67,10 +65,12 @@ class GettingStartedSection extends Component {
     var editable = isSaving || this.isEditing();
 
     return this.state.suggestions.map((s, i) => {
+      var liChild;
+
       if (editable) {
-        var liChild = <FormInput disabled={isSaving} placholder="Suggestion" defaultValue={s}/>;
+        liChild = <FormInput disabled={isSaving} placholder="Suggestion" defaultValue={s}/>;
       } else {
-        var liChild = <QuokkaMarkdown source={s}/>;
+        liChild = <QuokkaMarkdown source={s}/>;
       }
 
       return <li key={i}>{liChild}</li>;
@@ -123,7 +123,7 @@ class GettingStartedSection extends Component {
   }
 
   componentDidUpdate() {
-    if (this.state.status == status.SAVING) {
+    if (this.state.status === status.SAVING) {
       this.saveSuggestions();
     }
   }
@@ -138,10 +138,10 @@ class GettingStartedSection extends Component {
       }
     }
 
-    var payload = {
-      suggestions: suggestions
-      // need some sort of challenge id
-    };
+    // var payload = {
+    //   suggestions: suggestions
+    //   // need some sort of challenge id
+    // };
 
     setTimeout(() => {
       this.setState({

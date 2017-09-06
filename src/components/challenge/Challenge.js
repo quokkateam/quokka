@@ -62,7 +62,7 @@ class Challenge extends Component {
       .then((resp) => resp.json())
       .then((data) => {
 
-        var data = {
+        var mockData = {
           habit: {
             name: 'Exercise',
             icon: 'https://s3-us-west-1.amazonaws.com/quokkadev/images/running-green.png',
@@ -211,13 +211,13 @@ class Challenge extends Component {
 
         this.setState({
           fetched: true,
-          habit: data.habit,
-          adjHabits: data.adjHabits,
-          overview: data.overview,
-          challenge: data.challenge,
-          prizes: data.prizes,
-          suggestions: data.suggestions,
-          links: data.links
+          habit: mockData.habit,
+          adjHabits: mockData.adjHabits,
+          overview: mockData.overview,
+          challenge: mockData.challenge,
+          prizes: mockData.prizes,
+          suggestions: mockData.suggestions,
+          links: mockData.links
         });
       });
   }

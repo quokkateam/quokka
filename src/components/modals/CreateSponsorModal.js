@@ -43,7 +43,7 @@ class CreateSponsorModal extends QuokkaModal {
       <div id="createSponsorModalBody">
         <div className="upload-logo-container">
           <div className="logo-container">
-            <img className="logo"/>
+            <img className="logo" alt=""/>
           </div>
           <i className="upload-logo-btn fa fa-upload"></i>
         </div>

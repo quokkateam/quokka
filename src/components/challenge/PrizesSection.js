@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Ajax from '../../utils/Ajax';
+// import Ajax from '../../utils/Ajax';
 import CreateSponsorModal from '../modals/CreateSponsorModal';
 import NewPrizeModal from '../modals/NewPrizeModal';
 import Prize from './Prize';

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Ajax from '../../utils/Ajax';
+// import Ajax from '../../utils/Ajax';
 import FormInput from '../shared/form/FormInput';
 import QuokkaMarkdown from '../shared/QuokkaMarkdown';
 import Session from '../../utils/Session';
@@ -10,8 +10,6 @@ const status = {
   EDITING: 1,
   SAVING: 2
 };
-
-const SUCCESS_MESSAGE_DURATION = 2000;
 
 class ChallengeSection extends Component {
 
@@ -93,11 +91,11 @@ class ChallengeSection extends Component {
   }
 
   saveChallenge() {
-    var payload = {
-      text: this.state.challenge.text,
-      points: this.state.challenge.points,
-      // will want a uuid
-    };
+    // var payload = {
+    //   text: this.state.challenge.text,
+    //   points: this.state.challenge.points,
+    //   // will want a uuid
+    // };
 
     setTimeout(() => {
       this.setState({ status: status.STATIC });

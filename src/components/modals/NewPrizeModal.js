@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Ajax from '../../utils/Ajax';
+// import Ajax from '../../utils/Ajax';
 import FormInput from '../shared/form/FormInput';
 import FormSelect from '../shared/form/FormSelect';
 import ModalAction1Btn from './ModalAction1Btn';
