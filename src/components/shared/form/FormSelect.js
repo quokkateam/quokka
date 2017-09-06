@@ -14,7 +14,6 @@ class FormSelect extends QComponent {
     this.clear = this.clear.bind(this);
     this.selectOptWithVal = this.selectOptWithVal.bind(this);
     this.onChange = this.onChange.bind(this);
-    this.forceSelect = this.forceSelect.bind(this);
 
     this.state = { options: this.props.options || [] };
   }
@@ -77,11 +76,6 @@ class FormSelect extends QComponent {
     }
   }
 
-  forceSelect() {
-    this.select.click();
-    // $(this.select).click();
-  }
-  
   render() {
     return (
       <div className="form-select-container">
@@ -89,7 +83,7 @@ class FormSelect extends QComponent {
           <option value='' disabled>{this.props.placeholder || ''}</option>
           {this.formatOptions()}
         </select>
-        <i className="fa fa-caret-down arrow" onClick={this.forceSelect}></i>
+        <i className="fa fa-caret-down arrow"></i>
       </div>
     );
   }

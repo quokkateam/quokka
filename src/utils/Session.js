@@ -17,12 +17,11 @@ class Sess {
   }
   
   authed() {
-    return true;
-    // return !!this.getCookie(this.header);
+    return !!this.getCookie(this.header);
   }
 
   isAdmin() {
-    return true;
+    return false;
   }
 
   setCookie(name, value, days) {
