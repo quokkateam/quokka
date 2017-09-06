@@ -47,8 +47,8 @@ class CreateSponsorModal extends QuokkaModal {
           </div>
           <i className="upload-logo-btn fa fa-upload"></i>
         </div>
-        <FormInput required={true} placeholder="Name" ref={this.setNameInputRef}/>
-        <FormInput placeholder="URL" ref={this.setUrlInputRef}/>
+        <FormInput required={true} placeholder="Sponsor Name" ref={this.setNameInputRef}/>
+        <FormInput placeholder="Sponsor URL" ref={this.setUrlInputRef}/>
       </div>
     );
   }
