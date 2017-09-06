@@ -1,0 +1,51 @@
+#createSponsorModalBody {
+  padding: 20px 10px;
+
+  .form-select:not(.invalid),
+  .form-input:not(.invalid) {
+    border: 1px solid rgba(0, 0, 75, 0.1);
+  }
+
+  .form-input {
+    margin-top: 20px;
+  }
+
+  .upload-logo-container {
+    width: 100%;
+    text-align: center;
+    position: relative;
+  }
+
+  .logo-container {
+    display: block;
+    width: 125px;
+    height: 125px;
+    border: 1px solid rgba(0, 0, 75, 0.2);
+    margin: 0 auto;
+    border-radius: 5px;
+    margin-bottom: 12px;
+    background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/camera.png');
+    background-position: center center;
+    background-size: 50%;
+    background-repeat: no-repeat;
+  }
+
+  .logo {
+    display: none;
+  }
+
+  .upload-logo-btn {
+    top: calc((100% - 50px) / 2);
+    left: calc(50% + 90px);
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    line-height: 48px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 75, 0.3);
+    font-size: 23px;
+    color: rgba(0,0,75,0.3);
+    cursor: pointer;
+  }
+}

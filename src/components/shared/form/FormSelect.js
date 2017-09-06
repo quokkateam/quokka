@@ -75,11 +75,11 @@ class FormSelect extends QComponent {
       this.props.onChange(this.serialize());
     }
   }
-  
+
   render() {
     return (
       <div className="form-select-container">
-        <select className={this.getClassNames()} defaultValue={this.props.value || ''} name={this.props.name || ''} onChange={this.onChange} ref={this.setSelectRef}>
+        <select className={this.getClassNames()} defaultValue={this.props.defaultValue || ''} name={this.props.name || ''} onChange={this.onChange} ref={this.setSelectRef}>
           <option value='' disabled>{this.props.placeholder || ''}</option>
           {this.formatOptions()}
         </select>

@@ -1,4 +1,16 @@
 #challenge {
+
+  .suggestions-section {
+    position: relative;
+    margin: 0 15%;
+    margin-top: 50px;
+    padding: 0;
+
+    .mod-btn {
+      top: 40px;
+    }
+  }
+
   .suggestions-list {
     margin-top: 15px;
     margin-bottom: 0;
@@ -6,6 +18,11 @@
     padding-left: 15px;
     color: $secondary;
     font-size: 14px;
+
+    &.editable {
+      list-style: none;
+      padding-left: 0;
+    }
 
     li {
       margin: 12px 0;
@@ -21,6 +38,10 @@
       &:hover {
         text-decoration: underline;
       }
+    }
+
+    .form-input {
+      border: 1px solid rgba(0,0,75,0.1);
     }
   }
 }
