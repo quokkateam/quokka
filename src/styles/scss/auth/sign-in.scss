@@ -1,0 +1,80 @@
+#signIn {
+  padding-top: 84px;
+  min-height: 640px;
+  border-bottom: 1px solid rgba(0, 0, 75, 0.05);
+  background-color: #f9f9f9;
+}
+
+.auth-card {
+  width: 634px;
+  margin: 45px auto;
+  background-color: #fff;
+  border: 1px solid #e8e8e8;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.25);
+  border-radius: 4px;
+  min-height: 447px;
+  padding: 32px;
+
+  .msg-lg, .msg-sm {
+    text-align: center;
+    color: $header-dark;
+    margin-bottom: 20px;
+  }
+
+  .msg-lg {
+    font-size: 30px;
+    font-family: Lato-Bold;
+    line-height: 40px;
+  }
+
+  .msg-sm {
+    font-size: 16px;
+  }
+
+  .form-input {
+    border: 1px solid #e8e8e8;
+    margin-bottom: 8px;
+    height: 48px;
+    line-height: 48px;
+    font-size: 17px;
+  }
+
+  .lg-spinner-btn {
+    margin-top: 8px;
+    margin-bottom: 16px;
+
+    button {
+      padding: 13px 32px;
+      font-size: 19px;
+      height: auto;
+    }
+  }
+
+  .trailing-links {
+    margin-top: 26px;
+
+    .trailing-link {
+      margin-bottom: 16px;
+      width: 100%;
+      display: block;
+      text-align: center;
+    }
+
+    a {
+      color: $tertiary;
+      text-decoration: none;
+      display: inline-block;
+      margin: 0 auto;
+      font-size: 15px;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.sign-in-form {
+  width: 75%;
+  margin: 0 auto;
+}

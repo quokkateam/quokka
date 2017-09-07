@@ -11,7 +11,7 @@ class SideNav extends Component {
     if (Session.authed()) {
       landingLinks = [['/challenges', 'Challenges'], ['/faq', 'FAQ']];
     } else {
-      landingLinks = [['/faq', 'FAQ']];
+      landingLinks = [['/signin', 'Sign In'], ['/faq', 'FAQ']];
     }
 
     var linksMap = {
