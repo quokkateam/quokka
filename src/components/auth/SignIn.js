@@ -37,23 +37,8 @@ class SignIn extends Form {
   }
 
   componentDidUpdate() {
-    // Set up handlers for when our component changes state
-    switch (this.state.status) {
-    case this.status.SERIALIZING:
+    if (this.state.status === this.state.SERIALIZING) {
       this.onSerializing();
-      break;
-    case this.status.COMPLETE:
-      this.onComplete();
-      break;
-    case this.status.SENDING:
-      // Do nothing.
-      break;
-    case this.status.STATIC:
-      // Do nothing.
-      break;
-    default:
-      console.warn('Unexpected status case');
-      break;
     }
 
     return true;
@@ -63,10 +48,6 @@ class SignIn extends Form {
     if (this.formValid()) {
       this.submit();
     }
-  }
-
-  onComplete() {
-    // redirect if not doing that via server response
   }
 
   submit() {
