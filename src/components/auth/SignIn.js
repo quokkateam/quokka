@@ -4,6 +4,7 @@ import Form from '../shared/form/Form';
 import FormInput from '../shared/form/FormInput';
 import LgSpinnerBtn from '../widgets/LgSpinnerBtn';
 import { Link } from 'react-router-dom';
+import Session from '../../utils/Session';
 import StatusCodes from '../../utils/StatusCodes';
 
 class SignIn extends Form {
@@ -12,8 +13,6 @@ class SignIn extends Form {
     super(props);
     this.setEmailRef = this.setEmailRef.bind(this);
     this.submitBtnClasses = this.submitBtnClasses.bind(this);
-    this.onSerializing = this.onSerializing.bind(this);
-    this.onComplete = this.onComplete.bind(this);
     this.submit = this.submit.bind(this);
     this.onSignInResp = this.onSignInResp.bind(this);
     this.onSignInError = this.onSignInError.bind(this);
@@ -37,17 +36,11 @@ class SignIn extends Form {
   }
 
   componentDidUpdate() {
-    if (this.state.status === this.state.SERIALIZING) {
-      this.onSerializing();
+    if (this.state.status === this.status.SERIALIZING && this.formValid()) {
+      this.submit();
     }
 
     return true;
-  }
-
-  onSerializing() {
-    if (this.formValid()) {
-      this.submit();
-    }
   }
 
   submit() {
@@ -65,8 +58,9 @@ class SignIn extends Form {
 
   onSignInResp(resp) {
     switch (resp.status) {
-    case 201:
-      this.setState({ status: this.status.COMPLETE });
+    case 200:
+      Session.create(resp);
+      document.location = '/';
       break;
     case 400:
       resp.json().then((data) => {
