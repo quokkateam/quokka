@@ -47,6 +47,11 @@ class Main extends Component {
         path: '/check-in/week:weekNum',
         comp: CheckIn,
         exact: false
+      },
+      {
+        path: '/signout',
+        comp: SignIn,
+        exact: true
       }
     ];
 

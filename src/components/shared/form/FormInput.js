@@ -86,12 +86,14 @@ class FormInput extends QComponent {
     return <textarea className={classes} name={name} placeholder={placeholder} defaultValue={defaultValue} onKeyUp={this.onKeyUp} ref={this.setInputRef}></textarea>;
   }
 
-  getInput(name, placeholder, defaultValue, classes, disabled) {
+  getInput(name, placeholder, defaultValue, classes, disabled, password) {
+    var type = password ? 'password' : 'text';
+
     if (disabled) {
-      return <input type="text" disabled className={classes} name={name} placeholder={placeholder} defaultValue={defaultValue} onKeyUp={this.onKeyUp} ref={this.setInputRef}/>;
+      return <input type={type} disabled className={classes} name={name} placeholder={placeholder} defaultValue={defaultValue} onKeyUp={this.onKeyUp} ref={this.setInputRef}/>;
     }
 
-    return <input type="text" className={classes} name={name} placeholder={placeholder} defaultValue={defaultValue} onKeyUp={this.onKeyUp} ref={this.setInputRef}/>;
+    return <input type={type} className={classes} name={name} placeholder={placeholder} defaultValue={defaultValue} onKeyUp={this.onKeyUp} ref={this.setInputRef}/>;
   }
 
   getEl() {
@@ -105,7 +107,7 @@ class FormInput extends QComponent {
       return this.getTextarea(name, placeholder, defaultValue, classes, disabled);
     }
 
-    return this.getInput(name, placeholder, defaultValue, classes, disabled);
+    return this.getInput(name, placeholder, defaultValue, classes, disabled, !!this.props.password);
   }
 
   render() {

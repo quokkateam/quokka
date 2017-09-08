@@ -3,11 +3,11 @@ var Session;
 class Sess {
   
   constructor() {
-    this.header = 'Quokka-User';
+    this.header = 'quokka-user';
   }
   
   create(resp) {
-    var token = resp.headers[this.header];
+    var token = resp.headers.get(this.header);
     
     if (token) {
       this.setCookie(this.header, token);
@@ -15,7 +15,11 @@ class Sess {
       console.warn('Not creating session -- no token provided');
     }
   }
-  
+
+  destroy() {
+    this.deleteCookie(this.header);
+  }
+
   authed() {
     return !!this.getCookie(this.header);
   }
@@ -49,6 +53,39 @@ class Sess {
     }
 
     return '';
+  }
+
+  deleteCookie(name) {
+    document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC';
+  }
+
+  setToStorage (key, value) {
+    var val;
+
+    try {
+      val = JSON.stringify(value);
+    } catch (e) {
+      val = value;
+    }
+
+    localStorage.setItem(key, val);
+  }
+
+  getFromStorage (key) {
+    var item;
+    var data = localStorage.getItem(key);
+
+    try {
+      item = JSON.parse(data);
+    } catch (e) {
+      item = data;
+    }
+
+    return item;
+  }
+
+  deleteFromStorage (key) {
+    localStorage.removeItem(key);
   }
 }
 

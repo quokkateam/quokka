@@ -1,21 +1,26 @@
 import React from 'react';
 
+import Ajax from '../../utils/Ajax';
 import Form from '../shared/form/Form';
 import FormInput from '../shared/form/FormInput';
 import LgSpinnerBtn from '../widgets/LgSpinnerBtn';
 import { Link } from 'react-router-dom';
 import Session from '../../utils/Session';
-import StatusCodes from '../../utils/StatusCodes';
 
 class SignIn extends Form {
 
   constructor(props) {
     super(props);
+
+    if (this.props.match.path === '/signout') {
+      Session.destroy();
+      window.location = '/signin';
+    }
+
     this.setEmailRef = this.setEmailRef.bind(this);
     this.submitBtnClasses = this.submitBtnClasses.bind(this);
     this.submit = this.submit.bind(this);
     this.onSignInResp = this.onSignInResp.bind(this);
-    this.onSignInError = this.onSignInError.bind(this);
   }
 
   setEmailRef(ref) {
@@ -51,39 +56,23 @@ class SignIn extends Form {
       payload[k] = this.state.formComps[i];
     });
 
-    // Ajax.post('/api/users/signin', payload).then((resp) => {
-    //   this.onSignInResp(resp);
-    // });
+    Ajax.post('/api/mint_token', payload).then((resp) => {
+      this.onSignInResp(resp);
+    });
   }
 
   onSignInResp(resp) {
     switch (resp.status) {
-    case 200:
+    case 201:
       Session.create(resp);
-      document.location = '/';
+      window.location = '/';
       break;
-    case 400:
-      resp.json().then((data) => {
-        this.onSignInError(data);
-      });
-      break;
-    default:
-      console.warn('Unexpected error during signup.');
-    }
-  }
-
-  onSignInError(data) {
-    switch (data.error) {
-    // TODO: handle case where creds are just plain wrong
-    // case StatusCodes.INVALID_EMAIL_DOMAIN:
-    //   this.onInvalidEmailDomain();
-    //   break;
-    case StatusCodes.INVALID_EMAIL_FORMAT:
-      this.email.showInvalidEmail();
+    case 401:
+      // show invalid credentials message
       this.setState({ status: this.status.STATIC });
       break;
     default:
-      // Nothing
+      console.warn('Unexpected error during signup.');
     }
   }
 
@@ -95,7 +84,7 @@ class SignIn extends Form {
           <div className="msg-sm">Enter your email and password</div>
           <div className="sign-in-form">
             <FormInput required={true} placeholder='Email' ref={this.setEmailRef}/>
-            <FormInput required={true} placeholder='Password' ref={this.pushFormCompRef}/>
+            <FormInput required={true} password={true} placeholder='Password' ref={this.pushFormCompRef}/>
             <LgSpinnerBtn classes={this.submitBtnClasses()} btnText='Sign In' onClick={this.serialize} />
           </div>
           <div className="trailing-links">
