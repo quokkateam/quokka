@@ -9,9 +9,9 @@ class SideNav extends Component {
     var landingLinks;
     
     if (Session.authed()) {
-      landingLinks = [['/challenges', 'Challenges'], ['/faq', 'FAQ']];
+      landingLinks = [['/challenges', 'Challenges'], ['/faq', 'FAQ'], ['/signout', 'Sign Out']];
     } else {
-      landingLinks = [['/signin', 'Sign In'], ['/faq', 'FAQ']];
+      landingLinks = [['/faq', 'FAQ'], ['/signin', 'Sign In']];
     }
 
     var linksMap = {
@@ -19,7 +19,8 @@ class SideNav extends Component {
       'in-app': [
         ['/challenges', 'Challenges'],
         ['/admin', 'Admin'],
-        ['/me', 'Profile']
+        ['/me', 'Profile'],
+        ['/signout', 'Sign Out']
       ]
     };
 
