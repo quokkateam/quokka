@@ -55,6 +55,14 @@
     }
   }
 
+  .invalid-msg {
+    width: 100%;
+    text-align: center;
+    color: $quokka-red;
+    padding: 8px 0;
+    font-size: 14px;
+  }
+
   .trailing-links {
     margin-top: 26px;
 

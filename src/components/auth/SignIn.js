@@ -1,5 +1,6 @@
 import React from 'react';
 
+import $ from 'jquery';
 import Ajax from '../../utils/Ajax';
 import Form from '../shared/form/Form';
 import FormInput from '../shared/form/FormInput';
@@ -18,14 +19,20 @@ class SignIn extends Form {
     }
 
     this.setEmailRef = this.setEmailRef.bind(this);
+    this.setInvalidMsgRef = this.setInvalidMsgRef.bind(this);
     this.submitBtnClasses = this.submitBtnClasses.bind(this);
     this.submit = this.submit.bind(this);
+    this.hideInvalidMessage = this.hideInvalidMessage.bind(this);
     this.onSignInResp = this.onSignInResp.bind(this);
   }
 
   setEmailRef(ref) {
     this.email = ref;
     this.pushFormCompRef(ref);
+  }
+
+  setInvalidMsgRef(ref) {
+    this.invalidMsg = ref;
   }
 
   submitBtnClasses() {
@@ -68,12 +75,16 @@ class SignIn extends Form {
       window.location = '/';
       break;
     case 401:
-      // show invalid credentials message
+      $(this.invalidMsg).show();
       this.setState({ status: this.status.STATIC });
       break;
     default:
       console.warn('Unexpected error during signup.');
     }
+  }
+
+  hideInvalidMessage() {
+    $(this.invalidMsg).hide();
   }
 
   render() {
@@ -83,8 +94,9 @@ class SignIn extends Form {
           <div className="msg-lg">Sign in to Quokka</div>
           <div className="msg-sm">Enter your email and password</div>
           <div className="sign-in-form">
-            <FormInput required={true} placeholder='Email' ref={this.setEmailRef}/>
-            <FormInput required={true} password={true} placeholder='Password' ref={this.pushFormCompRef}/>
+            <FormInput required={true} placeholder='Email' onKeyUp={this.hideInvalidMessage} ref={this.setEmailRef}/>
+            <FormInput required={true} password={true} placeholder='Password' onKeyUp={this.hideInvalidMessage} ref={this.pushFormCompRef}/>
+            <div className="invalid-msg" ref={this.setInvalidMsgRef}>Invalid Credentials</div>
             <LgSpinnerBtn classes={this.submitBtnClasses()} btnText='Sign In' onClick={this.serialize} />
           </div>
           <div className="trailing-links">
