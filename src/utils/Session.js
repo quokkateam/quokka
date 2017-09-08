@@ -87,6 +87,10 @@ class Sess {
   deleteFromStorage (key) {
     localStorage.removeItem(key);
   }
+
+  userName() {
+    return (this.getFromStorage('user') || {}).name || 'BW';
+  }
 }
 
 function getInstance() {

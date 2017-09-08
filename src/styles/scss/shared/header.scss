@@ -14,7 +14,7 @@ header {
     width: 100%;
     float: left;
 
-    a {
+    .header-nav-link, .img-link {
       height: 54px;
       display: inline-block;
 
@@ -35,8 +35,51 @@ header {
   .header-right {
     float: right;
 
-    a {
+    .header-nav-link {
       float: right;
+    }
+
+    .dropdown, .dropdown-menu {
+      float: right;
+    }
+
+    .dropdown-menu {
+      left: auto;
+      right: 0;
+      top: calc(100% + 4px);
+
+      li > a {
+        padding-top: 8px;
+        padding-bottom: 8px;
+      }
+    }
+
+    .dropdown-toggle {
+      width: 45px;
+      background-color: $primary !important;
+      height: 45px;
+      margin-top: 3px;
+      padding: 0;
+      border: none;
+      margin-left: 20px !important;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.25);
+      border-radius: 50%;
+      float: right;
+      cursor: pointer;
+      text-transform: uppercase;
+      color: white !important;
+      text-align: center;
+      font-size: 16px;
+      line-height: 45px;
+      font-family: Avenir-Next-Thin;
+
+      .caret {
+        display: none;
+      }
+
+      &:hover {
+        background-color: $primary-hover !important;
+      }
     }
   }
 
@@ -58,6 +101,10 @@ header {
     &:active {
       opacity: 1;
     }
+  }
+
+  .header-dktp {
+    float: right;
   }
 
   .header-mbl {
