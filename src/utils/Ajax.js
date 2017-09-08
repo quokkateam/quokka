@@ -11,7 +11,6 @@
  */
 
 import $ from 'jquery';
-import Session from './Session';
 
 var Ajax;
 

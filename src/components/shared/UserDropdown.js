@@ -6,7 +6,7 @@ import Session from '../../utils/Session';
 class UserDropdown extends Component {
   render() {
     return (
-      <DropdownButton bsStyle='default' title={Session.userName()} id="userDropdown">
+      <DropdownButton bsStyle='default' title={Session.getUserInitials()} id="userDropdown">
         <MenuItem eventKey='1' href="/signout">Sign Out</MenuItem>
       </DropdownButton>
     );

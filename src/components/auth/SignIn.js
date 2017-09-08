@@ -71,8 +71,9 @@ class SignIn extends Form {
   onSignInResp(resp) {
     switch (resp.status) {
     case 201:
-      Session.create(resp);
-      window.location = '/';
+      Session.create(resp, () => {
+        window.location = '/';
+      });
       break;
     case 401:
       $(this.invalidMsg).show();
@@ -104,7 +105,7 @@ class SignIn extends Form {
               <Link to="/">No account yet? Sign up.</Link>
             </div>
             <div className="trailing-link">
-              <Link to="/">I forgot my password</Link>
+              <Link to="#">I forgot my password</Link>
             </div>
           </div>
         </div>

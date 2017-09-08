@@ -6,13 +6,20 @@ class Sess {
     this.header = 'quokka-user';
   }
   
-  create(resp) {
+  create(resp, cb) {
     var token = resp.headers.get(this.header);
     
     if (token) {
       this.setCookie(this.header, token);
+
+      resp.json().then((data) => {
+        this.setToStorage('user', data.user);
+        this.setToStorage('school', data.school);
+        cb();
+      });
     } else {
       console.warn('Not creating session -- no token provided');
+      cb();
     }
   }
 
@@ -88,8 +95,23 @@ class Sess {
     localStorage.removeItem(key);
   }
 
-  userName() {
-    return (this.getFromStorage('user') || {}).name || 'BW';
+  getUserInitials() {
+    var user = this.getFromStorage('user');
+
+    if (!user || !user.name || !user.name.trim()) {
+      return '';
+    }
+
+    var splitName = user.name.split(' ');
+
+    if (splitName.length === 1) {
+      return user.name[0].toUpperCase();
+    }
+
+    var firstName = splitName[0];
+    var lastName = splitName[splitName.length - 1];
+
+    return firstName[0].toUpperCase() + lastName[0].toUpperCase();
   }
 }
 
