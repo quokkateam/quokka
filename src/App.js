@@ -59,12 +59,15 @@ class App extends Component {
   }
 
   render() {
+
     return (
       <div>
         <div id="appContainer" className={document.location.pathname.split('/')[1]} ref={this.setAppContainerRef}>
           <Switch>
             <Route exact path='/' component={this.header(false, Themes.WHITE_ON_TRANS, false)}/>
             <Route exact path='/faq' component={this.header(false, Themes.COLOR_ON_WHITE, true)}/>
+            <Route exact path='/signin' component={this.header(false, Themes.COLOR_ON_WHITE, true)}/>
+            <Route exact path='/signout' component={this.header(false, Themes.COLOR_ON_WHITE, true)}/>
             <Route path='/check-in/week:weekNum' component={this.header(true, Themes.COLOR_ON_WHITE, true)}/>
             <Route path='/challenge/week:weekNum' component={this.header(true, Themes.COLOR_ON_WHITE, true)}/>
           </Switch>
@@ -74,6 +77,8 @@ class App extends Component {
         <Switch>
           <Route exact path='/' component={SideNav}/>
           <Route exact path='/faq' component={SideNav}/>
+          <Route exact path='/signin' component={SideNav}/>
+          <Route exact path='/signout' component={SideNav}/>
           <Route path='/check-in/week:weekNum' component={this.inAppSideNav()}/>
           <Route path='/challenge/week:weekNum' component={this.inAppSideNav()}/>
         </Switch>

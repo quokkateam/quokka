@@ -37,7 +37,10 @@ class AjaxClass {
       url += ('?' + $.param(params));
     }
 
-    return fetch(url, { method: method });
+    return fetch(url, {
+      method: method,
+      credentials: 'same-origin'
+    });
   }
 
   jsonRequst(url, params, method) {
@@ -46,6 +49,7 @@ class AjaxClass {
       headers: {
         'Content-Type': 'application/json'
       },
+      credentials: 'same-origin',
       body: JSON.stringify(params || {})
     });
   }

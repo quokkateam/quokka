@@ -39,6 +39,8 @@ class PrizesSection extends Component {
       this.removePrizeModal.close();
       this.newPrizeModal.close();
     }
+
+    return true;
   }
 
   setNewPrizeModalRef(ref) {

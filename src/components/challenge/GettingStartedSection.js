@@ -126,6 +126,8 @@ class GettingStartedSection extends Component {
     if (this.state.status === status.SAVING) {
       this.saveSuggestions();
     }
+
+    return true;
   }
 
   saveSuggestions() {

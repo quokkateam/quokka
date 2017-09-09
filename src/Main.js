@@ -7,6 +7,7 @@ import FAQ from './components/faq/FAQ';
 import Habit from './components/habit/Habit';
 import Home from './components/home/Home';
 import Session from './utils/Session';
+import SignIn from './components/auth/SignIn';
 
 class Main extends Component {
 
@@ -22,6 +23,11 @@ class Main extends Component {
       {
         path: '/faq',
         comp: FAQ,
+        exact: true
+      },
+      {
+        path: '/signin',
+        comp: SignIn,
         exact: true
       }
     ];
@@ -41,6 +47,11 @@ class Main extends Component {
         path: '/check-in/week:weekNum',
         comp: CheckIn,
         exact: false
+      },
+      {
+        path: '/signout',
+        comp: SignIn,
+        exact: true
       }
     ];
 

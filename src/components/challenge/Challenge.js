@@ -54,6 +54,8 @@ class Challenge extends Component {
       this.prizesSection.setState({ prizes: this.state.prizes });
       this.suggestionsSection.setState({ suggestions: this.state.suggestions });
     }
+
+    return true;
   }
 
   componentDidMount() {

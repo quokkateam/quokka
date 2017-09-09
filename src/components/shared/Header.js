@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Session from '../../utils/Session';
 import Themes from '../../utils/Themes';
+import UserDropdown from '../shared/UserDropdown';
 
 class Header extends Component {
 
@@ -43,8 +44,7 @@ class Header extends Component {
         links = [
           {
             text: 'FAQ',
-            href: '/faq',
-            featured: true
+            href: '/faq'
           },
           {
             text: 'Challenges',
@@ -54,9 +54,13 @@ class Header extends Component {
       } else {
         links = [
           {
-            text: 'FAQ',
-            href: '/faq',
+            text: 'Sign In',
+            href: '/signin',
             featured: true
+          },
+          {
+            text: 'FAQ',
+            href: '/faq'
           }
         ];
       }
@@ -104,17 +108,28 @@ class Header extends Component {
     return classes.join(' ');
   }
 
+  getUserIcon() {
+    if (!Session.authed()) {
+      return;
+    }
+
+    return <UserDropdown/>;
+  }
+
   render() {
     return (
       <header id={this.props.inApp ? 'appHeader' : 'landingHeader'} className={this.getClasses()}>
         <nav className="header-nav">
           <div className="header-left">
-            <a href="/">
+            <a className="img-link" href="/">
               <img alt="Quokka" src={'https://s3-us-west-1.amazonaws.com/quokkadev/logos/' + this.getLogo()} />
             </a>
           </div>
           <div className="header-right">
-            <div className="header-dktp">{this.getLinks()}</div>
+            {this.getUserIcon()}
+            <div className="header-dktp">
+              {this.getLinks()}
+            </div>
             <div className="header-mbl" onClick={this.props.onMenuClick}>
               <i className="fa fa-bars"></i>
             </div>

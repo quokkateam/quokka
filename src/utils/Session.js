@@ -3,19 +3,30 @@ var Session;
 class Sess {
   
   constructor() {
-    this.header = 'Quokka-User';
+    this.header = 'quokka-user';
   }
   
-  create(resp) {
-    var token = resp.headers[this.header];
+  create(resp, cb) {
+    var token = resp.headers.get(this.header);
     
     if (token) {
       this.setCookie(this.header, token);
+
+      resp.json().then((data) => {
+        this.setToStorage('user', data.user);
+        this.setToStorage('school', data.school);
+        cb();
+      });
     } else {
       console.warn('Not creating session -- no token provided');
+      cb();
     }
   }
-  
+
+  destroy() {
+    this.deleteCookie(this.header);
+  }
+
   authed() {
     return !!this.getCookie(this.header);
   }
@@ -49,6 +60,58 @@ class Sess {
     }
 
     return '';
+  }
+
+  deleteCookie(name) {
+    document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC';
+  }
+
+  setToStorage (key, value) {
+    var val;
+
+    try {
+      val = JSON.stringify(value);
+    } catch (e) {
+      val = value;
+    }
+
+    localStorage.setItem(key, val);
+  }
+
+  getFromStorage (key) {
+    var item;
+    var data = localStorage.getItem(key);
+
+    try {
+      item = JSON.parse(data);
+    } catch (e) {
+      item = data;
+    }
+
+    return item;
+  }
+
+  deleteFromStorage (key) {
+    localStorage.removeItem(key);
+  }
+
+  getUserInitials() {
+    var user = this.getFromStorage('user');
+
+    if (!user || !user.name || !user.name.trim()) {
+      return '';
+    }
+
+    var splitName = user.name.split(' ');
+
+    if (splitName.length === 1) {
+      return user.name[0].toUpperCase();
+    }
+
+    var firstName = splitName[0];
+    var lastName = splitName[splitName.length - 1];
+
+    return firstName[0].toUpperCase() + lastName[0].toUpperCase();
   }
 }
 
