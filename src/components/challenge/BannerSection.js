@@ -18,7 +18,7 @@ class BannerSection extends Component {
 
     return <Link to={'/challenge/week' + this.props.adjHabits.prev.weekNum}>
       <div className="quokka-nav-button nav-left banner-nav-button"></div>
-      <span className="adj-challenge-title">{this.props.adjHabits.prev.habit}</span>
+      <span className="adj-challenge-title">{this.props.adjHabits.prev.name}</span>
     </Link>;
   }
 
@@ -29,7 +29,7 @@ class BannerSection extends Component {
 
     return <Link to={'/challenge/week' + this.props.adjHabits.next.weekNum}>
       <div className="quokka-nav-button nav-right banner-nav-button"></div>
-      <span className="adj-challenge-title">{this.props.adjHabits.next.habit}</span>
+      <span className="adj-challenge-title">{this.props.adjHabits.next.name}</span>
     </Link>;
   }
 
