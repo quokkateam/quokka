@@ -32,7 +32,7 @@ class Sess {
   }
 
   isAdmin() {
-    return false;
+    return !!(this.getFromStorage('user') || {}).isAdmin;
   }
 
   setCookie(name, value, days) {
