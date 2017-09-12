@@ -9,6 +9,7 @@ class BannerSection extends Component {
     this.nextWeek = this.nextWeek.bind(this);
     this.weekNum = this.weekNum.bind(this);
     this.getDate = this.getDate.bind(this);
+    this.getChallengeBannerClasses = this.getChallengeBannerClasses.bind(this);
   }
 
   prevWeek() {
@@ -60,9 +61,17 @@ class BannerSection extends Component {
     return month + ' ' + day;
   }
 
+  getChallengeBannerClasses() {
+    if (!this.props.habit) {
+      return '';
+    }
+
+    return this.props.habit.slug;
+  }
+
   render() {
     return (
-      <div id="challengeBanner">
+      <div id="challengeBanner" className={this.getChallengeBannerClasses()}>
         <div className="dimmer"></div>
         <div className="adj-week-nav prev-week">{this.prevWeek()}</div>
         <div className="adj-week-nav next-week">{this.nextWeek()}</div>

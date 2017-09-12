@@ -1,10 +1,42 @@
 #challengeBanner {
-  background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/exercise-banner.jpeg');
   background-size: cover;
   -webkit-background-size: cover;
   background-repeat: no-repeat;
   position: relative;
   height: 285px;
+
+  // Background Images for each challenge
+  &.socializing {
+    background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/exercise-banner.jpeg');
+  }
+
+  &.good-deeds {
+    background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/exercise-banner.jpeg');
+  }
+
+  &.sleep {
+    background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/exercise-banner.jpeg');
+  }
+
+  &.healthy-eating {
+    background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/exercise-banner.jpeg');
+  }
+
+  &.journaling {
+    background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/exercise-banner.jpeg');
+  }
+
+  &.exercise {
+    background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/exercise-banner.jpeg');
+  }
+
+  &.group-selected-challenge {
+    background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/exercise-banner.jpeg');
+  }
+
+  &.positivity-mindfulness {
+    background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/exercise-banner.jpeg');
+  }
 
   .dimmer {
     background-color: rgba(0,0,0,0.45);
