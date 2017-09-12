@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import moment from 'moment';
 
 class BannerSection extends Component {
 
@@ -16,10 +16,10 @@ class BannerSection extends Component {
       return;
     }
 
-    return <Link to={'/challenge/week' + this.props.adjHabits.prev.weekNum}>
+    return <a href={'/challenge/week' + this.props.adjHabits.prev.weekNum}>
       <div className="quokka-nav-button nav-left banner-nav-button"></div>
       <span className="adj-challenge-title">{this.props.adjHabits.prev.name}</span>
-    </Link>;
+    </a>;
   }
 
   nextWeek() {
@@ -27,10 +27,10 @@ class BannerSection extends Component {
       return;
     }
 
-    return <Link to={'/challenge/week' + this.props.adjHabits.next.weekNum}>
+    return <a href={'/challenge/week' + this.props.adjHabits.next.weekNum}>
       <div className="quokka-nav-button nav-right banner-nav-button"></div>
       <span className="adj-challenge-title">{this.props.adjHabits.next.name}</span>
-    </Link>;
+    </a>;
   }
 
   weekNum() {
@@ -42,11 +42,22 @@ class BannerSection extends Component {
   }
 
   getDate(when) {
+    var months = ['Jan', 'Feb', 'Mar', 'April', 'May', 'June',
+      'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+
     if (!this.props.habit || !this.props.habit.dates) {
       return;
     }
 
-    return this.props.habit.dates[when];
+    var date = moment(this.props.habit.dates[when], 'MM/DD/YYYY');
+    var month = months[date.month()];
+    var day = date.date();
+
+    if (day < 10) {
+      day = '0' + day;
+    }
+
+    return month + ' ' + day;
   }
 
   render() {

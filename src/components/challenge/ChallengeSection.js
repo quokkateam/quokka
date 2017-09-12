@@ -129,7 +129,7 @@ class ChallengeSection extends Component {
   }
 
   getPoints() {
-    var points = this.state.challenge.points || '';
+    var points = this.state.challenge.points || 0;
     var isSaving = this.isSaving();
 
     if (isSaving || this.isEditing()) {
