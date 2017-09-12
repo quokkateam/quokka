@@ -23,6 +23,7 @@ class QuokkaModal extends Component {
   }
 
   updateAndShow(obj) {
+    obj = obj || {};
     obj.showModal = true;
     this.setState(obj);
   }

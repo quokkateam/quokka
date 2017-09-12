@@ -11,12 +11,15 @@ class NewPrizeModal extends QuokkaModal {
   constructor(props) {
     super(props);
 
+    this.newSponsorVal = 'create-new-sponsor';
+
     this.setSponsorSelectRef = this.setSponsorSelectRef.bind(this);
     this.setPrizeInputRef = this.setPrizeInputRef.bind(this);
     this.formatSponsorSelectOptions = this.formatSponsorSelectOptions.bind(this);
     this.submitPrize = this.submitPrize.bind(this);
     this.createPrize = this.createPrize.bind(this);
     this.updatePrize = this.updatePrize.bind(this);
+    this.onSponsorChange = this.onSponsorChange.bind(this);
 
     this.state = {
       showModal: false,
@@ -36,11 +39,15 @@ class NewPrizeModal extends QuokkaModal {
   }
 
   formatSponsorSelectOptions() {
-    return (this.state.sponsors || []).map((s) => {
+    var options = (this.state.sponsors || []).map((s) => {
       return { value: s.id, title: s.name };
     }).sort((a, b) => {
       return ~~(a.title > b.title);
     });
+
+    options.push({ value: this.newSponsorVal, title: '+ Create New Sponsor' });
+
+    return options;
   }
 
   submitPrize() {
@@ -74,11 +81,17 @@ class NewPrizeModal extends QuokkaModal {
     this.props.onUpdatePrize(payload);
   }
 
+  onSponsorChange(val) {
+    if (val === this.newSponsorVal && this.props.onCreateNewSponsor) {
+      this.props.onCreateNewSponsor();
+    }
+  }
+
   getBody() {
     return (
       <div id="newPrizeModalBody">
         <div className="select-sponsor">
-          <FormSelect required={true} placeholder="Select Sponsor" options={this.formatSponsorSelectOptions()} defaultValue={this.state.selectedSponsor} ref={this.setSponsorSelectRef}/>
+          <FormSelect required={true} placeholder="Select Sponsor" options={this.formatSponsorSelectOptions()} defaultValue={this.state.selectedSponsor} onChange={this.onSponsorChange} ref={this.setSponsorSelectRef}/>
         </div>
         <div className="prize-section">
           <FormInput required={true} placeholder="Name of Prize" defaultValue={(this.state.prize || {}).text} ref={this.setPrizeInputRef} />

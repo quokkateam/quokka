@@ -64,15 +64,17 @@ class GettingStartedSection extends Component {
     var isSaving = this.isSaving();
     var editable = isSaving || this.isEditing();
 
-    if (editable && this.state.suggestions.length === 0) {
-      return [<li key={0}><FormInput placholder="Suggestion"/></li>];
+    if (this.state.suggestions.length === 0) {
+      return editable ?
+        [<li key={0}><FormInput placeholder="Suggestion"/></li>] :
+        <div className="no-suggestions">No suggestions yet</div>;
     }
 
     return this.state.suggestions.map((s, i) => {
       var liChild;
 
       if (editable) {
-        liChild = <FormInput disabled={isSaving} placholder="Suggestion" defaultValue={s}/>;
+        liChild = <FormInput disabled={isSaving} placeholder="Suggestion" defaultValue={s}/>;
       } else {
         liChild = <QuokkaMarkdown source={s}/>;
       }
@@ -169,6 +171,8 @@ class GettingStartedSection extends Component {
 
     if (this.isEditing() || this.isSaving()) {
       classes.push('editable');
+    } else if (this.state.suggestions.length === 0) {
+      classes.push('no-suggestions-list');
     }
 
     return classes.join(' ');

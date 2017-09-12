@@ -27,6 +27,7 @@ class PrizesSection extends Component {
     this.onCreateSponsorClick = this.onCreateSponsorClick.bind(this);
     this.getCreateSponsorBtn = this.getCreateSponsorBtn.bind(this);
     this.createSponsor = this.createSponsor.bind(this);
+    this.showCreateNewSponsor = this.showCreateNewSponsor.bind(this);
 
     this.state = {
       prizes: this.props.prizes || [],
@@ -56,9 +57,11 @@ class PrizesSection extends Component {
   }
 
   getPrizes() {
-    var editable = Session.isAdmin();
+    if (this.state.prizes.length === 0) {
+      return <div className="no-prizes">No prizes yet</div>;
+    }
 
-    if (editable) {
+    if (Session.isAdmin()) {
       return this.state.prizes.map((data) => {
         return <li key={data.sponsor.id}>
           <Prize sponsor={data.sponsor} prize={data.prize} editable={true} onEdit={this.onEditPrize} onRemove={this.onRemovePrize}/>
@@ -92,7 +95,7 @@ class PrizesSection extends Component {
   }
 
   onCreateSponsorClick() {
-    this.createSponsorModal.updateAndShow({});
+    this.createSponsorModal.updateAndShow();
   }
 
   createSponsor() {
@@ -164,6 +167,14 @@ class PrizesSection extends Component {
     //   });
   }
 
+  showCreateNewSponsor() {
+    this.newPrizeModal.close();
+
+    setTimeout(() => {
+      this.createSponsorModal.updateAndShow();
+    }, 400);
+  }
+
   render() {
     return (
       <div className="container-fluid">
@@ -176,7 +187,7 @@ class PrizesSection extends Component {
           {this.getNewPrizeBtn()}
           {this.getCreateSponsorBtn()}
         </div>
-        <NewPrizeModal onCreatePrize={this.createPrize} onUpdatePrize={this.updatePrize} ref={this.setNewPrizeModalRef}/>
+        <NewPrizeModal onCreatePrize={this.createPrize} onUpdatePrize={this.updatePrize} onCreateNewSponsor={this.showCreateNewSponsor} ref={this.setNewPrizeModalRef}/>
         <RemovePrizeModal onRemovePrize={this.removePrize} ref={this.setRemovePrizeModalRef}/>
         <CreateSponsorModal onCreateSponsor={this.createSponsor} ref={this.setCreateSponsorModalRef} />
       </div>

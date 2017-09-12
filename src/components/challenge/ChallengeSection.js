@@ -123,9 +123,11 @@ class ChallengeSection extends Component {
 
     if (isSaving || this.isEditing()) {
       return <FormInput useTextarea={true} disabled={isSaving} placeholder="What's this week's challenge?" defaultValue={text} ref={this.setChallengeRef} />;
+    } else if (text) {
+      return <QuokkaMarkdown source={text} />;
+    } else {
+      return <div className="no-challenge">No challenge specified</div>;
     }
-
-    return <QuokkaMarkdown source={text} />;
   }
 
   getPoints() {
