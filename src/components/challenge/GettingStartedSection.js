@@ -64,6 +64,10 @@ class GettingStartedSection extends Component {
     var isSaving = this.isSaving();
     var editable = isSaving || this.isEditing();
 
+    if (editable && this.state.suggestions.length == 0) {
+      return [<li key={0}><FormInput placholder="Suggestion"/></li>];
+    }
+
     return this.state.suggestions.map((s, i) => {
       var liChild;
 
