@@ -31,8 +31,16 @@ class Sess {
     return !!this.getCookie(this.header);
   }
 
+  user() {
+    return this.getFromStorage('user');
+  }
+
+  school() {
+    return this.getFromStorage('school');
+  }
+
   isAdmin() {
-    return !!(this.getFromStorage('user') || {}).isAdmin;
+    return !!(this.user() || {}).isAdmin;
   }
 
   setCookie(name, value, days) {
@@ -96,7 +104,7 @@ class Sess {
   }
 
   getUserInitials() {
-    var user = this.getFromStorage('user');
+    var user = this.user();
 
     if (!user || !user.name || !user.name.trim()) {
       return '';

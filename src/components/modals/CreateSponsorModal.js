@@ -28,7 +28,7 @@ class CreateSponsorModal extends QuokkaModal {
 
   createSponsor() {
     var payload = {
-      logo: '', // deal with this through file upload
+      logo: 'https://s3-us-west-1.amazonaws.com/quokkadev/images/lululemon.png', // deal with this through file upload
       name: this.nameInput.serialize(),
       url: this.urlInput.serialize()
     };

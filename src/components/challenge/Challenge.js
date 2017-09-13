@@ -15,7 +15,6 @@ class Challenge extends Component {
   constructor(props) {
     super(props);
     
-    // use for fetching week info from DB
     this.weekNum = this.props.match.params.weekNum;
 
     this.setChallengeSectionRef = this.setChallengeSectionRef.bind(this);
@@ -24,16 +23,17 @@ class Challenge extends Component {
     this.setExtrasSectionRef = this.setExtrasSectionRef.bind(this);
 
     this.state = {
+      challengeId: null,
       habit: null,
       adjHabits: null,
       overview: null,
       challenge: null,
       prizes: null,
+      sponsors: null,
       suggestions: null,
-      links: null
+      links: null,
+      extraInfo: null
     };
-
-    // const formatLink = (i) => `[[${i}]](${links[i - 1]})`;
   }
 
   setChallengeSectionRef(ref) {
@@ -54,10 +54,25 @@ class Challenge extends Component {
 
   componentDidUpdate() {
     if (this.state.habit) {
-      this.challengeSection.setState({ challenge: this.state.challenge });
-      this.prizesSection.setState({ prizes: this.state.prizes });
-      this.suggestionsSection.setState({ suggestions: this.state.suggestions });
-      this.extrasSection.setState({ links: this.state.links, extraInfo: this.state.extraInfo });
+      this.challengeSection.setState({
+        challenge: this.state.challenge,
+        challengeId: this.state.challengeId
+      });
+
+      this.prizesSection.setState({
+        challengeId: this.state.challengeId,
+        prizes: this.state.prizes,
+        sponsors: this.state.sponsors
+      });
+
+      this.suggestionsSection.setState({
+        suggestions: this.state.suggestions
+      });
+
+      this.extrasSection.setState({
+        links: this.state.links,
+        extraInfo: this.state.extraInfo
+      });
     }
 
     return true;
@@ -68,11 +83,13 @@ class Challenge extends Component {
       .then((resp) => resp.json())
       .then((data) => {
         this.setState({
+          challengeId: Number(data.id),
           habit: data.habit,
           adjHabits: data.adjHabits,
           overview: data.overview,
           challenge: data.challenge,
           prizes: data.prizes,
+          sponsors: data.sponsors,
           suggestions: data.suggestions,
           links: data.links,
           extraInfo: data.extraInfo
@@ -87,7 +104,7 @@ class Challenge extends Component {
           <BannerSection habit={this.state.habit} weekNum={this.weekNum} adjHabits={this.state.adjHabits} />
           <OverviewSection overview={this.state.overview} />
           <ChallengeSection challenge={this.state.challenge} ref={this.setChallengeSectionRef} />
-          <PrizesSection prizes={this.state.prizes} points={(this.state.challenge || {}).points} ref={this.setPrizesSectionRef} />
+          <PrizesSection prizes={this.state.prizes} sponsors={this.state.sponsors} points={(this.state.challenge || {}).points} ref={this.setPrizesSectionRef} />
           <GettingStartedSection suggestions={this.state.suggestions} ref={this.setSuggestionsSectionRef} />
           <CheckInSection weekNum={this.weekNum} endDate={((this.state.habit || {}).dates || {}).end} />
           <ExtrasSection links={this.state.links} extraInfo={this.state.extraInfo} ref={this.setExtrasSectionRef} />

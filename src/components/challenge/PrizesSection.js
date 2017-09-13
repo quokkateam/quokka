@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-// import Ajax from '../../utils/Ajax';
+import Ajax from '../../utils/Ajax';
 import CreateSponsorModal from '../modals/CreateSponsorModal';
 import NewPrizeModal from '../modals/NewPrizeModal';
 import Prize from './Prize';
@@ -19,7 +19,6 @@ class PrizesSection extends Component {
     this.setNewPrizeModalRef = this.setNewPrizeModalRef.bind(this);
     this.setRemovePrizeModalRef = this.setRemovePrizeModalRef.bind(this);
     this.setCreateSponsorModalRef = this.setCreateSponsorModalRef.bind(this);
-    this.sponsors = this.sponsors.bind(this);
     this.removePrize = this.removePrize.bind(this);
     this.createPrize = this.createPrize.bind(this);
     this.updatePrize = this.updatePrize.bind(this);
@@ -30,7 +29,9 @@ class PrizesSection extends Component {
     this.showCreateNewSponsor = this.showCreateNewSponsor.bind(this);
 
     this.state = {
+      challengeId: null,
       prizes: this.props.prizes || [],
+      sponsors: this.props.sponsors || [],
       closeModals: false
     };
   }
@@ -63,14 +64,14 @@ class PrizesSection extends Component {
 
     if (Session.isAdmin()) {
       return this.state.prizes.map((data) => {
-        return <li key={data.sponsor.id}>
+        return <li key={data.prize.id}>
           <Prize sponsor={data.sponsor} prize={data.prize} editable={true} onEdit={this.onEditPrize} onRemove={this.onRemovePrize}/>
         </li>;
       });
     }
 
     return this.state.prizes.map((data) => {
-      return <li key={data.sponsor.id}>
+      return <li key={data.prize.id}>
         <a href={data.sponsor.url} target="_blank" rel="noopener noreferrer">
           <Prize sponsor={data.sponsor} prize={data.prize}/>
         </a>
@@ -98,19 +99,21 @@ class PrizesSection extends Component {
     this.createSponsorModal.updateAndShow();
   }
 
-  createSponsor() {
-    // Ajax.post
-    this.createSponsorModal.close();
-  }
+  createSponsor(payload) {
+    payload.schoolSlug = (Session.school() || {}).slug;
 
-  sponsors() {
-    return this.state.prizes.map((data) => { return data.sponsor; });
+    Ajax.post('/api/sponsor', payload)
+      .then((resp) => resp.json())
+      .then((sponsors) => {
+        this.setState({ sponsors: sponsors });
+        this.createSponsorModal.close();
+      });
   }
 
   onNewPrizeClick() {
     this.newPrizeModal.updateAndShow({
       prize: null,
-      sponsors: this.sponsors(),
+      sponsors: this.state.sponsors,
       selectedSponsor: null,
       newPrize: true
     });
@@ -119,7 +122,7 @@ class PrizesSection extends Component {
   onEditPrize(prize, sponsor) {
     this.newPrizeModal.updateAndShow({
       prize: prize,
-      sponsors: this.sponsors(),
+      sponsors: this.state.sponsors,
       selectedSponsor: sponsor.id,
       newPrize: false
     });
@@ -144,27 +147,13 @@ class PrizesSection extends Component {
   }
 
   updateListWith(payload, method) {
-    setTimeout(() => {
-      var prizes = this.state.prizes;
+    payload.challengeId = this.state.challengeId;
 
-      this.setState({
-        prizes: prizes,
-        closeModals: true
+    Ajax[method]('/api/prize', payload)
+      .then((resp) => resp.json())
+      .then((prizes) => {
+        this.setState({ prizes: prizes, closeModals: true });
       });
-    }, 300);
-
-    // var func = Ajax[method];
-    //
-    // func('/api/prize', payload)
-    //   .then((resp) => resp.json())
-    //   .then((data) => {
-    //     if (data.prizes) {
-    //       this.setState({
-    //         prizes: data.prizes,
-    //         closeModals: true
-    //       });
-    //     }
-    //   });
   }
 
   showCreateNewSponsor() {

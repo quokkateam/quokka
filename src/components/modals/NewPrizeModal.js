@@ -60,8 +60,8 @@ class NewPrizeModal extends QuokkaModal {
     }
 
     var payload = {
-      sponsorId: this.sponsorSelect.serialize(),
-      text: this.prizeInput.serialize()
+      sponsorId: Number(this.sponsorSelect.serialize()),
+      name: this.prizeInput.serialize()
     };
 
     this.props.onCreatePrize(payload);
@@ -73,9 +73,9 @@ class NewPrizeModal extends QuokkaModal {
     }
 
     var payload = {
-      sponsorId: this.sponsorSelect.serialize(),
-      id: this.state.prize.id,
-      text: this.prizeInput.serialize()
+      id: Number(this.state.prize.id),
+      sponsorId: Number(this.sponsorSelect.serialize()),
+      name: this.prizeInput.serialize()
     };
 
     this.props.onUpdatePrize(payload);
@@ -94,7 +94,7 @@ class NewPrizeModal extends QuokkaModal {
           <FormSelect required={true} placeholder="Select Sponsor" options={this.formatSponsorSelectOptions()} defaultValue={this.state.selectedSponsor} onChange={this.onSponsorChange} ref={this.setSponsorSelectRef}/>
         </div>
         <div className="prize-section">
-          <FormInput required={true} placeholder="Name of Prize" defaultValue={(this.state.prize || {}).text} ref={this.setPrizeInputRef} />
+          <FormInput required={true} placeholder="Name of Prize" defaultValue={(this.state.prize || {}).name} ref={this.setPrizeInputRef} />
         </div>
       </div>
     );
