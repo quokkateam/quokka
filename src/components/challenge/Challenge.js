@@ -68,7 +68,8 @@ class Challenge extends Component {
       });
 
       this.suggestionsSection.setState({
-        suggestions: this.state.suggestions
+        suggestions: this.state.suggestions,
+        challengeId: this.state.challengeId
       });
 
       this.extrasSection.setState({

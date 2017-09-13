@@ -45,6 +45,8 @@ class ChallengeSection extends Component {
     if (this.state.status === status.SAVING) {
       this.saveChallenge();
     }
+
+    return true;
   }
 
   getModBtn() {

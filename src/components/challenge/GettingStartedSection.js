@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
+import Ajax from '../../utils/Ajax';
 import FormInput from '../shared/form/FormInput';
 import QuokkaMarkdown from '../shared/QuokkaMarkdown';
 import Session from '../../utils/Session';
@@ -29,7 +30,8 @@ class GettingStartedSection extends Component {
 
     this.state = {
       status: status.STATIC,
-      suggestions: this.props.suggestions || []
+      suggestions: this.props.suggestions || [],
+      challengeId: null
     };
   }
 
@@ -146,24 +148,21 @@ class GettingStartedSection extends Component {
       }
     }
 
-    // var payload = {
-    //   suggestions: suggestions
-    //   // need some sort of challenge id
-    // };
+    var payload = {
+      id: this.state.challengeId,
+      suggestions: suggestions
+    };
 
-    setTimeout(() => {
-      this.setState({
-        status: status.STATIC,
-        suggestions: suggestions
+    Ajax.put('/api/challenge/suggestions', payload)
+      .then((resp) => resp.json())
+      .then((data) => {
+        if (data && data.hasOwnProperty('suggestions')) {
+          this.setState({
+            status: status.STATIC,
+            suggestions: data.suggestions
+          });
+        }
       });
-    }, 400);
-
-    // Ajax.put('/api/suggestions', payload)
-    //   .then((resp) => {
-    //     if (resp.status == 200) {
-    //       this.setState({ status: status.STATIC });
-    //     }
-    //   });
   }
 
   suggestionsListClasses() {
