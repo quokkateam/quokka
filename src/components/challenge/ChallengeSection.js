@@ -113,11 +113,16 @@ class ChallengeSection extends Component {
     Ajax.put('/api/challenge/challenge', payload)
       .then((resp) => resp.json())
       .then((data) => {
-        if (data && data.hasOwnProperty('text') && data.hasOwnProperty('points'))
+        if (data && data.hasOwnProperty('text') && data.hasOwnProperty('points')) {
           this.setState({
             status: status.STATIC,
             challenge: data
           });
+
+          if (this.props.onUpdate) {
+            this.props.onUpdate(data);
+          }
+        }
       });
   }
 
