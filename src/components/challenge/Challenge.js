@@ -21,6 +21,7 @@ class Challenge extends Component {
     this.setChallengeSectionRef = this.setChallengeSectionRef.bind(this);
     this.setPrizesSectionRef = this.setPrizesSectionRef.bind(this);
     this.setSuggestionsSectionRef = this.setSuggestionsSectionRef.bind(this);
+    this.setExtrasSectionRef = this.setExtrasSectionRef.bind(this);
 
     this.state = {
       habit: null,
@@ -47,11 +48,16 @@ class Challenge extends Component {
     this.suggestionsSection = ref;
   }
 
+  setExtrasSectionRef(ref) {
+    this.extrasSection = ref;
+  }
+
   componentDidUpdate() {
     if (this.state.habit) {
       this.challengeSection.setState({ challenge: this.state.challenge });
       this.prizesSection.setState({ prizes: this.state.prizes });
       this.suggestionsSection.setState({ suggestions: this.state.suggestions });
+      this.extrasSection.setState({ links: this.state.links, extraInfo: this.state.extraInfo });
     }
 
     return true;
@@ -68,7 +74,8 @@ class Challenge extends Component {
           challenge: data.challenge,
           prizes: data.prizes,
           suggestions: data.suggestions,
-          links: data.links
+          links: data.links,
+          extraInfo: data.extraInfo
         });
       });
   }
@@ -83,7 +90,7 @@ class Challenge extends Component {
           <PrizesSection prizes={this.state.prizes} points={(this.state.challenge || {}).points} ref={this.setPrizesSectionRef} />
           <GettingStartedSection suggestions={this.state.suggestions} ref={this.setSuggestionsSectionRef} />
           <CheckInSection weekNum={this.weekNum} endDate={((this.state.habit || {}).dates || {}).end} />
-          <ExtrasSection links={this.state.links} />
+          <ExtrasSection links={this.state.links} extraInfo={this.state.extraInfo} ref={this.setExtrasSectionRef} />
         </div>
         <InviteFriendsSection />
       </div>
