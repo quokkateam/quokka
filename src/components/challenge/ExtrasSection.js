@@ -10,7 +10,7 @@ class ExtrasSection extends Component {
           <div className="challenge-section-title">Extra Info</div>
           <ul className="challenge-section-desc">
             {(this.props.links || []).map((link, index) =>
-              (<li key={index}>[{index + 1}]: <a href={link}>{link}</a></li>))
+              (<li key={index}>[{index + 1}]: <a href={link} target="_blank" rel="noopener noreferrer">{link}</a></li>))
             }
           </ul>
           <QuokkaMarkdown source={this.props.extraInfo || ''}/>

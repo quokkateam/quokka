@@ -5,7 +5,7 @@ class BannerSection extends Component {
 
   constructor(props) {
     super(props);
-    this.prevWeek = this.prevWeek.bind(this);[]
+    this.prevWeek = this.prevWeek.bind(this);
     this.nextWeek = this.nextWeek.bind(this);
     this.weekNum = this.weekNum.bind(this);
     this.getDate = this.getDate.bind(this);
