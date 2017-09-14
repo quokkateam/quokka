@@ -69,6 +69,8 @@ class WeeklyProgBar extends Component {
 
     $(this.movingBar).addClass('w' + this.indexClass(i));
 
+    var timeout = i === 0 ? 200 : this.transitionDur;
+
     setTimeout(() => {
       var el;
       for (var j = 0; j < weeklyIndicators.length; j++) {
@@ -82,7 +84,7 @@ class WeeklyProgBar extends Component {
       }
 
       this.alignCurrWeekCover();
-    }, this.transitionDur);
+    }, timeout);
   }
 
   alignCurrWeekCover() {
