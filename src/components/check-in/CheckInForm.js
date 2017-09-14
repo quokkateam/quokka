@@ -1,3 +1,4 @@
+import Ajax from '../../utils/Ajax';
 import Form from '../shared/form/Form';
 import FormQA from '../shared/form/FormQA';
 import LgSpinnerBtn from '../widgets/LgSpinnerBtn';
@@ -14,6 +15,9 @@ class CheckInForm extends Form {
     this.formatQAs = this.formatQAs.bind(this);
     this.submit = this.submit.bind(this);
     this.submitBtnClasses = this.submitBtnClasses.bind(this);
+
+    this.state.checkInId = null;
+    this.state.questions = this.props.questions || [];
   }
 
   componentDidUpdate() {
@@ -26,7 +30,7 @@ class CheckInForm extends Form {
       this.onComplete();
       break;
     case this.status.SENDING:
-      // Do nothing.
+      this.submit();
       break;
     case this.status.STATIC:
       // Do nothing.
@@ -41,23 +45,24 @@ class CheckInForm extends Form {
 
   onSerializing() {
     if (this.formValid()) {
-      this.submit();
+      this.setState({ status: this.status.SENDING });
     }
   }
 
   submit() {
-    this.setState({ status: this.status.SENDING });
+    var payload = {
+      id: this.state.checkInId,
+      questions: this.state.formComps
+    };
 
-    // using setTimeout to simulate network request duration
-    setTimeout(() => {
-      this.setState({ status: this.status.COMPLETE });
-    }, 300);
-
-    // TODO uncomment this code when we're actually talking to an API.
-    // POST or PUT depending on check-in status
-    // axios.post('/check-in', this.state.formComps).then(() => {
-    //  this.setState({ status: status.COMPLETE });
-    // });
+    Ajax.put('/api/check_in', payload)
+      .then((resp) => resp.json())
+      .then((data) => {
+        this.setState({
+          questions: data,
+          status: this.status.COMPLETE
+        });
+      });
   }
 
   onComplete() {
@@ -67,8 +72,10 @@ class CheckInForm extends Form {
   }
 
   formatQAs() {
-    return this.props.formData.map((data) => {
-      return <FormQA key={data.id} type={data.type} question={data.question} answer={data.answer} required={true} ref={this.pushFormCompRef}/>;
+    var type = 'fr-long'; // hardcoding for now until other types of answers (multi-choice, etc.) are supported
+
+    return this.state.questions.map((data) => {
+      return <FormQA key={data.question.id} type={type} question={data.question} answer={data.answer} required={true} ref={this.pushFormCompRef}/>;
     });
   }
 
