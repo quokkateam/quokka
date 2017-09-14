@@ -30,6 +30,7 @@
 // Widgets
 @import 'widgets/spinners/horiz-spinner';
 @import 'widgets/lg-spinner-btn';
+@import 'widgets/weekly-prog-bar';
 
 // Challenge
 @import 'challenge/challenge-page';
@@ -43,6 +44,9 @@
 
 // FAQ
 @import 'faq/faq';
+
+// Challenges
+@import 'challenges/challenges';
 
 // Modals
 @import 'modals/quokka-modal';

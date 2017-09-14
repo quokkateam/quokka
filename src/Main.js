@@ -4,7 +4,7 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 import Challenge from './components/challenge/Challenge';
 import CheckIn from './components/check-in/CheckIn';
 import FAQ from './components/faq/FAQ';
-import Habit from './components/habit/Habit';
+import Challenges from './components/challenges/Challenges';
 import Home from './components/home/Home';
 import Session from './utils/Session';
 import SignIn from './components/auth/SignIn';
@@ -40,7 +40,7 @@ class Main extends Component {
       },
       {
         path: '/challenges',
-        comp: Habit,
+        comp: Challenges,
         exact: true
       },
       {
