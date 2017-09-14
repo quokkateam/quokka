@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Ajax from '../../utils/Ajax';
 import CheckInForm from './CheckInForm';
 
 class CheckIn extends Component {
@@ -7,52 +8,54 @@ class CheckIn extends Component {
     super(props);
     
     this.weekNum = this.props.match.params.weekNum;
-    
-    this.data = {
-      week: 'Exercise',
-      formData: [  // will most likely be an array of CheckInQuestions with their respectjve CheckInAnswers
-        {
-          id: 1,
-          type: 'fr-long',
-          question: {
-            id: 1,
-            text: 'How did you feel about this week\'s challenge?'
-          },
-          answer: null
-        },
-        {
-          id: 2,
-          type: 'fr-long',
-          question: {
-            id: 2,
-            text: 'Did you notice anything new about yourself?'
-          },
-          answer: null
-        },
-        {
-          id: 3,
-          type: 'fr-long',
-          question: {
-            id: 2,
-            text: 'Any other thoughts or feedback on this week or the program?'
-          },
-          answer: null
-        }
-      ]
+
+    this.setCheckInFormRef = this.setCheckInFormRef.bind(this);
+
+    this.state = {
+      checkInId: null,
+      challengeName: null,
+      questions: []
     };
+  }
+
+  setCheckInFormRef(ref) {
+    this.checkInForm = ref;
+  }
+
+  componentDidMount() {
+    Ajax.get('/api/check_in/' + this.weekNum)
+      .then((resp) => resp.json())
+      .then((data) => {
+        this.setState({
+          checkInId: Number(data.id),
+          challengeName: data.challengeName,
+          questions: data.questions
+        });
+      });
+  }
+
+  componentDidUpdate() {
+    if (this.state.checkInId) {
+      this.checkInForm.setState({
+        checkInId: this.state.checkInId,
+        questions: this.state.questions
+      });
+    }
+
+    return true;
   }
 
   render() {
     return (
       <div id="checkIn">
         <div className="check-in-week-info">
-          <div className="week-info">Week {this.weekNum} Check-In: {this.props.week}</div>
+          <div className="week-info">Week {this.weekNum} Check-In: {this.state.challengeName}</div>
           <div className="check-in-instruc">
             Let us know how this week went and answer some quick questions to make yourself eligible to win
             <a href={'/challenge/week' + this.weekNum}> this week’s prizes!</a>
           </div>
         </div>
-        <CheckInForm formData={this.data.formData} />
+        <CheckInForm questions={this.state.questions} ref={this.setCheckInFormRef} />
       </div>
     );
   }

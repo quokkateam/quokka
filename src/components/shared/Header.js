@@ -10,69 +10,70 @@ class Header extends Component {
     
     this.defaultTheme = Themes.COLOR_ON_WHITE;
     
-    this.getLinks = this.getLinks.bind(this);
     this.getLogo = this.getLogo.bind(this);
     this.getClasses = this.getClasses.bind(this);
+    this.getInAppLinks = this.getInAppLinks.bind(this);
+    this.getLandingLinks = this.getLandingLinks.bind(this);
+    this.formatLinks = this.formatLinks.bind(this);
   }
-  
-  getLinks() {
+
+  getInAppLinks() {
+    var links = [{ text: 'Profile', href: '/me' }];
+
+    if (Session.isAdmin()) {
+      links.push({ text: 'Admin', href: '/admin' });
+    }
+
+    links.push({ text: 'Challenges', href: '/challenges' });
+
+    links.forEach((info) => {
+      if (info.href === this.props.match.path) {
+        info.featured = true;
+      }
+    });
+
+    return this.formatLinks(links);
+  }
+
+  getLandingLinks() {
     var links;
-    
-    if (this.props.inApp) {
+
+    if (Session.authed()) {
       links = [
         {
-          text: 'Profile',
-          href: '/me'
-        },
-        {
-          text: 'Admin',
-          href: '/admin'
+          text: 'FAQ',
+          href: '/faq'
         },
         {
           text: 'Challenges',
           href: '/challenges'
         }
       ];
-      
-      links.forEach((info) => {
-        if (info.href === this.props.match.path) {
-          info.featured = true;
-        }
-      });
     } else {
-      if (Session.authed()) {
-        links = [
-          {
-            text: 'FAQ',
-            href: '/faq'
-          },
-          {
-            text: 'Challenges',
-            href: '/challenges'
-          }
-        ];
-      } else {
-        links = [
-          {
-            text: 'Sign In',
-            href: '/signin',
-            featured: true
-          },
-          {
-            text: 'FAQ',
-            href: '/faq'
-          }
-        ];
-      }
+      links = [
+        {
+          text: 'Sign In',
+          href: '/signin',
+          featured: true
+        },
+        {
+          text: 'FAQ',
+          href: '/faq'
+        }
+      ];
     }
-    
+
+    return this.formatLinks(links);
+  }
+
+  formatLinks(links) {
     return links.map((data, i) => {
       var classes = ['header-nav-link'];
-      
+
       if (data.featured) {
         classes.push('featured');
       }
-      
+
       return <a key={i} href={data.href} className={classes.join(' ')}>{data.text}</a>;
     });
   }
@@ -92,7 +93,7 @@ class Header extends Component {
       logo = logos.white;
       break;
     default:
-      logo = logos.multicolor
+      logo = logos.multicolor;
     }
     
     return logo;
@@ -128,7 +129,7 @@ class Header extends Component {
           <div className="header-right">
             {this.getUserIcon()}
             <div className="header-dktp">
-              {this.getLinks()}
+              {this.props.inApp ? this.getInAppLinks() : this.getLandingLinks()}
             </div>
             <div className="header-mbl" onClick={this.props.onMenuClick}>
               <i className="fa fa-bars"></i>

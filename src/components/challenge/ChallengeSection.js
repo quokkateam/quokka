@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-// import Ajax from '../../utils/Ajax';
+import Ajax from '../../utils/Ajax';
 import FormInput from '../shared/form/FormInput';
 import QuokkaMarkdown from '../shared/QuokkaMarkdown';
 import Session from '../../utils/Session';
@@ -28,7 +28,8 @@ class ChallengeSection extends Component {
 
     this.state = {
       status: status.STATIC,
-      challenge: this.props.challenge || {}
+      challenge: this.props.challenge || {},
+      challengeId: null
     };
   }
 
@@ -38,6 +39,14 @@ class ChallengeSection extends Component {
 
   setPointsRef(ref) {
     this.points = ref;
+  }
+
+  componentDidUpdate() {
+    if (this.state.status === status.SAVING) {
+      this.saveChallenge();
+    }
+
+    return true;
   }
 
   getModBtn() {
@@ -75,15 +84,21 @@ class ChallengeSection extends Component {
       this.setState({ status: status.EDITING });
       break;
     case status.EDITING:
+      var points;
+
+      try {
+        points = Number(this.points.serialize());
+      } catch (e) {
+        points = 0;
+      }
+
       this.setState({
         status: status.SAVING,
         challenge: {
           text: this.challenge.serialize(),
-          points: this.points.serialize(),
+          points: points
         }
       });
-
-      this.saveChallenge();
       break;
     default:
       // Do nothing
@@ -91,22 +106,26 @@ class ChallengeSection extends Component {
   }
 
   saveChallenge() {
-    // var payload = {
-    //   text: this.state.challenge.text,
-    //   points: this.state.challenge.points,
-    //   // will want a uuid
-    // };
+    var payload = {
+      id: this.state.challengeId,
+      text: this.state.challenge.text,
+      points: this.state.challenge.points
+    };
 
-    setTimeout(() => {
-      this.setState({ status: status.STATIC });
-    }, 400);
+    Ajax.put('/api/challenge/challenge', payload)
+      .then((resp) => resp.json())
+      .then((data) => {
+        if (data && data.hasOwnProperty('text') && data.hasOwnProperty('points')) {
+          this.setState({
+            status: status.STATIC,
+            challenge: data
+          });
 
-    // Ajax.put('/api/challenge', payload)
-    //   .then((resp) => {
-    //     if (resp.status == 200) {
-    //       this.setState({ status: status.STATIC });
-    //     }
-    //   });
+          if (this.props.onUpdate) {
+            this.props.onUpdate(data);
+          }
+        }
+      });
   }
 
   isEditing() {
@@ -123,13 +142,15 @@ class ChallengeSection extends Component {
 
     if (isSaving || this.isEditing()) {
       return <FormInput useTextarea={true} disabled={isSaving} placeholder="What's this week's challenge?" defaultValue={text} ref={this.setChallengeRef} />;
+    } else if (text) {
+      return <QuokkaMarkdown source={text} />;
+    } else {
+      return <div className="no-challenge">No challenge specified</div>;
     }
-
-    return <QuokkaMarkdown source={text} />;
   }
 
   getPoints() {
-    var points = this.state.challenge.points || '';
+    var points = this.state.challenge.points || 0;
     var isSaving = this.isSaving();
 
     if (isSaving || this.isEditing()) {

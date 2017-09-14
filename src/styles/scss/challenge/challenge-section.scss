@@ -90,6 +90,7 @@
 .challenge-card-body {
   padding: 20px 0;
   color: black;
+  white-space: pre-wrap;
   font-size: 15px;
   line-height: 25px;
 
@@ -109,4 +110,10 @@
     color: black;
     line-height: 31px;
   }
+}
+
+.no-challenge {
+  color: rgba(0,0,0,0.4);
+  padding-left: 12px;
+  text-align: center;
 }

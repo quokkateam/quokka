@@ -49,7 +49,7 @@ class Prize extends Component {
     return (
       <div className={this.prizeClasses()}>
         <img className="sponsor-icon" src={this.props.sponsor.logo} alt=""/>
-        <div className="prize-text">{this.props.prize.text}</div>
+        <div className="prize-text">{this.props.prize.name}</div>
         <div className="sponsor-name">{this.props.sponsor.name}</div>
         {this.getPrizeEditMask()}
       </div>

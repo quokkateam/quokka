@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import moment from 'moment';
 
 class BannerSection extends Component {
 
@@ -9,6 +9,7 @@ class BannerSection extends Component {
     this.nextWeek = this.nextWeek.bind(this);
     this.weekNum = this.weekNum.bind(this);
     this.getDate = this.getDate.bind(this);
+    this.getChallengeBannerClasses = this.getChallengeBannerClasses.bind(this);
   }
 
   prevWeek() {
@@ -16,10 +17,10 @@ class BannerSection extends Component {
       return;
     }
 
-    return <Link to={'/challenge/week' + this.props.adjHabits.prev.weekNum}>
+    return <a href={'/challenge/week' + this.props.adjHabits.prev.weekNum}>
       <div className="quokka-nav-button nav-left banner-nav-button"></div>
-      <span className="adj-challenge-title">{this.props.adjHabits.prev.habit}</span>
-    </Link>;
+      <span className="adj-challenge-title">{this.props.adjHabits.prev.name}</span>
+    </a>;
   }
 
   nextWeek() {
@@ -27,10 +28,10 @@ class BannerSection extends Component {
       return;
     }
 
-    return <Link to={'/challenge/week' + this.props.adjHabits.next.weekNum}>
+    return <a href={'/challenge/week' + this.props.adjHabits.next.weekNum}>
       <div className="quokka-nav-button nav-right banner-nav-button"></div>
-      <span className="adj-challenge-title">{this.props.adjHabits.next.habit}</span>
-    </Link>;
+      <span className="adj-challenge-title">{this.props.adjHabits.next.name}</span>
+    </a>;
   }
 
   weekNum() {
@@ -42,16 +43,35 @@ class BannerSection extends Component {
   }
 
   getDate(when) {
+    var months = ['Jan', 'Feb', 'Mar', 'April', 'May', 'June',
+      'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+
     if (!this.props.habit || !this.props.habit.dates) {
       return;
     }
 
-    return this.props.habit.dates[when];
+    var date = moment(this.props.habit.dates[when], 'MM/DD/YYYY');
+    var month = months[date.month()];
+    var day = date.date();
+
+    if (day < 10) {
+      day = '0' + day;
+    }
+
+    return month + ' ' + day;
+  }
+
+  getChallengeBannerClasses() {
+    if (!this.props.habit) {
+      return '';
+    }
+
+    return this.props.habit.slug;
   }
 
   render() {
     return (
-      <div id="challengeBanner">
+      <div id="challengeBanner" className={this.getChallengeBannerClasses()}>
         <div className="dimmer"></div>
         <div className="adj-week-nav prev-week">{this.prevWeek()}</div>
         <div className="adj-week-nav next-week">{this.nextWeek()}</div>

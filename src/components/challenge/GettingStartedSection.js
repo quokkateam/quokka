@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
+import Ajax from '../../utils/Ajax';
 import FormInput from '../shared/form/FormInput';
 import QuokkaMarkdown from '../shared/QuokkaMarkdown';
 import Session from '../../utils/Session';
@@ -29,7 +30,8 @@ class GettingStartedSection extends Component {
 
     this.state = {
       status: status.STATIC,
-      suggestions: this.props.suggestions || []
+      suggestions: this.props.suggestions || [],
+      challengeId: null
     };
   }
 
@@ -64,11 +66,17 @@ class GettingStartedSection extends Component {
     var isSaving = this.isSaving();
     var editable = isSaving || this.isEditing();
 
+    if (this.state.suggestions.length === 0) {
+      return editable ?
+        [<li key={0}><FormInput placeholder="Suggestion"/></li>] :
+        <div className="no-suggestions">No suggestions yet</div>;
+    }
+
     return this.state.suggestions.map((s, i) => {
       var liChild;
 
       if (editable) {
-        liChild = <FormInput disabled={isSaving} placholder="Suggestion" defaultValue={s}/>;
+        liChild = <FormInput disabled={isSaving} placeholder="Suggestion" defaultValue={s}/>;
       } else {
         liChild = <QuokkaMarkdown source={s}/>;
       }
@@ -140,24 +148,21 @@ class GettingStartedSection extends Component {
       }
     }
 
-    // var payload = {
-    //   suggestions: suggestions
-    //   // need some sort of challenge id
-    // };
+    var payload = {
+      id: this.state.challengeId,
+      suggestions: suggestions
+    };
 
-    setTimeout(() => {
-      this.setState({
-        status: status.STATIC,
-        suggestions: suggestions
+    Ajax.put('/api/challenge/suggestions', payload)
+      .then((resp) => resp.json())
+      .then((data) => {
+        if (data && data.hasOwnProperty('suggestions')) {
+          this.setState({
+            status: status.STATIC,
+            suggestions: data.suggestions
+          });
+        }
       });
-    }, 400);
-
-    // Ajax.put('/api/suggestions', payload)
-    //   .then((resp) => {
-    //     if (resp.status == 200) {
-    //       this.setState({ status: status.STATIC });
-    //     }
-    //   });
   }
 
   suggestionsListClasses() {
@@ -165,6 +170,8 @@ class GettingStartedSection extends Component {
 
     if (this.isEditing() || this.isSaving()) {
       classes.push('editable');
+    } else if (this.state.suggestions.length === 0) {
+      classes.push('no-suggestions-list');
     }
 
     return classes.join(' ');
