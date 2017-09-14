@@ -6,24 +6,32 @@ class WeeklyProgBar extends Component {
   
   constructor(props) {
     super(props);
-    
-    this.transitionDur = 1000; // match with weekly-prog-bar.scss at .wpb.front
+
+    this.transitionDur = 1000;
 
     this.setMovingBarRef = this.setMovingBarRef.bind(this);
+    this.setCurrWeekCoverRef = this.setCurrWeekCoverRef.bind(this);
     this.indexClass = this.indexClass.bind(this);
     this.addWeeks = this.addWeeks.bind(this);
     this.moveToIndex = this.moveToIndex.bind(this);
-    this.createCurrWeekCover = this.createCurrWeekCover.bind(this);
   }
   
   componentDidMount() {
     setTimeout(() => {
       this.moveToIndex(this.props.currentWeekIndex || 0);
     }, 300);
+
+    $(document).resize(() => {
+      this.alignCurrWeekCover();
+    });
   }
   
   setMovingBarRef(ref) {
     this.movingBar = ref;
+  }
+
+  setCurrWeekCoverRef(ref) {
+    this.currWeekCover = ref;
   }
   
   indexClass(i) {
@@ -47,57 +55,42 @@ class WeeklyProgBar extends Component {
   }
 
   moveToIndex(i) {
-    this.passIntervalAtIndex(0);
+    var weeklyIndicators = $('.week-indicator');
+    var el;
 
-    // currently for 3 movements
-    // TODO: add function or hardcoded map of interval times
-    setTimeout(() => {
-      this.passIntervalAtIndex(1);
-    }, 0.2 * this.transitionDur);
-    
-    setTimeout(() => {
-      this.passIntervalAtIndex(2);
-    }, 0.3 * this.transitionDur);
+    for (var j = 0; j < weeklyIndicators.length; j++) {
+      el = weeklyIndicators[j];
+
+      if (j < i) {
+        $(el).addClass('passed show');
+      } else if (j > i) {
+        $(el).addClass('show');
+      }
+    }
 
     $(this.movingBar).addClass('w' + this.indexClass(i));
 
-    var weeklyIndicators = $('.week-indicator');
-
-    weeklyIndicators.splice(i, 1); // ignore current week
-    weeklyIndicators.splice(7, 1); // ignore party week
-
     setTimeout(() => {
-      for (var i = 0; i < weeklyIndicators.length; i++) {
-        $(weeklyIndicators[i]).css('z-index', 3);
-      }
-
-      this.createCurrWeekCover();
-    }, 1005);
+      this.alignCurrWeekCover();
+    }, this.transitionDur + 5);
   }
 
-  createCurrWeekCover() {
-    var cover = document.createElement('div');
-    cover.className = 'curr-week-cover';
-
-    $(cover).hover(() => {
-      $('[data-for="l3"]').mouseover();
-    }, () => {
-
-    });
-
-    $(this.movingBar).append(cover);
+  alignCurrWeekCover() {
+    $(this.currWeekCover).css({ left: $(this.movingBar).width() - 12 });
+    $(this.currWeekCover).show();
   }
-  
-  passIntervalAtIndex(i) {
-    $('.week-indicator.l' + this.indexClass(i)).addClass('passed');
-  }
-  
+
   render() {
     return (
       <div id="weeklyProgBar">
         <div className="wpb back"></div>
         {this.addWeeks()}
         <div className="wpb front" ref={this.setMovingBarRef}></div>
+        <div className="curr-week-cover" data-tip data-for="currWeekCover" ref={this.setCurrWeekCoverRef}>
+          <ReactTooltip id="currWeekCover" place="bottom" effect="solid">
+            <span>{this.props.weeks[this.props.currentWeekIndex]}</span>
+          </ReactTooltip>
+        </div>
       </div>
     );
   }
