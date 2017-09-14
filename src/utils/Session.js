@@ -83,12 +83,12 @@ class Sess {
       val = value;
     }
 
-    window.localStorage.setItem(key, val);
+    localStorage.setItem(key, val);
   }
 
   getFromStorage (key) {
     var item;
-    var data = window.localStorage.getItem(key);
+    var data = localStorage.getItem(key);
 
     try {
       item = JSON.parse(data);
@@ -100,7 +100,7 @@ class Sess {
   }
 
   deleteFromStorage (key) {
-    window.localStorage.removeItem(key);
+    localStorage.removeItem(key);
   }
 
   getUserInitials() {
