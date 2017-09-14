@@ -56,7 +56,6 @@ class WeeklyProgBar extends Component {
     }
 
     var challengeNames = this.state.challenges.map((c) => { return c.name; });
-    challengeNames.push('Party');
 
     var classes;
     return challengeNames.map((name, i) => {
@@ -106,9 +105,10 @@ class WeeklyProgBar extends Component {
         {this.addWeeks()}
         <div className="wpb front" ref={this.setMovingBarRef}></div>
         <div className="curr-week-cover" data-tip data-for="currWeekCover" ref={this.setCurrWeekCoverRef}>
-          <ReactTooltip id="currWeekCover" place="bottom" effect="solid">
-            <span>{this.getCurrChallengeName()}</span>
-          </ReactTooltip>
+          <ReactTooltip id="currWeekCover" place="bottom" effect="solid"><span>{this.getCurrChallengeName()}</span></ReactTooltip>
+        </div>
+        <div className="party-icon" data-tip data-for="partyIcon">
+          <ReactTooltip id="partyIcon" place="bottom" effect="solid"><span>Party</span></ReactTooltip>
         </div>
       </div>
     );

@@ -17,6 +17,23 @@
   [data-id=tooltip].place-bottom:after {
     border-bottom-color: $tertiary;
   }
+
+  .party-icon {
+    width: 24px;
+    height: 24px;
+    display: block;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    right: -12px;
+    background-color: $tertiary;
+    background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/running-white.png');
+    background-position: 49% 45%;
+    background-repeat: no-repeat;
+    background-size: 57%;
+    cursor: pointer;
+    z-index: 3;
+  }
 }
 
 .wpb {
