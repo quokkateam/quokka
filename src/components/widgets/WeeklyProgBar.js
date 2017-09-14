@@ -21,7 +21,7 @@ class WeeklyProgBar extends Component {
       this.moveToIndex(this.props.currentWeekIndex || 0);
     }, 300);
 
-    $(document).resize(() => {
+    $(window).resize(() => {
       this.alignCurrWeekCover();
     });
   }
