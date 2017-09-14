@@ -9,23 +9,23 @@ class SideNav extends Component {
     var landingLinks;
     
     if (Session.authed()) {
-      landingLinks = [['/challenges', 'Challenges'], ['/faq', 'FAQ']];
+      landingLinks = [['/challenges', 'Challenges'], ['/faq', 'FAQ'], ['/signout', 'Sign Out']];
     } else {
       landingLinks = [['/faq', 'FAQ'], ['/signin', 'Sign In']];
     }
 
-    var linksMap = {
-      'landing': landingLinks,
-      'in-app': [
-        ['/challenges', 'Challenges'],
-        ['/admin', 'Admin'],
-        ['/me', 'Profile']
-      ]
+    var inAppLinks = [['/challenges', 'Challenges']];
+
+    if (Session.isAdmin()) {
+      inAppLinks.push(['/admin', 'Admin']);
+    }
+
+    inAppLinks.push(['/me', 'Profile']);
+    inAppLinks.push(['/signout', 'Sign Out']);
+
+    this.state = {
+      links: this.props.inApp ? inAppLinks : landingLinks
     };
-
-    var appRole = this.props.inApp ? 'in-app' : 'landing';
-
-    this.state = { links: linksMap[appRole] };
 
     this.createLinks = this.createLinks.bind(this);
   }

@@ -1,6 +1,7 @@
 footer {
   padding: 50px 125px;
   font-family: Lato-Regular;
+  background-color: #fff;
 }
 
 .footer-section {
@@ -62,4 +63,27 @@ footer {
   color: $secondary;
   opacity: 0.6;
   font-size: 13px;
+}
+
+@media (max-width: 991px) {
+  footer {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+}
+
+@media (max-width: 767px) {
+  .footer-section {
+    padding-left: 15%;
+  }
+}
+
+@media (max-width: 550px) {
+  .footer-section:nth-child(3) {
+    width: 100%;
+  }
+
+  .footer-section:nth-child(4) {
+    display: none;
+  }
 }

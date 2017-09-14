@@ -1,53 +1,19 @@
+import Ajax from '../../utils/Ajax';
+import EmailInput from '../shared/form/EmailInput';
 import Form from '../shared/form/Form';
 import FormInput from '../shared/form/FormInput';
-import EmailInput from '../shared/form/EmailInput';
 import FormSelect from '../shared/form/FormSelect';
 import LgSpinnerBtn from '../widgets/LgSpinnerBtn';
 import React from 'react';
-import Session from '../../utils/Session';
-import StatusCodes from '../../utils/StatusCodes'
+import StatusCodes from '../../utils/StatusCodes';
+import TextHelper from '../../utils/TextHelper';
 
 const SUCCESS_MESSAGE_DURATION = 3000;
 
 class SignUp extends Form {
-  
   constructor(props) {
     super(props);
-    
-    // will be accessible from server response as response.schools
-    // will also need to send uuids for schools if not using slugs
-    this.schools = [
-      {
-        value: 'emory',
-        title: 'Emory University',
-        domains: [
-          'emory'
-        ]
-      },
-      {
-        value: 'notre-dame',
-        title: 'University of Notre Dame',
-        domains: [
-          'nd'
-        ]
-      },
-      {
-        value: 'stanford',
-        title: 'Stanford University',
-        domains: [
-          'stanford'
-        ]
-      },
-      {
-        value: 'vanderbilt',
-        title: 'Vanderbilt University',
-        domains: [
-          'vanderbilt',
-          'vandy'
-        ]
-      }
-    ];
-    
+
     this.setEmailRef = this.setEmailRef.bind(this);
     this.setSchoolRef = this.setSchoolRef.bind(this);
     this.onSerializing = this.onSerializing.bind(this);
@@ -57,10 +23,9 @@ class SignUp extends Form {
     this.submitBtnContent = this.submitBtnContent.bind(this);
     this.onEmailKeyUp = this.onEmailKeyUp.bind(this);
     this.createDomainRegex = this.createDomainRegex.bind(this);
-    this.onEmailUnavailable = this.onEmailUnavailable.bind(this);
+    this.onInvalidEmailDomain = this.onInvalidEmailDomain.bind(this);
     this.onSignUpResp = this.onSignUpResp.bind(this);
-    
-    this.createDomainRegex();
+    this.onSignUpError = this.onSignUpError.bind(this);
   }
   
   setEmailRef(ref) {
@@ -71,14 +36,29 @@ class SignUp extends Form {
   setSchoolRef(ref) {
     this.school = ref;
     this.pushFormCompRef(ref);
+
+    Ajax.get('/api/schools')
+      .then((resp) => resp.json())
+      .then((data) => {
+        this.schools = data.schools || [];
+        this.createDomainRegex();
+
+        var selectOptions = this.schools.map((s) => {
+          return { value: s.slug, title: s.name };
+        }).sort((a, b) => {
+          return ~~(a.title > b.title);
+        });
+
+        this.school.setState({ options: selectOptions });
+      });
   }
-  
+
   createDomainRegex() {
     this.domain2school = {};
     
-    this.schools.forEach((school) => {
-      (school.domains || []).forEach((domain) => {
-        this.domain2school[domain] = school.value;
+    this.schools.forEach((s) => {
+      (s.domains || []).forEach((domain) => {
+        this.domain2school[domain] = s.slug;
       });
     });
     
@@ -117,41 +97,53 @@ class SignUp extends Form {
   submit() {
     this.setState({ status: this.status.SENDING });
 
-    // TODO: remove this code when we're actually talking to an API.
-    setTimeout(() => {
-      this.setState({ status: this.status.COMPLETE });
-    }, 300);
+    var payload = {};
+    ['email', 'name', 'school'].forEach((k, i) => {
+      payload[k] = this.state.formComps[i];
+    });
 
-    // TODO: uncomment this code when we're actually talking to an API.
-    // var payload = {};
-    // ['email', 'name', 'school'].forEach((k, i) => {
-    //   payload[k] = this.state.formComps[i];
-    // });
-    //
-    // axios.post('/users', payload).then((resp) => {
-    //   this.onSignUpResp(resp);
-    // });
+    Ajax.post('/api/users', payload).then((resp) => {
+      this.onSignUpResp(resp);
+    });
   }
   
   onSignUpResp(resp) {
     switch (resp.status) {
-    case 200:
-      // Create a new session for the user
-      Session.create(resp);
+    case 201:
       this.setState({ status: this.status.COMPLETE });
       break;
-    case StatusCodes.EMAIL_UNAVAILABLE:
-      // Email is taken. Let the user know this.
-      this.onEmailUnavailable();
-      this.setState({ status: this.status.COMPLETE });
+    case 400:
+      resp.json().then((data) => {
+        this.onSignUpError(data);
+      });
       break;
     default:
       console.warn('Unexpected error during signup.');
     }
   }
+
+  onSignUpError(data) {
+    switch (data.error) {
+    case StatusCodes.INVALID_EMAIL_DOMAIN:
+      this.onInvalidEmailDomain();
+      break;
+    case StatusCodes.INVALID_EMAIL_FORMAT:
+      this.email.showInvalidEmail();
+      this.setState({ status: this.status.STATIC });
+      break;
+    default:
+      // Nothing
+    }
+  }
   
-  onEmailUnavailable() {
-    this.email.showEmailUnavailable();
+  onInvalidEmailDomain() {
+    var selectedSchoolSlug = this.school.serialize();
+    var selectedSchool = this.schools.find((s) => { return s.slug === selectedSchoolSlug; });
+    var validDomains = selectedSchool.domains.map((d) => { return '@' + d; });
+
+    var msg = selectedSchool.name + ' emails must end with ' + TextHelper.toProperDelimit(validDomains, ' or ');
+
+    this.email.showInvalidWithMessage(msg);
     this.setState({ status: this.status.STATIC });
   }
 
@@ -198,7 +190,7 @@ class SignUp extends Form {
               <EmailInput required={true} placeholder='School Email' ref={this.setEmailRef} onKeyUp={this.onEmailKeyUp}/>
             </div>
             <div className="sign-up-input">
-              <FormInput required={true} placeholder='Name' ref={this.pushFormCompRef}/>
+              <FormInput required={true} placeholder='Full Name' ref={this.pushFormCompRef}/>
             </div>
             <div className="sign-up-input school-form-select-container">
               <FormSelect required={true} placeholder='School' options={this.schools} ref={this.setSchoolRef}/>

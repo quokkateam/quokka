@@ -14,6 +14,8 @@ class FormSelect extends QComponent {
     this.clear = this.clear.bind(this);
     this.selectOptWithVal = this.selectOptWithVal.bind(this);
     this.onChange = this.onChange.bind(this);
+
+    this.state = { options: this.props.options || [] };
   }
 
   setSelectRef(ref) {
@@ -60,7 +62,7 @@ class FormSelect extends QComponent {
   }
   
   formatOptions() {
-    return (this.props.options || []).map((option, i) => {
+    return this.state.options.map((option, i) => {
       return <option key={i} value={option.value}>{option.title}</option>;
     });
   }
@@ -73,11 +75,11 @@ class FormSelect extends QComponent {
       this.props.onChange(this.serialize());
     }
   }
-  
+
   render() {
     return (
       <div className="form-select-container">
-        <select className={this.getClassNames()} defaultValue={this.props.value || ''} name={this.props.name || ''} onChange={this.onChange} ref={this.setSelectRef}>
+        <select className={this.getClassNames()} defaultValue={this.props.defaultValue || ''} name={this.props.name || ''} onChange={this.onChange} ref={this.setSelectRef}>
           <option value='' disabled>{this.props.placeholder || ''}</option>
           {this.formatOptions()}
         </select>

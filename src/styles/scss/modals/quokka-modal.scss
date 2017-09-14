@@ -1,0 +1,74 @@
+.modal-dialog {
+  margin: 120px auto 30px;
+}
+
+.modal-footer {
+  border-top: none;
+  padding-top: 0;
+
+  button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    border: none;
+  }
+}
+
+.modal-action-btn {
+  display: inline-block;
+  width: 100%;
+}
+
+.modal-action-btn > button {
+  display: block;
+  width: 91%;
+  margin: 0 auto;
+  border-radius: 3px;
+  padding: 12px 3px;
+  color: #fff;
+  background-color: $tertiary;
+  text-align: center;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $tertiary-hover;
+  }
+}
+
+.modal-action-1-btn {
+  width: 100%;
+  padding: 0 10px 5px;
+
+  .modal-action-btn > button {
+    width: 100%;
+  }
+}
+
+.modal-action-2-btns {
+  width: 100%;
+  padding: 0 10px 5px;
+
+  .modal-action-btn {
+    float: left;
+    width: 50%;
+  }
+}
+
+.modal-action-btn.cancel > button {
+  background-color: #C4C5CA;
+
+  &:hover {
+    background-color: #D6D8DE;
+  }
+}
+
+.center-modal-question {
+  text-align: center;
+  font-size: 15px;
+  color: $default-dark;
+
+  .bold {
+    font-family: Avenir-Next-DemiBold;
+  }
+}

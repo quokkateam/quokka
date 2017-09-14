@@ -22,8 +22,10 @@ class Banner extends Component {
     };
     
     this.setBannerRef = this.setBannerRef.bind(this);
+    this.update = this.update.bind(this);
     this.getIcon = this.getIcon.bind(this);
     this.getButton = this.getButton.bind(this);
+    this.adjustBannerTop = this.adjustBannerTop.bind(this);
     this.show = this.show.bind(this);
     this.hide = this.hide.bind(this);
   }
@@ -38,6 +40,12 @@ class Banner extends Component {
   
   setBannerRef(ref) {
     this.banner = ref;
+
+    $(window).resize(() => {
+      if ($(this.banner).css('display') === 'block') {
+        this.adjustBannerTop();
+      }
+    });
   }
   
   update(data) {
@@ -69,20 +77,24 @@ class Banner extends Component {
     
     return <div className="banner-btn" onClick={this.hide}>{this.state.buttonText}</div>;
   }
+
+  adjustBannerTop() {
+    $(this.banner).css('top', 'calc(100% - ' + $(this.banner).outerHeight() + 'px)');
+  }
   
   show() {
-    $(this.banner).addClass('bl');
-    
+    $(this.banner).show();
+
     setTimeout(() => {
-      $(this.banner).addClass('show');
+      this.adjustBannerTop();
     }, 100);
   }
   
   hide() {
-    $(this.banner).removeClass('show');
-    
+    $(this.banner).css('top', '100%');
+
     setTimeout(() => {
-      $(this.banner).removeClass('bl');
+      $(this.banner).hide();
       this.setState({ status: this.status.STATIC });
     }, TRANSITION_TIME);
   }

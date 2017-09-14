@@ -13,7 +13,9 @@ import ReactMarkdown from 'react-markdown';
 class QuokkaMarkdown extends Component {
   render() {
     return (
-      <ReactMarkdown skipHtml={true} {...this.props} />
+      <ReactMarkdown
+        skipHtml={true}
+        renderers={{Link: props => <a href={props.href} target="_blank" rel="noopener noreferrer">{props.children}</a>}} {...this.props} />
     );
   }
 }

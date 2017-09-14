@@ -8,7 +8,7 @@ class OverviewSection extends Component {
   }
   
   formatSubSections() {
-    return this.props.overview.map((data, i) => {
+    return (this.props.overview || []).map((data, i) => {
       return <OverviewSubSection key={i} title={data.title} content={data.content} />;
     });
   }

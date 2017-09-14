@@ -15,7 +15,9 @@ class FormInput extends QComponent {
     this.onKeyUp = this.onKeyUp.bind(this);
     this.getClassNames = this.getClassNames.bind(this);
     this.clear = this.clear.bind(this);
-    this.getInputEl = this.getInputEl.bind(this);
+    this.getTextarea = this.getTextarea.bind(this);
+    this.getInput = this.getInput.bind(this);
+    this.getEl = this.getEl.bind(this);
   }
 
   setInputRef(ref) {
@@ -76,19 +78,40 @@ class FormInput extends QComponent {
     $(this.input).val('');
   }
 
-  getInputEl() {
+  getTextarea(name, placeholder, defaultValue, classes, disabled) {
+    if (disabled) {
+      return <textarea disabled className={classes} name={name} placeholder={placeholder} defaultValue={defaultValue} onKeyUp={this.onKeyUp} ref={this.setInputRef}></textarea>;
+    }
+
+    return <textarea className={classes} name={name} placeholder={placeholder} defaultValue={defaultValue} onKeyUp={this.onKeyUp} ref={this.setInputRef}></textarea>;
+  }
+
+  getInput(name, placeholder, defaultValue, classes, disabled, password) {
+    var type = password ? 'password' : 'text';
+
+    if (disabled) {
+      return <input type={type} disabled className={classes} name={name} placeholder={placeholder} defaultValue={defaultValue} onKeyUp={this.onKeyUp} ref={this.setInputRef}/>;
+    }
+
+    return <input type={type} className={classes} name={name} placeholder={placeholder} defaultValue={defaultValue} onKeyUp={this.onKeyUp} ref={this.setInputRef}/>;
+  }
+
+  getEl() {
     var name = this.props.name || '';
     var placeholder = this.props.placeholder || '';
     var defaultValue = this.props.defaultValue || '';
+    var disabled = !!this.props.disabled;
     var classes = this.getClassNames();
 
-    return this.props.useTextarea ?
-      <textarea className={classes} name={name} placeholder={placeholder} defaultValue={defaultValue} onKeyUp={this.onKeyUp} ref={this.setInputRef}></textarea> :
-      <input type="text" className={classes} name={name} placeholder={placeholder} defaultValue={defaultValue} onKeyUp={this.onKeyUp} ref={this.setInputRef}/>;
+    if (this.props.useTextarea) {
+      return this.getTextarea(name, placeholder, defaultValue, classes, disabled);
+    }
+
+    return this.getInput(name, placeholder, defaultValue, classes, disabled, !!this.props.password);
   }
 
   render() {
-    return this.getInputEl();
+    return this.getEl();
   }
 
 }
