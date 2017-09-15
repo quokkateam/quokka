@@ -19,9 +19,9 @@ class ChallengesListItem extends Component {
 
   render() {
     return (
-      <div className="challenges-list-item">
-
-      </div>
+      <a className="challenges-list-item" href="">
+        <div>{this.state.name}</div>
+      </a>
     );
   }
 }

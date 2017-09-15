@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import Ajax from '../../utils/Ajax';
 import ChallengesListItem from './ChallengesListItem';
 
 class ChallengesList extends Component {
@@ -10,8 +11,22 @@ class ChallengesList extends Component {
     this.getChallenges = this.getChallenges.bind(this);
 
     this.state = {
-      challenges: this.props.challenges || []
+      challenges: this.props.challenges || [],
+      weekNum: null
     };
+  }
+
+  componentDidMount() {
+    Ajax.get('/api/challenges')
+      .then((resp) => resp.json())
+      .then((data) => {
+        this.setState({
+          challenges: data.challenges,
+          weekNum: data.weekNum
+        });
+      });
+
+    return true;
   }
 
   getChallenges() {

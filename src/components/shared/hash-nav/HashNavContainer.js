@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import HashNav from './HashNav';
 import HashContent from './HashContent';
+import HashNav from './HashNav';
 
 class HashNavContainer extends Component {
 
@@ -40,7 +40,7 @@ class HashNavContainer extends Component {
     });
 
     this.content.setState({
-      selectedIndex: selectedIndex
+      comp: this.state.links[selectedIndex].comp
     });
 
     return true;
@@ -77,7 +77,7 @@ class HashNavContainer extends Component {
       <div className={this.getClassNames()}>
         <div className="row">
           <HashNav links={this.state.links} selectedIndex={selectedIndex} ref={this.setNavRef}/>
-          <HashContent links={this.state.links} selectedIndex={selectedIndex} ref={this.setContentRef}/>
+          <HashContent comp={(this.state.links[selectedIndex] || {}).comp} ref={this.setContentRef}/>
         </div>
       </div>
     );

@@ -4,6 +4,7 @@ class HashNav extends Component {
 
   constructor(props) {
     super(props);
+
     this.getLinks = this.getLinks.bind(this);
 
     this.state = {

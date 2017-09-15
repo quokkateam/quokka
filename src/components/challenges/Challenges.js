@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import ChallengesList from './ChallengesList';
-import CheckInList from './CheckInList';
+import CheckInsList from './CheckInsList';
 import HashNavContainer from '../shared/hash-nav/HashNavContainer';
 import WeeklyProgBar from '../widgets/WeeklyProgBar';
 
@@ -19,7 +19,7 @@ class Challenges extends Component {
       {
         hash: 'check-ins',
         title: 'Check-ins',
-        comp: <CheckInList/>
+        comp: <CheckInsList/>
       }
     ];
   }
