@@ -72,7 +72,7 @@ class SignIn extends Form {
     switch (resp.status) {
     case 201:
       Session.create(resp, () => {
-        window.location = '/';
+        window.location = '/challenges';
       });
       break;
     case 401:
