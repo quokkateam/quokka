@@ -110,6 +110,10 @@
     height: 10px;
     width: 10px;
   }
+
+  &.disabled {
+    cursor: default;
+  }
 }
 
 .wpb.front {

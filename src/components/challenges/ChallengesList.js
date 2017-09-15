@@ -31,7 +31,7 @@ class ChallengesList extends Component {
 
   getChallenges() {
     return this.state.challenges.map((c, i) => {
-      return <li key={c.slug}><ChallengesListItem challenge={c} index={i} currWeek={this.state.weekNum === i + 1}/></li>;
+      return <li key={c.slug}><ChallengesListItem challenge={c} weekNum={i + 1} currWeekNum={this.state.weekNum}/></li>;
     });
   }
 

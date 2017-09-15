@@ -22,6 +22,7 @@ class Challenge extends Component {
     this.setSuggestionsSectionRef = this.setSuggestionsSectionRef.bind(this);
     this.setExtrasSectionRef = this.setExtrasSectionRef.bind(this);
     this.onChallengeSectionUpdate = this.onChallengeSectionUpdate.bind(this);
+    this.handleChallengeFetched = this.handleChallengeFetched.bind(this);
 
     this.state = {
       challengeId: null,
@@ -83,21 +84,34 @@ class Challenge extends Component {
 
   componentDidMount() {
     Ajax.get('/api/challenge/' + this.weekNum)
-      .then((resp) => resp.json())
-      .then((data) => {
-        this.setState({
-          challengeId: Number(data.id),
-          habit: data.habit,
-          adjHabits: data.adjHabits,
-          overview: data.overview,
-          challenge: data.challenge,
-          prizes: data.prizes,
-          sponsors: data.sponsors,
-          suggestions: data.suggestions,
-          links: data.links,
-          extraInfo: data.extraInfo
-        });
+      .then((resp) => {
+        this.handleChallengeFetched(resp);
       });
+  }
+
+  handleChallengeFetched(resp) {
+    if (resp.status === 200 || resp.status === 400) {
+      resp.json().then((data) => {
+        if (resp.status === 200) {
+          this.setState({
+            challengeId: Number(data.id),
+            habit: data.habit,
+            adjHabits: data.adjHabits,
+            overview: data.overview,
+            challenge: data.challenge,
+            prizes: data.prizes,
+            sponsors: data.sponsors,
+            suggestions: data.suggestions,
+            links: data.links,
+            extraInfo: data.extraInfo
+          });
+        } else {
+          window.location = '/challenges';
+        }
+      });
+    } else {
+      console.warn('Unexpected response code while fetching challenge: ', resp.status);
+    }
   }
 
   onChallengeSectionUpdate(challenge) {
