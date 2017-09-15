@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 
 import Ajax from '../../utils/Ajax';
 import ReactTooltip from 'react-tooltip';
+import Session from '../../utils/Session';
 
 class WeeklyProgBar extends Component {
   
@@ -74,7 +75,18 @@ class WeeklyProgBar extends Component {
     var classes;
     return challengeNames.map((name, i) => {
       classes = ['week-indicator', 'l' + this.indexClass(i)];
-      return <a key={i} href={'/challenge/week' + (i + 1)} data-tip data-for={'l' + i} className={classes.join(' ')}><ReactTooltip id={'l' + i} place="bottom" effect="solid"><span>{name}</span></ReactTooltip></a>;
+      var weekNum = i + 1;
+      var href;
+
+      if (!this.state.weekNum || (weekNum > this.state.weekNum && !Session.isAdmin())) {
+        /*eslint-disable no-script-url*/
+        href = 'javascript:void(0)';
+        classes.push('disabled');
+      } else {
+        href = '/challenge/week' + weekNum;
+      }
+
+      return <a key={i} href={href} data-tip data-for={'l' + i} className={classes.join(' ')}><ReactTooltip id={'l' + i} place="bottom" effect="solid"><span>{name}</span></ReactTooltip></a>;
     });
   }
 

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import moment from 'moment';
+import Session from '../../utils/Session';
 
 class ChallengesListItem extends Component {
 
@@ -8,17 +9,19 @@ class ChallengesListItem extends Component {
 
     this.getClasses = this.getClasses.bind(this);
     this.formatDate = this.formatDate.bind(this);
+    this.getLink = this.getLink.bind(this);
+    this.challengeDisabled = this.challengeDisabled.bind(this);
 
-    var ogChallenge = this.props.challenge || {};
+    var ch = this.props.challenge || {};
 
     this.state = {
-      slug: ogChallenge.slug,
-      name: ogChallenge.name,
-      points: ogChallenge.points || 0,
-      previewText: ogChallenge.previewText,
-      startDate: ogChallenge.startDate,
-      endDate: ogChallenge.endDate,
-      index: this.props.index
+      slug: ch.slug,
+      name: ch.name,
+      points: ch.points || 0,
+      previewText: ch.previewText,
+      startDate: ch.startDate,
+      endDate: ch.endDate,
+      weekNum: this.props.weekNum
     };
   }
 
@@ -34,16 +37,31 @@ class ChallengesListItem extends Component {
   getClasses() {
     var classes = ['challenges-list-item'];
 
-    if (this.props.currWeek) {
+    if (this.state.weekNum === this.props.currWeekNum) {
       classes.push('current');
+    } else if (this.challengeDisabled()) {
+      classes.push('disabled');
     }
 
     return classes.join(' ');
   }
 
+  getLink() {
+    if (this.challengeDisabled()) {
+      /*eslint-disable no-script-url*/
+      return 'javascript:void(0)';
+    }
+
+    return '/challenge/week' + this.state.weekNum;
+  }
+
+  challengeDisabled() {
+    return this.state.weekNum > this.props.currWeekNum && !Session.isAdmin();
+  }
+
   render() {
     return (
-      <a className={this.getClasses()} href={'/challenge/week' + (this.state.index + 1)}>
+      <a className={this.getClasses()} href={this.getLink()}>
         <div className="ch-icon-container">
           <div className={'ch-icon ' + this.state.slug}></div>
         </div>

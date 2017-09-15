@@ -25,6 +25,8 @@ class Sess {
 
   destroy() {
     this.deleteCookie(this.header);
+    this.deleteFromStorage('user');
+    this.deleteFromStorage('school');
   }
 
   authed() {
