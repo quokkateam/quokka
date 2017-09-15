@@ -17,6 +17,7 @@ class WeeklyProgBar extends Component {
     this.addWeeks = this.addWeeks.bind(this);
     this.moveToIndex = this.moveToIndex.bind(this);
     this.getCurrChallengeName = this.getCurrChallengeName.bind(this);
+    this.getCurrWeekLink = this.getCurrWeekLink.bind(this);
 
     this.state = {
       challenges: [],
@@ -73,7 +74,7 @@ class WeeklyProgBar extends Component {
     var classes;
     return challengeNames.map((name, i) => {
       classes = ['week-indicator', 'l' + this.indexClass(i)];
-      return <div key={i} data-tip data-for={'l' + i} className={classes.join(' ')}><ReactTooltip id={'l' + i} place="bottom" effect="solid"><span>{name}</span></ReactTooltip></div>;
+      return <a key={i} href={'/challenge/week' + (i + 1)} data-tip data-for={'l' + i} className={classes.join(' ')}><ReactTooltip id={'l' + i} place="bottom" effect="solid"><span>{name}</span></ReactTooltip></a>;
     });
   }
 
@@ -113,15 +114,23 @@ class WeeklyProgBar extends Component {
     return this.state.challenges[this.state.weekNum - 1].name;
   }
 
+  getCurrWeekLink() {
+    if (this.state.weekNum === null) {
+      return '#';
+    }
+
+    return '/challenge/week' + this.state.weekNum;
+  }
+
   render() {
     return (
       <div id="weeklyProgBar">
         <div className="wpb back"></div>
         {this.addWeeks()}
         <div className="wpb front" ref={this.setMovingBarRef}></div>
-        <div className="curr-week-cover" data-tip data-for="currWeekCover" ref={this.setCurrWeekCoverRef}>
+        <a href={this.getCurrWeekLink()} className="curr-week-cover" data-tip data-for="currWeekCover" ref={this.setCurrWeekCoverRef}>
           <ReactTooltip id="currWeekCover" place="bottom" effect="solid"><span>{this.getCurrChallengeName()}</span></ReactTooltip>
-        </div>
+        </a>
         <div className="party-icon" data-tip data-for="partyIcon">
           <ReactTooltip id="partyIcon" place="bottom" effect="solid"><span>Party</span></ReactTooltip>
         </div>
