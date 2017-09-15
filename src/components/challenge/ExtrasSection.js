@@ -5,7 +5,7 @@ import QuokkaMarkdown from '../shared/QuokkaMarkdown';
 class ExtrasSection extends Component {
   render() {
     return (
-      <div id="extras" className="container-fluid">
+      <div id="extras" className="]container-fluid">
         <div className="row">
           <div className="challenge-section-title">Extra Info</div>
           <ul className="challenge-section-desc">

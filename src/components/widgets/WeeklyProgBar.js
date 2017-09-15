@@ -1,5 +1,7 @@
 import $ from 'jquery';
 import React, { Component } from 'react';
+
+import Ajax from '../../utils/Ajax';
 import ReactTooltip from 'react-tooltip';
 
 class WeeklyProgBar extends Component {
@@ -20,6 +22,17 @@ class WeeklyProgBar extends Component {
       challenges: [],
       weekNum: null
     };
+  }
+
+  componentDidMount() {
+    Ajax.get('/api/challenges')
+      .then((resp) => resp.json())
+      .then((data) => {
+        this.setState({
+          challenges: data.challenges,
+          weekNum: data.weekNum
+        });
+      });
   }
 
   componentDidUpdate() {
@@ -69,7 +82,7 @@ class WeeklyProgBar extends Component {
 
     $(this.movingBar).addClass('w' + this.indexClass(i));
 
-    var timeout = i === 0 ? 200 : this.transitionDur;
+    var timeout = i === 0 ? 100 : this.transitionDur;
 
     setTimeout(() => {
       var el;
