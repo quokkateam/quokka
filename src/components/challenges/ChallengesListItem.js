@@ -10,6 +10,7 @@ class ChallengesListItem extends Component {
     this.getClasses = this.getClasses.bind(this);
     this.formatDate = this.formatDate.bind(this);
     this.getLink = this.getLink.bind(this);
+    this.challengeDisabled = this.challengeDisabled.bind(this);
 
     var ch = this.props.challenge || {};
 
@@ -38,7 +39,7 @@ class ChallengesListItem extends Component {
 
     if (this.state.weekNum === this.props.currWeekNum) {
       classes.push('current');
-    } else if (this.state.weekNum > this.props.currWeekNum && !Session.isAdmin()) {
+    } else if (this.challengeDisabled()) {
       classes.push('disabled');
     }
 
@@ -46,12 +47,16 @@ class ChallengesListItem extends Component {
   }
 
   getLink() {
-    if (this.state.weekNum > this.props.currWeekNum && !Session.isAdmin()) {
+    if (this.challengeDisabled()) {
       /*eslint-disable no-script-url*/
       return 'javascript:void(0)';
     }
 
     return '/challenge/week' + this.state.weekNum;
+  }
+
+  challengeDisabled() {
+    return this.state.weekNum > this.props.currWeekNum && !Session.isAdmin();
   }
 
   render() {
