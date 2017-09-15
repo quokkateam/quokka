@@ -26,10 +26,10 @@
     top: 0;
     right: -12px;
     background-color: $tertiary;
-    background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/running-white.png');
-    background-position: 49% 45%;
+    background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/poppers.svg');
+    background-position: 0 80%;
     background-repeat: no-repeat;
-    background-size: 57%;
+    background-size: 105%;
     z-index: 3;
   }
 }
@@ -161,7 +161,7 @@
     top: -10px;
     right: -12px;
     background-color: $primary;
-    background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/running-white.png');
+    background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/running-white.svg');
     background-position: 49% 45%;
     background-repeat: no-repeat;
     background-size: 57%;

@@ -35,40 +35,43 @@
     height: 58px;
     border-radius: 50%;
     background-color: $secondary;
-    background-position: 48% 50%;
+    background-position: 49% 48.5%;
     background-repeat: no-repeat;
-    background-size: 50%;
+    background-size: 49%;
 
     &.socializing {
-      background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/running-white.png');
+      background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/socialize.svg');
+      background-position: 48% 48.5%
     }
 
     &.good-deeds {
-      background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/running-white.png');
+      background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/good_deeds.svg');
     }
 
     &.sleep {
-      background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/running-white.png');
+      background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/sleep.svg');
     }
 
     &.healthy-eating {
-      background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/running-white.png');
+      background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/healthy_eating.svg');
     }
 
     &.journaling {
-      background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/running-white.png');
+      background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/journaling.svg');
     }
 
     &.exercise {
-      background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/running-white.png');
+      background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/running-white.svg');
     }
 
     &.group-selected-challenge {
-      background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/running-white.png');
+      background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/group_challenge.svg');
     }
 
     &.positivity-mindfulness {
-      background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/running-white.png');
+      background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/mindfulness.svg');
+      background-size: 65%;
+      background-position: 50% 30%;
     }
   }
 }
