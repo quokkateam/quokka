@@ -1,5 +1,7 @@
 import $ from 'jquery';
 import React, { Component } from 'react';
+
+import Ajax from '../../utils/Ajax';
 import ReactTooltip from 'react-tooltip';
 
 class WeeklyProgBar extends Component {
@@ -14,16 +16,36 @@ class WeeklyProgBar extends Component {
     this.indexClass = this.indexClass.bind(this);
     this.addWeeks = this.addWeeks.bind(this);
     this.moveToIndex = this.moveToIndex.bind(this);
-  }
-  
-  componentDidMount() {
-    setTimeout(() => {
-      this.moveToIndex(this.props.currentWeekIndex || 0);
-    }, 300);
+    this.getCurrChallengeName = this.getCurrChallengeName.bind(this);
+    this.getCurrWeekLink = this.getCurrWeekLink.bind(this);
 
-    $(window).resize(() => {
-      this.alignCurrWeekCover();
-    });
+    this.state = {
+      challenges: [],
+      weekNum: null
+    };
+  }
+
+  componentDidMount() {
+    Ajax.get('/api/challenges')
+      .then((resp) => resp.json())
+      .then((data) => {
+        this.setState({
+          challenges: data.challenges,
+          weekNum: data.weekNum
+        });
+      });
+  }
+
+  componentDidUpdate() {
+    if (this.state.challenges) {
+      this.moveToIndex(this.state.weekNum - 1);
+
+      $(window).resize(() => {
+        this.alignCurrWeekCover();
+      });
+    }
+
+    return true;
   }
   
   setMovingBarRef(ref) {
@@ -35,49 +57,69 @@ class WeeklyProgBar extends Component {
   }
   
   indexClass(i) {
-    return Math.round((i / this.props.weeks.length) * 100);
+    if (this.state.challenges.length === 0) {
+      return '';
+    }
+
+    return Math.round((i / this.state.challenges.length) * 100);
   }
   
   addWeeks() {
-    var classes;
-    var weeks = [];
-    
-    this.props.weeks.forEach((name) => {
-      weeks.push(name);
-    });
-    
-    weeks.push('Party');
+    if (this.state.challenges.length === 0) {
+      return;
+    }
 
-    return weeks.map((name, i) => {
-      classes = ['week-indicator', 'l' + this.indexClass(i)].join(' ');
-      return <div key={i} data-tip data-for={'l' + i} className={classes}><ReactTooltip id={'l' + i} place="bottom" effect="solid"><span>{name}</span></ReactTooltip></div>;
+    var challengeNames = this.state.challenges.map((c) => { return c.name; });
+
+    var classes;
+    return challengeNames.map((name, i) => {
+      classes = ['week-indicator', 'l' + this.indexClass(i)];
+      return <a key={i} href={'/challenge/week' + (i + 1)} data-tip data-for={'l' + i} className={classes.join(' ')}><ReactTooltip id={'l' + i} place="bottom" effect="solid"><span>{name}</span></ReactTooltip></a>;
     });
   }
 
   moveToIndex(i) {
     var weeklyIndicators = $('.week-indicator');
-    var el;
-
-    for (var j = 0; j < weeklyIndicators.length; j++) {
-      el = weeklyIndicators[j];
-
-      if (j < i) {
-        $(el).addClass('passed show');
-      } else if (j > i) {
-        $(el).addClass('show');
-      }
-    }
 
     $(this.movingBar).addClass('w' + this.indexClass(i));
 
+    var timeout = i === 0 ? 100 : this.transitionDur;
+
     setTimeout(() => {
+      var el;
+      for (var j = 0; j < weeklyIndicators.length; j++) {
+        el = weeklyIndicators[j];
+
+        if (j < i) {
+          $(el).addClass('passed show');
+        } else if (j > i) {
+          $(el).addClass('show');
+        }
+      }
+
       this.alignCurrWeekCover();
-    }, this.transitionDur + 5);
+    }, timeout);
   }
 
   alignCurrWeekCover() {
     $(this.currWeekCover).css({ left: $(this.movingBar).width() - 12 });
     $(this.currWeekCover).show();
+  }
+
+  getCurrChallengeName() {
+    if (this.state.weekNum === null) {
+      return;
+    }
+
+    return this.state.challenges[this.state.weekNum - 1].name;
+  }
+
+  getCurrWeekLink() {
+    if (this.state.weekNum === null) {
+      return '#';
+    }
+
+    return '/challenge/week' + this.state.weekNum;
   }
 
   render() {
@@ -86,10 +128,11 @@ class WeeklyProgBar extends Component {
         <div className="wpb back"></div>
         {this.addWeeks()}
         <div className="wpb front" ref={this.setMovingBarRef}></div>
-        <div className="curr-week-cover" data-tip data-for="currWeekCover" ref={this.setCurrWeekCoverRef}>
-          <ReactTooltip id="currWeekCover" place="bottom" effect="solid">
-            <span>{this.props.weeks[this.props.currentWeekIndex]}</span>
-          </ReactTooltip>
+        <a href={this.getCurrWeekLink()} className="curr-week-cover" data-tip data-for="currWeekCover" ref={this.setCurrWeekCoverRef}>
+          <ReactTooltip id="currWeekCover" place="bottom" effect="solid"><span>{this.getCurrChallengeName()}</span></ReactTooltip>
+        </a>
+        <div className="party-icon" data-tip data-for="partyIcon">
+          <ReactTooltip id="partyIcon" place="bottom" effect="solid"><span>Party</span></ReactTooltip>
         </div>
       </div>
     );

@@ -9,6 +9,7 @@
 @import 'shared/side-nav';
 @import 'shared/banner';
 @import 'shared/header';
+@import 'shared/hash-nav';
 @import 'shared/footers/footer';
 @import 'shared/form/form-input';
 @import 'shared/form/form-qa';
@@ -47,6 +48,8 @@
 
 // Challenges
 @import 'challenges/challenges';
+@import 'challenges/challenges-list';
+@import 'challenges/challenges-list-item';
 
 // Modals
 @import 'modals/quokka-modal';

@@ -1,0 +1,136 @@
+.challenges-list-item {
+  cursor: pointer;
+  text-decoration: none;
+  padding: 25px 0;
+  border-top: 1px solid rgba(0, 0, 75, 0.07);
+  display: block;
+  float: left;
+  width: 100%;
+  min-height: 142px;
+  background-color: #fff;
+
+  &:hover {
+    // figure out something to do
+  }
+
+  &.current {
+    .ch-icon {
+      background-color: #f2a543;
+    }
+
+    .ch-name {
+      color: #f2a543;
+    }
+  }
+}
+
+.ch-icon-container {
+  padding-top: 15px;
+  padding-left: 2px;
+  padding-right: 25px;
+  float: left;
+
+  .ch-icon {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background-color: $secondary;
+    background-position: 48% 50%;
+    background-repeat: no-repeat;
+    background-size: 50%;
+
+    &.socializing {
+      background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/running-white.png');
+    }
+
+    &.good-deeds {
+      background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/running-white.png');
+    }
+
+    &.sleep {
+      background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/running-white.png');
+    }
+
+    &.healthy-eating {
+      background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/running-white.png');
+    }
+
+    &.journaling {
+      background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/running-white.png');
+    }
+
+    &.exercise {
+      background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/running-white.png');
+    }
+
+    &.group-selected-challenge {
+      background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/running-white.png');
+    }
+
+    &.positivity-mindfulness {
+      background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/running-white.png');
+    }
+  }
+}
+
+.ch-desc-container {
+  width: calc(100% - 85px - 180px);
+  float: left;
+
+  .ch-name {
+    font-size: 28px;
+    color: $secondary;
+    margin-bottom: 4px;
+  }
+
+  .ch-desc {
+    font-size: 15px;
+    color: rgba(0, 0, 50, 0.4);
+  }
+}
+
+.ch-date-points-container {
+  width: 180px;
+  float: left;
+  padding-right: 30px;
+
+  .ch-dates,
+  .ch-points {
+    float: right;
+    width: 100%;
+  }
+
+  .ch-dates {
+    font-size: 15px;
+    color: rgba(0, 0, 50, 0.4);
+    text-align: right;
+    margin-bottom: 10px;
+
+    .ch-date {
+      font-family: Avenir-Next-Italic;
+    }
+
+    .ch-date-dash {
+      margin: 0 5px;
+    }
+  }
+
+  .ch-points {
+    img {
+      height: 25px;
+      margin-left: 7px;
+      margin-top: 12px;
+    }
+
+    img, .points {
+      float: right;
+      display: inline-block;
+    }
+
+    .points {
+      font-size: 36px;
+      color: $primary;
+      font-family: Avenir-Next-Thin;
+    }
+  }
+}

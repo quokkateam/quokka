@@ -1,7 +1,6 @@
 #weeklyProgBar {
   width: 80%;
   margin: 0 auto;
-  margin-top: 20px;
   position: relative;
   height: 25px;
   z-index: 0;
@@ -16,6 +15,22 @@
 
   [data-id=tooltip].place-bottom:after {
     border-bottom-color: $tertiary;
+  }
+
+  .party-icon {
+    width: 24px;
+    height: 24px;
+    display: block;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    right: -12px;
+    background-color: $tertiary;
+    background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/running-white.png');
+    background-position: 49% 45%;
+    background-repeat: no-repeat;
+    background-size: 57%;
+    z-index: 3;
   }
 }
 
@@ -50,11 +65,6 @@
   -ms-transition: all 0.3s;
   -o-transition: all 0.3s;
   transition: all 0.3s;
-  -webkit-transition-delay: 1s;
-  -moz-transition-delay: 1s;
-  -ms-transition-delay: 1s;
-  -o-transition-delay: 1s;
-  transition-delay: 1s;
 
   &.l0 {
     left: calc(0 - 5px);
@@ -155,7 +165,6 @@
     background-position: 49% 45%;
     background-repeat: no-repeat;
     background-size: 57%;
-    cursor: pointer;
   }
 }
 
