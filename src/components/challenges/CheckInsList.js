@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import Ajax from '../../utils/Ajax';
 import CheckInsListItem from './CheckInsListItem';
 
 class CheckInsList extends Component {
