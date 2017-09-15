@@ -11,7 +11,7 @@ class CheckInsList extends Component {
     this.getCheckIns = this.getCheckIns.bind(this);
 
     this.state = {
-      checkIns: this.props.checkIns
+      checkIns: this.props.checkIns || []
     };
   }
 
@@ -29,7 +29,7 @@ class CheckInsList extends Component {
   }
 
   getCheckIns() {
-    return this.state.challenges.map((c, i) => {
+    return this.state.checkIns.map((c, i) => {
       return <li className="check-ins-list-item-wrapper" key={i}>
         <CheckInsListItem checkIn={c}/>
       </li>;

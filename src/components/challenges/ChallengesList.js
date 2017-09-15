@@ -30,16 +30,20 @@ class ChallengesList extends Component {
   }
 
   getChallenges() {
-    return this.state.challenges.map((c) => {
-      return <li className="challenge-list-item-wrapper" key={c.slug}>
-        <ChallengesListItem challenge={c}/>
-      </li>;
+    return this.state.challenges.map((c, i) => {
+      return <li key={c.slug}><ChallengesListItem challenge={c} index={i} currWeek={this.state.weekNum === i + 1}/></li>;
     });
   }
 
   render() {
     return (
-      <ul className="challenges-list">{this.getChallenges()}</ul>
+      <div className="challenges-list-container">
+        <div className="challenges-list-intro">
+          <div className="intro-title">Weekly Challenges</div>
+          <div className="intro-subtitle">Check out the weekly challenge breakdown below. Each week introduces a separate healthy habit for you and your friends to participate in and earn points for doing so.</div>
+        </div>
+        <ul className="challenges-list">{this.getChallenges()}</ul>
+      </div>
     );
   }
 }

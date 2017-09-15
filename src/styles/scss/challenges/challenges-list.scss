@@ -1,0 +1,28 @@
+.challenges-list-intro {
+  float: left;
+
+  .intro-title {
+    font-size: 42px;
+    line-height: 36px;
+    font-family: Avenir-Next-Thin;
+    color: $primary;
+    margin-bottom: 33px;
+  }
+
+  .intro-subtitle {
+    font-size: 15.5px;
+    color: $default-dark;
+    margin-bottom: 33px;
+  }
+}
+
+.challenges-list {
+  float: left;
+  list-style: none;
+  margin-bottom: 65px;
+
+  li {
+    float: left;
+    width: 100%;
+  }
+}
