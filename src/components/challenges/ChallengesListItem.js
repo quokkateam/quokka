@@ -26,7 +26,7 @@ class ChallengesListItem extends Component {
     var months = ['Jan', 'Feb', 'Mar', 'April', 'May', 'June',
       'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
 
-    var date = moment(this.state[when + 'Date'], 'MM/DD/YYYY');
+    var date = moment(this.state[when + 'Date'], 'MM/DD/YY');
 
     return months[date.month()] + ' ' + date.date();
   }
