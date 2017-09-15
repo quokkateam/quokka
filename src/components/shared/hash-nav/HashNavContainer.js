@@ -40,7 +40,7 @@ class HashNavContainer extends Component {
     });
 
     this.content.setState({
-      comp: this.state.links[selectedIndex].comp
+      selectedIndex: selectedIndex
     });
 
     return true;
@@ -77,7 +77,7 @@ class HashNavContainer extends Component {
       <div className={this.getClassNames()}>
         <div className="row">
           <HashNav links={this.state.links} selectedIndex={selectedIndex} ref={this.setNavRef}/>
-          <HashContent comp={(this.state.links[selectedIndex] || {}).comp} ref={this.setContentRef}/>
+          <HashContent links={this.state.links} selectedIndex={selectedIndex} ref={this.setContentRef}/>
         </div>
       </div>
     );
