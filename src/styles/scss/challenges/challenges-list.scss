@@ -12,6 +12,7 @@
 }
 
 .challenges-list-intro {
+  position: relative;
   float: left;
 
   .intro-title {
@@ -27,12 +28,24 @@
     color: $default-dark;
     margin-bottom: 33px;
   }
+
+  .edit-challenges {
+    position: absolute;
+    top: 10px;
+    right: 30px;
+    font-size: 24px;
+    color: $primary;
+    cursor: pointer;
+
+    &:hover {
+      color: $primary-hover;
+    }
+  }
 }
 
 .challenges-list {
   float: left;
   list-style: none;
-  margin-bottom: 65px;
   min-height: 1100px;
   width: 100%;
 

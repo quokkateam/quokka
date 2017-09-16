@@ -39,6 +39,23 @@
       display: none;
     }
   }
+
+  &.editing {
+    cursor: pointer;
+
+    .ch-dates {
+      visibility: hidden;
+    }
+
+    .ch-icon-container {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .ch-desc-container {
+      width: calc(100% - 85px - 180px - 13px);
+    }
+  }
 }
 
 .ch-icon-container {

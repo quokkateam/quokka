@@ -10,18 +10,22 @@ class ChallengesListItem extends Component {
     this.getClasses = this.getClasses.bind(this);
     this.formatDate = this.formatDate.bind(this);
     this.getLink = this.getLink.bind(this);
-    this.challengeDisabled = this.challengeDisabled.bind(this);
 
-    var ch = this.props.challenge || {};
+    var data = this.props.item || {};
+
+    console.log(data);
 
     this.state = {
-      slug: ch.slug,
-      name: ch.name,
-      points: ch.points || 0,
-      previewText: ch.previewText,
-      startDate: ch.startDate,
-      endDate: ch.endDate,
-      weekNum: this.props.weekNum
+      slug: data.slug,
+      name: data.name,
+      weekNum: data.weekNum,
+      points: data.points || 0,
+      previewText: data.previewText,
+      startDate: data.startDate,
+      endDate: data.endDate,
+      currentWeek: data.currentWeek,
+      disabled: data.disabled,
+      editing: this.props.hasOwnProperty('itemSelected')
     };
   }
 
@@ -37,17 +41,21 @@ class ChallengesListItem extends Component {
   getClasses() {
     var classes = ['challenges-list-item'];
 
-    if (this.state.weekNum === this.props.currWeekNum) {
-      classes.push('current');
-    } else if (this.challengeDisabled()) {
-      classes.push('disabled');
+    if (this.state.editing) {
+      classes.push('editing');
+    } else {
+      if (this.state.currentWeek) {
+        classes.push('current');
+      } else if (this.state.disabled) {
+        classes.push('disabled');
+      }
     }
 
     return classes.join(' ');
   }
 
   getLink() {
-    if (this.challengeDisabled()) {
+    if (this.state.disabled || this.state.editing) {
       /*eslint-disable no-script-url*/
       return 'javascript:void(0)';
     }
@@ -55,16 +63,19 @@ class ChallengesListItem extends Component {
     return '/challenge/week' + this.state.weekNum;
   }
 
-  challengeDisabled() {
-    return this.state.weekNum > this.props.currWeekNum && !Session.isAdmin();
-  }
-
   render() {
+    const itemSelected = this.props.itemSelected;
+    const dragHandle = this.props.dragHandle;
+    const scale = itemSelected * 0.05 + 1;
+    const shadow = itemSelected * 15 + 1;
+
+    var icon = this.state.editing ?
+      dragHandle(<div className={'ch-icon editing ' + this.state.slug}></div>) :
+      <div className={'ch-icon ' + this.state.slug}></div>;
+
     return (
-      <a className={this.getClasses()} href={this.getLink()}>
-        <div className="ch-icon-container">
-          <div className={'ch-icon ' + this.state.slug}></div>
-        </div>
+      <a className={this.getClasses()} href={this.getLink()} style={{ transform: `scale(${scale})`, boxShadow: `rgba(0, 0, 0, 0.3) 0px ${shadow}px ${2 * shadow}px 0px` }}>
+        <div className="ch-icon-container">{icon}</div>
         <div className="ch-desc-container">
           <div className="ch-name">{this.state.name}</div>
           <div className="ch-desc">{this.state.previewText}</div>
