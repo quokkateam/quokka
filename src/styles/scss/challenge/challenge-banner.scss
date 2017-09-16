@@ -30,7 +30,7 @@
     background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/exercise-banner.jpeg');
   }
 
-  &.group-selected-challenge {
+  &.campus-selected-challenge {
     background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/exercise-banner.jpeg');
   }
 
@@ -53,6 +53,7 @@
 
     .habit-icon {
       max-height: 60px;
+      min-height: 60px;
       display: block;
       margin: 0 auto;
     }
