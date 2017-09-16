@@ -41,7 +41,7 @@
   }
 
   &.editing {
-    cursor: pointer;
+    cursor: default;
 
     .ch-dates {
       visibility: hidden;
@@ -50,6 +50,13 @@
     .ch-icon-container {
       padding-left: 20px;
       padding-right: 20px;
+
+      .ch-icon {
+        cursor: -webkit-grab;
+        background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/draggable.svg');
+        background-size: 25%;
+        background-position: 50% 50%;
+      }
     }
 
     .ch-desc-container {
