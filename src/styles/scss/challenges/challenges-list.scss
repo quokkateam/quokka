@@ -1,3 +1,16 @@
+.challenges-list-container {
+  position: relative;
+
+  .circle-fade-spinner {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    margin: 0;
+    left: calc((100% - 60px) / 2);
+    top: 220px;
+  }
+}
+
 .challenges-list-intro {
   float: left;
 
@@ -21,6 +34,11 @@
   list-style: none;
   margin-bottom: 65px;
   min-height: 1100px;
+  width: 100%;
+
+  &.no-children {
+    border-top: 1px solid rgba(0, 0, 75, 0.08);
+  }
 
   li {
     float: left;

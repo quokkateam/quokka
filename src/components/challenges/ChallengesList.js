@@ -9,6 +9,8 @@ class ChallengesList extends Component {
     super(props);
 
     this.getChallenges = this.getChallenges.bind(this);
+    this.getSpinner = this.getSpinner.bind(this);
+    this.getChallengesListClasses = this.getChallengesListClasses.bind(this);
 
     this.state = {
       challenges: this.props.challenges || [],
@@ -35,6 +37,24 @@ class ChallengesList extends Component {
     });
   }
 
+  getSpinner() {
+    if (this.state.challenges.length === 0) {
+      return <div className="circle-fade-spinner primary"></div>;
+    } else {
+      return;
+    }
+  }
+
+  getChallengesListClasses() {
+    var classes = ['challenges-list'];
+
+    if (this.state.challenges.length === 0) {
+      classes.push('no-children');
+    }
+
+    return classes.join(' ');
+  }
+
   render() {
     return (
       <div className="challenges-list-container">
@@ -42,7 +62,8 @@ class ChallengesList extends Component {
           <div className="intro-title">Weekly Challenges</div>
           <div className="intro-subtitle">Check out the weekly challenge breakdown below. Each week introduces a separate healthy habit for you and your friends to participate in and earn points for doing so.</div>
         </div>
-        <ul className="challenges-list">{this.getChallenges()}</ul>
+        <ul className={this.getChallengesListClasses()}>{this.getChallenges()}</ul>
+        {this.getSpinner()}
       </div>
     );
   }
