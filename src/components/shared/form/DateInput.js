@@ -1,17 +1,17 @@
 import $ from 'jquery';
 import FormInput from './FormInput';
+import moment from 'moment';
 import React from 'react';
 
-class EmailInput extends FormInput {
-  
+class DateInput extends FormInput {
+
   constructor(props) {
     super(props);
     this.setInvalidMessageRef = this.setInvalidMessageRef.bind(this);
-    this.showInvalidEmail = this.showInvalidEmail.bind(this);
+    this.showInvalidDate = this.showInvalidDate.bind(this);
     this.showInvalidWithMessage = this.showInvalidWithMessage.bind(this);
-    this.hasEmailFormat = this.hasEmailFormat.bind(this);
   }
-  
+
   setInvalidMessageRef(ref) {
     this.invalidMessage = ref;
   }
@@ -21,51 +21,47 @@ class EmailInput extends FormInput {
     if (!this.props.required) {
       return true;
     }
-    
+
     var value = this.serialize();
-    
+
     // Ensure value is not empty
     if (!value) {
       this.showInvalid();
       return false;
     }
-    
-    // Ensure value is in proper email format
-    if (!this.hasEmailFormat(value)) {
-      this.showInvalidEmail();
+
+    // Ensure value is in proper format
+    if (!moment(value, 'MM/DD/YY').isValid()) {
+      this.showInvalidDate();
       return false;
     }
-    
+
     return true;
   }
-  
-  showInvalidEmail() {
-    this.showInvalidWithMessage('Please enter a valid email address');
+
+  showInvalidDate() {
+    this.showInvalidWithMessage('Please enter a valid date with format: ' + this.props.format);
   }
 
   showInvalidWithMessage(msg) {
     $(this.invalidMessage).html(msg).show();
     this.addInvalidBorder();
   }
-  
-  hasEmailFormat(val) {
-    return val.match(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
-  }
-  
+
   onKeyUp() {
     $(this.invalidMessage).hide();
     super.onKeyUp();
   }
-  
+
   render() {
     return (
-      <div className="email-input">
+      <div className="date-input">
         <div className="invalid-message" ref={this.setInvalidMessageRef}></div>
-        <input type="text" className={this.getClassNames()} name={this.props.name || ''} placeholder={this.props.placeholder || 'Email'} defaultValue={this.props.defaultValue || ''} onKeyUp={this.onKeyUp} ref={this.setInputRef}/>
+        <input type="text" className={this.getClassNames()} name={this.props.name || ''} placeholder={this.props.placeholder || this.props.format} defaultValue={this.props.defaultValue || ''} onKeyUp={this.onKeyUp} ref={this.setInputRef}/>
       </div>
     );
   }
-  
+
 }
 
-export default EmailInput;
+export default DateInput;

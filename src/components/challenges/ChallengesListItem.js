@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import moment from 'moment';
-import Session from '../../utils/Session';
 
 class ChallengesListItem extends Component {
 
@@ -12,8 +11,6 @@ class ChallengesListItem extends Component {
     this.getLink = this.getLink.bind(this);
 
     var data = this.props.item || {};
-
-    console.log(data);
 
     this.state = {
       slug: data.slug,
