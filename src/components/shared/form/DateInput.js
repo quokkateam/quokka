@@ -30,8 +30,7 @@ class DateInput extends FormInput {
       return false;
     }
 
-    // Ensure value is in proper format
-    if (!moment(value, 'MM/DD/YY').isValid()) {
+    if (!moment(value, 'MM/DD/YY', true).isValid()) {
       this.showInvalidDate();
       return false;
     }

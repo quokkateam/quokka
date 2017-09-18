@@ -4,7 +4,6 @@ import Ajax from '../../utils/Ajax';
 import ChallengesListItem from './ChallengesListItem';
 import DraggableList from 'react-draggable-list';
 import DateInput from '../shared/form/DateInput';
-import moment from 'moment';
 import Session from '../../utils/Session';
 
 
@@ -151,22 +150,22 @@ class ChallengesList extends Component {
 
   save() {
     const payload = {
-      school: Session.school().slug,
       challenges: this.state.challenges,
       startDate: this.state.startDate
     };
 
-    console.log(this.state.challenges);
-
-    // Ajax.put('/api/challenges', payload)
-    //   .then((resp) => resp.json())
-    //   .then((data) => {
-    //     this.setState({
-    //       challenges: data.challenges,
-    //       startDate: data.challenges[0].startDate,
-    //       status: this.status.STATIC
-    //     });
-    //   });
+    Ajax.put('/api/challenges', payload)
+      .then((resp) => {
+        if (resp.status === 200) {
+          resp.json().then((challenges) => {
+            this.setState({
+              challenges: challenges,
+              startDate: challenges[0].startDate,
+              status: this.status.STATIC
+            });
+          });
+        }
+      });
   }
 
   getList() {
