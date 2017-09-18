@@ -60,7 +60,6 @@ class DateInput extends FormInput {
       </div>
     );
   }
-
 }
 
 export default DateInput;

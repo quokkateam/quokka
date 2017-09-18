@@ -65,7 +65,6 @@ class EmailInput extends FormInput {
       </div>
     );
   }
-  
 }
 
 export default EmailInput;
