@@ -101,13 +101,16 @@ class PrizesSection extends Component {
   }
 
   createSponsor(payload) {
-    payload.schoolSlug = (Session.school() || {}).slug;
-
     Ajax.post('/api/sponsor', payload)
       .then((resp) => resp.json())
       .then((sponsors) => {
         this.setState({ sponsors: sponsors });
+
         this.createSponsorModal.close();
+
+        setTimeout(() => {
+          this.createSponsorModal.setState({ sending: false });
+        }, 300);
       });
   }
 
