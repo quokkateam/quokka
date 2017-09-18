@@ -37,7 +37,15 @@ class CheckInsList extends Component {
 
   render() {
     return (
-      <ul className="check-ins-list">{this.getCheckIns()}</ul>
+      <div className="challenges-list-container">
+        <div className="challenges-list-intro">
+          <div className="intro-title">Weekly Check-ins</div>
+          <div className="intro-subtitle">Participating in Check-ins helps you to earn Quokka points, provides us with feedback, and makes you eligible for this week's prizes!</div>
+        </div>
+        <ul className="check-ins-list no-children">
+          <div className="coming-soon">Coming Soon!</div>
+        </ul>
+      </div>
     );
   }
 }

@@ -54,7 +54,7 @@
 
   .edit-challenges, .save-challenges {
     position: absolute;
-    top: 10px;
+    top: 0;
     right: 30px;
     font-size: 24px;
     cursor: pointer;
@@ -88,7 +88,8 @@
   }
 }
 
-.challenges-list {
+.challenges-list,
+.check-ins-list {
   float: left;
   list-style: none;
   min-height: 1100px;
