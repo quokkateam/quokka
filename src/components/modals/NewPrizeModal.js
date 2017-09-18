@@ -20,6 +20,7 @@ class NewPrizeModal extends QuokkaModal {
     this.createPrize = this.createPrize.bind(this);
     this.updatePrize = this.updatePrize.bind(this);
     this.onSponsorChange = this.onSponsorChange.bind(this);
+    this.isValid = this.isValid.bind(this);
 
     this.state = {
       showModal: false,
@@ -55,7 +56,7 @@ class NewPrizeModal extends QuokkaModal {
   }
 
   createPrize() {
-    if (!this.props.onCreatePrize) {
+    if (!this.props.onCreatePrize || !this.isValid()) {
       return;
     }
 
@@ -68,7 +69,7 @@ class NewPrizeModal extends QuokkaModal {
   }
 
   updatePrize() {
-    if (!this.props.onUpdatePrize) {
+    if (!this.props.onUpdatePrize || !this.isValid()) {
       return;
     }
 
@@ -79,6 +80,13 @@ class NewPrizeModal extends QuokkaModal {
     };
 
     this.props.onUpdatePrize(payload);
+  }
+
+  isValid() {
+    var sponsorValid = this.sponsorSelect.isValid();
+    var nameValid = this.prizeInput.isValid();
+
+    return sponsorValid && nameValid;
   }
 
   onSponsorChange(val) {
