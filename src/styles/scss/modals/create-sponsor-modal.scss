@@ -16,6 +16,11 @@
     position: relative;
   }
 
+  .logo {
+    height: 125px;
+    max-width: 125px;
+  }
+
   .logo-container {
     display: block;
     width: 125px;
@@ -28,10 +33,15 @@
     background-position: center center;
     background-size: 50%;
     background-repeat: no-repeat;
-  }
 
-  .logo {
-    display: none;
+    &.has-image {
+      border: none;
+      background-image: none;
+    }
+
+    &.invalid {
+      box-shadow: 0 0 4px 2px #0dd5b2;
+    }
   }
 
   .upload-logo-btn {

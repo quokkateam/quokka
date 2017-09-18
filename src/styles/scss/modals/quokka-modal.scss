@@ -39,9 +39,15 @@
 .modal-action-1-btn {
   width: 100%;
   padding: 0 10px 5px;
+  position: relative;
 
   .modal-action-btn > button {
     width: 100%;
+  }
+
+  .horiz-spinner {
+    top: 13px;
+    left: calc((100% - 70px) / 2);
   }
 }
 
