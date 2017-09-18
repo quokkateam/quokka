@@ -31,6 +31,7 @@ class ChallengesList extends Component {
     this.serialize = this.serialize.bind(this);
     this.save = this.save.bind(this);
     this.onMoveEnd = this.onMoveEnd.bind(this);
+    this.formatChallenges = this.formatChallenges.bind(this);
 
     this.state = {
       challenges: this.props.challenges || [],
@@ -42,25 +43,28 @@ class ChallengesList extends Component {
     Ajax.get('/api/challenges')
       .then((resp) => resp.json())
       .then((data) => {
-        var weekNum;
-        var isAdmin = Session.isAdmin();
-
-        var challenges = (data.challenges || []).map((c, i) => {
-          weekNum = i + 1;
-
-          if (weekNum === data.weekNum) {
-            c.currentWeek = true;
-          } else if (weekNum > data.weekNum && !isAdmin) {
-            c.disabled = true;
-          }
-
-          return c;
-        });
-
+        var challenges = this.formatChallenges(data);
         this.setState({ challenges: challenges });
       });
 
     return true;
+  }
+
+  formatChallenges(data) {
+    var weekNum;
+    var isAdmin = Session.isAdmin();
+
+    return (data.challenges || []).map((c, i) => {
+      weekNum = i + 1;
+
+      if (weekNum === data.weekNum) {
+        c.currentWeek = true;
+      } else if (weekNum > data.weekNum && !isAdmin) {
+        c.disabled = true;
+      }
+
+      return c;
+    });
   }
 
   componentDidUpdate() {
@@ -157,7 +161,9 @@ class ChallengesList extends Component {
     Ajax.put('/api/challenges', payload)
       .then((resp) => {
         if (resp.status === 200) {
-          resp.json().then((challenges) => {
+          resp.json().then((data) => {
+            var challenges = this.formatChallenges(data);
+
             this.setState({
               challenges: challenges,
               startDate: challenges[0].startDate,
