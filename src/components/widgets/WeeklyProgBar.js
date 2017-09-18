@@ -144,7 +144,7 @@ class WeeklyProgBar extends Component {
           <ReactTooltip id="currWeekCover" place="bottom" effect="solid"><span>{this.getCurrChallengeName()}</span></ReactTooltip>
         </a>
         <div className="party-icon" data-tip data-for="partyIcon">
-          <ReactTooltip id="partyIcon" place="bottom" effect="solid"><span>Party</span></ReactTooltip>
+          <ReactTooltip id="partyIcon" place="bottom" effect="solid"><span>Party!</span></ReactTooltip>
         </div>
       </div>
     );

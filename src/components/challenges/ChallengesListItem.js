@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import moment from 'moment';
-import Session from '../../utils/Session';
 
 class ChallengesListItem extends Component {
 
@@ -10,74 +9,77 @@ class ChallengesListItem extends Component {
     this.getClasses = this.getClasses.bind(this);
     this.formatDate = this.formatDate.bind(this);
     this.getLink = this.getLink.bind(this);
-    this.challengeDisabled = this.challengeDisabled.bind(this);
-
-    var ch = this.props.challenge || {};
-
-    this.state = {
-      slug: ch.slug,
-      name: ch.name,
-      points: ch.points || 0,
-      previewText: ch.previewText,
-      startDate: ch.startDate,
-      endDate: ch.endDate,
-      weekNum: this.props.weekNum
-    };
+    this.isEditing = this.isEditing.bind(this);
   }
 
-  formatDate(when) {
+  formatDate(dateStr) {
+    if (!dateStr) {
+      return;
+    }
+
     var months = ['Jan', 'Feb', 'Mar', 'April', 'May', 'June',
       'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
 
-    var date = moment(this.state[when + 'Date'], 'MM/DD/YY');
+    var date = moment(dateStr, 'MM/DD/YY');
 
     return months[date.month()] + ' ' + date.date();
   }
 
-  getClasses() {
+  isEditing() {
+    return this.props.hasOwnProperty('itemSelected');
+  }
+
+  getClasses(data) {
     var classes = ['challenges-list-item'];
 
-    if (this.state.weekNum === this.props.currWeekNum) {
-      classes.push('current');
-    } else if (this.challengeDisabled()) {
-      classes.push('disabled');
+    if (this.isEditing()) {
+      classes.push('editing');
+    } else {
+      if (data.currentWeek) {
+        classes.push('current');
+      } else if (data.disabled) {
+        classes.push('disabled');
+      }
     }
 
     return classes.join(' ');
   }
 
-  getLink() {
-    if (this.challengeDisabled()) {
+  getLink(data) {
+    if (data.disabled || this.isEditing()) {
       /*eslint-disable no-script-url*/
       return 'javascript:void(0)';
     }
 
-    return '/challenge/week' + this.state.weekNum;
-  }
-
-  challengeDisabled() {
-    return this.state.weekNum > this.props.currWeekNum && !Session.isAdmin();
+    return '/challenge/week' + data.weekNum;
   }
 
   render() {
+    const itemSelected = this.props.itemSelected;
+    const dragHandle = this.props.dragHandle;
+    const scale = itemSelected * 0.05 + 1;
+    const shadow = itemSelected * 15 + 1;
+    var data = this.props.item || {};
+    var icon = this.isEditing() ?
+      dragHandle(<div className={'ch-icon editing ' + data.slug}></div>) :
+      <div className={'ch-icon ' + data.slug}></div>;
+
     return (
-      <a className={this.getClasses()} href={this.getLink()}>
-        <div className="ch-icon-container">
-          <div className={'ch-icon ' + this.state.slug}></div>
-        </div>
+      <a className={this.getClasses(data)} href={this.getLink(data)} style={{ transform: `scale(${scale})`, boxShadow: `rgba(0, 0, 0, 0.3) 0px ${shadow}px ${2 * shadow}px 0px` }}>
+        <div className="ch-icon-container">{icon}</div>
         <div className="ch-desc-container">
-          <div className="ch-name">{this.state.name}</div>
-          <div className="ch-desc">{this.state.previewText}</div>
+          <div className="ch-name">{data.name}</div>
+          <div className="ch-desc">{data.previewText}</div>
         </div>
         <div className="ch-date-points-container">
           <div className="ch-dates">
-            <span className="ch-date">{this.formatDate('start')}</span>
+            <span className="ch-date">{this.formatDate(data.startDate)}</span>
             <span className="ch-date-dash">&mdash;</span>
-            <span className="ch-date">{this.formatDate('end')}</span>
+            <span className="ch-date">{this.formatDate(data.endDate)}</span>
           </div>
           <div className="ch-points">
             <img src="https://s3-us-west-1.amazonaws.com/quokkadev/images/leaf.png" alt="" />
-            <div className="points">{this.state.points}</div>
+            <div className="points">{data.points}</div>
           </div>
         </div>
       </a>
