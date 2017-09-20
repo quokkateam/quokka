@@ -13,13 +13,7 @@ class CheckInSection extends Component {
 
     var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
-    var date = moment('11/05/2017', 'MM/DD/YYYY');
-
-    var dateNum = date.date();
-
-    if (dateNum < 10) {
-      dateNum = '0' + dateNum;
-    }
+    var date = moment(this.props.endDate, 'MM/DD/YYYY');
 
     return days[date.day()] + ', ' + months[date.month()] + ' ' + date.date();
   }
