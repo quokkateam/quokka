@@ -25,7 +25,7 @@ class FAQ extends Component {
         },
         {
           question: 'What kinds of prizes can we win?',
-          answer: 'Depending on your campus, prizes can range from school-sponsored gear and gift cards to massages and private fitness classes. You’ll get more information about all the prizes in each week’s email. If you submit a check-in for all 8 weeks, you’ll also receive a bonus Challenge Champion prize.'
+          answer: 'Depending on your campus, prizes can range from school-sponsored gear and gift cards to massages and private fitness classes. You’ll get more information about all the prizes in each week’s email. If you submit a check-in for all 8 weeks, you might receive a bonus Challenge Champion prize.'
         },
         {
           question: 'Which schools are participating this fall?',
