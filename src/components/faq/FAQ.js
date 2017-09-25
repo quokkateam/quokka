@@ -13,7 +13,7 @@ class FAQ extends Component {
       faqs: [
         {
           question: 'What\'s a Quokka?',
-          answer: 'Quokkas (pronunciation: kwok-uh) are small marsupials found in southwestern Australia that are often described as the "world\'s happiest animal." About the size of a teddy bear or house cat, quokkas are known for their friendliness and happy demeanor. Be like a quokka, and get happy with the Quokka Challenge!'
+          answer: 'Quokkas (pronunciation: kwok-uh) are small marsupials found in southwestern Australia that are often described as the "world\'s happiest animal." About the size of a teddy bear or house cat, quokkas are known for their friendliness and happy demeanor. We hope to inspire college students to start their Quokka journey and get happy with the Quokka Challenge!'
         },
         {
           question: 'What\'s the Quokka Challenge?',
