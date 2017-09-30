@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
-
 import Challenge from './components/challenge/Challenge';
 import CheckIn from './components/check-in/CheckIn';
 import FAQ from './components/faq/FAQ';
