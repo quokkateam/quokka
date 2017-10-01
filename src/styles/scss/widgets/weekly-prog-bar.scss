@@ -165,10 +165,63 @@
     top: -10px;
     right: -12px;
     background-color: $primary;
-    background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/running-white.svg');
     background-position: 49% 45%;
     background-repeat: no-repeat;
     background-size: 57%;
+  }
+  
+  &.socializing {
+    &:after {
+      background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/socialize.svg');
+    }
+  }
+
+  &.good-deeds {
+    &:after {
+      background-position: 50% 45%;
+      background-size: 53%;
+      background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/good_deeds.svg');
+    }
+  }
+
+  &.sleep {
+    &:after {
+      background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/sleep.svg');
+    }
+  }
+
+  &.healthy-eating {
+    &:after {
+      background-size: 59%;
+      background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/healthy_eating.svg');
+    }
+  }
+
+  &.journaling {
+    &:after {
+      background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/journaling.svg');
+    }
+  }
+
+  &.exercise {
+    &:after {
+      background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/running-white.svg');  
+    }
+  }
+
+  &.campus-selected-challenge {
+    &:after {
+      background-size: 59%;
+      background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/group_challenge.svg');
+    }
+  }
+
+  &.positivity-mindfulness {
+    &:after {
+      background-position: 50% 0;
+      background-size: 71%;
+      background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/mindfulness.svg');
+    }
   }
 }
 

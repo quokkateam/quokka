@@ -19,6 +19,7 @@ class WeeklyProgBar extends Component {
     this.moveToIndex = this.moveToIndex.bind(this);
     this.getCurrChallengeName = this.getCurrChallengeName.bind(this);
     this.getCurrWeekLink = this.getCurrWeekLink.bind(this);
+    this.iconClasses = this.iconClasses.bind(this);
 
     this.state = {
       challenges: [],
@@ -134,12 +135,24 @@ class WeeklyProgBar extends Component {
     return '/challenge/week' + this.state.weekNum;
   }
 
+  iconClasses() {
+    var classes = ['wpb', 'front'];
+
+    if (this.state.challenges) {
+      var slugs = this.state.challenges.map((c) => { return c.slug; });
+      var slug = slugs[this.state.weekNum - 1];
+      classes.push(slug);
+    }
+
+    return classes.join(' ');
+  }
+
   render() {
     return (
       <div id="weeklyProgBar">
         <div className="wpb back"></div>
         {this.addWeeks()}
-        <div className="wpb front" ref={this.setMovingBarRef}></div>
+        <div className={this.iconClasses()} ref={this.setMovingBarRef}></div>
         <a href={this.getCurrWeekLink()} className="curr-week-cover" data-tip data-for="currWeekCover" ref={this.setCurrWeekCoverRef}>
           <ReactTooltip id="currWeekCover" place="bottom" effect="solid"><span>{this.getCurrChallengeName()}</span></ReactTooltip>
         </a>
