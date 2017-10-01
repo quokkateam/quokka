@@ -9,8 +9,17 @@ class FooterLinkSection extends Component {
   }
 
   createFooterLinks() {
+    var link, title, onClick;
     return this.props.links.map((linkInfo, i) => {
-      return <li key={i}><a href={linkInfo[0]}>{linkInfo[1]}</a></li>;
+      link = linkInfo[0];
+      title = linkInfo[1];
+      onClick = linkInfo[2];
+
+      if (onClick) {
+        return <li key={i}><a href={link} onClick={onClick}>{title}</a></li>;
+      } else {
+        return <li key={i}><a href={link}>{title}</a></li>;
+      }
     });
   }
 

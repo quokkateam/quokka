@@ -1,32 +1,61 @@
 import React, { Component } from 'react';
 
 import FooterLinkSection from './FooterLinkSection';
-
-const linkSections = {
-  quokka: [
-    ['/', 'Overview'],
-    ['mailto:support@quokkachallenge.com', 'Support'],
-    ['mailto:team@quokkachallenge.com', 'Contact']
-  ],
-  company: [
-    ['/', 'About'],
-    ['/faq', 'FAQ']
-  ],
-  legal: [
-    ['#', 'Terms of Service'],
-    ['#', 'Privacy Policy']
-  ]
-};
+import PrivacyPolicyModal from '../../modals/PrivacyPolicyModal';
+import TermsOfServiceModal from '../../modals/TermsOfServiceModal';
 
 class Footer extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.setTosModalRef = this.setTosModalRef.bind(this);
+    this.setPrivPolModalRef = this.setPrivPolModalRef.bind(this);
+    this.showTos = this.showTos.bind(this);
+    this.showPrivPol = this.showPrivPol.bind(this);
+
+    this.linkSections = {
+      quokka: [
+        ['/', 'Overview'],
+        ['mailto:support@quokkachallenge.com', 'Support'],
+        ['mailto:team@quokkachallenge.com', 'Contact']
+      ],
+      company: [
+        ['/', 'About'],
+        ['/faq', 'FAQ']
+      ],
+      legal: [
+        /*eslint-disable no-script-url*/
+        ['javascript:void(0)', 'Terms of Service', this.showTos],
+        ['javascript:void(0)', 'Privacy Policy', this.showPrivPol]
+      ]
+    };
+  }
+
+  setTosModalRef(ref) {
+    this.tosModal = ref;
+  }
+
+  setPrivPolModalRef(ref) {
+    this.privPolModal = ref;
+  }
+
+  showTos() {
+    this.tosModal.open();
+  }
+
+  showPrivPol() {
+    this.privPolModal.open();
+  }
+
   render() {
     return (
       <footer>
         <div className="container-fluid">
           <div className="row">
-            <FooterLinkSection classes={['col-md-3', 'col-sm-3', 'col-xs-6']} title="Quokka" links={linkSections.quokka} />
-            <FooterLinkSection classes={['col-md-3', 'col-sm-3', 'col-xs-6']} title="Company" links={linkSections.company} />
-            <FooterLinkSection classes={['col-md-3', 'col-sm-3', 'col-xs-6']} title="Legal" links={linkSections.legal} />
+            <FooterLinkSection classes={['col-md-3', 'col-sm-3', 'col-xs-6']} title="Quokka" links={this.linkSections.quokka} />
+            <FooterLinkSection classes={['col-md-3', 'col-sm-3', 'col-xs-6']} title="Company" links={this.linkSections.company} />
+            <FooterLinkSection classes={['col-md-3', 'col-sm-3', 'col-xs-6']} title="Legal" links={this.linkSections.legal} />
             <div className="footer-section col-md-3 col-sm-3 col-xs-6">
               <div className="soc-media-copyright">
                 <div className="soc-media">
@@ -47,6 +76,8 @@ class Footer extends Component {
             </div>
           </div>
         </div>
+        <TermsOfServiceModal ref={this.setTosModalRef}/>
+        <PrivacyPolicyModal ref={this.setPrivPolModalRef}/>
       </footer>
     );
   }
