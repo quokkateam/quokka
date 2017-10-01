@@ -30,9 +30,15 @@ class ModalAction1Btn extends Component {
     return <button onClick={this.onClick}>{this.props.text || ''}</button>;
   }
 
+  getClasses() {
+    var classes = this.props.classes || [];
+    classes.unshift('modal-action-1-btn');
+    return classes.join(' ');
+  }
+
   render() {
     return (
-      <div className="modal-action-1-btn">
+      <div className={this.getClasses()}>
         <div className="modal-action-btn">
           {this.getButton()}
         </div>

@@ -40,9 +40,13 @@ class QuokkaModal extends Component {
     // overwrite in child class
   }
 
+  getClasses() {
+    // overwrite in child class
+  }
+
   render() {
     return (
-      <Modal show={this.state.showModal} onHide={this.close}>
+      <Modal show={this.state.showModal} onHide={this.close} dialogClassName={this.getClasses()}>
         <Modal.Header closeButton>{this.getHeader()}</Modal.Header>
         <Modal.Body>{this.getBody()}</Modal.Body>
         <Modal.Footer>{this.getFooter()}</Modal.Footer>
