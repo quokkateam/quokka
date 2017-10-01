@@ -57,12 +57,12 @@ class FormInput extends QComponent {
   }
 
   // remove any invalid display of the input field when user begins typing again
-  onKeyUp() {
+  onKeyUp(e) {
     $(this.input).removeClass('invalid-border invalid-shadow');
 
     // bubble this up if necessary
     if (this.props.onKeyUp) {
-      this.props.onKeyUp(this.serialize());
+      this.props.onKeyUp(this.serialize(), e);
     }
   }
 

@@ -24,6 +24,7 @@ class SignIn extends Form {
     this.submit = this.submit.bind(this);
     this.hideInvalidMessage = this.hideInvalidMessage.bind(this);
     this.onSignInResp = this.onSignInResp.bind(this);
+    this.onPasswordKeyUp = this.onPasswordKeyUp.bind(this);
   }
 
   setEmailRef(ref) {
@@ -88,6 +89,14 @@ class SignIn extends Form {
     $(this.invalidMsg).hide();
   }
 
+  onPasswordKeyUp(_, e) {
+    this.hideInvalidMessage();
+
+    if (e.which === 13) { // Enter
+      this.serialize();
+    }
+  }
+
   render() {
     return (
       <div id="signIn">
@@ -96,7 +105,7 @@ class SignIn extends Form {
           <div className="msg-sm">Enter your email and password</div>
           <div className="sign-in-form">
             <FormInput required={true} placeholder='Email' onKeyUp={this.hideInvalidMessage} ref={this.setEmailRef}/>
-            <FormInput required={true} password={true} placeholder='Password' onKeyUp={this.hideInvalidMessage} ref={this.pushFormCompRef}/>
+            <FormInput required={true} password={true} placeholder='Password' onKeyUp={this.onPasswordKeyUp} ref={this.pushFormCompRef}/>
             <div className="invalid-msg" ref={this.setInvalidMsgRef}>Invalid Credentials</div>
             <LgSpinnerBtn classes={this.submitBtnClasses()} btnText='Sign In' onClick={this.serialize} />
           </div>
