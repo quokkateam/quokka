@@ -36,7 +36,7 @@ class FormInput extends QComponent {
   }
 
   serialize() {
-    return $(this.input).val().trim();
+    return $(this.input).val().trim().replace(/(<)(\/?script[^>]*)(>)/igm, '');
   }
 
   onMobile() {
