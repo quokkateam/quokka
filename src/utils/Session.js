@@ -1,11 +1,14 @@
+import Cookies from 'universal-cookie';
+
 var Session;
 
 class Sess {
   
   constructor() {
     this.header = 'quokka-user';
+    this.cookies = new Cookies();
   }
-  
+
   create(resp, cb) {
     var token = resp.headers.get(this.header);
     
@@ -45,35 +48,16 @@ class Sess {
     return !!(this.user() || {}).isAdmin;
   }
 
-  setCookie(name, value, days) {
-    days = days || 30;
-    var date = new Date();
-    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-    var expires = 'expires=' + date.toUTCString();
-    document.cookie = name + '=' + value + '; ' + expires;
+  getCookie(name) {
+    return this.cookies.get(name);
   }
 
-  getCookie(name) {
-    name = (name + '=') || '=';
-    var cookies = document.cookie.split(';');
-
-    for (var i = 0; i < cookies.length; i++) {
-      var cookie = cookies[i];
-
-      while (cookie.charAt(0) === ' ') {
-        cookie = cookie.substring(1);
-      }
-
-      if (cookie.indexOf(name) === 0) {
-        return cookie.substring(name.length, cookie.length);
-      }
-    }
-
-    return '';
+  setCookie(name, value) {
+    this.cookies.set(name, value, { path: '/' });
   }
 
   deleteCookie(name) {
-    document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC';
+    this.cookies.remove(name);
   }
 
   setToStorage (key, value) {
