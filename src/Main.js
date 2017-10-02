@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import Challenge from './components/challenge/Challenge';
+import Challenges from './components/challenges/Challenges';
 import CheckIn from './components/check-in/CheckIn';
 import FAQ from './components/faq/FAQ';
-import Challenges from './components/challenges/Challenges';
 import Home from './components/home/Home';
 import Session from './utils/Session';
+import SetPassword from './components/auth/SetPassword';
 import SignIn from './components/auth/SignIn';
+import VerifyEmail from './components/auth/VerifyEmail';
 
 class Main extends Component {
 
@@ -28,6 +30,11 @@ class Main extends Component {
         path: '/signin',
         comp: SignIn,
         exact: true
+      },
+      {
+        path: '/verify-email/:userId/:token',
+        comp: VerifyEmail,
+        exact: false
       }
     ];
 
@@ -36,6 +43,11 @@ class Main extends Component {
         path: '/challenge/week:weekNum',
         comp: Challenge,
         exact: false
+      },
+      {
+        path: '/set-password',
+        comp: SetPassword,
+        exact: true
       },
       {
         path: '/challenges',
