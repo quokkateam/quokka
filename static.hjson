@@ -19,7 +19,7 @@
     // Every file in /static/ should contain a hash of its contents in its
     // name.  Cache for as long as possible.
     "/static/**": {
-      "Cache-Control": "public, max-age=31536000"
+      "Cache-Control": "public, max-age=60"
     }
   },
   "proxies": {
@@ -28,5 +28,3 @@
     }
   }
 }
-
-
