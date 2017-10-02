@@ -71,6 +71,7 @@ class App extends Component {
             <Route path='/challenge/week:weekNum' component={this.header(true, Themes.COLOR_ON_WHITE, true)}/>
             <Route exact path='/challenges' component={this.header(true, Themes.COLOR_ON_WHITE, true)}/>
             <Route path='/verify-email/:userId/:token' component={this.header(false, Themes.COLOR_ON_WHITE, true)}/>
+            <Route path='/demo/:token' component={this.header(false, Themes.COLOR_ON_WHITE, true)}/>
             <Route exact path='/set-password' component={this.header(false, Themes.COLOR_ON_WHITE, true)}/>
           </Switch>
           <Main />
@@ -85,6 +86,7 @@ class App extends Component {
           <Route path='/challenge/week:weekNum' component={this.inAppSideNav()}/>
           <Route exact path='/challenges' component={this.inAppSideNav()}/>
           <Route path='/verify-email/:userId/:token' component={SideNav}/>
+          <Route path='/demo/:token' component={SideNav}/>
           <Route exact path='/set-password' component={SideNav}/>
         </Switch>
       </div>

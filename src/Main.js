@@ -3,6 +3,7 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 import Challenge from './components/challenge/Challenge';
 import Challenges from './components/challenges/Challenges';
 import CheckIn from './components/check-in/CheckIn';
+import DemoCheck from './components/auth/DemoCheck';
 import FAQ from './components/faq/FAQ';
 import Home from './components/home/Home';
 import Session from './utils/Session';
@@ -34,6 +35,11 @@ class Main extends Component {
       {
         path: '/verify-email/:userId/:token',
         comp: VerifyEmail,
+        exact: false
+      },
+      {
+        path: '/demo/:token',
+        comp: DemoCheck,
         exact: false
       }
     ];
