@@ -26,7 +26,7 @@ class DemoCheck extends Component {
       .then((resp) => {
         if (resp.status === 200) {
           Session.create(resp, () => {
-            window.location = '/';
+            window.location = '/challenges';
           });
         } else {
           window.location = '/';
