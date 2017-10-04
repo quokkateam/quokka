@@ -1,0 +1,70 @@
+.ch-list-item.check-in {
+
+  .ch-icon {
+    background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/check-in-white.svg');
+    background-size: 60%;
+    background-position: 55% 50%;
+  }
+
+  .ch-name {
+    margin-top: 24px;
+  }
+
+  .ch-progress {
+    width: 180px;
+    float: left;
+    padding-right: 20px;
+    padding-top: 10px;
+    text-align: center;
+
+    .ch-status,
+    .ch-fraction-complete {
+      float: right;
+      width: 100%;
+    }
+
+    .ch-status-icon {
+      height: 30px;
+      width: 30px;
+      background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/check-green.svg');
+      background-size: 100%;
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      margin: 0 auto;
+      margin-top: 5px;
+      position: relative;
+      top: 4px;
+    }
+
+    .ch-fraction-complete {
+      padding-top: 10px;
+      font-size: 26px;
+      text-align: center;
+      font-family: Avenir-Next-Thin;
+    }
+
+    .ch-status {
+      font-size: 11px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    &.incomplete {
+      color: #b0b0b6;
+    }
+
+    &.in-progress {
+      color: $tertiary;
+    }
+
+    &.complete {
+      color: $primary;
+    }
+  }
+  
+  &.disabled {
+    .ch-progress > * {
+      display: none;
+    }
+  }
+}

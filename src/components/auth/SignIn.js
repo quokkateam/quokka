@@ -105,7 +105,8 @@ class SignIn extends Form {
   }
 
   promptForgotPw() {
-    this.forgotPwModal.open();
+    // TODO: uncomment this on launch
+    // this.forgotPwModal.open();
   }
 
   render() {

@@ -95,11 +95,11 @@ class ChallengesList extends Component {
   }
 
   getSpinner() {
-    if (this.state.challenges.length === 0) {
-      return <div className="circle-fade-spinner primary"></div>;
-    } else {
+    if (this.state.challenges.length > 0) {
       return;
     }
+
+    return <div className="circle-fade-spinner primary"></div>;
   }
 
   getChallengesListClasses() {

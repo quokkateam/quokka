@@ -30,7 +30,7 @@ class ChallengesListItem extends Component {
   }
 
   getClasses(data) {
-    var classes = ['challenges-list-item'];
+    var classes = ['ch-list-item'];
 
     if (this.isEditing()) {
       classes.push('editing');
