@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import Ajax from '../../utils/Ajax';
 import CheckInsListItem from './CheckInsListItem';
 
 class CheckInsList extends Component {
@@ -15,23 +16,21 @@ class CheckInsList extends Component {
   }
 
   componentDidMount() {
-    // Ajax.get('/api/check-ins')
-    //   .then((resp) => resp.json())
-    //   .then((data) => {
-    //     this.setState({
-    //       checkIns: data.checkIns,
-    //       weekNum: data.weekNum
-    //     });
-    //   });
+    Ajax.get('/api/check_ins')
+      .then((resp) => resp.json())
+      .then((data) => {
+        this.setState({
+          checkIns: data.checkIns,
+          weekNum: data.weekNum
+        });
+      });
 
     return true;
   }
 
   getCheckIns() {
     return this.state.checkIns.map((c, i) => {
-      return <li className="check-ins-list-item-wrapper" key={i}>
-        <CheckInsListItem checkIn={c}/>
-      </li>;
+      return <li className="check-ins-list-item-wrapper" key={i}><CheckInsListItem currWeekNum={this.state.weekNum} checkIn={c}/></li>;
     });
   }
 
@@ -42,9 +41,7 @@ class CheckInsList extends Component {
           <div className="intro-title">Weekly Check-ins</div>
           <div className="intro-subtitle">Participating in Check-ins helps you to earn Quokka points, provides us with feedback, and makes you eligible for this week's prizes!</div>
         </div>
-        <ul className="check-ins-list no-children">
-          <div className="coming-soon">Coming Soon!</div>
-        </ul>
+        <ul className="check-ins-list">{this.getCheckIns()}</ul>
       </div>
     );
   }

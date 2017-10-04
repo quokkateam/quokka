@@ -4,13 +4,15 @@ class CheckInsListItem extends Component {
 
   constructor(props) {
     super(props);
-
-    this.state = {};
   }
 
   render() {
+    const checkIn = this.props.checkIn || {};
+
     return (
-      <a className="check-ins-list-item" href="">
+      <a className="check-ins-list-item" href={'/check-in/week' + this.props.weekNum}>
+        <div>{checkIn.challengeName}</div>
+        <div>{checkIn.numAnswers + '/' + checkIn.numQuestions}</div>
       </a>
     );
   }
