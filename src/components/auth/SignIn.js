@@ -105,7 +105,7 @@ class SignIn extends Form {
   }
 
   promptForgotPw() {
-    this.forgotPwModal.open();
+    // this.forgotPwModal.open();
   }
 
   render() {
