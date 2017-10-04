@@ -5,8 +5,8 @@ import Challenges from './components/challenges/Challenges';
 import CheckIn from './components/check-in/CheckIn';
 import DemoCheck from './components/auth/DemoCheck';
 import FAQ from './components/faq/FAQ';
+import ForgotPasswordCheck from './components/auth/ForgotPasswordCheck';
 import Home from './components/home/Home';
-import ResetPasswordCheck from './components/auth/ResetPasswordCheck';
 import Session from './utils/Session';
 import SetPassword from './components/auth/SetPassword';
 import SignIn from './components/auth/SignIn';
@@ -44,8 +44,8 @@ class Main extends Component {
         exact: false
       },
       {
-        path: '/reset-pw/:token',
-        comp: ResetPasswordCheck,
+        path: '/forgot-pw/:userId/:token',
+        comp: ForgotPasswordCheck,
         exact: false
       }
     ];
