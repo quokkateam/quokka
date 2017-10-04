@@ -2,6 +2,7 @@ import React from 'react';
 
 import $ from 'jquery';
 import Ajax from '../../utils/Ajax';
+import ForgotPasswordModal from '../modals/ForgotPasswordModal';
 import Form from '../shared/form/Form';
 import FormInput from '../shared/form/FormInput';
 import LgSpinnerBtn from '../widgets/LgSpinnerBtn';
@@ -25,6 +26,8 @@ class SignIn extends Form {
     this.hideInvalidMessage = this.hideInvalidMessage.bind(this);
     this.onSignInResp = this.onSignInResp.bind(this);
     this.onPasswordKeyUp = this.onPasswordKeyUp.bind(this);
+    this.setForgotPwModalRef = this.setForgotPwModalRef.bind(this);
+    this.promptForgotPw = this.promptForgotPw.bind(this);
   }
 
   setEmailRef(ref) {
@@ -34,6 +37,10 @@ class SignIn extends Form {
 
   setInvalidMsgRef(ref) {
     this.invalidMsg = ref;
+  }
+
+  setForgotPwModalRef(ref) {
+    this.forgotPwModal = ref;
   }
 
   submitBtnClasses() {
@@ -97,7 +104,12 @@ class SignIn extends Form {
     }
   }
 
+  promptForgotPw() {
+    this.forgotPwModal.open();
+  }
+
   render() {
+    /*eslint-disable no-script-url*/
     return (
       <div id="signIn">
         <div className="auth-card">
@@ -111,13 +123,14 @@ class SignIn extends Form {
           </div>
           <div className="trailing-links">
             <div className="trailing-link">
-              <Link to="/">No account yet? Sign up.</Link>
+              <Link to='/'>No account yet? Sign up.</Link>
             </div>
             <div className="trailing-link">
-              <Link to="#">I forgot my password</Link>
+              <a href='javascript:void(0)' onClick={this.promptForgotPw}>I forgot my password</a>
             </div>
           </div>
         </div>
+        <ForgotPasswordModal ref={this.setForgotPwModalRef}/>
       </div>
     );
   }

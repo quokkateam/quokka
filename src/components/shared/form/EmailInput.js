@@ -52,9 +52,9 @@ class EmailInput extends FormInput {
     return val.match(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
   }
   
-  onKeyUp() {
+  onKeyUp(e) {
     $(this.invalidMessage).hide();
-    super.onKeyUp();
+    super.onKeyUp(e);
   }
   
   render() {

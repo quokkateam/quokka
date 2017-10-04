@@ -5,6 +5,7 @@ import Challenges from './components/challenges/Challenges';
 import CheckIn from './components/check-in/CheckIn';
 import DemoCheck from './components/auth/DemoCheck';
 import FAQ from './components/faq/FAQ';
+import ForgotPasswordCheck from './components/auth/ForgotPasswordCheck';
 import Home from './components/home/Home';
 import Session from './utils/Session';
 import SetPassword from './components/auth/SetPassword';
@@ -40,6 +41,11 @@ class Main extends Component {
       {
         path: '/demo/:token',
         comp: DemoCheck,
+        exact: false
+      },
+      {
+        path: '/forgot-pw/:userId/:token',
+        comp: ForgotPasswordCheck,
         exact: false
       }
     ];
