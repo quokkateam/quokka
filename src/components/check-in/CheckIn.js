@@ -24,13 +24,18 @@ class CheckIn extends Component {
 
   componentDidMount() {
     Ajax.get('/api/check_in/' + this.weekNum)
-      .then((resp) => resp.json())
-      .then((data) => {
-        this.setState({
-          checkInId: Number(data.id),
-          challengeName: data.challengeName,
-          questions: data.questions
-        });
+      .then((resp) => {
+        if (resp.status === 200) {
+          resp.json().then((data) => {
+            this.setState({
+              checkInId: Number(data.id),
+              challengeName: data.challengeName,
+              questions: data.questions
+            });
+          });
+        } else {
+          window.location = '/challenges';
+        }
       });
   }
 
@@ -46,6 +51,10 @@ class CheckIn extends Component {
   }
 
   render() {
+    if (!this.state.checkInId) {
+      return (<div style={{ minHeight: 1100 }}></div>);
+    }
+
     return (
       <div id="checkIn">
         <div className="check-in-week-info">
