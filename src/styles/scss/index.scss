@@ -66,3 +66,7 @@
 @import 'auth/sign-in';
 @import 'auth/verify-email';
 @import 'auth/set-password';
+
+// Admin
+@import 'admin/admin';
+@import 'admin/weekly-emails';

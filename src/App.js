@@ -70,6 +70,7 @@ class App extends Component {
             <Route path='/check-in/week:weekNum' component={this.header(true, Themes.COLOR_ON_WHITE, true)}/>
             <Route path='/challenge/week:weekNum' component={this.header(true, Themes.COLOR_ON_WHITE, true)}/>
             <Route exact path='/challenges' component={this.header(true, Themes.COLOR_ON_WHITE, true)}/>
+            <Route exact path='/admin' component={this.header(true, Themes.COLOR_ON_WHITE, true)}/>
             <Route path='/verify-email/:userId/:token' component={this.header(false, Themes.COLOR_ON_WHITE, true)}/>
             <Route path='/demo/:token' component={this.header(false, Themes.COLOR_ON_WHITE, true)}/>
             <Route path='/forgot-pw/:userId/:token' component={this.header(false, Themes.COLOR_ON_WHITE, true)}/>
@@ -86,6 +87,7 @@ class App extends Component {
           <Route path='/check-in/week:weekNum' component={this.inAppSideNav()}/>
           <Route path='/challenge/week:weekNum' component={this.inAppSideNav()}/>
           <Route exact path='/challenges' component={this.inAppSideNav()}/>
+          <Route exact path='/admin' component={this.inAppSideNav()}/>
           <Route path='/verify-email/:userId/:token' component={SideNav}/>
           <Route path='/demo/:token' component={SideNav}/>
           <Route path='/forgot-pw/:userId/:token' component={SideNav}/>
