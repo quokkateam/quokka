@@ -22,7 +22,8 @@ class CheckInsList extends Component {
       .then((data) => {
         this.setState({
           checkIns: data.checkIns,
-          weekNum: data.weekNum
+          weekNum: data.weekNum,
+          launched: data.launched
         });
       });
 
@@ -32,8 +33,14 @@ class CheckInsList extends Component {
   getCheckIns() {
     var current, disabled;
     return this.state.checkIns.map((c, i) => {
-      current = this.state.weekNum === c.weekNum;
-      disabled = c.weekNum > this.state.weekNum;
+      if (this.state.launched) {
+        current = this.state.weekNum === c.weekNum;
+        disabled = c.weekNum > this.state.weekNum;
+      } else {
+        disabled = true;
+        current = false;
+      }
+
       return <li key={i}><CheckInsListItem current={current} disabled={disabled} weekNum={c.weekNum} checkIn={c}/></li>;
     });
   }
@@ -53,7 +60,7 @@ class CheckInsList extends Component {
           <div className="intro-title">Weekly Check-ins</div>
           <div className="intro-subtitle">Participating in Check-ins helps you to earn Quokka points, provides us with feedback, and makes you eligible for this week's prizes!</div>
         </div>
-        <ul className="check-ins-list">{this.getCheckIns()}</ul>;
+        <ul className="check-ins-list">{this.getCheckIns()}</ul>
         {this.getSpinner()}
       </div>
     );
