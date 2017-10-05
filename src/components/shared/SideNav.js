@@ -20,7 +20,6 @@ class SideNav extends Component {
       inAppLinks.push(['/admin', 'Admin']);
     }
 
-    inAppLinks.push(['/me', 'Profile']);
     inAppLinks.push(['/signout', 'Sign Out']);
 
     this.state = {

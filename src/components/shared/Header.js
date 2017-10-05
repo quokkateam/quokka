@@ -18,7 +18,7 @@ class Header extends Component {
   }
 
   getInAppLinks() {
-    var links = [{ text: 'Profile', href: '/me' }];
+    var links = [];
 
     if (Session.isAdmin()) {
       links.push({ text: 'Admin', href: '/admin' });
