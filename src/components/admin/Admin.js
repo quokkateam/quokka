@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import CheckInResponses from './CheckInResponses';
 import HashNavContainer from '../shared/hash-nav/HashNavContainer';
 import PrizeWinners from './PrizeWinners';
 import Session from '../../utils/Session';
-import WeeklyEmails from './WeeklyEmails';
 
 class Admin extends Component {
 
@@ -24,6 +24,11 @@ class Admin extends Component {
         hash: 'winners',
         title: 'Prize Winners',
         comp: <PrizeWinners/>
+      },
+      {
+        hash: 'responses',
+        title: 'Check-in Responses',
+        comp: <CheckInResponses/>
       }
     ];
   }
