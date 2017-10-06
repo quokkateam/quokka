@@ -28,10 +28,15 @@ class PrizeWinners extends Component {
   }
 
   selectWinners(challengeId) {
-    Ajax.post('/api/winners', { challengeId: challengeId })
-      .then((resp) => resp.json())
-      .then((data) => {
-        this.setState(data);
+    Ajax.post('/api/winners', { challenge_id: challengeId })
+      .then((resp) => {
+        if (resp.status === 200) {
+          resp.json().then((data) => {
+            this.setState(data);
+          });
+        } else {
+          console.warn('Error selecting winners with status, ', resp.status);
+        }
       });
   }
 

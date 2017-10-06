@@ -23,7 +23,6 @@
 }
 
 .prize-winner-list-item {
-  cursor: pointer;
   text-decoration: none;
   border-top: 1px solid rgba(0, 0, 75, 0.07);
   display: block;
@@ -59,7 +58,12 @@
     outline: none;
     font-size: 15px;
 
-    &:hover {
+    &.clicked {
+      opacity: 0.5;
+      cursor: default;
+    }
+
+    &:hover:not(.clicked) {
       background-color: $tertiary-hover;
     }
   }

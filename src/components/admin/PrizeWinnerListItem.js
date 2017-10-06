@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import $ from 'jquery';
 
 class PrizeWinnerListItem extends Component {
 
@@ -38,7 +39,15 @@ class PrizeWinnerListItem extends Component {
     });
   }
 
-  onSelectWinners() {
+  onSelectWinners(e) {
+    var $target = $(e.target);
+
+    if ($target.hasClass('clicked')) {
+      return;
+    }
+
+    $(e.target).addClass('clicked');
+
     if (this.props.onSelectWinners) {
       this.props.onSelectWinners(this.props.challenge.id);
     }
