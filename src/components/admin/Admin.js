@@ -14,11 +14,12 @@ class Admin extends Component {
     }
 
     this.links = [
-      {
-        hash: 'emails',
-        title: 'Weekly Emails',
-        comp: <WeeklyEmails/>
-      },
+      // Can bring back when there's something actually valuable to modify in the emails
+      // {
+      //   hash: 'emails',
+      //   title: 'Weekly Emails',
+      //   comp: <WeeklyEmails/>
+      // },
       {
         hash: 'winners',
         title: 'Prize Winners',

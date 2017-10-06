@@ -1,0 +1,120 @@
+.prize-winners-intro {
+  position: relative;
+
+  .prize-winners-title {
+    font-size: 42px;
+    line-height: 36px;
+    font-family: Avenir-Next-Thin;
+    color: $primary;
+    margin-bottom: 33px;
+  }
+
+  .prize-winners-subtitle {
+    font-size: 15.5px;
+    color: $default-dark;
+    margin-bottom: 33px;
+  }
+}
+
+.prize-winners-list {
+  width: 100%;
+  float: left;
+  //min-height: 1100px; set this after styling list items
+}
+
+.prize-winner-list-item {
+  cursor: pointer;
+  text-decoration: none;
+  border-top: 1px solid rgba(0, 0, 75, 0.07);
+  display: block;
+  float: left;
+  width: 100%;
+  background-color: #fff;
+
+  .pw-challenge-info {
+    float: left;
+    width: 100%;
+  }
+
+  .challenge-name {
+    font-size: 22px;
+    padding: 25px 0;
+    display: inline-block;
+    float: left;
+    padding-left: 10px;
+    color: $secondary;
+  }
+
+  .choose-winners {
+    display: inline-block;
+    float: right;
+    padding: 10px 15px;
+    margin-top: 21px;
+    margin-right: 10px;
+    background-color: $tertiary;
+    border-radius: 3px;
+    color: white;
+    text-align: center;
+    border: none;
+    outline: none;
+    font-size: 15px;
+
+    &:hover {
+      background-color: $tertiary-hover;
+    }
+  }
+
+  .winners-selected-status {
+    float: right;
+    display: inline-block;
+    margin-top: 32px;
+    margin-right: 10px;
+
+    span {
+      display: inline-block;
+      float: right;
+      font-size: 13px;
+      color: $primary;
+      line-height: 20px;
+    }
+
+    .check {
+      float: right;
+      height: 16px;
+      width: 16px;
+      margin-left: 9px;
+      background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/check-green.svg');
+      background-size: 100%;
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+    }
+  }
+
+  .winners-list {
+    float: left;
+    width: 100%;
+    padding-bottom: 20px;
+
+    .winner {
+      float: left;
+      width: calc(100% - 45px);
+      padding: 10px 0;
+      padding-left: 10px;
+      margin-left: 45px;
+      border-bottom: 1px solid rgba(0, 0, 75, 0.08);
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+
+  }
+
+  &.disabled {
+    cursor: default;
+
+    .challenge-name {
+      opacity: 0.4;
+    }
+  }
+}
