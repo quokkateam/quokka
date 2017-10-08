@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
 
+import Ajax from '../../utils/Ajax';
+import fileDownload from 'js-file-download';
+
 class CheckInResponse extends Component {
 
   constructor(props) {
     super(props);
+
+    this.getClasses = this.getClasses.bind(this);
+    this.downloadCSV = this.downloadCSV.bind(this);
+    this.getOverview = this.getOverview.bind(this);
   }
 
   getClasses() {
@@ -16,23 +23,34 @@ class CheckInResponse extends Component {
     return classes.join(' ');
   }
 
+  downloadCSV() {
+    Ajax.get('/api/check_ins/responses/download/' + this.props.overview.checkInId)
+      .then((resp) => {
+        if (resp.status === 200) {
+          resp.json().then((data) => {
+            fileDownload(data.content, data.filename);
+          });
+        }
+      });
+  }
+
   getOverview() {
     if (this.props.disabled) {
       return;
     }
 
+    const respCount = this.props.overview.respCount;
+    const respText = respCount + (respCount === 1 ? ' Response' : ' Responses');
+
     return (
       <div className="cir-right">
-        <a href={'/api/check-ins/responses-' + this.props.challenge.slug + '.csv'} className="cir-dl-link">
-          Download Responses
-        </a>
-        <div className="num-responses">{this.props.overview.respCount} Responses</div>
+        <div className="cir-dl-link" onClick={this.downloadCSV}>Download Responses</div>
+        <div className="num-responses">{respText}</div>
       </div>
     );
   }
 
   render() {
-    // TODO: Figure out how to download a CSV from link without react-router taking a shit
     return (
       <div className={this.getClasses()}>
         <div className="cir-left">
