@@ -10,7 +10,7 @@ class Admin extends Component {
     super(props);
 
     if (!Session.isAdmin()) {
-      window.location = '/';
+      this.props.history.goBack();
     }
 
     this.links = [
