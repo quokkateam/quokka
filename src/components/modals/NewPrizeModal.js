@@ -15,11 +15,13 @@ class NewPrizeModal extends QuokkaModal {
 
     this.setSponsorSelectRef = this.setSponsorSelectRef.bind(this);
     this.setPrizeInputRef = this.setPrizeInputRef.bind(this);
+    this.setPrizeCountRef = this.setPrizeCountRef.bind(this);
     this.formatSponsorSelectOptions = this.formatSponsorSelectOptions.bind(this);
     this.submitPrize = this.submitPrize.bind(this);
     this.createPrize = this.createPrize.bind(this);
     this.updatePrize = this.updatePrize.bind(this);
     this.onSponsorChange = this.onSponsorChange.bind(this);
+    this.formatPrizeCountOptions = this.formatPrizeCountOptions.bind(this);
     this.isValid = this.isValid.bind(this);
 
     this.state = {
@@ -37,6 +39,10 @@ class NewPrizeModal extends QuokkaModal {
 
   setPrizeInputRef(ref) {
     this.prizeInput = ref;
+  }
+
+  setPrizeCountRef(ref) {
+    this.prizeCount = ref;
   }
 
   formatSponsorSelectOptions() {
@@ -62,7 +68,8 @@ class NewPrizeModal extends QuokkaModal {
 
     var payload = {
       sponsorId: Number(this.sponsorSelect.serialize()),
-      name: this.prizeInput.serialize()
+      name: this.prizeInput.serialize(),
+      count: Number(this.prizeCount.serialize())
     };
 
     this.props.onCreatePrize(payload);
@@ -76,7 +83,8 @@ class NewPrizeModal extends QuokkaModal {
     var payload = {
       id: Number(this.state.prize.id),
       sponsorId: Number(this.sponsorSelect.serialize()),
-      name: this.prizeInput.serialize()
+      name: this.prizeInput.serialize(),
+      count: Number(this.prizeCount.serialize())
     };
 
     this.props.onUpdatePrize(payload);
@@ -95,6 +103,20 @@ class NewPrizeModal extends QuokkaModal {
     }
   }
 
+  formatPrizeCountOptions() {
+    var options = [];
+    var maxPrizeCount = 20;
+
+    var val;
+    for (var i = 0; i < maxPrizeCount; i++) {
+      val = (i + 1).toString();
+
+      options.push({ value: val, title: val });
+    }
+
+    return options;
+  }
+
   getBody() {
     return (
       <div id="newPrizeModalBody">
@@ -103,6 +125,10 @@ class NewPrizeModal extends QuokkaModal {
         </div>
         <div className="prize-section">
           <FormInput required={true} placeholder="Name of Prize" defaultValue={(this.state.prize || {}).name} ref={this.setPrizeInputRef} />
+        </div>
+        <div className="count-section">
+          <div className="count-section-desc">Amount of this prize</div>
+          <FormSelect required={true} options={this.formatPrizeCountOptions()} defaultValue="1" ref={this.setPrizeCountRef} />
         </div>
       </div>
     );
