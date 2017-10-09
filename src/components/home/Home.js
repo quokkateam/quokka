@@ -28,9 +28,15 @@ class Home extends Component {
     $('html, body').stop().animate({ scrollTop: this.contactSection.getTopPosition() }, 600);
   }
 
-  onSignUp(email) {
+  onSignUp(email, launched) {
+    if (launched) {
+      var message = 'Thanks for joining the Quokka Challenge! We\'ve sent a confirmation email to **' + email + '** where you can verify and complete your account.';
+    } else {
+      var message = 'Thanks for joining the Quokka Challenge! We\'ll send an email to **' + email + '** when the Challenge is ready to start at your campus in the next few weeks.';
+    }
+
     this.banner.update({
-      message: 'Thanks for joining the Quokka Challenge! We\'ll send an email to **' + email + '** when the Challenge is ready to start at your campus in the next few weeks.',
+      message: message,
       buttonText: 'Got it'
     });
   }

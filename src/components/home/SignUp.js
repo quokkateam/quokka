@@ -110,7 +110,12 @@ class SignUp extends Form {
   onSignUpResp(resp) {
     switch (resp.status) {
     case 201:
-      this.setState({ status: this.status.COMPLETE });
+      resp.json().then((data) => {
+        this.setState({
+          status: this.status.COMPLETE,
+          launched: !!data.launched
+        });
+      });
       break;
     case 400:
       resp.json().then((data) => {
@@ -148,7 +153,7 @@ class SignUp extends Form {
   }
 
   onComplete() {
-    this.props.onSignUp(this.email.serialize());
+    this.props.onSignUp(this.email.serialize(), this.state.launched);
     
     setTimeout(() => {
       this.clear();
