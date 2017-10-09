@@ -50,8 +50,6 @@ class PrizeWinners extends Component {
         disabled = (i + 1) > this.state.weekNum;
       }
 
-      disabled = false;
-
       return <PrizeWinnerListItem key={i} challenge={data.challenge} winners={data.winners} noPrizesYet={!!data.noPrizes} disabled={disabled} onSelectWinners={this.selectWinners}/>;
     });
   }
