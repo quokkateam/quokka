@@ -106,13 +106,42 @@
       padding: 10px 0;
       padding-left: 10px;
       margin-left: 45px;
+      font-size: 14px;
       border-bottom: 1px solid rgba(0, 0, 75, 0.08);
+
+      img {
+        height: 30px;
+        width: 30px;
+        float: left;
+        margin-right: 15px;
+      }
+
+      .sp-name, .winner-user {
+        display: inline-block;
+        float: left;
+        line-height: 32px;
+      }
+
+      .winner-user {
+        font-family: Avenir-Next-Medium;
+      }
 
       &:last-child {
         border-bottom: none;
       }
     }
 
+  }
+
+  .no-prizes-msg {
+    float: right;
+    display: inline-block;
+    margin-top: 32px;
+    margin-right: 32px;
+    font-size: 13px;
+    color: $secondary;
+    opacity: 0.5;
+    font-family: Avenir-Next-Italic;
   }
 
   &.disabled {

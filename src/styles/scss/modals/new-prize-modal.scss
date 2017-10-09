@@ -9,4 +9,17 @@
   .form-input {
     margin-top: 20px;
   }
+
+  .count-section {
+    margin-top: 20px;
+
+    .count-section-desc {
+      font-size: 11px;
+      text-transform: uppercase;
+      color: $secondary;
+      opacity: 0.55;
+      padding-left: 3px;
+      margin-bottom: 4px;
+    }
+  }
 }

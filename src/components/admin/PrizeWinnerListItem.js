@@ -13,9 +13,13 @@ class PrizeWinnerListItem extends Component {
     this.getClasses = this.getClasses.bind(this);
   }
 
-  getSelectButton(winners, disabled) {
+  getSelectButton(winners, disabled, noPrizes) {
     if (disabled) {
       return;
+    }
+
+    if (noPrizes) {
+      return <div className="no-prizes-msg">No prizes yet</div>;
     }
 
     if (winners.length > 0) {
@@ -34,8 +38,18 @@ class PrizeWinnerListItem extends Component {
   }
 
   curateWinnersList(winners) {
+    var user, prize, sponsor;
+
     return winners.map((w, i) => {
-      return <li key={i} className="winner">{w.name + ' (' + w.email + ')'}</li>;
+      user = w.user;
+      prize = w.prize;
+      sponsor = w.sponsor;
+
+      return <li key={i} className="winner">
+        <img src={sponsor.logo} alt=""/>
+        <div className="sp-name">{prize.name + ' (' + sponsor.name + ') '}&nbsp;&nbsp;&mdash;&nbsp;&nbsp;&nbsp;</div>
+        <div className="winner-user">{user.name + ' (' + user.email + ')'}</div>
+      </li>;
     });
   }
 
@@ -66,12 +80,13 @@ class PrizeWinnerListItem extends Component {
   render() {
     const disabled = this.props.disabled;
     const winners = this.props.winners;
+    const noPrizes = this.props.noPrizesYet;
 
     return (
       <div className={this.getClasses(disabled)}>
         <div className="pw-challenge-info">
           <div className="challenge-name">{this.props.challenge.name}</div>
-          {this.getSelectButton(winners, disabled)}
+          {this.getSelectButton(winners, disabled, noPrizes)}
         </div>
         {this.getWinnersList(winners, disabled)}
       </div>
