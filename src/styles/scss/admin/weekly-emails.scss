@@ -1,0 +1,29 @@
+.weekly-emails-intro {
+  position: relative;
+  border-bottom: 1px solid rgba(0, 0, 75, 0.08);
+
+  .weekly-emails-title {
+    font-size: 42px;
+    line-height: 36px;
+    font-family: Avenir-Next-Thin;
+    color: $primary;
+    margin-bottom: 33px;
+  }
+
+  .weekly-emails-subtitle {
+    font-size: 15.5px;
+    color: $default-dark;
+    margin-bottom: 33px;
+  }
+
+  .form-select-container {
+    width: 300px;
+    position: absolute;
+    right: 50px;
+    top: 0;
+
+    .form-select {
+      border: 1px solid rgba(0, 0, 75, 0.1);
+    }
+  }
+}

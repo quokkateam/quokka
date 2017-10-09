@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
+import Admin from './components/admin/Admin';
 import Challenge from './components/challenge/Challenge';
 import Challenges from './components/challenges/Challenges';
 import CheckIn from './components/check-in/CheckIn';
@@ -74,6 +75,11 @@ class Main extends Component {
       {
         path: '/signout',
         comp: SignIn,
+        exact: true
+      },
+      {
+        path: '/admin',
+        comp: Admin,
         exact: true
       }
     ];

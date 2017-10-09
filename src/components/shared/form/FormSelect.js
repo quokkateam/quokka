@@ -14,6 +14,7 @@ class FormSelect extends QComponent {
     this.clear = this.clear.bind(this);
     this.selectOptWithVal = this.selectOptWithVal.bind(this);
     this.onChange = this.onChange.bind(this);
+    this.getPlaceholder = this.getPlaceholder.bind(this);
 
     this.state = { options: this.props.options || [] };
   }
@@ -76,11 +77,21 @@ class FormSelect extends QComponent {
     }
   }
 
+  getPlaceholder() {
+    const ph = this.props.placeholder;
+
+    if (!ph) {
+      return;
+    }
+
+    return <option value='' disabled>{ph}</option>;
+  }
+
   render() {
     return (
       <div className="form-select-container">
-        <select className={this.getClassNames()} defaultValue={this.props.defaultValue || ''} name={this.props.name || ''} onChange={this.onChange} ref={this.setSelectRef}>
-          <option value='' disabled>{this.props.placeholder || ''}</option>
+        <select className={this.getClassNames()} defaultValue={this.props.defaultValue || this.state.defaultValue || ''} name={this.props.name || ''} onChange={this.onChange} ref={this.setSelectRef}>
+          {this.getPlaceholder()}
           {this.formatOptions()}
         </select>
         <i className="fa fa-caret-down arrow"></i>
