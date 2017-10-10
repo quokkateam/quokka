@@ -17,7 +17,7 @@ static_json = base_dir + '/static.json'
 print 'Cleaning prior build files...'
 
 if os.path.exists(build_dir):
-    os.rmdir(build_dir)
+    os.system('rm -rf {}'.format(build_dir))
 
 if os.path.exists(static_json):
     os.remove(static_json)
