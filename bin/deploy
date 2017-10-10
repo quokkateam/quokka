@@ -37,3 +37,6 @@ print 'Creating new deploy commit...'
 
 print 'Deploying to Heroku...'
 os.system('git push heroku master')
+
+os.system('rm -rf {}'.format(build_dir))
+os.remove(static_json)
