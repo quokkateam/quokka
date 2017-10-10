@@ -14,26 +14,13 @@ base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 build_dir = base_dir + '/build'
 static_json = base_dir + '/static.json'
 
+print 'Cleaning prior build files...'
 
-def remove_assets():
-    print 'Cleaning build files...'
+if os.path.exists(build_dir):
+    os.system('rm -rf {}'.format(build_dir))
 
-    if os.path.exists(build_dir):
-        os.system('rm -rf {}'.format(build_dir))
-
-    if os.path.exists(static_json):
-        os.remove(static_json)
-
-
-def push_commit(msg):
-    [os.system(cmd) for cmd in [
-        'git add -A .',
-        'git commit -m {}'.format(msg),
-        'git push origin master'
-    ]]
-
-
-remove_assets()
+if os.path.exists(static_json):
+    os.remove(static_json)
 
 print 'npm run sass:build'
 os.system('npm run sass:build')
@@ -42,10 +29,14 @@ print 'npm run build'
 os.system('npm run build')
 
 print 'Creating new deploy commit...'
-push_commit('Deploy assets')
+[os.system(cmd) for cmd in [
+    'git add -A .',
+    'git commit -m "Deploy Assets"',
+    'git push origin master'
+]]
 
 print 'Deploying to Heroku...'
 os.system('git push heroku master')
 
-remove_assets()
-push_commit('Removing deploy assets')
+os.system('rm -rf {}'.format(build_dir))
+os.remove(static_json)
