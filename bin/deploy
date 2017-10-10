@@ -1,0 +1,39 @@
+#!/usr/bin/python
+
+import os
+
+curr_branch = os.popen("git branch | grep '*' | awk '{print $2}'").read().rstrip('\n').strip()
+
+if curr_branch != 'master':
+    print 'Not on master branch. Not deploying.'
+    exit()
+
+print 'On master branch.'
+
+base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+build_dir = base_dir + '/build'
+static_json = base_dir + '/static.json'
+
+print 'Cleaning prior build files...'
+
+if os.path.exists(build_dir):
+    os.rmdir(build_dir)
+
+if os.path.exists(static_json):
+    os.remove(static_json)
+
+print 'npm run sass:build'
+os.system('npm run sass:build')
+
+print 'npm run build'
+os.system('npm run build')
+
+print 'Creating new deploy commit...'
+[os.system(cmd) for cmd in [
+    'git add -A .',
+    'git commit -m "Deploy Assets"',
+    'git push origin master'
+]]
+
+print 'Deploying to Heroku...'
+os.system('git push heroku master')
