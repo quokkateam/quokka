@@ -35,7 +35,7 @@ class VerifyEmail extends Component {
     Ajax.post('/api/verify_email', payload).then((resp) => {
       if (resp.status === 200) {
         Session.create(resp, () => {
-          window.location = '/set-password';
+          window.location = '/set-password?from_verify=true';
         });
       } else {
         window.location = '/';
