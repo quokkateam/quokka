@@ -29,10 +29,12 @@ class Home extends Component {
   }
 
   onSignUp(email, launched) {
+    var message;
+
     if (launched) {
-      var message = 'Thanks for joining the Quokka Challenge! We\'ve sent a confirmation email to **' + email + '** where you can verify and complete your account.';
+      message = 'Thanks for joining the Quokka Challenge! We\'ve sent a confirmation email to **' + email + '** where you can verify and complete your account.';
     } else {
-      var message = 'Thanks for joining the Quokka Challenge! We\'ll send an email to **' + email + '** when the Challenge is ready to start at your campus in the next few weeks.';
+      message = 'Thanks for joining the Quokka Challenge! We\'ll send an email to **' + email + '** when the Challenge is ready to start at your campus in the next few weeks.';
     }
 
     this.banner.update({
