@@ -13,7 +13,7 @@ class SetPassword extends Form {
   constructor(props) {
     super(props);
 
-    // redirected here from email verification?
+    // show Dorm dropdown for students to select from?
     this.showDorm = !!document.location.search.match(/from_verify=true/i) &&
       (Session.school() || {}).slug === 'rice-university';
 
