@@ -16,6 +16,7 @@
 
   &.sleep {
     background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/sleep-banner.jpg');
+    background-position-y: -95px;
   }
 
   &.healthy-eating {
@@ -24,6 +25,7 @@
 
   &.journaling {
     background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/journaling-banner.jpg');
+    background-position-y: -75px;
   }
 
   &.exercise {
@@ -32,6 +34,7 @@
 
   &.campus-selected-challenge {
     background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/campus-selected-challenge-banner.jpg');
+    background-position-y: -90px;
   }
 
   &.positivity-mindfulness {
