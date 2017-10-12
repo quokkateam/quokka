@@ -1,12 +1,11 @@
+import $ from 'jquery';
 import React from 'react';
 
-import $ from 'jquery';
 import Ajax from '../../utils/Ajax';
 import ForgotPasswordModal from '../modals/ForgotPasswordModal';
 import Form from '../shared/form/Form';
 import FormInput from '../shared/form/FormInput';
 import LgSpinnerBtn from '../widgets/LgSpinnerBtn';
-import { Link } from 'react-router-dom';
 import Session from '../../utils/Session';
 
 class SignIn extends Form {
@@ -124,7 +123,7 @@ class SignIn extends Form {
           </div>
           <div className="trailing-links">
             <div className="trailing-link">
-              <Link to='/'>No account yet? Sign up.</Link>
+              <a href='/'>No account yet? Sign up.</a>
             </div>
             <div className="trailing-link">
               <a href='javascript:void(0)' onClick={this.promptForgotPw}>I forgot my password</a>
