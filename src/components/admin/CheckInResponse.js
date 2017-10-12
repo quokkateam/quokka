@@ -41,10 +41,11 @@ class CheckInResponse extends Component {
 
     const respCount = this.props.overview.respCount;
     const respText = respCount + (respCount === 1 ? ' Response' : ' Responses');
+    const dlLink = respCount ? <div className="cir-dl-link" onClick={this.downloadCSV}>Download CSV</div> : null;
 
     return (
       <div className="cir-right">
-        <div className="cir-dl-link" onClick={this.downloadCSV}>Download Responses</div>
+        {dlLink}
         <div className="num-responses">{respText}</div>
       </div>
     );

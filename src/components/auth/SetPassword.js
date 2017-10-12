@@ -105,7 +105,19 @@ class SetPassword extends Form {
   }
 
   formatDormOptions() {
-    var dorms = ['Winthrop', 'Lowell', 'Adams'];
+    var dorms = [
+      'Baker',
+      'Brown',
+      'Duncan',
+      'Hanszen',
+      'Jones',
+      'Lovett',
+      'Martel',
+      'McMurtry',
+      'Sid Richardson',
+      'Wiess',
+      'Will Rice'
+    ];
 
     return dorms.map((d) => {
       return { value: d, title: d };
