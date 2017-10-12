@@ -24,6 +24,10 @@ class FAQ extends Component {
           answer: 'When you sign up for the program, you’re given weekly challenges, each based around one healthy habit. These challenges are backed with research, provide information about campus resources, and connect you to other challengers through local events. When you submit your check-in at the end of the week, you can even win prizes for trying these habits out!'
         },
         {
+          question: 'What if there are multiple challenge options in a week?',
+          answer: 'See what works best for you! Choose one option to focus on, or if you\'re looking for a bigger challenge, try more! Just tell us at the end of the week what you decided to go for.'
+        },
+        {
           question: 'What kinds of prizes can we win?',
           answer: 'Depending on your campus, prizes can range from school-sponsored gear and gift cards to massages and private fitness classes. You’ll get more information about all the prizes in each week’s email. If you submit a check-in for all 8 weeks, you might receive a bonus Challenge Champion prize.'
         },
