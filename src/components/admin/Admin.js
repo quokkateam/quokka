@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CheckInResponses from './CheckInResponses';
+import Downloads from './Downloads';
 import HashNavContainer from '../shared/hash-nav/HashNavContainer';
 import PrizeWinners from './PrizeWinners';
 import Session from '../../utils/Session';
@@ -29,6 +30,11 @@ class Admin extends Component {
         hash: 'responses',
         title: 'Check-in Responses',
         comp: <CheckInResponses/>
+      },
+      {
+        hash: 'downloads',
+        title: 'Downloads',
+        comp: <Downloads/>
       }
     ];
   }
