@@ -50,9 +50,25 @@ class CheckInForm extends Form {
   }
 
   submit() {
-    var payload = {
+    var questions = [];
+
+    var data;
+    for (var i = 0; i < this.state.formComps.length; i++) {
+      data = this.state.formComps[i];
+
+      if (data.answer.text) {
+        questions.push(data);
+      }
+    }
+
+    if (questions.length === 0) {
+      this.setState({ status: this.status.COMPLETE });
+      return;
+    }
+
+    const payload = {
       id: this.state.checkInId,
-      questions: this.state.formComps
+      questions: questions
     };
 
     Ajax.put('/api/check_in', payload)
@@ -75,7 +91,7 @@ class CheckInForm extends Form {
     var type = 'fr-long'; // hardcoding for now until other types of answers (multi-choice, etc.) are supported
 
     return this.state.questions.map((data) => {
-      return <FormQA key={data.question.id} type={type} question={data.question} answer={data.answer} required={true} ref={this.pushFormCompRef}/>;
+      return <FormQA key={data.question.id} type={type} question={data.question} answer={data.answer} required={false} ref={this.pushFormCompRef}/>;
     });
   }
 
