@@ -12,6 +12,10 @@
   border-bottom: none;
   background-color: rgba(0,0,75,0.04);
   padding: 15px;
+
+  ol, ul {
+    padding-left: 15px;
+  }
 }
 
 .overview-subsection:last-child {
