@@ -71,9 +71,14 @@ class PrizesSection extends Component {
       });
     }
 
+    var href, className;
     return this.state.prizes.map((data) => {
+      /*eslint-disable no-script-url*/
+      href = data.sponsor.url || 'javascript:void(0)';
+      className = data.sponsor.url ? null : 'no-link';
+
       return <li key={data.prize.id}>
-        <a href={data.sponsor.url} target="_blank" rel="noopener noreferrer">
+        <a className={className} href={href} target="_blank" rel="noopener noreferrer">
           <Prize sponsor={data.sponsor} prize={data.prize}/>
         </a>
       </li>;
