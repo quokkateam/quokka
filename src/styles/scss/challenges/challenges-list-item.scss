@@ -107,12 +107,19 @@
 
     &.campus-selected-challenge {
       background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/group_challenge.svg');
+      background-position: 49% 40%;
     }
 
     &.positivity-mindfulness {
       background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/mindfulness.svg');
       background-size: 65%;
       background-position: 50% 30%;
+    }
+
+    &.give-thanks {
+      background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/give-thanks.svg');
+      background-size: 63%;
+      background-position: 53% 56%;
     }
   }
 }
