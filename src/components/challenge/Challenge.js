@@ -106,7 +106,7 @@ class Challenge extends Component {
             extraInfo: data.extraInfo
           });
         } else {
-          this.props.history.goBack();
+          window.location = '/challenges';
         }
       });
     } else {

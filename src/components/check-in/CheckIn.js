@@ -34,7 +34,7 @@ class CheckIn extends Component {
             });
           });
         } else {
-          this.props.history.goBack();
+          window.location = '/challenges#check-ins';
         }
       });
   }

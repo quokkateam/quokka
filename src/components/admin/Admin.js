@@ -10,7 +10,7 @@ class Admin extends Component {
     super(props);
 
     if (!Session.isAdmin()) {
-      this.props.history.goBack();
+      window.location = '/challenges';
     }
 
     this.links = [
