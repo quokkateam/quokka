@@ -128,7 +128,7 @@ class NewPrizeModal extends QuokkaModal {
         </div>
         <div className="count-section">
           <div className="count-section-desc">Amount of this prize</div>
-          <FormSelect required={true} options={this.formatPrizeCountOptions()} defaultValue="1" ref={this.setPrizeCountRef} />
+          <FormSelect required={true} options={this.formatPrizeCountOptions()} defaultValue={((this.state.prize || {}).count || 1).toString()} ref={this.setPrizeCountRef} />
         </div>
       </div>
     );
