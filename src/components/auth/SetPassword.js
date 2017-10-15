@@ -109,6 +109,7 @@ class SetPassword extends Form {
       'Baker',
       'Brown',
       'Duncan',
+      'GSA',
       'Hanszen',
       'Jones',
       'Lovett',
