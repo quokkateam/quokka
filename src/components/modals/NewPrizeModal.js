@@ -105,7 +105,7 @@ class NewPrizeModal extends QuokkaModal {
 
   formatPrizeCountOptions() {
     var options = [];
-    var maxPrizeCount = 20;
+    var maxPrizeCount = 50;
 
     var val;
     for (var i = 0; i < maxPrizeCount; i++) {
