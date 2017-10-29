@@ -28,9 +28,10 @@ class Challenges extends Component {
   }
 
   getProgBar() {
-    // HACK: hiding the weekly-prog-bar just for UNC since I'm lazy and don't wanna
+    // HACK: hiding the weekly-prog-bar just for UNC/Duke since I'm lazy and don't wanna
     // have to redo it for them and their 6-week challenge
-    if ((Session.school() || {}).slug === 'unc') {
+    var schoolSlug = (Session.school() || {}).slug;
+    if (schoolSlug === 'unc' || schoolSlug === 'duke-university') {
       return;
     }
 
