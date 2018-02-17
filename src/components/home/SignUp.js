@@ -118,9 +118,18 @@ class SignUp extends Form {
       });
       break;
     case 400:
+      // TODO: REMOVE THIS HACK LATER
       resp.json().then((data) => {
-        this.onSignUpError(data);
+        this.setState({
+          status: this.status.COMPLETE,
+          launched: !!data.launched
+        });
       });
+      // -----
+
+      // resp.json().then((data) => {
+      //   this.onSignUpError(data);
+      // });
       break;
     default:
       console.warn('Unexpected error during signup.');
@@ -202,6 +211,7 @@ class SignUp extends Form {
               <div className="school-not-listed" onClick={this.props.onSubmitSchool}>Don't see your school?</div>
             </div>
             <LgSpinnerBtn classes={this.submitBtnClasses()} btnText={this.submitBtnContent()} onClick={this.serialize} />
+            <br/><br/><br/><br/><br/>
           </div>
         </div>
       </div>
