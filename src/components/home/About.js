@@ -9,12 +9,12 @@ class About extends Component {
             <div className="col-md-4 col-sm-12 col-xs-12 about-category">
               <img className="icon" src="https://s3-us-west-1.amazonaws.com/quokkadev/marketing/images/evidence.png" alt=""/>
               <h2 className="about-category-title">Learn the Basics</h2>
-              <p className="about-category-desc">We’ve done our homework to make sure that our challenges are built on sound science. We’ll share that info with you and get you acquainted with related resources on campus.</p>
+              <p className="about-category-desc">We’ve done our homework to make sure that our challenges are built on sound science. We’ll share that info with you and get you acquainted with related resources in your community.</p>
             </div>
             <div className="col-md-4 col-sm-12 col-xs-12 about-category">
               <img className="icon" src="https://s3-us-west-1.amazonaws.com/quokkadev/marketing/images/community.png" alt=""/>
               <h2 className="about-category-title">Challenge Yourself</h2>
-              <p className="about-category-desc">Receive a curated challenge in your inbox each week. We’ll give you the instructions, and you’ll attempt to stick to the challenge along with thousands of other participating students. Let’s do this together!</p>
+              <p className="about-category-desc">Receive a curated challenge in your inbox each week. We’ll give you the instructions, and you’ll attempt to stick to the challenge along with thousands of other participating users. Let’s do this together!</p>
             </div>
             <div className="col-md-4 col-sm-12 col-xs-12 about-category">
               <img className="icon" src="https://s3-us-west-1.amazonaws.com/quokkadev/marketing/images/gift.png" alt=""/>

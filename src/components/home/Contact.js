@@ -157,7 +157,7 @@ class Contact extends QComponent {
     return (
       <section id="contact" ref={this.setSectionRef}>
         <div className="container-fluid">
-          <div className="leading-contact-text">Want Quokka on your campus? Let us know!</div>
+          <div className="leading-contact-text">Want Quokka for your community? Let us know!</div>
           <div className="row">
             <div className="col-md-6 col-sm-12 col-xs-12 contact-field-container">
               <FormInput required={true} classes={['contact-field']} name="school" placeholder="School" defaultValue={this.state.school} ref={this.setSchoolFieldRef} />
