@@ -11,6 +11,7 @@ import Home from './components/home/Home';
 import Session from './utils/Session';
 import SetPassword from './components/auth/SetPassword';
 import SignIn from './components/auth/SignIn';
+import SignUp from './components/signup/SignUp';
 import VerifyEmail from './components/auth/VerifyEmail';
 
 class Main extends Component {
@@ -27,6 +28,11 @@ class Main extends Component {
       {
         path: '/faq',
         comp: FAQ,
+        exact: true
+      },
+      {
+        path: '/signup',
+        comp: SignUp,
         exact: true
       },
       {
