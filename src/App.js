@@ -66,6 +66,7 @@ class App extends Component {
             <Route exact path='/' component={this.header(false, Themes.WHITE_ON_TRANS, false)}/>
             <Route exact path='/faq' component={this.header(false, Themes.COLOR_ON_WHITE, true)}/>
             <Route exact path='/signin' component={this.header(false, Themes.COLOR_ON_WHITE, true)}/>
+            <Route exact path='/signup' component={this.header(false, Themes.COLOR_ON_WHITE, true)}/>
             <Route exact path='/signout' component={this.header(false, Themes.COLOR_ON_WHITE, true)}/>
             <Route path='/check-in/week:weekNum' component={this.header(true, Themes.COLOR_ON_WHITE, true)}/>
             <Route path='/challenge/week:weekNum' component={this.header(true, Themes.COLOR_ON_WHITE, true)}/>
@@ -83,6 +84,7 @@ class App extends Component {
           <Route exact path='/' component={SideNav}/>
           <Route exact path='/faq' component={SideNav}/>
           <Route exact path='/signin' component={SideNav}/>
+          <Route exact path='/signup' component={SideNav}/>
           <Route exact path='/signout' component={SideNav}/>
           <Route path='/check-in/week:weekNum' component={this.inAppSideNav()}/>
           <Route path='/challenge/week:weekNum' component={this.inAppSideNav()}/>
