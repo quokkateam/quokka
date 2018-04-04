@@ -12,6 +12,7 @@ import Session from './utils/Session';
 import SetPassword from './components/auth/SetPassword';
 import SignIn from './components/auth/SignIn';
 import SignUp from './components/signup/SignUp';
+import SignUpPage from './components/signup/SignUpPage';
 import VerifyEmail from './components/auth/VerifyEmail';
 
 class Main extends Component {
@@ -33,6 +34,11 @@ class Main extends Component {
       {
         path: '/signup',
         comp: SignUp,
+        exact: true
+      },
+      {
+        path: '/signup-page',
+        comp: SignUpPage,
         exact: true
       },
       {
