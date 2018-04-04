@@ -219,4 +219,4 @@ class SignUpPage extends Form {
   }
 }
 
-export default SignUp;
+export default SignUpPage;
