@@ -197,7 +197,8 @@ class SignUpPage extends Form {
   
   render() {
     return (
-      <div id="signUp">
+      <div id="signUpPage">
+        <h1>Are we rendered?</h1>
         <div className="container">
           <div className="row">
             <div className="sign-up-input">
