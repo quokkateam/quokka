@@ -197,11 +197,6 @@ class SignUpPage extends Form {
   
   render() {
     return (
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
       <div id="signUp">
         <div className="container">
           <div className="row">
