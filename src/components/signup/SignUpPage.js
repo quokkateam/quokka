@@ -201,12 +201,17 @@ class SignUpPage extends Form {
         <h1>Are we rendered?</h1>
         <div className="container">
           <div className="row">
-            <div className="sign-up-input">
-              <EmailInput required={true} placeholder='School Email' ref={this.setEmailRef} onKeyUp={this.onEmailKeyUp}/>
-            </div>
+            <br/><br/><br/><br/><br/>
             <div className="sign-up-input">
               <FormInput required={true} placeholder='Full Name' ref={this.pushFormCompRef}/>
             </div>
+            <br/><br/><br/><br/><br/>
+            <div className="sign-up-input">
+              <EmailInput required={true} placeholder='School Email' ref={this.setEmailRef} onKeyUp={this.onEmailKeyUp}/>
+            </div>
+            <br/><br/><br/><br/><br/>
+
+            
             <div className="sign-up-input school-form-select-container">
               <FormSelect required={true} placeholder='School' options={this.schools} ref={this.setSchoolRef}/>
               <div className="school-not-listed" onClick={this.props.onSubmitSchool}>Don't see your school?</div>
