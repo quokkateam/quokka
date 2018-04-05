@@ -172,7 +172,7 @@ class SignUpPage extends Form {
   }
 
   onComplete() {
-    this.props.onSignUp(this.email.serialize(), this.state.launched);
+    //this.props.onSignUp(this.email.serialize(), this.state.launched);
     
     setTimeout(() => {
       this.clear();
