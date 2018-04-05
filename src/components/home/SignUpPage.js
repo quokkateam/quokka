@@ -26,6 +26,16 @@ class SignUpPage extends Form {
     this.onInvalidEmailDomain = this.onInvalidEmailDomain.bind(this);
     this.onSignUpResp = this.onSignUpResp.bind(this);
     this.onSignUpError = this.onSignUpError.bind(this);
+    this.setGenderInputRef = this.setGenderInputRef.bind(this);
+    this.setAgeInputRef = this.setAgeInputRef.bind(this);
+  }
+
+  setGenderInputRef(ref) {
+    this.gender = ref;
+  }
+
+  setAgeInputRef(ref) {
+    this.age = ref;
   }
   
   setEmailRef(ref) {
@@ -98,7 +108,7 @@ class SignUpPage extends Form {
     this.setState({ status: this.status.SENDING });
 
     var payload = {};
-    ['email', 'name', 'school'].forEach((k, i) => {
+    ['email', 'name', 'gender', 'age', 'school'].forEach((k, i) => {
       payload[k] = this.state.formComps[i];
     });
 
@@ -201,12 +211,22 @@ class SignUpPage extends Form {
         <div className="container">
 
           <br/><br/><br/><br/><br/>
-          <br/><br/><br/><br/><br/>
-          <br/><br/><br/><br/><br/>
 
           <div className="row">
             <div className="sign-up-input">
               <FormInput required={true} placeholder='Full Name' ref={this.pushFormCompRef}/>
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="sign-up-input">
+              <FormInput required={true} placeholder='Gender' ref={this.setGenderInputRef}/>
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="sign-up-input">
+              <FormInput required={true} placeholder='Age' ref={this.setAgeInputRef}/>
             </div>
           </div>
 
