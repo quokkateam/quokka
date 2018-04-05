@@ -200,6 +200,10 @@ class SignUpPage extends Form {
       <div id="signUpPage">
         <div className="container">
 
+          <br/><br/><br/><br/><br/>
+          <br/><br/><br/><br/><br/>
+          <br/><br/><br/><br/><br/>
+
           <div className="row">
             <div className="sign-up-input">
               <FormInput required={true} placeholder='Full Name' ref={this.pushFormCompRef}/>
@@ -223,7 +227,7 @@ class SignUpPage extends Form {
             <LgSpinnerBtn classes={this.submitBtnClasses()} btnText={this.submitBtnContent()} onClick={this.serialize} />
             <br/><br/><br/><br/><br/>
           </div>
-          
+
         </div>
       </div>
     );

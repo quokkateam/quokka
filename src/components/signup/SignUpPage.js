@@ -199,7 +199,11 @@ class SignUpPage extends Form {
     return (
       <div id="signUpPage">
         <div className="container">
-        
+
+          <br/><br/><br/><br/><br/>
+          <br/><br/><br/><br/><br/>
+          <br/><br/><br/><br/><br/>
+
           <div className="row">
             <div className="sign-up-input">
               <FormInput required={true} placeholder='Full Name' ref={this.pushFormCompRef}/>
