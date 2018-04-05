@@ -198,26 +198,32 @@ class SignUpPage extends Form {
   render() {
     return (
       <div id="signUpPage">
-        <h1>Are we rendered?</h1>
         <div className="container">
+
           <div className="row">
-            <br/><br/><br/><br/><br/>
             <div className="sign-up-input">
               <FormInput required={true} placeholder='Full Name' ref={this.pushFormCompRef}/>
             </div>
-            <br/><br/><br/><br/><br/>
+          </div>
+
+          <div className="row">
             <div className="sign-up-input">
               <EmailInput required={true} placeholder='School Email' ref={this.setEmailRef} onKeyUp={this.onEmailKeyUp}/>
             </div>
-            <br/><br/><br/><br/><br/>
+          </div>
             
+          <div className="row">
             <div className="sign-up-input school-form-select-container">
               <FormSelect required={true} placeholder='School' options={this.schools} ref={this.setSchoolRef}/>
-              <div className="school-not-listed" onClick={this.props.onSubmitSchool}>Don't see your school?</div>
+              <div className="school-not-listed" onClick={this.props.onSubmitSchool}>School not shown?</div>
             </div>
+          </div>
+
+          <div className="row">
             <LgSpinnerBtn classes={this.submitBtnClasses()} btnText={this.submitBtnContent()} onClick={this.serialize} />
             <br/><br/><br/><br/><br/>
           </div>
+          
         </div>
       </div>
     );
