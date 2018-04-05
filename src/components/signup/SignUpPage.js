@@ -129,6 +129,7 @@ class SignUpPage extends Form {
       break;
     case 400:
       // TODO: REMOVE THIS HACK LATER
+      console.log('400 warning as expected');
       resp.json().then((data) => {
         this.setState({
           status: this.status.COMPLETE,
