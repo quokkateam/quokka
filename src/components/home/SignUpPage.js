@@ -120,6 +120,7 @@ class SignUpPage extends Form {
   onSignUpResp(resp) {
     switch (resp.status) {
     case 201:
+      console.log('201 response');
       resp.json().then((data) => {
         this.setState({
           status: this.status.COMPLETE,
