@@ -110,6 +110,7 @@ class SignUpPage extends Form {
     var payload = {};
     ['email', 'name', 'gender', 'age', 'school'].forEach((k, i) => {
       payload[k] = this.state.formComps[i];
+      console.log(payload[k]);
     });
 
     Ajax.post('/api/users', payload).then((resp) => {
