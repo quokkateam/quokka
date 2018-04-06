@@ -32,10 +32,12 @@ class SignUpPage extends Form {
 
   setGenderInputRef(ref) {
     this.gender = ref;
+    this.pushFormCompRef(ref);
   }
 
   setAgeInputRef(ref) {
     this.age = ref;
+    this.pushFormCompRef(ref);
   }
   
   setEmailRef(ref) {

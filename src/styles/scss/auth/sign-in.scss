@@ -92,3 +92,9 @@
   width: 75%;
   margin: 0 auto;
 }
+
+@media (max-width: 991px) {
+  #signIn .auth-card {
+    width: 85%;
+  }
+}
