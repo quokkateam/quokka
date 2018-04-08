@@ -57,11 +57,6 @@ class Header extends Component {
           featured: true
         },
         {
-          text: 'Sign Up',
-          href: '/signup-page',
-          featured: true
-        },
-        {
           text: 'FAQ',
           href: '/faq'
         }
