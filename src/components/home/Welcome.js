@@ -11,9 +11,13 @@ class Welcome extends Component {
           <p className="welcome-sub-text">Healthier habits for a happier campus</p>
           <br />
           <center>
-            <a href='http://eepurl.com/dqEEqP'> Joining UCSB&#039;s Challenge? Click here to sign up! </a>
+            <a href='http://eepurl.com/dqEEqP'> 
+              <font color='white'>
+                <h3>Joining UCSB&#039;s Challenge? Click here to sign up! </h3>
+              </font>
+            </a>
           </center>
-          <br /><br /><br /><br /><br />
+          <br /><br /><br />
           <SignUp onSubmitSchool={this.props.onSubmitSchool} onSignUp={this.props.onSignUp} />
         </div>
       </section>
