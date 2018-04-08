@@ -13,7 +13,7 @@ class Welcome extends Component {
           <center>
             <a href='http://eepurl.com/dqEEqP'> Joining UCSB&#039;s Challenge? Click here to sign up! </a>
           </center>
-          <br />
+          <br /><br /><br /><br /><br />
           <SignUp onSubmitSchool={this.props.onSubmitSchool} onSignUp={this.props.onSignUp} />
         </div>
       </section>
