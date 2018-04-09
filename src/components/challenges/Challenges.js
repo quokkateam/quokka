@@ -31,7 +31,7 @@ class Challenges extends Component {
     // HACK: hiding the weekly-prog-bar just for UNC/Duke since I'm lazy and don't wanna
     // have to redo it for them and their 6-week challenge
     var schoolSlug = (Session.school() || {}).slug;
-    if (schoolSlug === 'unc' || schoolSlug === 'duke-university' || schoolSlug === 'ucsb') {
+    if (schoolSlug === 'unc' || schoolSlug === 'duke-university' || schoolSlug === 'uc_sb') {
       return;
     }
 
