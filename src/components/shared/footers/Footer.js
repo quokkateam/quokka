@@ -63,10 +63,10 @@ class Footer extends Component {
                   <a href="#">
                     <i className="fa fa-twitter"></i>
                   </a>
-                  <a href="#">
+                  <a href="https://www.facebook.com/quokkachallenge/">
                     <i className="fa fa-facebook"></i>
                   </a>
-                  <a href="#">
+                  <a href="https://www.instagram.com/quokkachallenge/">
                     <i className="fa fa-instagram"></i>
                   </a>
                   {/* eslint-enable */}
