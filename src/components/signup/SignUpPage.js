@@ -128,7 +128,7 @@ class SignUpPage extends Form {
     this.setState({ status: this.status.SENDING });
 
     var payload = {};
-    ['email', 'name', 'gender', 'age', 'school'].forEach((k, i) => {
+    ['email', 'name', 'gender', 'age', 'school', 'classYear', 'hearAbout'].forEach((k, i) => {
       payload[k] = this.state.formComps[i];
       console.log(payload[k]);
     });
@@ -268,13 +268,13 @@ class SignUpPage extends Form {
 
           <div className="row">
             <div className="sign-up-input school-form-select-container">
-              <FormSelect required={true} placeholder='How did you hear about the Challenge?' options={this.hearAboutOptions} ref={this.setHearAboutInputRef}/>
+              <FormSelect required={true} placeholder='Class Year' options={this.classYearOptions} ref={this.setClassYearInputRef}/>
             </div>
           </div>
 
           <div className="row">
             <div className="sign-up-input school-form-select-container">
-              <FormSelect required={true} placeholder='Class Year' options={this.classYearOptions} ref={this.setClassYearInputRef}/>
+              <FormSelect required={true} placeholder='How did you hear about the Challenge?' options={this.hearAboutOptions} ref={this.setHearAboutInputRef}/>
             </div>
           </div>
 
