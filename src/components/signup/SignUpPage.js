@@ -28,6 +28,24 @@ class SignUpPage extends Form {
     this.onSignUpError = this.onSignUpError.bind(this);
     this.setGenderInputRef = this.setGenderInputRef.bind(this);
     this.setAgeInputRef = this.setAgeInputRef.bind(this);
+    this.setClassYearInputRef = this.setClassYearInputRef.bind(this);
+    this.setHearAboutInputRef = this.setHearAboutInputRef.bind(this);
+  }
+
+  setClassYearInputRef(ref) {
+    this.classYear = ref;
+    //this.pushFormCompRef(ref);
+
+    this.classYearOptions = [{value: 'Freshman', title: 'Freshman'}, {value: 'Sophomore', title: 'Sophomore'}, {value: 'Junior', title: 'Junior'}, {value: 'Senior', title: 'Senior'}, {value: 'Other', title: 'Other'}];
+    this.classYear.setState({ options: this.classYearOptions })
+  }
+
+  setHearAboutInputRef(ref) {
+    this.hearAbout = ref;
+    //this.pushFormCompRef(ref);
+
+    this.hearAboutOptions = [{value: 'Email', title: 'Email'}, {value: 'Website', title: 'Website'}, {value: 'Flyer', title: 'Flyer'}, {value: 'Friend', title: 'Friend'}, {value: 'Other', title: 'Other'}];
+    this.hearAbout.setState({ options: this.hearAboutOptions });
   }
 
   setGenderInputRef(ref) {
@@ -245,6 +263,18 @@ class SignUpPage extends Form {
             <div className="sign-up-input school-form-select-container">
               <FormSelect required={true} placeholder='School' options={this.schools} ref={this.setSchoolRef}/>
               <div className="school-not-listed" onClick={this.props.onSubmitSchool}>School not shown?</div>
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="sign-up-input school-form-select-container">
+              <FormSelect required={true} placeholder='How did you hear about the Challenge?' options={this.hearAboutOptions} ref={this.setHearAboutInputRef}/>
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="sign-up-input school-form-select-container">
+              <FormSelect required={true} placeholder='Class Year' options={this.classYearOptions} ref={this.setClassYearInputRef}/>
             </div>
           </div>
 
