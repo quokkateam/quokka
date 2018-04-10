@@ -44,6 +44,11 @@
   &.give-thanks {
     background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/give-thanks-banner.jpg');
   }
+  
+  &.hydration {
+    background-image: url('https://s3-us-west-1.amazonaws.com/quokkadev/images/campus-selected-challenge-banner.jpg');
+    background-position-y: -90px;
+  }
 
   .dimmer {
     background-color: rgba(0,0,0,0.45);
