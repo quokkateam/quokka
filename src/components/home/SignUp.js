@@ -40,7 +40,12 @@ class SignUp extends Form {
     Ajax.get('/api/schools')
       .then((resp) => resp.json())
       .then((data) => {
-        this.schools = data.schools || [];
+        this.schools = [];
+        for (var i in data.schools) {
+          if (data.schools[i].slug !== 'ucsb' && data.schools[i].slug !== 'uc-sb') {
+            this.schools.push(data.schools[i]);
+          }
+        }
         this.createDomainRegex();
 
         var selectOptions = this.schools.map((s) => {
