@@ -34,7 +34,7 @@ class SignUpPage extends Form {
 
   setClassYearInputRef(ref) {
     this.classYear = ref;
-    //this.pushFormCompRef(ref);
+    this.pushFormCompRef(ref);
 
     this.classYearOptions = [{value: 'Freshman', title: 'Freshman'}, {value: 'Sophomore', title: 'Sophomore'}, {value: 'Junior', title: 'Junior'}, {value: 'Senior', title: 'Senior'}, {value: 'Other', title: 'Other'}];
     this.classYear.setState({ options: this.classYearOptions })
@@ -42,7 +42,7 @@ class SignUpPage extends Form {
 
   setHearAboutInputRef(ref) {
     this.hearAbout = ref;
-    //this.pushFormCompRef(ref);
+    this.pushFormCompRef(ref);
 
     this.hearAboutOptions = [{value: 'Email', title: 'Email'}, {value: 'Website', title: 'Website'}, {value: 'Flyer', title: 'Flyer'}, {value: 'Friend', title: 'Friend'}, {value: 'Other', title: 'Other'}];
     this.hearAbout.setState({ options: this.hearAboutOptions });
