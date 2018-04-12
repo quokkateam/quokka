@@ -104,3 +104,9 @@
     width: 100%;
   }
 }
+
+@media (max-width: 991px) {
+  .challenges-list-container {
+    padding: 4%;
+  }
+}
