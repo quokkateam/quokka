@@ -122,6 +122,9 @@
 @media (max-width: 991px) {
   #challengeBanner {
     .adj-week-nav {
+
+      width: 100%;
+      
       &.prev-week {
         left: 0%;
       }
