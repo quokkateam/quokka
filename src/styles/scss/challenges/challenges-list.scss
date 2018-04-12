@@ -105,8 +105,9 @@
   }
 }
 
-@media (max-width: 700px) {
-  .challenges-list-container {
-    padding: 4%;
+@media (max-width: 991px) {
+  .hash-content {
+    padding: 0;
+    margin: 0;
   }
 }
