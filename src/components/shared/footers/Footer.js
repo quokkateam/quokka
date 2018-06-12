@@ -17,7 +17,7 @@ class Footer extends Component {
     this.linkSections = {
       quokka: [
         ['/', 'Overview'],
-        ['mailto:support@quokkachallenge.com', 'Support'],
+        ['mailto:team@quokkachallenge.com', 'Support'],
         ['mailto:team@quokkachallenge.com', 'Contact']
       ],
       company: [
